@@ -40,6 +40,8 @@ Created Friday 04 March 2016
 		[ ] OR, some tricks in makefile needs to be done
 [ ] Benchmarking Go vs C:
 	[ ] memory foot-print
+		* Sad to say, Go is always going to be bloated because it is statically linked
+		* Perhaps comparable for large programs, but for small programs, it is a high price to pay
 	[ ] speed
 	[ ] robustness
 	[ ] binary size
