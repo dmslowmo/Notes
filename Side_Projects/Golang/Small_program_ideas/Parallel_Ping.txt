@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-31T19:52:22+08:00
+
+====== Parallel Ping ======
+Created Thursday 31 March 2016
+
+Pseudo code:
+{{{code: lang="python" linenumbers="True"
+//spawn N goroutines
+//each goroutine ping a host and print the result
+
+func (host) pingHost {
+	if ping host is succesful
+		print "host is up"
+	else
+		print "host is down"
+}
+
+for each host in the file
+	go pingHost
+
+}}}
+
+
+* Codes uploaded in Github: https://github.com/dmslowmo/go-n-multiping
+	* //git clone //https://github.com/dmslowmo/go-n-multiping.git
+
+* Design and implementation:
+	* ping multiple hosts in parallel via ICMP ping
+	* by making use of goroutines
+	* synchronized using WaitGroup
+	* ping is wrapping native Linux ping function using os/exec
+
+* Concepts learned:
+	* Synchronization using WaitGroup
+		* defer
+		* Wait
+		* Add
+	* Goroutine
+	* os utilities
+		* reading cli arguments
+		* open/close and read file
+		* exec (execute a program from Go program)
+	* handling multiple output from a function

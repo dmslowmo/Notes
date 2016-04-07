@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-03T09:20:46+08:00
+
+====== Thursday 03 Mar 2016 ======
+
+[ ] Fixing bug [[Redmine Issues:Closed:26350 diag bms path hardcoded]]
+	[*] coding and unit test
+	[*] build firmware 1.3.2
+	[*] test on BHR4
+	[*] submit for review
+	[*] merge
+	[*] cherrypick to master
+[*] Preparing for CoAP knowledge sharing
+	[*] ppt slides
+	[x] how to record the presentation
+	[*] presented and noted the questions for further research (create TODO list)

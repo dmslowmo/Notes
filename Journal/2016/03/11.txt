@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-11T08:41:24+08:00
+
+====== Friday 11 Mar 2016 ======
+
+[ ] Working on [[Redmine Issues:Closed:Browsable web directory]]
+	[*] Code changes
+	[*] Test on browser
+	[*] push for review (1.3.2)
+	[*] Update redmine (root cause and solution)
+	[ ] ~~merge (1.3.2) ~~ Bob gives -1, not sure if needed for 1.3.2, but asked to cherry-pick to master
+	[ ] ~~cherry-pick to master~~ Cherokee has been removed in master, cannot cherry-pick
+	[ ] ~~push for review (master)~~
+	[ ] ~~merge (master)~~
+[ ] See if we can conclude [[Redmine Issues:BHR4:DHCP client does not remain in DISCOVERY mode]] issue:
+	[*] draw a truth table of dev vs prod for 1.3.1, 1.3.2, and 1.4 to narrow down the problem release
+	[ ] re-assign the ticket to ... with findings and conclusion

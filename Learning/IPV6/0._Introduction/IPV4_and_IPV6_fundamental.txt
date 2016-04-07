@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-15T13:45:13+08:00
+
+====== IPV4 and IPV6 fundamental ======
+Created Tuesday 15 March 2016
+
+===== IPV4 =====
+* Address space is 2^32 (4+ billion)
+* IANA = Internet Assigned Number Authority
+* Format: dotted, 4-octets
+* Unicast, Multicast, Broadcast, Anycast
+
+===== IPV6 =====
+* expanded addressing
+* header simplification
+* extension
+* flow labels
+* authentication
+* Address space is 2^128
+* Will be standar network protocol, but co-exist with IPV4
+* Unicast, Multicast, Anycast
+	* No Broadcast because it is practically Multicast
+* Address format: 8 hexadectets, or hextets, or a quibble (a quad nibble) separated by a colon

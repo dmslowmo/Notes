@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-23T15:03:40+08:00
+
+====== Tuesday 23 Feb 2016 ======
+
+**Volunteer Project Review:**
+__Google Iot Exploration__
+1. Need to allocate more time per week, put in more dedicated and focussed effort
+2. Hands-on to create a minimum POC demo
+	a. Have a plan what we want to do
+	b. As much as possible, use readily available components that other people have done and we just integrate them
+	c. Divide the tasks into smaller parts, distribute among members if possible
+3. Target to demo something in the next Review meeting in a month's time (4th Tuesday of every month)
+
+__CoAP__
+1. There may not be much interest in it, so don't put too much effort, ie:
+	a. Plan for a simple demonstration eg client-server communication "hello World"
+	b. Use readily available components in internet and integrate them
+	c. Package the demo, if necessary into an zip or bin and attach it in wiki
+	d. Document everything in wiki
+
+TODO today:
+[ ] Start copying Windows7 VM from shared drive to local drive
+[ ] If copying can be completed today, backup this Windows7 VM to local server 10.0.10.104
+[*] Some coap study

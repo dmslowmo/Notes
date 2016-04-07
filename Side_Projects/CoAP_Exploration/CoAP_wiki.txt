@@ -1,0 +1,141 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-08T11:31:29+08:00
+
+====== CoAP ======
+
+{{toc}}
+
+===== Overview =====
+
+Constrained Application Protocol (CoAP) is a software protocol intended to be used in very simple electronics devices that allows them to communicate interactively over the internet. It is defined in [[http://tools.ietf.org/html/rfc7252|RFC 7252]] standard.
+
+From [[http://coap.technology/impls.html|CoAP Technology]] website: //The Contrained Application Protocol (CoAP) is a specialized web transfer protocol for use with constrained nodes and constrained networks in the Internet of Things. The protocol is designed for machine-to-machine (M2M) applications such as smart energy and building automation.//
+
+===== Advantages =====
+
+  * **REST model**\\
+It uses REST model where servers make resources available under a URL, and clients access these resources using methods such as GET, PUT, POST, and DELETE.
+  * **No new skill required (for developer)**\\
+From a developer point of view, CoAP feels very much like HTTP. Obtaining a value from a sensor is not much different from obtaining a value from a Web API.
+  * **Integration ready**\\
+Since HTTP and CoAP share the REST model, they can easily be connected using application-agnostic cross-protocol proxies. A Web client may not even notice that it just accessed a sensor resource!
+  * **Choice of data model**\\
+Like HTTP, CoAP can carry different types of payloads, and can identify which payload type is being used. CoAP integrates with XML, JSON, [[http://cbor.io/|CBOR]], or any data format of your choice.
+  * **Small memory foot print**\\
+CoAP has been designed to work on uControllers with as low as 10Kb of RAM and 100KB of code space (see [[http://tools.ietf.org/html/rfc7228)|RFC 7228]].
+  * **Minimal resources**\\
+Simplicity enables transmission over UDP on IP. A 4-byte fixed header and a compact encoding of options enables small messages that cause no or little fragmentation on the link layer. Many servers can operate in a completely stateless fashion. Ideal for battery-powered sensors (eg temperature sensor) that sends reading periodically every few seconds.
+  * **Resource Discovery integrated**\\
+The CoAP resource directory provides a way to discover the properties of the nodes on your network. It must be noted that this is analogous to "interview" process in Zwave world.
+  * **Security**\\
+Strong security is provided via default choice of DTLS parameters equivalent to 3072-bit RSA keys, yet still runs fine on the smallest nodes.
+  * **Multi-cast support**\\
+A CoAP network is inherently one-to-one; however, it supports one-to-many or many-to-many multi-cast requirements. This is inherent in CoAP because it’s built on top of IPv6, which enables multicast addressing for devices in addition to their normal IPv6 addresses.
+  * **Resource/service discovery**\\
+CoAP uses URI to provide a standard presentation and interaction expectations for network nodes. This allows a degree of autonomy in the message packets, since the target node’s capabilities are partly understood by its URI details. In other words, a battery-powered sensor node may have one type of URI while a line-powered flow-control actuator may have another. Nodes communicating to the battery-powered sensor node might be programmed to expect longer response times, more repetitive information, and limited message types. Nodes communicating to the line-powered flow-control actuator might be programmed to expect rich, detailed messages at a very rapid pace.
+
+===== Disadvantages =====
+
+  * **Standard is still evolving**\\
+MQTT is currently a more mature and stable standard than CoAP. For many IoT developers, it’s easier to get an MQTT network up and running very quickly than a similar network using CoAP. That said, CoAP has tremendous market momentum and is rapidly evolving to provide a standardized foundation, with important add-ons now in the ratification pipeline.
+  * **Less message reliability (QoS level)**\\
+CoAP’s “reliability” is MQTT’s QoS. It provides a very simple method of providing a “confirmable” message and a “non-confirmable” message. The confirmable message is acknowledged with an acknowledgement message (ACK) from the intended recipient. This confirms the message is received, but stops short of confirming that its contents were decoded correctly or at all. A non-confirmable message is “fire and forget.”
+
+===== CoAP Implementations =====
+
+CoAP is simple enough to implement from scratch for a simple application. For applications where that is not desirable, generic implementations are becoming available for a variety of platforms. Many of these implementations stay private, but some are published with liberal open-source licenses such as the Apache 2.0 or the MIT license.
+
+[[http://coap.technology/impls.html|List of implementations]]
+
+===== Simple Experiment: Simulation of Lighting Control =====
+
+This simulation involves controlling a "lighting device" from a web interface.
+
+The client is a web application which requires [[https://addons.mozilla.org/en-US/firefox/addon/copper-270430/|//**Copper**//]] plugin installed on Firefox browser. With this plugin, we can simply type the CoAP server URI on the browser address field. The server is a small CoAP server which comes with the //**microcoap**// library source codes ([[https://github.com/1248/microcoap)|instruction]]. The libcoap source codes also came with sample server, which may also work.
+
+First, we start the CoAP server on the "lighting device", eg.
+
+<code>
+user@machine ~/yourworkspace/microcoap $ ./coap
+</code>
+
+==== Discovery of the resources ====
+
+On the Copper page, click "Discover" button to query what resources (probably similar to "device type" or "capability") that the device has, as per Copper [[http://people.inf.ethz.ch/mkovatsc/copper.php|documentation]] here. It should be similar to selecting ///.well-known/core// and then click on "GET" button. (However, it seems the Discover button does not work?)
+
+The following reply received from the server which shows that it is a "lighting device".
+
+<code>
+;ct=40,;ct=0
+</code>
+On the left-hand side, there will be a tree list generated which show that there is a "light" node under ".well-known/core".
+
+Note:\\
+//"/.well-known/"// URI refers to the default entry point for requesting the links hosted by a server ([[https://tools.ietf.org/html/rfc5785#section-3)|RFC5785]]. The "core" suffix is speficic to the CoRE specification.
+
+Quoting the [[https://tools.ietf.org/html/rfc6690#page-16|RFC6690]] :
+
+//A well-known relative URI "/.well-known/core" is defined as a default entry point for requesting the list of links about resources hosted by a server and thus performing CoRE Resource Discovery. This specification is applicable for use with Constrained Application Protocol (CoAP) [COAP], HTTP, or any other suitable web transfer protocol.//
+
+==== Observation (can't demo this yet) ====
+
+A feature of CoAP is the ability to subscribe and watch a resource for any change in its state. The said resource will send a push notification to the subscriber.\\
+Unfortunately, no sample application to demo this yet.
+
+==== Query/modify device state ====
+
+We can perform the following to query/change the light state:
+
+  * Query the current state of the light by selecting "light" from the left-hand list and click "GET". On the "Incoming" tab, it will show "0".
+  * To change this state, select "light", type "1" on the "Outgoing" tab, and click "PUT". Check the "Incoming" tab and you see it showing "1".
+  * Query the state again and it will still show as "1"\\
+The above steps use REST requests GET and PUT to query and change the state respectively.
+
+We could also use a command-line client provided in the //**libcoap**// source codes ([[https://libcoap.net/doc/install.html)|instruction]] if we want to see the raw data sent from the server.
+
+{{https://support.greenwavereality.com/attachments/download/42840/Screenshot%20from%202016-02-23%2017_19_57.png}}
+
+===== HTTP-CoAP Proxy =====
+
+From [[http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6708523&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel7%2F6493538%2F6708501%2F06708523.pdf%3Farnumber%3D6708523|IEEE]] website:\\
+//In recent years there has been growing interest for the vision of a so-called Web of Things, which pursues the access to a wide variety of everyday objects through a regular web browser. [...] The Constrained Application Protocol (CoAP), a web protocol optimized for constrained networks and devices, will hopefully help wireless sensor nodes, a.k.a., smart objects, to become active citizens of the web. Indeed, CoAP has been designed to be easily mapped to HTTP.//
+
+Standards are currently under development:
+
+  * [[https://tools.ietf.org/html/draft-ietf-core-http-mapping-04|Draft IETF Guidelines]]
+
+There are some implementations already:
+
+  * [[https://www.google.com.sg/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&cad=rja&uact=8&ved=0ahUKEwjmg9mdp6HLAhXPcY4KHcBQDbEQFggvMAQ&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fcoap&usg=AFQjCNGPwddeJLrA-eCcFLLNxQxV0OJzcw&sig2=YLkO0eZKGm-v4w12z5SPrw|npm]]
+  * [[http://ws4d.org/ws4d-jcoap/|jCoAP]]
+
+===== CoAP-Zigbee Proxy =====
+
+The proxy is the link between the existing Zigbee mesh network to the CoAP network.
+
+  * [[http://rijware.com/coap-proxy-for-xbee-zigbee-sensors/|Example]]
+
+===== Resources =====
+
+==== Tools ====
+
+[[http://coap.technology/tools.html|Tools and some information]]
+
+==== Learning Resources ====
+
+[[http://www.slideshare.net/zdshelby/coap-tutorial|CoAP tutorial -- slides from ARM]]\\
+[[https://www.youtube.com/watch?v=4bSr5x5gKvA|CoAP tutorial -- video from ARM]]
+
+==== References ====
+
+[[http://coap.technology/|CoAP Website]]\\
+[[http://www.cse.wustl.edu/~jain/cse574-14/ftp/coap/|Constrained Application Protocol for Internet of Things (white paper)]]\\
+[[http://electronicdesign.com/iot/mqtt-and-coap-underlying-protocols-iot|MQTT and CoA: Underlying Protocols for the IoT]]\\
+[[http://tools.ietf.org/html/rfc7252|The Constrained Application Protocol (CoAP) -- RFC 7252]]\\
+[[https://tools.ietf.org/html/rfc690|Constrained RESTful Environments (CoRE) -- RFC 6690]]\\
+[[https://tools.ietf.org/html/rfc5785|Defining Well-Known Uniform Resource Identifiers (URIs) -- RFC5785]]\\
+[[https://libcoap.net/|libcoap]]\\
+[[https://github.com/1248/microcoap|microcoap]]\\
+[[http://people.inf.ethz.ch/mkovatsc/copper.php|Copper]]
+

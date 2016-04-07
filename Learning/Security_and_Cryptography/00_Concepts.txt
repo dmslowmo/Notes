@@ -1,0 +1,80 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T15:57:44+08:00
+
+====== 00 Concepts ======
+Created Monday 28 March 2016
+
+
+* Cryptography — the practice and study of hiding information
+
+===== Symmetric vs Asymmetric =====
+	* Symmetric: uses the **same** key to encrypt and decrypt
+		* often reffered to as shared key or secret key encryption
+		* key management is biggest concern
+			* both parties ust know the secret key
+			* difficult to prove identitiy
+		* symmetric key is faster hkan asymmetric
+	* Asymmetric: encryption uses a two-key system (public/private key)
+		* the public an dprivate keys are mathematically linked
+		* key pair is used: one of encryptioin and the other for decryption
+			* enc with public, dec with private
+			* or vice versa
+
+===== Session keys =====
+	* single0use symmetric key used for encrypting all communication in one comm session
+		* symm encry is faster than asymm encry
+		* assymm keys can be used to encrypt the sesion keys
+
+===== in-band vs out-of-band key exchange =====
+	* out of band:
+		* not sent over network
+		* needs to be delivered via traditional/manual means
+	* in band:
+		* done over the network as comm sesisio is established
+		* created in real time then typically discarded once the session is over
+
+===== Fundamental Differences and encryption methods =====
+	* block vs stream
+	* block cipher:
+		* fixed length group of bis (block)
+		* each block of plaintext has an equiv size of block ciphertext
+	* stream cipher:
+		* encryption takes place bit by bit using a pseudorandom cipher digit stream or keystream
+		* in a stream cipher each plaitext digit is encrypted one at a time
+
+===== transport encryption =====
+	* SSL/TLS security considerations
+		* only as strong as the ciphers and hashing agreed ipon by both parties
+		* MiTM attacks exist that force oth parties to agree to use unsecure protocols
+	* SSH (secure shell)
+		* secure remote sessions, file transfers, tunnelling, port forwarding etc
+		* same security considerations as SSL/TLS
+	* IPsec (Internet Security Protocol)
+		* Authentication Header (AH)
+			* Provides authentication and integrity
+		* IPsec
+			* Encapsulating Secure Payload (ESP)
+				* provides confidentiality along with option integrity checking
+				* adds a header, trailer and integrity check value or ICV
+
+===== Repudiation =====
+* Assurance that the author of a message cannot later refute ownership
+	* asymmetric encryption functions on the premise of a secrete key only the sender know
+
+===== Hashing =====
+* mathematical algo applied to a file before and after transmission
+	* if anyting within the file changes the hash will be completely different
+* MD5, SHA1 and SHA2
+* Hashing only works one way, cannot reverse engineer it to get the original text
+* Hash has a fixed size regardless of the message
+
+===== Key Escrow =====
+* Keys needed to decrypt encrypted data are held in escrow to enable an authoried third party to access those keys
+	* referred to as a "fair" cryptosystem
+* Recovery Agents can be used to allow access to older keys
+
+===== Steganography =====
+
+===== Digital Signatures =====
+* asymmetric encryption using pyblic key / private key (PKI)

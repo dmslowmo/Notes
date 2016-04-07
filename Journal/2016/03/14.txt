@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-14T09:16:45+08:00
+
+====== Monday 14 Mar 2016 ======
+
+[*] [[Redmine Issues:Closed:Browsable web directory]] what's the resolution?
+	[*] seems cherokee configuration template file has been removed (is cherokee still used?)
+		[*] cherokee has been replaced by lighttpd
+	[*] build 1.4 from master and test for the issue
+		[*] if doesn't happen, then no need to cherry-pick 1.3.2 patch
+		[*] ~~else, need to find what web server is used and how to configure it~~
+[ ] Other low-priority BHR4 tickets:
+	[ ] Bandwidth test's TestByte > TotalBytes
+	[*] DHCP issue
+		[*] reassign to Ambarish for more info
+[x] Setup Simplicity Studio Thread project
+	[ ] can't do it without hardware, it seems
+	[ ] without license, the code size is limited
+	[ ] probably can only view codes

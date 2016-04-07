@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T15:10:12+08:00
+
+====== 00 Introduction ======
+Created Monday 04 April 2016
+
+* SELinux is a **labelling** system
+	* all objects get a label
+	* used by kernel for access control
+		* kernel loads a policy to check whether access should be granted or not
+* Policy + label ⇒ user's access decision
+	* analogy: A Man can only use a (labelled-as-) Male toilet

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-09T09:52:02+08:00
+
+====== Eclipse Shortcuts ======
+Created Wednesday 09 March 2016
+
+**For complete list of shortcuts: Ctrl+Shift+L**
+
+**Show View**
+* Search view: Alt+Shift+Q S

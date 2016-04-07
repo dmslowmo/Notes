@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-15T10:35:25+08:00
+
+====== IPV6 ======
+Created Tuesday 15 March 2016
+
+[ ] ipv6 study:
+	[ ] how multicast should work
+	[ ] DSCP
+	[ ] MLDvv2
+	[ ] ULA
+	[ ] Stateless Filter
+[ ] resouces:
+	[ ] RFC6092
+	[ ] ipv6 video tutorials
+	[ ] tcpipguide.com
+	[ ] google drive (search "ipv6")
+	[ ] https://wiki.kubuntu.org/IPv6
+
+

@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-16T09:27:15+08:00
+
+====== z Project Wish List ======
+Created Wednesday 16 March 2016
+
+===== Pascal triangle generator web application =====
+* An application that runs on a web page
+* which generates Pascal Triangle for the number of rows as entered by user
+* It is also able to take modulo of every number instead of the actual number in the Triangle
+* Each number is colored according to its modulo eg 0 ⇒ BLACK, 1 ⇒ RED, 2 ⇒ GREEN, etc (up to 7 colors)
+
+===== Adding automated unit tests to Mastermind project in Github =====
+* Choose gtest or cppunit
+* create unit tests for the project
+* update Github project
+
+===== Router powered by Openwrt + Go =====
+

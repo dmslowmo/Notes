@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T16:05:22+08:00
+
+====== Key Ecnryption ======
+Created Monday 28 March 2016
+
+===== Symmetric =====
+* DES
+	* Data Encruption Standard
+	* 56 bit key
+* 3DES
+	* 3 DES keys to encrypt data
+* AES
+	* Adv Encryption Standard
+	* 1280bit fixed block size
+		* 10,12,14 cycles of repetition for 128, 192, and 256 bit keys repectively
+
+
+===== Asymmetric =====
+* RSA
+	* Rivest, Shamir, Adleman
+	* Digital signatures
+* Diffie-Hellman
+	* Keying material used to generate session keys
+* DHE
+	* Ephemeral Diffie Hellman
+* ECDHE
+	* Elliptical curve of DHE

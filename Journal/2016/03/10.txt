@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-10T09:18:11+08:00
+
+====== Thursday 10 Mar 2016 ======
+
+[*] Debugging [[Redmine Issues:BHR4:DHCP client does not remain in DISCOVERY mode]]
+	* Concluded that it intermittently happens in 1.3.2, especially with CDRouter's Debug mode turned OFF
+	* It's not observed when it is in Debug mode
+* Started on another bug: [[Redmine Issues:Closed:Browsable web directory]]
+

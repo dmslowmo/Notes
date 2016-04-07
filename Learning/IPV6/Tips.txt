@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-31T09:42:09+08:00
+
+====== Tips ======
+Created Thursday 31 March 2016
+
+===== Enable IPv6 on your computer =====
+* refer to https://wiki.kubuntu.org/IPv6
+* however, if the uplink ie gateway or ISP don't support IPv6, it is useless
+* BUT, you can do Tunnelling: send IPv6 connection via IPv4
+	* Install miredo: //sudo apt-get install miredo//
+	* and you can try ping6 ipv6.google.com or www.kame.net, or cav6tf.org and should be able to ping those sites
+
+===== Check whether a URL has IPv6 address: =====
+* //host -t AAAA <url>//
+
+===== Useful ifconfig commands =====
+http://www.tecmint.com/ifconfig-command-examples/
+

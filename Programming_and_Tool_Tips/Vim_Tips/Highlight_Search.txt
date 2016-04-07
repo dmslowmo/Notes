@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-10T15:34:21+08:00
+
+====== Highlight Search ======
+Created Thursday 10 March 2016
+
+{{{code: lang="sh" linenumbers="True"
+:set hlsearch
+}}}
+
+

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-29T18:18:14+08:00
+
+====== Wednesday 30 Mar 2016 ======
+
+[*] [[Redmine Issues:BHR4:MoCA Eth priority over MoCA]]
+	[*] Test one last time and measure how long does it take to get an IP via Moca when Eth is down and Moca is up and previously Moca was selected
+	[*] if below 90 secs, then it's good to go ... ish
+	[*] update the log
+

@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-02T15:16:35+08:00
+
+====== SiLabs Border Router Presentation ======
+Created Wednesday 02 March 2016
+
+* Thread cannot work with older Ember Znet Desktop: needs [[http://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx|Simplicity Studio]]
+* Demo setup:
+	* Border router: a Rasperry Pi board installed with Thread IP Driver and Border Router Application
+	* EM35x Ember development kit (needs EM358 chip for Thread)
+	* Zigbee USB stick (programmable with ICE)
+	* Software?
+* Border router web server is accessed via its IP (for demo: 192.168.42.1)
+	* Can discover and clear devices (in theory)

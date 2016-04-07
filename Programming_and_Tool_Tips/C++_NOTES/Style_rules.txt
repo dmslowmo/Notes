@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-07T16:24:11+08:00
+
+====== Style rules ======
+Created Monday 07 March 2016
+
+**Guidelines**
+* apply to new codes, leave the old codes alone, please
+
+1. Prefer default parameters
+	a. Provide default parameters, eg Holder(string s="", int n=0):name(s), number(n){};
+2. Use **nullptr**
+	a. you will still have some pointers in your application
+	b. stop comparing or setting them to 0 and to NULL
+		* nullptr is type-safe
+		* **if (p)** still works as usual
+			* it's a well known idiom
+			* smart ptr has overload for bool
+		* so don't use
+			* p = NULL
+			* if (p == 0)
+			* **They are not type-safe!**
+3. No magic numbers
+	a. expressivity and readability
+	b. instead of raw integer, use
+		a. enum
+		b. const
+		c. NOT macros ⇒ it can be redefined at different point in the codes, accidentally or deliberately
+4. Use const from the start
+	a. expressivity and readability
+		1. enough to read header file
+		2. optimization and performance
+	b. Chasing const-correctness is hard
+		a. easy to follow by/communicate to others
+		b. don't do it after codes are written and tested
+	c. make it a natural habit
+		a. in design and in header file
+5. Treat warnings as errors
+	a. highly recommended
+	b. individual warnings can be suppressed with a pragma (if you want to)
+		* eg. #pragma warning(...) 
+	c. good practice because:
+		a. exposes errors of thought
+		b. warns where it might be wrong 

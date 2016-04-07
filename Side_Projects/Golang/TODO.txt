@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-04T14:16:28+08:00
+
+====== TODO ======
+Created Friday 04 March 2016
+
+[*] Complete Tour of Go
+[ ] Create Go applications, at least one of (in no particular order):
+	[ ] Simple binding between C and Go (vs JNI)
+	[ ] Go implementation of the upnp bandwidth test ftp server
+	[ ] Go implementation of the udp echo client
+	[ ] cgo: replacing the main() of a product
+	[ ] Go implementation of the light-weight memory leak detector
+		[ ] References (C implementation):
+			[ ] http://stackoverflow.com/questions/426230/what-is-the-ld-preload-trick
+			[ ] Study https://github.com/jtolds/malloc_instrumentation
+				[ ] Code review
+				[ ] Compile and cross-compile
+				[ ] Try it out
+			[ ] Study https://github.com/glagolig/heapwatch
+				[ ] Code review
+				[ ] Compile and cross-compile
+				[ ] Try it out
+	[ ] Go implementation of C++ code style checker
+[ ] Try out existing embedded systems in Go using Raspbery Pi:
+	[ ] Router system implementation in Go
+		[ ] http://www.sajalkayan.com/post/golang-openwrt-mips.html
+		[ ] https://mqmaker.com/doc/play-golang-on-openwrt/
+		[ ] http://akagi201.org/blog/golang-on-openwrt/
+	[ ] Webserver (on host first, then try embedded board)
+		[ ] https://tutorialedge.net/creating-a-simple-web-server-with-go-golang
+		[ ] https://github.com/golang/go/wiki/LearnServerProgramming
+		[ ] https://github.com/mholt/caddy
+	[ ] tbc
+[ ] Understand how to Go cross-compilation mechanism in lego
+	[ ] How to set up Go directory structure in lego
+		[ ] source files' location will not follow Go's convention
+		[ ] OR, some tricks in makefile needs to be done
+[ ] Benchmarking Go vs C:
+	[ ] memory foot-print
+	[ ] speed
+	[ ] robustness
+	[ ] binary size
+	[ ] code size

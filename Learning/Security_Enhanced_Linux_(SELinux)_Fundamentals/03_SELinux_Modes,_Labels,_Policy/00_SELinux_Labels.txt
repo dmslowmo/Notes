@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T15:47:32+08:00
+
+====== 00 SELinux Labels ======
+Created Monday 04 April 2016
+
+===== SELinux is all about labelling =====
+* User:Role:Type:Level
+* Type → policy type
+
+===== Type Enforcement (TE) =====
+* Objects with the same security requirements grouped under the same **Type**
+* Those objects can interract with each other
+{{{code: lang="sh" linenumbers="True"
+ps -eZ | grep control #shows the label of processes or domain
+}}}
+
+* **unconfined_t** domain is for processes that are not regulated by any policy (if SELinux not enabled, all processes will be in this domain)
+{{{code: lang="sh" linenumbers="True"
+seinfo -t | less # to see the info of domains
+seinfor -u # to see the SELinux users
+semanage login -l # to see the mapping between the login name to SELinux User
+seinfo -r # to see the roles
+}}}

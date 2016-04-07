@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-29T16:03:50+08:00
+
+====== vector ======
+Created Monday 29 February 2016
+
+* Grows itself when you add new element
+* Can traverse with an iterator or random access with []
+* Decent performance
+* Cleans up after itself
+	* even when there is exception
+	* eg. try { //some vector creation } catch (std::exception& ex) { }
+	* in this example, we didn't do anything to clean up the memory allocated for the vector in the catch block, and we didn't need to

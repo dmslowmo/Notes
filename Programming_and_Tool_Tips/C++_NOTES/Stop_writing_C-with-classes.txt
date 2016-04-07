@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-14T16:23:59+08:00
+
+====== Stop writing C-with-classes ======
+Created Monday 14 March 2016
+
+* it must be noted though: just do this when starting a new project
+	* existing working code need not be touched
+* if you're writing a proof of concept or a demo, even more so
+	* //write clean, readable, maintainable code from the beginning//
+* look for opportunities to:
+	* replace char* with string
+		* prevents memory leak as std::string manages its own memory
+	* use cout rather than printf (if you ever need to print to console)
+	* use modern c++ containers
+	* replace #define
+	* use std::algorithms to handle loops
+		* may involve lambda
+	* replace function pointers:
+		* virtual functions and inheritance
+		* lambdas
+		* templates
+	* use auto
+	* be object-oriented

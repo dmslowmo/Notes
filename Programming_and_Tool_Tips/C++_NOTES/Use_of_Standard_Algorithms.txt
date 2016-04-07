@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-29T16:26:01+08:00
+
+====== Use of Standard Algorithms ======
+Created Monday 29 February 2016
+
+* Expressive and readable
+* Edge cases are remembered
+* Easy to swap in a different container
+* May even be a performance boost
+
+* See:
+	* http://www.cplusplus.com/reference/algorithm/
+	* http://msdn.microsoft.com/em-us/library/chzkfc23.aspx
+
+* back_inserter (like v.push_back())
+* begin(), end()
+* count, count_if
+* for_each
+* remove_if
+* and many more

@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-07T15:47:00+08:00
+
+====== Move semantics ======
+Created Monday 07 March 2016
+
+* Copying the pointer instead of the value
+
+**Move constructor**:
+	* consider vector<T>: if T does not have move constructor, T objects are going to be copied around by vector ⇒ performance penalty
+	* need move constructor, and move assignment operator (besides the copy assignment operator)
+	* string has move constructor, and so all the collections
+	* major performance boost if classes are moveable, especially when working with collections
+
+**Why&& ?**
+* Foo&& rrx — means an rvalue ref to some solid instance of Foo
+* Foo& rx — means a ref to some solid instance of Foo
+* Foo* px — means a pointer to some solid instance of Foo
+* Foo x — means a solid instance of  Foo
+
+**What is rvalue reference?**
+* RHS, simplistically
+* a temporary (ephemereal)
+* can be 'stolen' from
+* Why do you care?
+	* pass by value
+		* if a temporary is passed to the function, it might be moved, not copied (if move constructor defined)
+	* Return by value
+		* that local variable is about to go out of scope — great cadidate for moving
+	* vector is slow or not?
+		* depends on the object it contains: have move constructor?
+	* Is it inefficient to build a string from many little pieces?
+
+* Recommended to make your class movable ⇒ major performance boost
+* **std::move** if you need to move smth:
+	* casts a regular reference to an rvalue ref so the right overload is used
+	* move a unique_ptr into and out of a collection

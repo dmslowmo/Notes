@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T16:34:11+08:00
+
+====== Certificate Authorities and Digital Certificates ======
+Created Monday 28 March 2016
+
+* PKI
+* secure comm betw sender/recipient
+* Comm over secure or insecure medium
+
+===== Certificate Authority =====
+* could be internal or external to an organization
+* For BHR4: Cybertrust
+* For OneGW: Nexus
+
+===== CRLs =====
+* Client Revocation List
+	* CRLs are published by the Certificate Authorities and used to inform clients that certificates have been revoked / no longer valid
+		* Revoked (irrevocable)
+		* Hold (temporary - can reversed)
+
+===== OCSP =====
+* Online Certificate Status Protocol
+	* Used to obtain revocation status of X.509 digital certificates
+	* alternative to CRLs
+* Benefits of OCSP vs CRL
+	* OCSP contains less info on the 
+
+===== CSR =====
+* Certificate Signing Request
+
+===== PKI =====
+* Public Key Infrastructure
+
+===== Web of Trust =====
+* no centralized authority
+* self-generated keys betw two parties
+* (used in GreenWave firmware update mechanism)

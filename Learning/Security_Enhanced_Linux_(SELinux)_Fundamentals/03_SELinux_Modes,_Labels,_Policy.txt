@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T15:27:56+08:00
+
+====== 03 SELinux Modes, Labels, Policy ======
+Created Monday 04 April 2016
+
+===== Modes =====
+* Disabled
+	* SELinux Turned Off
+	* No enhancing
+	* leaves on DACE
+* Permissive
+	* SELinux Turned on
+	* Policy loaded
+	* **NOT enforcing the policy** (permits all access)
+	* Logs what would have been denied
+	* Labels object
+	* If we can't run Enforcing mode yet, at least run Permissive mode
+* Enforcing
+	* SElinux turned on
+	* policy loaded
+	* enforcing the policy
+
+* Check status of SELinux:
+{{{code: lang="sh" linenumbers="True"
+getenforce
+sestatus
+setenforce[1|0] # 1 - enforce, 0 - permissive; changes not persistent
+
+vim /etc/selinux/config # edit this file to make it permanent/persistent
+}}}
+
+* We can also set it in GRUB, at boot time
+	* reboot with SELinux mode set as enforcing/permissive
+
+===== Labels =====
+* User, Role, Type, Level
+* -Z option shows SELinux label
+* command examples: 
+	* id -Z
+	* ps -Z
+	* ls [[/etc/passwd]] -Z
+
+===== Policy (types and configs) =====
+* see ls -l [[/etc/selinux/config]] for configs
+* Targeted Policy
+	* default policy on RHEL based distros
+	* most  likely policy we'll have to work with
+* MLS
+	* multi level seciruty
+	* designed for govt-grade security
+	* complex
+* Minimum
+	* only selected processes are protected

@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-29T09:16:01+08:00
+
+====== Tuesday 29 Mar 2016 ======
+
+[*] Check how long after startup the MoCA link takes to be up
+	[*] Ans: 10-12 secs
+[*] Could not make the MoCA be selected without switching to Eth first
+	[*] If we decide on whether to switch or not based on Timeout, it will never switch back to Eth
+	[*] In this case, it will never re-try MoCA because the condition of 'currentIf' is still 'eth0' ie MoCA
+	[*] In any case, the limitation is with the fact that MoCA link does not go up in time before interface selection
+[x] Create unit test for the new logic
+	[ ] no need, we go back to original Kokkee's logic. The requirements didn't make sense. Eth will be prioritized if both links are up.
+[*] IPv6 studies:
+	[*] watch up to chap 7

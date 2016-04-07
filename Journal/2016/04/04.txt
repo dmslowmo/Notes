@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T09:00:28+08:00
+
+====== Monday 04 Apr 2016 ======
+
+[ ] Continue to work on [[Redmine Issues:BHR4:IPv6 Packet Too Big not sent]]
+	[ ] Can we set BHR4 to disable packet fragmentation?
+[ ] Cryptography training

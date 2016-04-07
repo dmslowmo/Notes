@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-03T17:51:00+08:00
+
+====== Friday 04 Mar 2016 ======
+
+[*] Bug [[Redmine Issues:BHR4:Factory Reset|BHR4:Factory Reset then unable to login]]
+	[*] Update Redmine with any findings
+[ ] Fixing bug [[Redmine Issues:Closed:26350 diag bms path hardcoded]]
+	[*] merge to 1.3.2
+	[ ] cherrypick and merge to master

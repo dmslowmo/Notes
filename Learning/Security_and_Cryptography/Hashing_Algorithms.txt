@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T16:00:50+08:00
+
+====== Hashing Algorithms ======
+Created Monday 28 March 2016
+
+* MD5
+	* 128 bit
+* SHA
+	* SHA1 (160 bit), SHA256 and SHA512
+* RIPEMD
+	* RACE integrity primitives evaluation message digest
+	* 126, 160, 256, and 320 bit version
+* HMAC
+	* Hash based messsage auth code
+	* uses hashing func plus secret key
+	* hashing func that verifies integrity and authentication

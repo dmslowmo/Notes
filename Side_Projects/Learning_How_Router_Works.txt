@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-31T19:22:39+08:00
+
+====== Learning How Router Works ======
+Created Thursday 31 March 2016
+
+* Learn from a small-scale project eg openwrt
+* Study the source code
+* Build the binary and run it on Raspbery Pi or UDOO board
+* Learn from OpenWrt + Go implementation

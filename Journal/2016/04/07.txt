@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-07T10:11:54+08:00
+
+====== Thursday 07 Apr 2016 ======
+
+Continue to work on [[Redmine Issues:BHR4:IPv6 Packet Too Big not sent]]
+[*] Learn how to use //tcpdump//
+	* To watch the traffic on Raspberry-pi
+	* Findings:
+		* tcpdump console output shows that on Raspberry-pi, packet>PMTU arrived **unfragmented**
+		* however, it replies in 2 fragments (fragmentation at source)
+		* So the question is still the same: **Why does BHR4 forward this packet>PMTU rather than sending "packet too big" to the sender??**
+[x] If no luck with Raspberry-Pi, try borrowing a laptop
+	* with Wireshark on it
+	* to be used as a Receiving client
+	* and watch incoming/outgoing traffic on it

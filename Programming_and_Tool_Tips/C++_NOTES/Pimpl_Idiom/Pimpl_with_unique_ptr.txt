@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-14T16:16:33+08:00
+
+====== Pimpl with unique ptr ======
+Created Monday 14 March 2016
+
+{{{code: lang="cpp" linenumbers="True"
+class AccountImpl;
+
+class Account
+{
+private:
+	std::unique_ptr<AccountImpl> pImpl;
+public:
+	int Any(int bal, Customer* cust);
+	~Account();
+	Account(Account&& otherAccount); //move constructor
+	Account4 operator=(Account  //move assignment operator
+}}}

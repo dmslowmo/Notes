@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-24T08:29:25+08:00
+
+====== Thursday 24 Mar 2016 ======
+
+[*] work on [[Redmine Issues:BHR4:MoCA not linked if trying to connect after 1++ minutes]]
+	[*] Added lastConnectedWanIf persistence
+	[ ] still need to investigate why it is not able to get IP from Moca first time even though it is the Selected interface, but instead it will failover and switch to Eth first, and if it also fail will switch back to Moca 

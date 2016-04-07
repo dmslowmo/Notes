@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T15:59:33+08:00
+
+====== WEP WPA WPA2 ======
+Created Monday 28 March 2016
+
+* wirelesss accesss
+	* WEP can be cracked easily
+		* RC4 stream cipher
+	* WPA was a temporary replacement for WEP
+		* WPA had RC4 w TKIP
+	* WPA2 latest standard
+		* AES replaced RC4
+		* CCMP replaced TKIP
+	* WPA2 Enterprise

@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-15T11:13:39+08:00
+
+====== 0. Introduction ======
+Created Tuesday 15 March 2016
+
+* 128-bit addressing (vs ipv4's 32-bit)
+* uses Hex address format (vs ipv4's dotted eg 192.168.1.1)
+* header structure is different vs ipv4
+	* certain fields not supported by ipv6 (eg header checksum, options, padding)
+		* fragmentation fields
+		* options
+		* header checksum
+		* header length (fixed to 40B in ipv6)
+		* length fields
+	* new fields originally not in ipv4 (eg flow label)
+	* Equivalent fields:
+		* ipv4:
+			* Total length
+			* time to live
+			* type of service
+			* protocol
+			* source addr
+			* destination addr
+		* ipv6:
+			* payload length
+			* hop limit
+			* service class
+			* next header
+			* source addr (4x longer)
+			* destination addr (4x longer)
+* Anycast (vs Broadcast in ipv4)
+	* Multicast can be used as Multicast and Broadcast in ipv6
+	* Stateless auto config
+		* new host can assign itwown host addr
+		* no need for DHCP
+	* supports new IP secirit protocols
+		* authentication of source
+		* encryption of payload
+	* both v4 and v6 limit payload size to 64KB, BUT,
+		* ipv6 has Jumbo Payload feature that allow up to 4GB payload
+	* **ipv6 i snot backward compatible with ipv4 !!!**
+		* it is a parallel, independent network

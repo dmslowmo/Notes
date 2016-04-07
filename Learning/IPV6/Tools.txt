@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-30T14:43:20+08:00
+
+====== Tools ======
+Created Wednesday 30 March 2016
+
+===== packeth =====
+* used to build and send packets
+
+===== wireshark =====
+* used to capture network traffic on a particular interface(s)
+* How to install and use:
+{{{code: lang="sh" linenumbers="True"
+$ sudo apt-get install wireshark             #install wireshark on Ubuntu
+$ sudo dpkg-reconfigure wireshark-common     #need this step, not sure why
+$ sudo usermod -a -G wireshark $USER         #add your username to wireshark group
+#$ sudo reboot                                #reboot your system or simply exit the console
+$ exit
+}}}
+
+* see https://ask.wireshark.org/questions/7523/ubuntu-machine-no-interfaces-listed
+* Start wireshark as root with sudo (ignore the warning)
+* Select the interface you want to monitor eg. eth0
+
+
+===== tcpdump =====
+* useful links:
+	* https://danielmiessler.com/study/tcpdump/
+	* http://www.rationallyparanoid.com/articles/tcpdump.html
+* Quick tips:
+	* to capture IPv6 packet, add //ip6// flag
+	* unfortunately, we can only filter ICMP packets (IPv4), but not ICMPv6 packets, we may still get other packets other than ICMPv6
+	* quick example: //tcpdump -ietho -n -v ip6//

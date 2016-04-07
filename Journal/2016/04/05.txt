@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-05T09:28:02+08:00
+
+====== Tuesday 05 Apr 2016 ======
+
+[*] continue investigation on [[Redmine Issues:BHR4:IPv6 Packet Too Big not sent]]
+	[*] tried pinging another client connected via the router instead of pinging the router itself
+		[*] Result: same, the packets are fragmented
+	[*] Ping a Raspberry-pi box
+		[*] See Redmine Issues:BHR4:IPv6 Packet Too Big not sent, 05/04/2016 section
+		[*] I think the problem is reproduced

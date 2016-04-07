@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T15:24:31+08:00
+
+====== 02 The Big Picture ======
+Created Monday 04 April 2016
+
+===== 4 components: =====
+* Modes
+* labels
+* policy types
+* policy rules and packages
+
+===== Terminology =====
+* Objects: anything on our Linux system
+* Labels: aka "Security Context"
+
+===== Useful Tools and Packages =====
+* policycoreutils-python
+* etc

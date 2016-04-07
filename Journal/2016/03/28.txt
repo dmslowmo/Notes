@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-29T09:16:21+08:00
+
+====== Monday 28 Mar 2016 ======
+
+* worked on https://support.greenwavereality.com/issues/25073
+* enabling running script that checks moca link every 5 sec

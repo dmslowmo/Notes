@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-08T09:29:50+08:00
+
+====== Tuesday 08 Mar 2016 ======
+
+[*] merge BHR4 changes to master (bug 26350)
+[*] update bhr4 defconfig (Jakob's email)
+	[*] merged to master
+	[*] merged to 1.3.2
+[ ] work on [[Redmine Issues:BHR4:DHCP client does not remain in DISCOVERY mode|#26363]]: BHR4-DHCP-C-5: DHCP client does not remain in DISCOVERY mode if server sends a DHCPNAK
+	[ ] read RFC 2131 section 3.1 para 5
+	[ ] test on 1.3.2. Ver 1.4 is fine.
+[ ] ~~work on something (BHR4 tickets) This has been deprioritized in favor of #26363 and bhr4 defconfig update~~
+	* ~~Please reproduce FQG-2325 (refer to email): unable to ping between 2 PCs~~
+		* ~~borrow spare laptop or~~
+		* ~~use the Raspberry Pi box from Bob~~
+	* ~~Test Moca changes (just in case needed)~~
+	* ~~Totalbytes < TestBytes problem~~
+	* ~~observe memory getting reduced over a long period?~~
+[ ] ~~read ipv6 google doc before tomorrow's meeting~~
+[ ] ~~Installing Thread SDK (Simplicity Studio)~~
+	[ ] ~~Create Thread project from sample codes (see QSG113 doc)~~
+	[ ] ~~compile (and resolve any issues)~~
+

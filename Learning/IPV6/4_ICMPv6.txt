@@ -1,0 +1,83 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-29T14:15:54+08:00
+
+====== 4 ICMPv6 ======
+Created Tuesday 29 March 2016
+
+* used to report errors and messages
+* IPv6 is not possible to operate wihtout it
+* **Error** and **Informational**
+* more info: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol_version_6#Types_of_ICMPv6_messages
+
+===== Header format: =====
+
+	* Type: 8 bits
+	* Code: 8 bits
+	* Checksum: 16 bits
+	* Message body: variable
+
+===== For Errors: =====
+
+	* problem delivering
+	* problem forwarding
+	* uses type and code combinations
+	* simple error reporting method
+	* Error messages code: 0 - 127
+		* eg. Destination Unreachable (ICMPv6 type 1)
+			* no route to dest (code 0)
+			* address unreachable (code 3)
+			* port unreachable (code 4)
+		* packet too big (type 2) (code 0)
+		* time exceeded (type 3)
+			* hop limit exceeded in transit (code 0)
+		* parameter problem (type 4)
+
+===== For informational =====
+
+	* for diagnostics and troubleshooting
+	* neighbor discovery
+	* MLD (multicast listeners discovery)
+	* tools include ping and traceroute
+	* code: 128 - 255
+		* Echo Request (type 128)
+		* echo reply (129)
+		* Neighbor/Multicast discovery
+
+===== ICMPv6 Path MTU Discovery Requirements. Required: =====
+
+	* Type 2, Code 0 → Packet too big
+	* Type 135, code 0 → Neighbor solicitation
+	* Type 136, code 0 → neighbor Advertisement
+
+===== Path MTU Discovery. Flow: =====
+
+	* the host sends traffic at the asumed MTU size or the local LAN infterface
+	* Router forwarding interface has smaller MTU
+	* Router send ICMPv6 packaet too big message
+	* Host sends traffic again with MTU size specified in the ICMPv6 Packet Too Big message from the router
+	* Router then forwards the packet since the MTU size matches for that link
+
+===== How would you use ICMPv6 : =====
+
+	* primarily with tools
+	* ping or ping6
+	* tracert or traceroute
+	* pathmtu
+
+==== In Windows: ====
+
+	* ping and tracert are the same command
+	* 3rd party tools may be different
+	* does not differentiate between v4 and v6 commands
+	* use //-6// to specify that you want strictly AAAA record type DNS name resolve (IPv6)
+		* //ping -6//
+		* //mtupath -6//
+
+==== In Linux ====
+
+	* ping6 instead of ping
+	* traceroute has the //-6// option
+	* third party tools vary
+	* //ndisc6 (neighbor discovery tool)//
+		* need to specify the interface eg eth0

@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-10T12:01:59+08:00
+
+====== Read stdout from a shell command via vim ======
+Created Thursday 10 March 2016
+
+* read a text file:
+{{{code: lang="sh" linenumbers="True"
+:r textfile
+}}}
+
+
+* read in the output of shell applications: 
+{{{code: lang="sh" linenumbers="True"
+#get the grep result ie all lines containing 'WanMgr' from consoleLog.txt
+:r ! grep WanMgr consoleLog.txt
+}}}
+
+
+* Filtering text through external filters 
+{{{code: lang="sh" linenumbers="True"
+#filter lines 20 through 25 of a file through rot13
+:20,25 ! rot13
+}}}
+

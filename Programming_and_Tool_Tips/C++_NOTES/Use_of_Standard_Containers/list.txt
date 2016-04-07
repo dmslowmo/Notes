@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-29T15:58:56+08:00
+
+====== list ======
+Created Monday 29 February 2016
+
+* Implements a linked list
+* Saves the copying when new items are added
+	* BUT
+		* it++ is an indirection
+		* Keeping it sorted? Finding place to insert is a lot of it++ ⇒ lots of traversal ⇒ bad performance
+		* Never assume list will be faster
+			* measure and see, do it many times, with different sizes
+		* Using algorithms means changing containers is pretty easy eg. begin(v) and end(v)

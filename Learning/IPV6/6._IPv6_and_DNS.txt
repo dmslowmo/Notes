@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-16T10:54:53+08:00
+
+====== 6. IPv6 and DNS ======
+Created Wednesday 16 March 2016
+
+===== New in DNS for IPv6 =====
+	* new recored type: **AAAA (128 bits)**
+	* new reverse record domain
+	* RFC3363
+
+===== DNS Design configuration: =====
+	* multiple records for the same host
+	* you can query DNS via IPV4 or 6
+
+===== IPv6 DNS resolution over IPv4 is possible =====
+* can be confusing to know which protocol is used
+* can be difficult to troubleshoot problem
+* apps can get confused
+* use tools to tst and confirm
+* Eg of failed resolution. Flow:
+	* the host address is eg 192.168.10.230
+	* host DNS server is 192.168.200.2 whchi got it via DHCPv4
+	* DNS query for www.example.com
+	* DNS server replies back with an AAAA IPv6 address
+	* the query and reply happen over IPv4
+* So we need to do everything in IPv4 or everything IPv6, not mixed!
+* IPv6 DNS query resolution eg:
+	* host addr is 2001:db8:cafe:1234::230
+	* hosts DNS server is 2001:db8::1 which it got via DHCPv6 or RDNSS
+	* DNS query for www.example.com
+	* DNS server replies back with an AAAA IPv6 addr
+	* both the query and reply happen over IPv6 → success
+* More likely? Do both:
+	* Most common in dual-stack hosts is to have both IPv4 and v6 records
+* IPv6 DNS query blacklist:
+	* host addr is .... (IPv4 addr)
+	* host DNS server is ... which it got via DHCPv4
+	* query for www.example.com
+	* DNS server replies back with an A record IPv4 only
+	* because the query happens over IPv4
+	* and the IPv6 is blacklisted
+* Recommendation: don't use IPv6 DNS query blacklist
+
+===== IPv6 DNS in LInux =====
+	* via DHCPv6
+
+===== IPv6 DNS Server in Linux =====
+	* install bind9
+
+===== Tools (Linux): =====
+	* dig
+	* nslookup

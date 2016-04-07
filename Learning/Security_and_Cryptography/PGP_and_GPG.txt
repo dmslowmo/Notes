@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T16:14:33+08:00
+
+====== PGP and GPG ======
+Created Monday 28 March 2016
+
+* PGP (Pretty Good Privacy)
+* Compbies seeral algo
+	* hashing
+	* data compression
+	* symmetric key cryptography
+	* public key cryptography
+
+* GPG (GNU Privacy Guard)
+* Free implemenation of the openPGP standard
+* command line tool
+* compatible with PGP
+* supports RSA, DES, 3DES, Blowfish, TwoFish etc
+* supports many graphical frontends, email and chat programs etc

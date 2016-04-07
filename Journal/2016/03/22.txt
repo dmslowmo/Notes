@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-21T17:07:17+08:00
+
+====== Tuesday 22 Mar 2016 ======
+
+[*] work on [[Redmine Issues:BHR4:MoCA not linked if trying to connect after 1++ minutes]]
+	[*] examined the log attached in Redmine
+		[ ] can't find anything
+	[*] examined the log from latest binary (.55)
+		[ ] can't find anything weird
+	[*] Get MoCA hardware from QA or Bob
+		[*] loan from Lenin

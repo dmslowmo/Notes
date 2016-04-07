@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-23T17:45:20+08:00
+
+====== CoAP Exploration ======
+Created Tuesday 23 February 2016
+Wiki link: https://support.greenwavereality.com/projects/gwr-embedded/wiki/COAP
+
+03/03/2016
+1. How to discover the addresses of the devices?
+2. Does it support broadcast (different from multicast)
+3. Resource directory mechanism, how it works?
+
+
+02/03/2016
+1. Updated Coap wiki
+2. Asked permission to do knowledge sharing after the weekly team meeting
+
+23 Feb 2016
+1. Managed to run simple test with libcoap client and microcoap server, as well as Web Client via Firefox+Copper
+2. Updated the wiki page. With this, I think it's enough for now
+3. Next is to plan for porting to GreenWave's hardware:
+	a. port the server to a device eg BHR4 or Onegateway
+	b. Execute commands via REST from Web client (Firefox + Copper)
+	c. enhance the server to do meaningful things eg. return real info or reading etc
+

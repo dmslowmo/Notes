@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T09:10:55+08:00
+
+====== Links ======
+Created Monday 04 April 2016
+
+https://www.linux.com/learn/tutorials/428331-ipv6-crash-course-for-linux
+
+https://njetwork.wordpress.com/2014/01/17/ping6-and-fragments/
+
+https://labs.ripe.net/Members/gih/evaluating-ipv4-and-ipv6-packet-fragmentation
+
+https://www.nanog.org/sites/default/files/mon.general.fragmentation.bonica.pdf
+
+http://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation/
+
+http://www.secfu.net/2015/03/25/how-to-block-incoming-ipv6-fragments-in-latest-red-hat-releases/
+
+http://www.tcpipguide.com/free/t_IPv6DatagramSizeMaximumTransmissionUnitMTUFragment-4.htm
+
+http://serverfault.com/questions/656191/adsl-router-happily-accepts-ipv6-packets-of-2k-in-size

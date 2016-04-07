@@ -1,0 +1,67 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-15T13:54:17+08:00
+
+====== 1. IPv6 Address Space ======
+Created Tuesday 15 March 2016
+
+* 2^{128 }addresses
+	* 2^{96} more than IPv4
+* Format:
+	* HEX
+	* broken into 8 equal parts
+	* colons as delimiter
+	* RFC5952
+	* eg 2001:__0db8__:1f05:09a4:a821:7c24:5fb8:036__d__ (one nibble (4bit) highlighted)
+			(one hextet highlighted)
+	* 2001:0db8:1f05:09a4:0000:0000:0000:0001 can be simplified into 2001:0db8:1f05:09a4:0:0:0:1
+		* **remove leading zeros** (IPv6 feature)
+		* simplify further: 2001:0db8:1f05:09a4::1 ⇒ **zero compression**
+* Ipv6 addresses:
+	* Unspecified address:
+		* **::/128**
+		* 0.0.0.0/32 in IPv4
+	* Default route
+		* **::/0**
+		* 0.0.0.0/0 in IPv4
+	* Loopback address
+		* **::1/128 or ::1**
+		* 127.0.0.1/8 in IPv4
+	* Documentation and Miscellaneous addresses (for special purposes)
+		* eg 2001:db8::/32
+		* eg 0100:/64 ⇒ discard all packets routed to this address
+		* any many more
+* Address types:
+	* Unicast: one-to-one
+	* Multicast
+	* Anycast: can find other server with same IP address if the intended destintation is down (??)
+* Common Unicast address:
+	* Global: 2000::/3
+	* Link-local: fe80::/64 (RFC4007)
+	* Unique local: fc00::/7 (RFC4193)
+	* Special addr, eg loopback and unspecified (RFC5156)
+	* ::1
+	* Transition address like 6to4, ISATAP and Teredo
+	* 2002::/16 and 2001:0::/32
+	* Deprecated:
+		* Site-local addresses (RFC 3879)
+		* and many more
+* Multicast addresses
+	* All multicast: ff00::/8
+	* Solicited-node: ff02::1:f00:0/104
+	* link-local all-node: ff02::1
+* Anycast addresses:
+	* it is actuall a Unicast address!
+	* Unicast address which is Anycast-enabled
+	* Think of Anycast as a function
+* Address formatting rules:
+	* is in HEX and should use **lowercase** 
+	* Remove leading zeros and do zero compression (::)
+	* if a port is required then put the address in [ ] eg http://[2001:db8:cafe:5150::1]:8080
+* IPv6 Zone ID
+	* a unique feature of IPv6
+	* an IPv6 is assigned to a host interface.
+		* Interface 8 has 2001:**db**8:**cafe**:5150::1
+	* to represent the Zone ID use a **%**
+		* eg 2001:db8:cafe:5150::1%8
+	* Typically the Zone ID will match the interface ID. So for a Linux system it could be eth0 or en0 on OSX

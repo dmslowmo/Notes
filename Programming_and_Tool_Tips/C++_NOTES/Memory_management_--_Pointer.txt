@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-24T15:34:00+08:00
+
+====== Memory management -- Pointer ======
+Created Wednesday 24 February 2016
+
+**When to use pointer**
+* composition (UML)
+* observe/access without impact to its lifetime
+	* pointer back to your owner/container
+	* the resource always outlive you
+* shared access
+	* no owner
+
+__unique_ptr is uncopyable__
+Hence, if a class has a //unique_ptr<T>// member, it becomes uncopyable, 
+unless.... we implement class's copy constructor that handle "constructing a new T"
+eg. pResource.**reset**(new T(p.getResource())
+⇒ the original instance and its copy now **each has its own T instance**
+
+Observe/access someting without impact on its lifetime:
+* use //weak_ptr// if the real object is in a //shared_ptr//
+* if it is in a unique_ptr, use raw pointer, with care
+* if the real object is solid, use a raw pointer
+
+Managing lifetime → recommended to use shared_ptr
+* BUT, prefer to design with unique_ptr
+	* prefer not sharing stuff
+	* but if really need to, use shared_ptr

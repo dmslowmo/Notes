@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-21T09:18:26+08:00
+
+====== Monday 21 Mar 2016 ======
+
+[*] work on [[Redmine Issues:BHR4:TestBytes greater than TotalBytes in Client FTP BW Test]]
+	[*] the cause is narrowed down to tr143_diag app
+	[*] Update findings
+[x] when frustrated: (no chance to do)
+	[*] start Udacity's Cryptography course, or
+	[*] complete Tour of Go's Interface chapter
+
+* done today:
+	* "Be The Voice" workshop
+	* BHR4 sync-up meeting
+		* Assigned MoCA critical issue https://support.greenwavereality.com/issues/26589. Will start working on it tomorrow.

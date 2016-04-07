@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-02T09:21:43+08:00
+
+====== Wednesday 02 Mar 2016 ======
+[*] @bhr4 [[Redmine Issues:Closed:26196 MoCA]] issue
+	[*] Find the first build where the bug starts to occur ⇒ //none, it never "worked" before//
+	[*] Observe the correct behaviour in the last build that passed ⇒ // no need//
+	[*] Find the commit which possibly introduced the bug ⇒ //no need//
+
+[*] @googleiot Attend Border Router presentation
+[*] @googleiot Installing Simplicity Studio 3.3
+[*] code reviews

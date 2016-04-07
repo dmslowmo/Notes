@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-14T18:41:41+08:00
+
+====== Integrating Go Application into Lego ======
+Created Monday 14 March 2016
+
+===== Motivation =====
+* For learning Go and its effectiveness for embedded system
+* To leverage on its built-for-concurrency characteristics
+* To use a "better C" language
+* For some standalone tools that involve socket and networking, thirdparty library or Boost is still needed
+	* Boost is huge
+	* Integrating third party library may be "an overkill"
+	* C/C++ codes may introduce memory leak, but Go is garbage-collected
+		* yes, performance may take a hit, but not terribly worse
+		* and concurrency features are built-in
+
+===== Challenges/needs study =====
+
+==== 1. Go's rigid directory structure ====
+	a. Has to have src - pkg - bin
+
+==== 2. Integrating source toolchain vs asking developers to install ====
+
+==== 3. Integrating with C code is possible (cgo), what about C++? (if we ever need it) ====
+4. 
+==== Environment setup ====
+
+	a. to override default GOPATH and GOBIN
+5. 
+
+==== Incentive for developers to learn a new language is low ====
+
+6. 
+
+==== Performance benefit is unknown ====
+
+7. 
+
+==== I'm doing this part-time :) ====
+

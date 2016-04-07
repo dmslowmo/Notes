@@ -1,0 +1,76 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-16T11:31:48+08:00
+
+====== 7. Router advertisement ======
+Created Wednesday 16 March 2016
+
+* Fundamentally different from IPv4
+
+===== What is RAs? =====
+* RAs are how hosts
+	* obtain the default gateway
+	* in some cases, learn DNS server info
+	* determine if they should do SLAAC or DHCPv6 or both
+	* learn what Global Unicast or ULA prefix to use for that interface
+
+===== Flow =====
+	* host addr (fe80::eca1:345c:fa5b:c5ac)
+	* router addr 2001:db8:cafe:1234::1/64, RA prefix is therefore 2001:db8:cafe:1234::/64
+	* the router on a regular interval will do a router adevertisement on the local link segment
+	* the host will get the RA and know what prefix and default gateway to use based on the RA message
+	* the host builds: **2001:db8:cafe:eca1:345c:fa5b:c5ac**
+	* when a host comes up it will do a Route Solicitation (RS)
+
+
+===== RAs Role in IPv6 =====
+	* think IPv4 'Default Gateway'
+	* an RA is an automatic way to get the Default Gatway (Router) information
+
+===== Why are RAs Part of Neigbor Discovery? =====
+* the neigbor discovery protocol handles:
+	* host addr auto configration
+	* discovery of neigbor hosts
+	* determining lik layer addr of other hosts
+	* finding routers
+	* prefix discovery
+	* reachability of other hosts
+	* REMEMBER: all of this works on the Link Layer or "On Link"
+
+===== Difference vs IPv4 =====
+* no need to manually setup default gateway
+* DHCPv6 does not provide the default gatewa info
+* can have several router performing RAs
+* IPv4 has nothing like RAs: it's a replacement of Default Gateway mechanism
+* with multiple Router: how it works:
+	* on router should be given a higher preference so the host will use that router as its default gateway
+	* the routers on a regular intervall will do a router advertisement on the local link segment
+	* the host will get the RA and know what prefix and defalt gateway to use based on the RA message
+	* this works if the RAs are for the **same** prefix
+	* bt the failover from one router to the other can take a while
+
+===== Recommendation =====
+* RAs are critical: understand it!
+* use High Vailability or HA methods like VRRP (Virtual Router Redundancy Protocol)
+* RAs are not optional
+* RAs should be controlled to avoid exploit or problems
+
+===== How is RAs used? =====
+* obtain the default gateway
+* in some cases, learn DNS server info
+* determine if the should do SLAAC or DHCPv6 or both
+* learn what global unicast or ULA prefix for that particular interface
+
+===== on Windows =====
+* only obtains an IPv6 DNS resolver addr via DHCPv6, but no RDNSS (recursive DNS server)
+* if you set up windows server as a router it will always have the A bit set
+
+===== On Linux =====
+* linux can obtain an IPv6 DNS resolver addr via DHCPv6 or SLAAC (RDNSS)
+* Android does not have DHCPv6 client, so SLAAC with RDNSS is required
+
+===== On OSX =====
+* OSX can obtain an IPv6 DNS resolver addr via DHCPv6 or SLAAC (RDNSS)
+* iOS has a DHCPv6 client and can also learn DNS info from RDNSS
+
+

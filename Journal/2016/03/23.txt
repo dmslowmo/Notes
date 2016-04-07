@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-23T09:34:45+08:00
+
+====== Wednesday 23 Mar 2016 ======
+
+[*] work on [[Redmine Issues:BHR4:MoCA not linked if trying to connect after 1++ minutes]]
+	[x] analyze log
+	[*] update Redmine
+	[*] UPDATE: this issue is invalid now due to requirement change (below)
+[*] Requirement changed by Verizon, Bob sent requirement doc and link to Kokkee's code patch in gerrit
+	[*] need to review the code against the requirement (code is already +2)
+		[*] will just test on BHR4 and use the docs as test cases
+	[*] fix the conflicts as currently it is unable to be merged
+	[*] pushed to gerrit for review
+		* cannot merge (-2) because we need to wait until we know whether it is for 1.4 or 2.0
+		* 1 requirement not met:
+			* expected: upon boot up, the last successful interface will be attempted first
+			* **actual:** always attempt eth first

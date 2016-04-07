@@ -1,0 +1,53 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-16T10:09:51+08:00
+
+====== 5. Representing IPv6 Network ======
+Created Wednesday 16 March 2016
+
+===== Prefix =====
+
+	* indicates significant network bits
+	* "/" between the network and the address prefix value
+	* range from 0-128
+	* RFC4291 sect 2.3
+
+===== A nibble is 4 bits =====
+
+	* //2001:aaaa:bbbb:cccc::/64// means network address utilizes the 1st 64 bits (provider assigned)
+	* the rest of the the 64 bits used by the Host portion (locally assigned)
+	* notice the "::" ie zero compression. it's normal
+	* eg //2001:aaa:bbbb::/48. //In this case the remaining 16 bit is used as subnet
+	* a full specific host route will have "/128[["]] after it
+
+===== Ipv6 network prefix and subnetting =====
+
+	* 2001:aaaa:bbbb:/48
+	* **2001:aaaa:bbbb**:__cccc__:dddd:eeee:ffff:1111
+		* bold: 48 bits address
+		* highlighted: 16 bits to subnet
+	* **FE**80::/10 (Link Local — RFC4291)
+		* in reality this is "/64"
+		* cannot subnet it
+	* **2000**::/3 ⇒ Global Unicast
+	* **FC**00::/7 ⇒ Unique local
+	* **FF**00::/8 ⇒ Multicast
+
+===== Prefix policy table =====
+
+	* Host routing policy table defaults
+	* RFC 6724
+	* NOT the routing table
+	* Thik of it as a decision tree for hosts OS
+	* In Microsoft Windows:
+		* OS version dependent (RFC 3484 vs RFC 6724)
+		* Limited Powershell cmdlets
+		* netsh is available
+	* In Linux:
+		* "/etc/gai.conf" file in Ubuntu
+		* distribution dependent (file is blank in CentOS/RedHat)
+		* Older linux may still be on 3484
+	* Prefix policy table impacts
+		* defines the source addr selection
+		* longest profix match is the normal win
+		* multiple golbal unicast addresses makes the deicision process more difficult

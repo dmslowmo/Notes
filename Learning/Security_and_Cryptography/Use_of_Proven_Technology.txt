@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T15:45:49+08:00
+
+====== Use of Proven Technology ======
+Created Monday 28 March 2016
+
+===== Kerckhoffs' principle =====
+* States that the security of an algo should dpend only on the secrecy of the key and not on the secrecy of the algorithm itself
+* all of the generally used encryption algo are publicly accessible
+	* they have been vetted by the security communicty for flaws, etc
+
+===== Elliptic Curve Cryptography =====
+* ECC
+	* Asymmetric ecnr that uses algebraic structure of elliptic curves
+		* strong encryption using smaller key size
+* Asymmetric ecnry normally requires a large amount of resources
+	* ECC can achieve same level of security with less resources
+
+===== Quantum Cryptography =====
+* The use of quantum mechanical properties to pefrom cryptographic tasks
+	* the very act of eavesdropping disturbs the properties 
+* Quantum Key Distribution
+	* using quantum comm to esablish a shared ke betw two parties
+	* Third party can't access or disturb the data without it being noticed by sendier/recepient
+
+===== Ephemerial key =====
+* temprary key that is used once
+	* can be reused during single comm session
+
+===== Perfect forward secrecy =====
+* Session keys that are derrived froma  set of long term keys, yet discreet in nature
+	* if one of th elong term keys is compromised, it doesn't compromise the session key or the data it protects
+		* keys used to protect data arn't used to derive any additional keys

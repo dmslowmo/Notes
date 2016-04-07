@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-03T17:17:54+08:00
+
+====== TODO ======
+Created Thursday 03 March 2016
+
+[ ] Understand how a web client discovers the addresses of the CoAP devices.
+[ ] Does CoAP supports broadcast (different from multicast) ?
+	[ ] Understand how UDP broadcast works.
+[ ] Understand how resource directory mechanism works.
+[ ] How to ensure data integrity when the data is large and transmitted over multiple packets?

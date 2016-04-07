@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T16:02:06+08:00
+
+====== 01 SELinux Policy ======
+Created Monday 04 April 2016
+
+===== Decision-Making Process =====
+* Default answer = NO
+* All allowed access requires an **Allow Rule**
+* policy look up results get stored to the Access Vector Cache or AVC
+	* faster search
+
+===== Targeted Policy =====
+* Type Enforcement (TE)
+	* using type label
+* Targets (confines) specific daemons:
+	* network facing
+	* start at boot
+* Everything else is UNCONFINED!
+* User processes often not targeted
+	* usually run in **unconfined_t**
+* Target processes run in **confined** domains
+	* or sandboxing
+* Everything NOT targetred runs in an unconfined domain:
+	* only subjected to DAC
+	* no MAC policy control
+* sesearch -l (search for domain)
+* semodule -l (search for modules)

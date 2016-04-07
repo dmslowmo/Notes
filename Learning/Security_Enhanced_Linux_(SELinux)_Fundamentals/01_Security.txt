@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-04T15:13:33+08:00
+
+====== 01 Security ======
+Created Monday 04 April 2016
+
+* SELinux (MAC) added another layer to OS level access control
+	* ie **Mandatory Access Control (MAC)**
+	* object owner can't mess things up!
+* Existing OS level access control = DAC (Discretionary Access Control)
+	* Objec owners can mess things up! eg he can chmod 777 <an object> and forgot to revert back
+* History:
+	* more than 15 yrs old
+	* Developed by nSA, Red Hat, etc
+	* included in Kernel
+	* good set of user-space tools
+* Future of SELinux
+	* increasing adoption
+	* becoming de-facto standard
+	* Android has implemented its security mechanism using SELinux

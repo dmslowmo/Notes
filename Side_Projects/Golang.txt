@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-02T16:58:38+08:00
+
+====== Golang ======
+Created Wednesday 02 March 2016
+
+===== WHY REINVENT THE WHEEL? =====
+⇒ to understand how the wheel works ☺
+
+
+02/03/2016
+[*] Cross-compiled "hello, world" program and run it in BHR4
+[*] Added Golang as a topic in Volunteer Project page

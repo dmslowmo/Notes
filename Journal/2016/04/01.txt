@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-01T09:53:59+08:00
+
+====== Friday 01 Apr 2016 ======
+
+[*] Continue investigation on [[Redmine Issues:BHR4:IPv6 Packet Too Big not sent]]
+	[*] findings logged
+	[*] Attempted to do //ip6tables -I INPUT 1 -m frag --fragmore -j ACCEPT --verbose// to accept all fragments, but did not work
+	[*] Still not sure how to disable fragmenting incoming packet

@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-24T15:34:11+08:00
+
+====== Lambda ======
+Created Wednesday 24 February 2016
+
+You can achieve the same thing with functor or function pointer,
+BUT, //lambdas// give advantages such as:
+* keep locality of the codes, which increases readability
+
+__Capture rules!__
+* by value or by reference?
+* by value if you need to put it into a variable
+* by reference if you want to change it
+* if it is a free resource, use pointer
+
+[=] 	captures "everything" by value
+[&]	captures "everything" by reference
+[&, x]	captures "everything" except 'x' by reference
+
+Lambda must be marked **mutable** if it modifies something.
+
+eg.
+int x, y;
+for_each (begin(v), end(v), [=](int elem) **mutable** {
+	x += elem;
+	y += elem;
+}
+
+In the above example, x and y don't change. Why?
+Because it is capture by value, ie only local scope.
+
+In order for x and y to change, must capture by reference [&]. No need to mark it **mutable.**
+
+Readibility tip: //Keep Lambdas short!//
+
+
+

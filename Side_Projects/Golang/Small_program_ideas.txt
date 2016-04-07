@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-31T19:25:18+08:00
+
+====== Small program ideas ======
+Created Thursday 31 March 2016
+
+[ ] Text file parser
+[ ] Mastermind
+[ ] Pascal Triangle
+[*] Parallel Ping

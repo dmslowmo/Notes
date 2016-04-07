@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-29T15:47:00+08:00
+
+====== Use of Standard Containers ======
+Created Monday 29 February 2016
+
+* No need to write our own
+* No need to take care of memory management manually
+* No need to handle special cases
+* Type safety
+* Expressivity ⇒ ppl know what it is/does
+
+* Practical advice: if you wonder what to use:
+	* **Use **[[C++ NOTES:Use of Standard Containers:vector|Vector]]
+	* Grows itself when you add new element
+	* Can traverse with an iterator or random access with []
+	* Decent performance
+	* Cleans up after itself
+		* even when there is exception
+		* eg. try { //some vector creation } catch (std::exception& ex) { }
+		* in this example, we didn't do anything to clean up the memory allocated for the vector in the catch block, and we didn't need to
+
+* Use of standard algorithm eg. std::begin(v) and std::end(v), std:max_element(v1, v2) is useful
+	* it allows you to switch what container (ie. v) you use
+	* v can even be a c-style array
+
+* write your code to make switching containers easy:
+	* auto
+	* begin() and end()
+	* Algorithms
+
+* Containers:
+	* [[C++ NOTES:Use of Standard Containers:vector|vector]], [[C++ NOTES:Use of Standard Containers:list|list]], map
+	* queue, dequeue
+
+* Comparison of containers:
+	* http://www.cplusplus.com/reference/stl/
+	* https://msdn.microsoft.com/en-us/library/hh438470.aspx
+	* http://www.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html

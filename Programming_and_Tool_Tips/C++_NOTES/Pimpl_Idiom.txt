@@ -1,0 +1,69 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-14T15:46:21+08:00
+
+====== Pimpl Idiom ======
+Created Monday 14 March 2016
+
+* **C++ header files**
+	* separates impl (cpp) from definition (.h)
+		* essentially, metadata in plain text form
+	* As project gets larger, compiles take longer
+	* Often many files include the same header
+	* Even across projects
+	* **Problem: make a change in a header file**
+		* need to recompile hundreds of files
+		* Even if the change cannot possibly affect them
+			* eg a private member
+
+* **Forward declarations**
+	* Don't always need to #include entire class definition
+{{{code: lang="cpp" linenumbers="True"
+class X;
+}}}
+
+	* As long as your code doesn't rely on details of X, this is fine
+		* can't have a solid X member var
+		* can have pointer of X
+
+* **PIMPL idiom**
+	* sometimes called Compiler Firewall
+* The class everyone uses has
+	* one private var
+		* a pointer to the impl class
+	* Public functions with same signatures as before
+		* each calls the correspoinding func in the impl class
+
+{{{code: lang="cpp" linenumbers="True"
+class AccountImpl;
+
+class Account
+{
+private:
+	AccountImpl* pImpl;
+public:
+	int Any(int bal, Customer* cust);
+};
+
+//in header:
+//definition of AccountImpl
+}}}
+
+
+* The Account constructor delegates the construction of business logic to the pImpl class
+* We include AccountImpl.h in AccountImpl.cpp, but Account.h should not be in AccountImpl.cpp
+
+* When to use Pimpl
+	* when you have a large proj that takes a long time to compile
+	* when there is one particular class whose header is included in many places
+		* but first, see if forward declarations would help you
+	* when the class is already noncopyable
+		* or at least isn't being copied in any existing code
+		* or you are prepared to write a meaningful deep copy so existing code still works
+	* When the class has a relatively stable public interface
+		* changes will have to be made in two places
+	* when the class has a volatile private section
+
+
+
+

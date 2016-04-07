@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-07T11:09:48+08:00
+
+====== Monday 07 Mar 2016 ======
+
+[ ] merge BHR4 changes to master (bug 26350)
+[ ] work on something (BHR4 tickets) 
+	* Please reproduce FQG-2325 (refer to email): unable to ping between 2 PCs
+[ ] read ipv6 google doc before tomorrow's meeting
+[ ] Installing Thread SDK (Simplicity Studio)
+	[x] sort out the lincense issue
+	[*] download the SDK and demo application for Thread
+		[*] ZW may have it in shared drive already
+	[ ] compile (and resolve any issues)

@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-11T09:23:22+08:00
+
+====== Split Window ======
+Created Friday 11 March 2016
+
+While running vim:
+{{{code: lang="php" linenumbers="True"
+:sp filename  //horizontal split
+:vsp filename //vertical split
+:vs filname   //vertical split
+
+}}}
+
+Using **Ctrl** key:
+* **Ctrl+w, S (upper case) ** for horizontal splitting
+* **Ctrl+w, v (lower case) **for vertical splitting
+* **Ctrl+w, q **to close one (or simply **:q**)
+* **Ctrl+w, Ctrl+w** to switch between windows
+* **Ctrl+w, J (xor K, H, L) **to switch to adjacent window (or equivalent to ip, down, left, right arrow)
+
+When vim is not running yet:
+{{{code: lang="sh" linenumbers="True"
+vim -o file1 file2 file3 #open multiple windows horizontally
+vim -o[N] #open N windows horizontally
+vim -O file1 file2 file3 #open and split a window vertically
+vim -O[N] #open and split into N windows vertically
+}}}
+
+

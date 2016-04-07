@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-23T15:03:20+08:00
+
+====== February 2016 ======
+
+22 February 2016
+
+====== BHR4 issue: ======
+1. Vineet reproduced the crash. Will start another round of testing with Veriwave after increasing Cortina's reserve memory to 4M from 2M
+2. Daniel started observation on BHR4 memory since Friday morning 10AM. Started free memory at ~89MB
+	* Ran 10M UDP echo test split among 25 UDP Clients ⇒ free memory dropped by 10MB. This test was performed 2x
+	* Leaving BHR4 over the weekend, free memory was found at ~65MB or in other words dropped by 25MB since started on Friday
+	* Started a 100M UDP echo test split among 25 Clients ⇒ so far dropped by another 10+MB
+3. Plan for today:
+	a. Vineet monitor the test with extended memory limit (see above)
+	b. Daniel will try to bring free memory down to below 40MB, then try to upload (but not flash) a firmware to BHR4, see if it recovers the memory or crashes
+
+UPDATE:
+1. BHR4 still crashed with Cortina's memory limiter set to 4MB. Increasing it to 8MB and rerun the test (in-progress, by Vineet)
+2. 100M UDP echo test with 25 clients still ongoing after 8 hours. Memory seems to stabilize at 46MB.

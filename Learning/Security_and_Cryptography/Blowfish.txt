@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-28T16:13:02+08:00
+
+====== Blowfish ======
+Created Monday 28 March 2016
+
+* Symmetric key block cupher
+	* 64-bit block size with variable key length from 32-bits to 448-bits
+* Originally designed as a fast, free replacement for DES
+* TwoFish and Three Fish are the recommended replacements
