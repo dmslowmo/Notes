@@ -1,1 +1,2 @@
 # mynotes
+notes taken
