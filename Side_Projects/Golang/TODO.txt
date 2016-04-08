@@ -42,5 +42,7 @@ Created Friday 04 March 2016
 	[ ] memory foot-print
 	[ ] speed
 	[ ] robustness
-	[ ] binary size
+	[*] binary size
+		* Sad to say, Go is always going to be bloated because it is statically linked
+		* Perhaps comparable for large programs, but for small programs, it is a high price to pay
 	[ ] code size

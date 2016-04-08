@@ -20,3 +20,5 @@ http://www.secfu.net/2015/03/25/how-to-block-incoming-ipv6-fragments-in-latest-r
 http://www.tcpipguide.com/free/t_IPv6DatagramSizeMaximumTransmissionUnitMTUFragment-4.htm
 
 http://serverfault.com/questions/656191/adsl-router-happily-accepts-ipv6-packets-of-2k-in-size
+
+http://stackoverflow.com/questions/14185610/dont-fragment-flag-for-ipv6-packets-in-linux-using-c
