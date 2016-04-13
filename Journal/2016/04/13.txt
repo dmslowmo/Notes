@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T09:11:19+08:00
+
+====== Wednesday 13 Apr 2016 ======
+
+[*] Investigate [[Redmine Issues:BHR4:IPv6 Destination Unreachable not sent]]
+	[*] search for kernel patch releases 3.4.xxx
+[ ] call laoshi

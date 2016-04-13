@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-11T10:07:31+08:00
+
+====== ZWave CC Integration to Iot Core ======
+Created Monday 11 April 2016
+
+===== Flow of ZWave Communication Stack Construction =====
+ZipGateway <--- ZipUdsServer <--- ZipGatewayProtocol <--- ZipGatewayCommunicator <--- **ZWaveProtocolAdaptor** <--- ZWaveProtocolAdaptorFactories
+
+Capability <--- XXXCommandClassMapping <--- ZWaveNode <------------------------------ **ZWaveProtocolAdaptor**
+		   CommandClassMappingFactory <--- ZWaveNode
+Capability <--- Scanner
+
+ZipGatewayNode <--- **ZWaveProtocolAdaptor**
+ZipGatewayNode <--- z_wave_protocol_adaptor_ec_api_v1_0:ZWaveProtocolAdaptor
+
+* ZipGatewayProtocol:
+	* Striping/wrapping ipv6 and UDP headers on messages.
+	* also handles ZipNV packages
+* ZipUdsServer
+	* Msg length
+	* msg delimiter policy
+* ZipGatewayCommunicator:
+	* Ack/nack,
+	* sequencenumbers
+	* timeouts, etc
+* ZipGatewayNode
+	* perform inclusion/exclusion, called by the z_wave_protocol_adaptor_ec_api_v1_0:ZWaveProtocolAdaptor
+	* inclusion/exclusion of a node is a synchronous process (multiple nodes can be quiet slow)
+* ZWaveNode
+	* standard ZWave device
+* Communication stack started by the construction of ZWaveProtocolAdaptorFactories
+* Scanner:
+	* get the list of capabilities
+	* perform sync for each capability
+	* each sync is a blocking process?? (need to confirm)
+* CommandClassMapping
+	* Created by CommandClassMappingFactory, called by ZWaveNode
+	* creates capability
+
+
+===== Steps in adding command class =====
+1. Read the spec
+2. Implement the command class per spec
+3. Implement unit test for the command class
+4. Implement the command class mapping
+5. Implement unit test for the command class mapping
+6. Add the command class mapping to the MappingMaker so that it will be instantiated
+
+
+===== Command Class Mapping Flow =====
+1. If no interview:
+	a. just create ec api and sync
+2. If interview needed:
+	a. perform the interview, eg to determine version, scale, etc
+	b. after interview done, create ec api and sync
+NOTE:
+	* inclusion/exclusion is synchronous
+		* will block everything else, including the interview process
+	* interview is assynchronous
+
+===== Capability Category =====
+* https://cto-wiki.greenwavereality.com/index.php/Automation_Core#Capability_Category

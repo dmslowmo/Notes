@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T15:50:27+08:00
+
+====== 01 Labelling Entire Filesystem ======
+Created Wednesday 13 April 2016
+
+* modify [[/etc/selinux/config]] and reboot
+* everything will be relabelled

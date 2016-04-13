@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T15:30:47+08:00
+
+====== 02 Permissive domain ======
+Created Wednesday 13 April 2016
+
+* allows specific domain to be placed in permissive mode
+* to check how many are in permissive mode: seinfo
+* //semodule -d test.local #disable a policy//
+* semodule -r test.local #remove a policy
+* semodule -l | grep test #check whether test is in the policy list
+* semanage permissive -t httpd_t set httpd_t to permissive
+* Eg. change policy to allow/disallow Apache to modify index.html of the host

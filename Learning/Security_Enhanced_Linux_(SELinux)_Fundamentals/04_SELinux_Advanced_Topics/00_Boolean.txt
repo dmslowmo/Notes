@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T15:16:04+08:00
+
+====== 00 Boolean ======
+Created Wednesday 13 April 2016
+
+* example:
+	* //semanage boolean -l | grep samba_export//
+	* //getsebool -a | wc -l//
+	* //setsebool samba_export_all_ro_on (see result from semanage)//
+	* if //setsebool samba_export_all_ro_on -P//
+		* -P option will cause the policy will be changed and recompiled and reloaded
+* Not all policies are configurable with //setsebool//

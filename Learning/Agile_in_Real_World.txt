@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T16:18:50+08:00
+
+====== Agile in Real World ======
+Created Wednesday 13 April 2016
+
+===== What makes Agile Work =====
+* Greenfield development
+* customer always available
+* executive buy-in
+* BUT in real world, these may not be there
+
+
+

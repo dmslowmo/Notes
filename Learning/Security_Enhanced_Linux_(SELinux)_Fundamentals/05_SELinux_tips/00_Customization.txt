@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T15:40:11+08:00
+
+====== 00 Customization ======
+Created Wednesday 13 April 2016
+
+* installing and running programs in custom dir
+* running services against custom ports
+* think abt selinux impact any time we make a customization
+* Need to 'inform' selinux about it

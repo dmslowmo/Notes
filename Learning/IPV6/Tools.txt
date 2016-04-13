@@ -31,4 +31,4 @@ $ exit
 * Quick tips:
 	* to capture IPv6 packet, add //ip6// flag
 	* unfortunately, we can only filter ICMP packets (IPv4), but not ICMPv6 packets, we may still get other packets other than ICMPv6
-	* quick example: //tcpdump -ietho -n -v ip6//
+	* quick example: //tcpdump -ieth0 -n -v ip6//

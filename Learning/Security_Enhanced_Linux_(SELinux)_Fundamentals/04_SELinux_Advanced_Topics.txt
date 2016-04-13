@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-13T15:15:08+08:00
+
+====== 04 SELinux Advanced Topics ======
+Created Wednesday 13 April 2016
+
+* Booleans: on-the fly tweaking a policy on/off
+* audit2allow
+* permission domain
