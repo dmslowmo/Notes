@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-15T09:36:52+08:00
+
+====== Friday 15 Apr 2016 ======
+
+[ ] Try applying the kernel patches for the "Packet too Big" issue
+	[ ] apply parts relevant to ipv6
+	[ ] test with sending too-big icmpv6
+		[ ] if OK, try reverting the patches one-by-one to find out which one is the minimum required to solve the issue
+		[ ] if NG, then the patches don't help ☺
+[ ] timesheet
+[ ] confirm with laoshi

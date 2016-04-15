@@ -5,10 +5,10 @@ Creation-Date: 2016-03-30T14:43:20+08:00
 ====== Tools ======
 Created Wednesday 30 March 2016
 
-===== packeth =====
+===== packeth (3rd party) =====
 * used to build and send packets
 
-===== wireshark =====
+===== wireshark (unix) =====
 * used to capture network traffic on a particular interface(s)
 * How to install and use:
 {{{code: lang="sh" linenumbers="True"
@@ -23,8 +23,7 @@ $ exit
 * Start wireshark as root with sudo (ignore the warning)
 * Select the interface you want to monitor eg. eth0
 
-
-===== tcpdump =====
+===== tcpdump (unix) =====
 * useful links:
 	* https://danielmiessler.com/study/tcpdump/
 	* http://www.rationallyparanoid.com/articles/tcpdump.html
@@ -32,3 +31,9 @@ $ exit
 	* to capture IPv6 packet, add //ip6// flag
 	* unfortunately, we can only filter ICMP packets (IPv4), but not ICMPv6 packets, we may still get other packets other than ICMPv6
 	* quick example: //tcpdump -ieth0 -n -v ip6//
+
+===== tracepath/tracepath6 (unix) =====
+* It traces path to destination discovering MTU along this path. It uses UDP port port or some random port. It is similar to traceroute, only does not require superuser privileges and has no fancy options.
+* tracepath6 is good replacement for traceroute6 and classic example of application of Linux error queues. The situation with IPv4 is worse, because commercial IP routers do not return enough information in icmp error messages. Probably, it will change, when they will be updated. For now it uses Van Jacobson’s trick, sweeping a range of UDP ports to maintain trace history.
+* quick example: //tracepath6 <dest ipv6>//
+

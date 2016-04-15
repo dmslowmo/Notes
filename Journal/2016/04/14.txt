@@ -4,7 +4,7 @@ Creation-Date: 2016-04-14T17:29:37+08:00
 
 ====== Thursday 14 Apr 2016 ======
 
-[ ] Browse linux kernel repo:
-	[ ] found patches that may solve our icmpv6 problem
-[ ] called laoshi
-[ ] attended team meeting and Agile in Real Worl
+[*] Browse linux kernel repo:
+	[*] found patches that may solve our icmpv6 problem
+[*] called laoshi
+[*] attended team meeting and Agile in Real World training
