@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-18T17:40:25+08:00
+
+====== Git tips ======
+Created Monday 18 April 2016
+
+===== Show commits between tags/sha1 =====
+* //git log tag1..tag2//
+	* show just partial hash and title: //git log tag1..tag2 --oneline//
+	* show commiter and title: //git shortlog tag1..tag2//
+
