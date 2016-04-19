@@ -4,7 +4,7 @@ Creation-Date: 2016-04-18T09:12:20+08:00
 
 ====== Monday 18 Apr 2016 ======
 
-[ ] have a more in-depth look on the patches required to make the ICMPv6 "Packet too big" work properly
-	[ ] found and clone the branch 3.4.y (maintained by Zefan Li)
-	[ ] the branch has tags 3.4.y eg 3.4.104 all the way to the latest tag
+[*] have a more in-depth look on the patches required to make the ICMPv6 "Packet too big" work properly
+	[*] found and clone the branch 3.4.y (maintained by Zefan Li)
+	[*] the branch has tags 3.4.y eg 3.4.104 all the way to the latest tag
 

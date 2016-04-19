@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-19T11:42:58+08:00
+
+====== GCC ======
+Created Tuesday 19 April 2016
+
+===== What is the "likely(cond)" or "unlikely(cond)" function for? =====
+* ref: http://unix.stackexchange.com/questions/11597/what-is-the-difference-between-likely-and-unlikely-calls-in-kernel
+* a compiler hints for GCC
+* Used in conditionals to tell the compiler if a branch is likely to be taken or not.
+* it can help the compiler laying down the code in such a way that is optimal for the most frequent outcome
+* Example: {{{code: lang="c" linenumbers="True"
+if (likely(some_condition)) {
+  // the compiler will try and make the code layout optimal for the case
+  // where some_condition is true, i.e. where this block is run
+  most_likely_action();
+} else {
+  // this block is less frequently used
+  corner_case();
+}
+}}}
+
+* It should be used with great care (ie based on actual branch profiling results). A wrong hint can degrade performance.
+* The kind of optimizations that can be done is very processor-specific.
+* The general idea is that often processors will run code faster if it does not branch/jump all over the place.
+* The more linear it is, and the more predictable te branches are, the faster it will run. This is especially true for processors with deep pipelines for eg.

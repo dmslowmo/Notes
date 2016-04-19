@@ -1,0 +1,101 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-19T12:55:53+08:00
+
+====== Hadoop Ecosystem ======
+Created Tuesday 19 April 2016
+
+* Video links:
+	* https://dzone.com/articles/techtalk-apache-hadoop-and-related-technologies-fo
+	* https://dzone.com/articles/the-hadoop-ecosystem-in-30-minutes-part-2
+
+===== Introduction =====
+* Apache Hadoop softw library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models.
+* Designed to scale up from a single server to thousands of machines, with avery high degree of fault tolerance.
+* Resilience of the clusters comes from software, not hardware
+* Hadoop is NOT a database
+
+===== What problems Hadoop can solve =====
+* where a lot of data, perhaps a mixture of omplex and structured data
+* to run analytics that are deep and computationally extensive
+* lots of use cases and case studies available on net
+
+===== Architecture =====
+* Designed to run on a large no. of machines that don't share any memory or disks. (can run Hadoop on each one)
+* Distributed — no one place where you go to talk to all of your data
+	* hadoop keeps track of where the data resides
+* automatically replicated froma known good copy
+* processors/machines, working in parallel, harnessed together → processing power
+* [ Hadoop 1.0
+	  [ MapReduce (Cluster Resource Mgmt and Batch Data Processing) ]
+	  [                   HDFS (File Storage)                       ]
+  ]
+* [ Hadoop 2.0 (Distributed applications runs in Hadoop)
+	[ Batch (mapreduce) ][ INTERACTIVE (Tez) ][ ONLINE (HBase) ][ STREAMING (Storm) ][ STREAMING (Storm) ]
+	[                       YARN (Cluster Resource Management)                                           ]
+	[                                  HDFS (File Storage)                                               ]
+  ]
+
+==== MapReduce ====
+* a programming model which is used to process large data sets in a batch processing manner.
+* composed of:
+	* a Map() procedure that perform filtering and sorting (such as sorting students by first name into queues, one queue for each name)
+	* a Reduce() procedure that perform a summary operation (such as counting the number of students in each queue, yielding name frequencies)
+* Master-slave Architecture
+	* Master: sending tasks to different nodes
+* References: Data Intensive Text Processing with Map Reduce — Jimmy Lin, Chris Dyer
+
+==== Apache Cassandra ====
+* Not part of Apache Hadoop ecosystem, but used in big data as well
+* NoSQL database
+* schema-free
+* very fast write
+* is designed to handle big data workloads across multiple nodes with no single point of failure (similar to Hadoop)
+* addresses the problem of failures by employing peer to peer distrubted system across homogeneouus nodes where data is distributed among all nodes.
+* Write process:
+	* sequentially written commit log on each node captures write actiity to ensure data durability
+	* data is then idexed and written to an in-memory structure called **memtable**, whch resembles a write-back cache
+	* once the memory structure is full, the data is written to disk in an **SSTable** data file
+	* All writes are automatically partitioned and replicated throughout the cluster
+	* Using a process called **compaction** Cassandra periodically consolidates SSTables, discarding obsolete data and **tobstones** (an indicator that data was deleted)
+* Read/write:
+	* client read or write request can be sent to any node in the cluster
+	* when a client connects to a node with a request, that node serves as the coordinator for that particular client operation
+	* the coordinator acts as a proxy between the client application and the nodes that own the data being requested
+	* the coordinator determines which nodes in the ring should get the request based on how the cluster is configured (based on partitioner and replica placement strategy)
+* When to use Cassandra:
+	* scale by partitioning data
+	* no transactional support
+	* eventually consistent (not as consistent as RDBMS)
+	* high aavailiablity
+	* multiple locations
+	* optimized for writes
+	* limited querying/aggregation supports
+
+===== Apache Hive =====
+* is a data warehouse infrastructure built on top of Hadoop for providing data summarization, wuery and analysis
+* supports analysis of large datasets stored in Hadoop's HDFS and compatible file systems such as Amazon S3 filesystem
+* provides an SQL-like language called HiveQL and transparently converts queries to map/reduce
+
+===== Apache HBase =====
+* opensource, non-relational, distrubted database modeled after Google's BigTable and written in Java
+* developed as part of Apache Software Foundation's Apache Hadoop project and runs on top of HDFS (Hadoop Distributed Filesystem), providing BigTable-like capabilities for Hadoop.
+* it is a part of the Hadoop ecosystem that provides random real-time read/write access to data in the Hadoop File System
+* HDFS vs HBase
+	* distributed file system vs database built on top of HDFS
+	* doesnot support fast individual record lookups vs fast lookups for larger tables
+	* high latecncy batch processing vs low latency access to single rows from billions of records (random access)
+	* sequential access of data vs internally uses Hash tables and provides random access, and it sotres the data in indexed HDFS files for faster lookups
+
+==== HBase Architecture ====
+* tables are split into regions and are served by region servers.
+* Regions are vertically divided by column families into "Stores".
+* Stores are saved files in HDFS.
+* Master server:
+	* assigns regions to the region servers and takes the help of Apache ZooKeeper for this task
+	* Handles load balancing of the regions across region servers.
+	* It unloads the busy servers and shifts the regions to less occupied servers.
+	* maintains the state of the cluster by negotiating the load balancing
+	* responsible for schema changes and other metadata operations such as creation of tables and column families
+	* regions are nothing byt tables that are split up and spread across the region servers
+

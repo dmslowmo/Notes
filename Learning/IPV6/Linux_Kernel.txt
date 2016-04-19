@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-19T12:00:09+08:00
+
+====== Linux Kernel ======
+Created Tuesday 19 April 2016
+
+===== Large Received Offload (LRO) =====
+* ref: https://en.wikipedia.org/wiki/Large_receive_offload
+* In computer networking, large receive offload (LRO) is a technique for increasing inbound throughput of high-bandwidth network connections by reducing CPU overhead.
+* It works by aggregating multiple incoming packets from a single stream into a larger buffer before they are passed higher up the networking stack, thus reducing the number of packets that have to be processed.
+* In Linux, it is generally used in conjunction with the New API (NAPI) to also reduce the number of interrupts.
+* NOTE: **LRO should not be used on machines acting as routers, as it breaks the end-to-end principle and can significantly impact performance.**
+* (may be that's why the kernel in Lego is not updated?)
+* In the latest kernel code [[(ip6_output.c:ip6_forward(]])) there is a check for LRO, and if it is detected, a warning will be issued.
+	* upon receiving the warning, the packet will be dropped
+
+===== Generic Segmentation Offload (GSO) =====
+* ref: http://www.linuxfoundation.org/collaborate/workgroups/networking/gso
+* It is a performance optimization which is a gneralisation of the concept of TSO
+
+===== TCP Segmentation Offload (TSO) =====
+* It is also called Large Segment Offload (LSO)
+* ref: https://en.wikipedia.org/wiki/Large_segment_offload
+* It is a technique for increasing outbound throughput of high-bandwidth network connections by reducing CPU ovehead. It works by queuing up large buffers and letting the network interface card (NIC) split them into separate packets.
+* The technique is also called TSO when applied to TCP, or GSO.
+* The inbound counterpart of large segment offload is LRO.
