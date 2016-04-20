@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.4
-Creation-Date: 2016-03-15T14:24:20+08:00
-
-====== 2. IPv6 Address Types ======
-Created Tuesday 15 March 2016
-

@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-20T10:19:30+08:00
+
+====== 2. Address Types ======
+Created Wednesday 20 April 2016
+
+* NOTE:
+	* Address 2001:db8::/32 is reserved for lab uses
+	* It is called Documentation Prefix ie. used in textbooks or manuals as example
+	* Operator will not route packets from/to this address to public internet
+		* https://www.apnic.net/get-ip/faqs/ipv6-documentation-prefix
+	* NOT for production uses
+* Link-local addresses may not be unique
+	* it's designed to be unique **on the link **only
+
+===== Neighbor Discovery Protocol =====
+* replaces ARP in IPv4
+* leverages multicast to allow host to discover neighbor in layer 2
+
+===== Anycast Addresses =====
+* Global Anycast DNS allows for faster reachability and high availability to name servers on the Internet
+* Local Anycast DNS allows for high availabilit for name servers
+* helps to mitigate DDOS due to how it functions
+* provides a stable IPv4 or IPv5 addr for services (NTP, DHCPv6 or DNS)
+* typically requires the use of a routing protocol such as OSPFv3 to route inject
+* not possible to tell the diff betw an Anycast addr and a Global Unicast Addr
+	* it is just a **functional behavior of** Unicast addr
+	* Use cases:
+		* Global DNS
+		* Local DNS
+		* caching services

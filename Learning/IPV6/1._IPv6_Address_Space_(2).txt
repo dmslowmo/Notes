@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-15T14:24:20+08:00
+
+====== 1. IPv6 Address Space (2) ======
+Created Tuesday 15 March 2016
+
+===== Multicast Addresses =====
+
+==== All Multicast ====
+	* **ff**00::/8
+	* the ff indicates multicast
+
+==== Solicited-node ====
+	* **ff02**::1:f00:0/104
+
+==== Link-local all-nodes ====
+	* **ff02::1**
+
+===== Anycast addresses =====
+* It really is Unicast
+* can't tell if it is Anycast by just looking at it
+	* because we take Unicast address and then "Anycast-enable" it
+* think of Anycast as a function
+	* eg. DHCP, DNS
+	* where you need it to be same address functioning everywhere
+
+===== Unicast addresses =====
+* Global Unicast addresses - RFC4291 and 3587
+	* 2000::/3
+* Link-local - RFC4007
+	* fe80::/64
+* Unique local addresses - RFC4193
+	* fc00::/7
+	* actually today we use fd00::
+* special addresses like loopback and unspecified - RFC5156
+	* ::1
+* transition addresses like 6to4, ISATAP, and Teredo
+	* 2003::/16 and 2001:0::/32
+* Deprecated Unicast addreses:
+	* site-local addr - RFC3879
+	* fec0::/10
+	* ipv4-compatible addresses - RFC4291
+	* ::/96
+	* 6bone
+	* 3ffe::16 and 5f00::/8
+
+===== IPv6 Address Zone ID =====
+* an ipv6 address is assigned to a host interface
+* Interface 8 has 2001:db**8**:cafe:5150::1
+* use **% sign **to represent the zone ID
+	* 2001:db8:cafe:5150::1%8
+* Typically the Zone ID will match the interface ID
+	* for Linux system it could be eth0, on OSX it could be en0
+
