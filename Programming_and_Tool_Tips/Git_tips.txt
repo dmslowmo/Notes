@@ -10,3 +10,5 @@ Created Monday 18 April 2016
 	* show just partial hash and title: //git log tag1..tag2 --oneline//
 	* show commiter and title: //git shortlog tag1..tag2//
 
+===== Unstage a staged change =====
+* //git reset <staged file>//

@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-21T13:43:15+08:00
+
+====== Tests ======
+Created Thursday 21 April 2016
+
+===== it-tests =====
+* it-tests are/can be writen in python
+	* ZWave Binary sensor it-test: https://gitgerrit-01.greenwavereality.eu/#/c/30679/
+	* bstest for Makefile.d content: https://gitgerrit-01.greenwavereality.eu/#/c/31203/2
+	* test for device unreachable: https://gitgerrit-01.greenwavereality.eu/#/c/30969/

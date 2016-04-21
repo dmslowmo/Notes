@@ -12,6 +12,9 @@ Created Wednesday 20 April 2016
 * highlight my interest in
 	* turning requirements into design
 	* design into codes
+* highlight/sell how I can/could bring value to the team:
+	* leveraging my coding and design ability to improve design and code quality
+	* create tools for automating certain tasks
 * hence, any chance to be involved in such project?
 * if the team need a(nother) scrum master,
 	* i'm available

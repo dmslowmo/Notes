@@ -18,3 +18,11 @@ Created Thursday 31 March 2016
 ===== Useful ifconfig commands =====
 http://www.tecmint.com/ifconfig-command-examples/
 
+===== Firewalling =====
+
+==== TCP Filters ====
+* Paranoia setting on ipv6 interface  
+$IP6TABLES -I INPUT -i $WAN_IF -p tcp --syn -j DROP
+$IP6TABLES -I FORWARD -i $WAN_IF -p tcp --syn -j DROP
+$IP6TABLES -I INPUT -i $WAN_IF -p udp  -j DROP
+$IP6TABLES -I FORWARD -i $WAN_IF -p udp  -j DROP

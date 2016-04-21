@@ -12,7 +12,7 @@ Created Monday 29 February 2016
 * Expressivity ⇒ ppl know what it is/does
 
 * Practical advice: if you wonder what to use:
-	* **Use **[[C++ NOTES:Use of Standard Containers:vector|Vector]]
+	* **Use **[[+vector|Vector]]
 	* Grows itself when you add new element
 	* Can traverse with an iterator or random access with []
 	* Decent performance
@@ -31,7 +31,7 @@ Created Monday 29 February 2016
 	* Algorithms
 
 * Containers:
-	* [[C++ NOTES:Use of Standard Containers:vector|vector]], [[C++ NOTES:Use of Standard Containers:list|list]], map
+	* [[+vector|vector]], [[+list|list]], map
 	* queue, dequeue
 
 * Comparison of containers:

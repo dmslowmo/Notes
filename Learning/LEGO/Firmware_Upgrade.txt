@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-21T13:43:35+08:00
+
+====== Firmware Upgrade ======
+Created Thursday 21 April 2016
+
+===== Recover from Bad Firmware Update =====
+* when new firmware turns out to be bad
+* we can recover by booting from the last version before upgrade
+	* the old firmware is still on the hardware (BHR4), but different partition
+	* Steps:
+		* go to u-boot environment
+		* execute **printenv** command and check from the list of command for **mtd_boot**
+			* assuming it exists, execute: **run mtd_boot**
+
+===== Building a New Major Version =====
+* Eg. upgrading from 1.x to 2.x
+	* there is likely to be a huge/breaking changes
+* It is best to do //make superclean// before building
+* It is also good to watch out for new version in master (if we regularly rebase to master)
