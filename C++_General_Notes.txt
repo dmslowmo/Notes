@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-21T09:34:54+08:00
+
+====== C++ General Notes ======
+Created Thursday 21 April 2016
+
+===== Standard Library =====
+* to check whether a type is a base of another:
+	* std::is_base_of: http://en.cppreference.com/w/cpp/types/is_base_of
+* when you need to wrap a static constant of a specified type
+	* std::integral_constant: http://en.cppreference.com/w/cpp/types/is_base_of
+	* useful in template parameter
+
+===== Code style =====
+* to open or not to open **namespace std ??**
+	* NO, if:
+		* it is in header (.h) files
+			* because it is a namespace polution
+			* as the header file is included and compiled with any file which include it
+		* if you want extra clarity (subjective)
+			* eg. you prefer to visually know a function is from std: std::cout, std::begin(), std::end(), instead of just 'cout', 'begin()', and 'end()'
+			* this reason may be more applicable if you use boost, because it can be confusing if you are not too familiar with boost
+	* YES, if:
+		* it is in cpp file (but if you need extra clarity (see above), then no)
+			* because cpp file tends to be compiled as separate translation unit
+			* not a namespace pollution
+		* you do not want to keep typing std::
+		* if you want less clutter in the code from seeing "std::" prefixed everywhere (but this is also subjective, see above)

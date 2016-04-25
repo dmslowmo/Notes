@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-25T12:04:40+08:00
+
+====== Guest Wifi ======
+Created Monday 25 April 2016
+
+Main page: https://greenwavesystems.atlassian.net/wiki/display/RQBHR2X/Guest+WiFi
+
+Tasks:
+https://greenwavesystems.atlassian.net/browse/SB-168
+https://greenwavesystems.atlassian.net/browse/SB-169
+
+Requirement review:
+https://docs.google.com/spreadsheets/d/1zQa-ZxQg1kQY2_J0K255XrYuFuFJfSr6N3aNaz0rxo4/edit#gid=0
