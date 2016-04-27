@@ -5,9 +5,10 @@ Creation-Date: 2016-04-26T17:44:06+08:00
 ====== SSM ======
 Created Tuesday 26 April 2016
 
-* In Observer design pattern, SSM is a data structure which plays a role as an **observable object**
+* In Observer design pattern, SSM is a data structure which holds a set of **observable** values
+	* ValueScope, which wraps Value to be observed
 * The **observer** object is that of type/sub-type of **ValueSlot**
-	* • ValueSlot extends from SignalSlot
+	* ValueSlot extends from SignalSlot
 	* SignalSlot add/remove 'signal source' or (presumably) observable objects
 * SSM typically wrap a list of values to be observed (ValueScope)
 	* ValueScope is non-copyable
@@ -17,3 +18,31 @@ Created Tuesday 26 April 2016
 			* ValueStoreEntry is a wrapper for Value
 		* Each Value is added to each of the Observers
 			* Observer is privately inherited from SignalSlot
+* Callback in Slot object defines the actions that need to happen when the observable Values change
+* Callbacks are executed via coroutine
+	* which needs to be scheduled to run (may not execute immediately, depending on schedule)
+	* schedulling is adding the coroutine to a CoroutinePool to be executed later
+* There are many SSMs, whose values are monitored/modified via Slots, according to business logic behaviour that is bind to the Slot
+* What happens when ValueScope is changed:
+	* Changes in value is done via ValueScope's set() function
+		* also called in its constructor
+	* ValueScope::set(val, direction) will
+		* remove the current value
+		* then add the new one
+	* it calls ValueStore::instance().add(val, direction)
+		* (not sure what direction is and how it is used)
+	* the add() function in ValueStore does the following:
+		* it adds the value into a ValueStore unordered_set
+			* glitch if the value already existed
+		* then, it iterates the set of Observers and add the val to each observer
+			* the action of "adding" here really is changing the value, actually
+			* in Observer, when the value is "added"
+				* it calls valueAdded(val)
+					* it is a pure function
+					* to be implemented by any class which extends ValueStore::Observer
+					* where the updating and notifying happen
+					* eg. GdtValueStoreGlue in proprietary/gdt_server/q
+				* then it calls the connectSlots(this) function of the Value::Ptr where it added itself to set of Slots
+* What if the values are embedded deep in a data structure eg. Map, Struct, or in a hierarchy of values?
+	* you need to take that value out eg map.smth.val, 
+	* or use DeepSlot

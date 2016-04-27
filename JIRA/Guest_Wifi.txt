@@ -31,3 +31,29 @@ https://docs.google.com/spreadsheets/d/1zQa-ZxQg1kQY2_J0K255XrYuFuFJfSr6N3aNaz0r
 	* GDT shows guest_network as "off" even when it is enabled via BHR4 UI
 * For non-secured Guest network, GuessNetworkSsm is used
 	* see guest_wifi_bl.cpp
+* GuestWifiBl class
+	* Wraps the Guest Wifi business logic
+	* How "business logic" class is used:
+		* It wraps a behaviour which is executed implicitly
+			* eg. provides a function which is a callback to be executed when something changes
+		* function //mapIfChanges()// is a callback
+			* called when any of the observables changes (GuestNetworkSsm, GuestSecureNetworkSsm, NetWifiBssSsm, NetWifiBssSsm)
+			* via DecoupledValueSlot mapper
+		* so we never have to or should not explicitely call business logic function (IMHO)
+			* eg. bl.doSomething()
+		* When business logic class is constructed
+			* Ssm and Slot connections are established at construction
+			* including binding the callback to the business logic's function
+			* from then on, any changes to the observable will automatically causes the callback to be executed via Slot object
+* Callback in Slot object defines the actions that need to happen when the observable Values change
+* Callbacks are executed via coroutine
+	* which needs to be scheduled to run (may not execute immediately, depending on schedule)
+	* schedulling is adding the coroutine to a CoroutinePool to be executed later
+* Other business logic classes:
+	* GuestBl:
+		* managing the IP assignment for guests
+	* GuestBridgeBl
+		* managing bridge interfaces for guests
+	* GuestPassBl
+		* manages generation of guest passes ie addition and removal
+	* etc
