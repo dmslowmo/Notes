@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-26T17:44:06+08:00
+
+====== SSM ======
+Created Tuesday 26 April 2016
+
+* In Observer design pattern, SSM is a data structure which plays a role as an **observable object**
+* The **observer** object is that of type/sub-type of **ValueSlot**
+	* • ValueSlot extends from SignalSlot
+	* SignalSlot add/remove 'signal source' or (presumably) observable objects
+* SSM typically wrap a list of values to be observed (ValueScope)
+	* ValueScope is non-copyable
+	* ValueScope wraps one or more ValueStore objects
+		* ValueStore extends from AppSingleton
+		* It adds/remove Value to/from its Store ie. set of ValueStoreEntry
+			* ValueStoreEntry is a wrapper for Value
+		* Each Value is added to each of the Observers
+			* Observer is privately inherited from SignalSlot

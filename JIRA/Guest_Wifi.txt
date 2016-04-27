@@ -5,6 +5,8 @@ Creation-Date: 2016-04-25T12:04:40+08:00
 ====== Guest Wifi ======
 Created Monday 25 April 2016
 
+
+===== Links =====
 Main page: https://greenwavesystems.atlassian.net/wiki/display/RQBHR2X/Guest+WiFi
 
 Tasks:
@@ -13,3 +15,19 @@ https://greenwavesystems.atlassian.net/browse/SB-169
 
 Requirement review:
 https://docs.google.com/spreadsheets/d/1zQa-ZxQg1kQY2_J0K255XrYuFuFJfSr6N3aNaz0rxo4/edit#gid=0
+
+
+===== Code Review =====
+* GuestSecureNetworkSsm contains the configuration of the Guest secure network
+* GuestSecureNetworkSsm is instantiated during the creation of FeatBHR4::FeatureSsms
+	* where the maxTotalNoAssociatedDevices is set to default 10
+* This Ssm is needed in the creation of the following modules:
+	* DhcpServer
+	* GuestBl
+	* RestApi (taken from FeatureSsms
+	* Tr69Bl
+* Guest Wifi feature is incomplete:
+	* Splash page is not displayed
+	* GDT shows guest_network as "off" even when it is enabled via BHR4 UI
+* For non-secured Guest network, GuessNetworkSsm is used
+	* see guest_wifi_bl.cpp
