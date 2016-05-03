@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-03T16:32:31+08:00
+
+====== TR69 BHR5 bug ======
+Created Tuesday 03 May 2016
+
+https://greenwavesystems.atlassian.net/browse/SB-177
+
+===== How to run the test with TR69 Test Harness =====
+1. On BHR4/5, ensure the settings are as follow:
+	a. Connect the BHR4/5 to company network
+	b. Set security to MINIMUM. 
+	c. Set Port Forwarding port to 9998 for our BHR's LAN IP (192.168.1.1)
+	d. Via GDT:
+		a. net/tr69_client/enable ---> **true**
+		b. net/tr69_client/enableLcalValueMirror ---> **true**
+		c. net/tr69_client/management_server/url ---> **http://10.0.10.153:1111**
+2. VNC to the TR69 Ubuntu server
+	a. VNC Server: 10.0.10.153
+	b. Pwd: green
+	c. desktop passw: thinkgreen
+3. On the Ubuntu server, to go to [[~/Public/tr69th]]
+	a. ensure there is the testplan.xml
+	b. change the serial number to our BHR4/5 serial no.
+	c. execute test harness app: //./tr69_test_harness ---> //the UI should come up and the serial number of our BHR4/5 is shown
+4. From our machine:
+	a. //telnet 10.0.10.153 2222//
+	b. run the test by typing **'go'**
+5. Check the tr69_test_harness UI for the result file name. It should be saved in ~/public/tr69th/

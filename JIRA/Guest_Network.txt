@@ -1,0 +1,150 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-03T10:53:01+08:00
+
+====== Guest Network ======
+Created Tuesday 03 May 2016
+
+Detailed Description
+1. Introduction
+
+This is the implementation of Guest Network feature.
+Current implementation is very much tailored to the specific requirements of the BHR4 FiOS router project.
+
+It supports two modes; an Open, Guest Pass-based, Guest Network and a Secure, Customer-Managed, Guest Network.
+2. Implementation Overview
+
+	TR69 and REST configure the Guest Networks via the "configOn" and "wpaKey" properties
+	TR69 and REST show the Guest Network states via their "on" properties
+	The main business logic is acting upon the "configOn" and "wpaKey" property changes, and ensures the two Guest Networks are mutually exclusive
+	Subsequent business logics are monitoring the Guest Networks' "on" properties
+
+2.1 Main Interface
+
+The main interface to the feature is in two SSMs:
+
+	GuestNetworkSsm (Open, Guest Pass-based, Guest Network)
+	GuestSecureNetworkSsm (Secure, Customer-Managed, Guest Network)
+
+The Guest Networks can be enabled/disabled by setting the relevant SSM's configOn property.
+The actual state of the Guest Network can be read from the relevant SSM's on property.
+
+Both Guest Networks allows user control of the SSID of each Guest Network.
+Furthermore the Secure Guest Network offers control of the WPA2 key.
+2.2 Open, Guest Pass-based, Guest Network
+
+This section describes in details some of the elements that make up the Open, Guest Pass-based, Guest Network.
+2.2.1 Walled Garden
+
+The Walled Garden functionality is specific to the Open Guest Network implementation.
+
+It is a state that all Guest Devices will appear in when first connected to the Open Guest Network.
+
+From the Walled Garden it's possible for the Router Admin to grant the Guest Devices
+further approval in the form of a Guest Pass.
+2.2.2 Guest Pass
+
+The Guest Pass concept is a specific element in the implementation for the Open Guest Network.
+
+A Guest Pass embodies two things:
+
+	The devices (identified by MAC Address) that it allows entry
+	The expire time of the Guest Pass
+
+When a Guest Pass expires, the devices that it previously granted access, will now no longer
+be able to create outbound connections and established connections will be dropped.
+
+From this point on, the device will find itself in the Walled Garden again.
+2.2.3 Redirection to Landing Page
+
+This functionality is specific to the Open Guest Network implementation.
+
+It ensures that any HTTP traffic generated from Guest Devices connected to the Guest Network
+that are in the Walled Garden (all outbound traffic dropped) will be redirected to the Landing Page Server (Cloud-based).
+
+The implementation of the Redirect Server can be deduced into three parts:
+
+	Implements a TCP Server Socket
+	Manages incoming connections
+	Replies clients with a HTTP redirect message (pointing to the Landing Page Server)
+
+2.2.3.1 TCP Server Socket
+
+The Guest Network Redirect Server takes care of the opening and closing of the TCP Server Socket.
+It does so by utilizing the IoServerServerFactory::mkTcpServer.
+
+The returned IoServerSocket, or rather the specialized IoTcpServerSocket, will take
+care of opening the socket, configuring it, binding and eventually start the listening already on construction.
+2.2.3.2 Managing Connections
+
+When a new connection is created the IoTcpServerSocket will take care of accepting this,
+and then invoke a callback on the method, haveConnection(..), derived from the IoHandler.
+This callback contains an IoSocketFdByteStream object.
+
+For every call to haveConnection(..) method the GuestNetworkRedirectServer will
+instantiate a GuestNetworkRedirectConnection object to take care of that specific connection.
+2.2.3.3 HTTP Redirect Message
+
+On data received on the accepted TCP connection the Redirect Server will reply with a HTTP response.
+
+The HTTP response is a redirect message (HTTP Method 307 - Temporary redirect).
+
+Since the Landing Page Server might change to a different address, it's possible to control
+the host part of the Landing Page Url through TR69.
+However following the customizable part is a set of parameters, that is not customizable.
+Current implementation includes following elements in the redirect URL:
+
+	MAC Address of the Guest Device
+	Serial Number of the BHR4 FiOS Router
+	IP of the BHR4 FiOS Router
+
+Example Redirect URL:
+https://www98.verizon.com/FiOSQuantumGatewayExt/Welcome?DeviceMac=AB:CD:EF:01:23:45&CPESn=SN1234567890&CPEIP=182.25.2.98
+2.2.3.4 Message Sequence Chart
+
+The diagram below illustrates how an example of the redirection sequence could look.
+
+In the example the Guest Device sends a HTTP Get on a TCP connection established on port 80.
+The packets inbound on port 80 are DNAT'ted in the Firewall to the Guest Network Redirect Server
+hosted on 'br-guest' Network Interface listening on port 32332.
+
+When the TCP connection is established the IoTcpServerSocket is invoked and accepts the queued connection,
+which in turn spawns a GuestNetworkRedirectConnection object.
+
+When constructed the GuestNetworkRedirectConnection object waits for data, and when it receives a callback
+that data is available(the HTTP GET message), it immediately sends a HTTP response - a 307 temporary redirect.
+
+After this the TCP connection is closed.
+
+The Guest Device now establishes a new connection, this time to the Landing Page Server
+that is the host part of the redirect URL that it received in the HTTP response.
+
+{lego_guest_network_redirect_msc.png} participant "Guest Device" as GUEST participant "Firewall" as FW participant "Guest Network Redirect Server" as SOCK participant "Guest Network Redirect Connection" as CONN participant "IoFdByteStream" as BS participant "Landing Page Server" as LANDINGPAGE
+
+note over GUEST, SOCK Guest Device initiates a TCP connection by sending a TCP packet with SYN flag on <WAN_IP>:80. The rest of the handshake follows and TCP connection is established. end note
+
+GUEST -> FW: <WAN_IP>:80 FW -> SOCK: DNAT: <BR-GUEST_IP>:32332 SOCK -> SOCK: accept() create BS SOCK -> BS: bs = new IoFdByteStream() create CONN SOCK -> CONN: new GuestNetworkRedirectConnection(bs) CONN -> BS: wantInput() GUEST -> BS: "GET /WORLD/ http/1.1/r/n/Host: cnn.com" BS -> CONN: haveInput() CONN -> BS: wantOutput() BS -> CONN: haveOutput() CONN -> GUEST: "HTTP/1.1 307 Temporary Redirect\r\nLocation:<LANDING_PAGE_URL>?DeviceMac=<GUEST_DEVICE_MAC>&CPESn=<SERIAL>&CPEIP=<WAN_IP>" GUEST -> LANDINGPAGE: "GET ?DeviceMac=<GUEST_DEVICE_MAC>&CPESn=<SERIAL>&CPEIP=<WAN_IP> http/1.1/r/n/Host: <LANDING_PAGE_URL>"
+
+See also
+	GreenWave::GuestNetworkRedirectServer 
+	GreenWave::GuestNetworkRedirectConnection 
+
+Classes
+class  	GreenWave::GuestBl
+ 
+class  	GreenWave::GuestBridgeBl
+ 
+class  	GreenWave::GuestPassBl
+ 
+class  	GreenWave::GuestWifiBl
+ 
+class  	GreenWave::GuestNetworkBlockedSitesSsm
+ 
+class  	GreenWave::GuestNetworkSsm
+ 
+class  	GreenWave::GuestNetworkRedirectServer
+ 	Redirect Session Manager for the Open Guest Network. More...
+ 
+class  	GreenWave::GuestNetworkRedirectConnection
+ 	Redirect Session for the Open Guest Network. More...
+ 

@@ -27,3 +27,7 @@ Created Thursday 21 April 2016
 			* not a namespace pollution
 		* you do not want to keep typing std::
 		* if you want less clutter in the code from seeing "std::" prefixed everywhere (but this is also subjective, see above)
+
+===== Random Find from Internet =====
+* Compiling an application for use in highly radioactive environments
+	* http://stackoverflow.com/questions/36827659/compiling-an-application-for-use-in-highly-radioactive-environments
