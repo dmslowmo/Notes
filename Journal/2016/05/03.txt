@@ -4,8 +4,8 @@ Creation-Date: 2016-05-03T10:04:19+08:00
 
 ====== Tuesday 03 May 2016 ======
 
-[ ] Back from holiday!
-[ ] Read High-level Design Doc of Guest Wifi
-[ ] Started to work on bug: https://greenwavesystems.atlassian.net/browse/SB-177
-	[ ] Problem did not happen on BHR4 (verified)
-	[ ] Problem happens on BHR5
+[*] Back from holiday!
+[*] Read High-level Design Doc of Guest Wifi
+[*] Started to work on bug: https://greenwavesystems.atlassian.net/browse/SB-177
+	[*] Problem did not happen on BHR4 (verified)
+	[*] Problem happens on BHR5: could not even start
