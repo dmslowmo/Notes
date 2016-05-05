@@ -4,9 +4,11 @@ Creation-Date: 2016-05-04T09:19:40+08:00
 
 ====== Wednesday 04 May 2016 ======
 
-[ ] work on bug: https://greenwavesystems.atlassian.net/browse/SB-177
-	[ ] could not reproduced, asked Maryan to verify my result file and testplan.xml
-[ ] Move on to JIRA-183: SDHL2.0
-	[ ] setup Eclipse for the sdhl project
-	[ ] overview the Actions classes
-		[ ] Actions c
+[*] work on bug: https://greenwavesystems.atlassian.net/browse/SB-177
+	[*] could not reproduced, asked Maryan to verify my result file and testplan.xml
+[*] Move on to JIRA-183: SDHL2.0
+	[*] setup Eclipse for the sdhl project
+	[*] overview the Actions classes
+		[*] Actions are created for each rule
+		[*] Each rule has a json definition
+		[*] A Monitor class spawn a thread which monitors the rule executions

@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-05T15:34:04+08:00
+
+====== SDHL ======
+Created Thursday 05 May 2016
+
+===== SDHL Java Application =====
+* SDHL-1.4.9 (in BHR5), in BHR4 may be different
+* Java classes:
+	* Monitor: add/remove/executes Action
+	* Action: action to be performed (based on rules)
+* JSON rules:
+	* Each rule has a JSON schema
+	* The rules includes, ID, parameter list, status, calculation, limit/threshold, etc
+* C++ in lego:
+	* SdhlSSM: contains all the RuleActions and WallGarden settings
+	* SDHL EC components:
+		* in lego/proprietary/ec_components/sdhl_app/
+		* will compile into a sdhl_app library
+		* needs java_app_launcher module
+		* sdhl_app communicates with the Java SDHL app to control it
+		* messages are sent via UDS (?) socket
+			* io_message_output_queue.cpp
+		* if any rule (condition) is met, message with value changes:
+			* sent from Java App to sdhl_app library
+			* message captured in sdhl_connection_handler.cpp
+			* handle the message in sdhl_rule_action_handler.cpp
+	* WalledGarden
+		* Used for ParentalControl
+		* Triggered from SDHL App which sends the message to sdhl_app lib in BHR4 process
+		* ParentalControl will update iptables with the rules (eg block certain site)
