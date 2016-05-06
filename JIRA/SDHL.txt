@@ -30,3 +30,42 @@ Created Thursday 05 May 2016
 		* Used for ParentalControl
 		* Triggered from SDHL App which sends the message to sdhl_app lib in BHR4 process
 		* ParentalControl will update iptables with the rules (eg block certain site)
+
+===== Understand Walled Garden =====
+* How to add a rule
+* How to execute rule's action
+* How REST API request is made
+* how to update the firewall based on the performed action
+* how to redirect the HTTP request
+* how to display a new webpage (redirected)
+
+===== Customer Notification - WAN Link Down =====
+* New rule for WAN Link Down
+* Action:
+	* Interface reset
+	* redirect to a Walled Garden page
+* Walled Garden page:
+	* 3 unique Web pages for Walled Garden functionality
+	* Locations to be created as TR69 variables including Webpage filename which can be invoked from SDHL
+	* Web pages need to be remotely capable of being updated via TR69 sending the appropriate HTML code
+	* Web page has the following functions:
+		* Button to reboot Router
+		* Button to reset WAN connection
+		* Toggle Switch to allow clearing of Walled Garden
+		* Link to URL to access UI (router mgmnt page)
+		* The HTML code will be a subset of the whole page, sent via TR69 parameters
+	* Need changes in REST API
+* Needs "WANLinkMonitorSSM" (or existing one) and business logic
+
+===== Customer Notification - WAN Unable to Rout =====
+* New rule for WAN Unable to Rout
+* Action:
+	* DHCP release/renew
+	* redirect to a Walled Garden page
+* Walled Garden page:
+	* similar to WAN link down
+	* Need changes in REST API
+* Shares the “WANLinkMonitorSSM” (or existing one) and business logic with WAN Link Down
+	* If link is down, then unable to rout → WAN Link Down rule and action is performed
+	* If link is up, test whether it is able to rout → WAN Unable to Rout rule and action is performed
+
