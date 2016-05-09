@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-09T09:33:40+08:00
+
+====== Monday 09 May 2016 ======
+
+[ ] SDHL 2.0
+	[ ] Trace the codes on how rule works, starting from the JAVA App, REST request, and the C++ codes
+		[*] How the (Java) SDHL Engine start-up and handles request from TR69
+		[*] From REST API in JAVA App, to the handler in C++ codes
+		[ ] How does it invoke another rule which opens Walled Garden page
+	[ ] Define how we detect unable to route:
+		[ ] ArpGatewayUnreachable (try it out)
+		[ ] DNS failures? Ping? TKEcho failures?
+		[ ] Document the theory of operation - when exactly this condition is detected
