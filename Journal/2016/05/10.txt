@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-10T09:29:46+08:00
+
+====== Tuesday 10 May 2016 ======
+
+[ ] SDHL 2.0
+	[x] How does it invoke another rule which opens Walled Garden page
+		[*] JAVA App SDHL Engine checks TR69 params periodically every 1 min
+		[*] eg. WANEthernet status
+		[*] If a no connection after 5 mins, then send alert via REST to SDHL Connection Server
+			[*] Then TR69 params are updated accordingly
+		[ ] In the mean time, **some module** that is watching the TR69 param will invoke the WallGarden
+			[ ] need to study how sdhl_wall_garden.cpp works
+			[ ] it is invoked from cust_verizon/components/bhr_librest/settings_wall_garden_handler.cpp
+			[ ] but need to find the missing link between:
+				[ ] TR69 param update and
+				[ ] invoking Wall Garden, then
+				[ ] redirecting using iptables to the wall garden page
+	[ ] Define how we detect unable to route:
+		[ ] ArpGatewayUnreachable (try it out)
+		[ ] DNS failures? Ping? TKEcho failures?
+		[ ] Document the theory of operation - when exactly this condition is detected
