@@ -1,0 +1,69 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-11T16:02:55+08:00
+
+====== SOLID Principle ======
+Created Wednesday 11 May 2016
+
+===== 1. SRP (Single Responsibility Principle) =====
+* There should be no more than 1 reason for a class to change
+* Responsibilities are Axes of Change
+	* more responsibilities ---> more likelihood of change
+	* more responsibilities ---> more dependencies
+	* split the class by its responsibilities
+* What is Responsibility?
+	* reason to change
+	* diff in usage scenarios from the client's perspective
+	* miltiple small interfaces (follow ISP) can help to achieve SRP
+* Advantage:
+	* loose coupling
+	* flexible design
+
+===== 2. OCP (Open-closed Principle) =====
+* Statement: software entities should be open for extension but closed for modification
+* Open to extension:
+	* new befavior can be added in future
+* Closed to modification:
+	* changes to source or binary code are not required
+* Change bhavior without chagning the code?
+	* Rely on abstractions
+	* no limit to variety on implementation of each abstraction
+	* Write a class for one focussed behaviour (follow SRP)
+* 3 approaches to OCP
+	* parameters (procedural programming)
+		* allow client to control behavior specifics via a param
+		* combined with delegates/labda can be very powerful approach
+	* Inheritance/Template method pattern
+		* child tpes override behavior of a base class or interface
+	* Composition/strategy pattern
+		* client code dependes on abstraction
+		* provides a "plugin" model
+		* implementations utilize inheritance; Client utilizes Composition
+* When do we apply OCP?
+	* Experience ☺
+	* Otherwise:
+		* don't apply OCP a first
+		* if the module changes once, accept it
+		* if it changes a second time, refactor to achieve OCP
+	* Remember //TANSTAAFL//
+		* There ain't no Such Thing As A Free Lunch -----> there is always a price to pay, so check the ROI
+		* OCP adds complexity to design
+		* No design can be closed against all changes
+
+===== 3. LSP (Liskov Substitution Principle) =====
+* Definition: Subtype must depend on abstraction, not the other way around
+* Child class must not remove base class behavior
+* Inheritance:
+	* in LSP, instead of a **is-a** relationship
+	* it suggests that it is **is-substitutable-for** relationship instead
+* //Design By Contract: //
+	* a techinique that makes defining these pre and post conditions explicit within the code itself
+* Code smell:
+	* when it is not enough to know the Base type and needs to check the child type in order to invoke the correct behavior
+	* child does not implement Base interface fully (interface is too large, not all functions are needed)
+* Tips:
+	* Tell, don't ask
+		* dont interrogate obects ofr their internals
+		* tell the obh what you want it to do
+	* Consider refactoring to a new base class
+		* given two classes that share a lot of behavior but are not substitutable (eg square vs rectangle)

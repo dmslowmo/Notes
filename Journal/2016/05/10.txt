@@ -5,7 +5,7 @@ Creation-Date: 2016-05-10T09:29:46+08:00
 ====== Tuesday 10 May 2016 ======
 
 [ ] SDHL 2.0
-	[x] How does it invoke another rule which opens Walled Garden page
+	[ ] How does it invoke another rule which opens Walled Garden page
 		[*] JAVA App SDHL Engine checks TR69 params periodically every 1 min
 		[*] eg. WANEthernet status
 		[*] If a no connection after 5 mins, then send alert via REST to SDHL Connection Server
