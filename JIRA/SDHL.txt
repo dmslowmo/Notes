@@ -26,9 +26,11 @@ Created Thursday 05 May 2016
 			* sent from Java App to sdhl_app library
 			* message captured in sdhl_connection_handler.cpp
 			* handle the message in sdhl_rule_action_handler.cpp
+			* Updates TR69 params
 	* WalledGarden
 		* Used for ParentalControl
-		* Triggered from SDHL App which sends the message to sdhl_app lib in BHR4 process
+		* Triggered from SDHL Engine (Java app) which sends the request via REST API to BHR process
+		* It is separate from the rule action where SDHL Engine updates TR69 parameter in BHR
 		* ParentalControl will update iptables with the rules (eg block certain site)
 
 ===== Understand Walled Garden =====

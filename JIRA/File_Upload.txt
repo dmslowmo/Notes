@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-13T17:59:31+08:00
+
+====== File Upload ======
+Created Friday 13 May 2016
+
+===== General flow in lego =====
+
+* User selects the config file to upload and click "Apply". Upon executing this, LuiConfigFilePostHandler class will read and save the file in a predetermined location (/tmp/configFile.bin).
+	* In this process, upon receiving a POST request, LuiConfigFilePostHandler is instantiated. This handler is a helper class inside LuiRequestHandler.
+	* In this handler's constructor, the IO process to download the file is started and ends upon receiving all bytes. Only when the file is successfully saved and closed, LuiConfigFilePostHandler instance is created. Otherwise, the handler's instance is nullptr.
+	* Upon closing the file, LuiConfigFilePostHandler::fileClosed() will call the persistor from a pool of persistors in SettingsPersistorPool, and one of such persistor is Bhr4SettingsFilePersistor, registered in FeatBHR4::SettingsImpl::ubootEnvReadyChanged() function.
+	* LuiRequestHandler then authenticate the file and sends "POST success" message.
+	* Bhr4SettingsFilePersistor (and the generic utility SettingsFilePersistor) will save it into [[/media/config/public_settings.1]]
+	* After that, TR69 parameters will be updated via AxactGlue and AxactValueConverter which are the interface to interact with the AXACT CWMP client process.
+	* Finally, BHR will reboot:
+		* This will also reboot the CWMP client
+		* FwUpdater::stop() checks whether there is an event from the AXACT CWMP client process to reboot
+		* If there is, then reboot BHR4
+
+ 
+
+===== Adding new file saving utility for other purposes =====
+
+For example, saving images (.png, .jpeg, etc) or other kinds of files, will need a different Handler, based on the current architecture.
+
+The handlers are required for the following:
+* File upload to BHR and saving to /tmp (a user-writeable location)
+* Saving the file to persistent location
+
+In the current architecture, we need to have a new handler for each of the above tasks. The file path is hardcoded in the handler itself.
