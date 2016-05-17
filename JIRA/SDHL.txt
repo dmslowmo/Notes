@@ -36,15 +36,36 @@ Created Thursday 05 May 2016
 ===== How Rule is Processed =====
 * BHR process sends new Rule to SDHL Engine (JAVA)
 * SDHL Engine receives the rule and add it to a list
-* A thread will loop through the list to periodically perform calculation and compare the results with the threshold. The frequency and the threshold values are specified in the Rule.
+* A thread will loop through the list of parameters to monitor to periodically (every 1 minute, I think):
+	* poll BHR for current TR69 parameters value via UDS socket communication
+		* the response from BHR is in JSON format
+		* if the polling period is not reached yet, the parameter is skipped
+	* execute rules (see **DataStoreMonitorRuleManager.java**):
+		* store this response from BHR
+			* NOTE: the code is badly written, logic to store the data is embedded inside "getXXX" methods, making it hard to understand
+			* See **RawResponseMap.java**
+			* The data stored will be used for calculation
+		* perform calculation and compare the results with the threshold.
+			* The frequency and the threshold values are specified in the Rule.
 * If a threshold is hit/surpassed, an Action is triggered.
-	* A POST message will be sent to notify BHR process
-	* BHR process will send a response (?)
-	* SDHL Engine will send the Action to be performed (WanReset, WalledGarden, logging, etc) to BHR
-* In BHR, there is a REST API handler for every request type, and they are contained in a list of ApiHandler
+	* SDHL Engine will send POST message via REST API on the Action to be performed (WanReset, WalledGarden, logging, etc) to BHR
+* In BHR (c++), there is a REST API handler for every request type, and they are contained in a list of ApiHandler
 * The REST request in buffered in a list, and the ApiHandler will loop this list to process the requests.
 * Eg. WanReset:
 	* WanReset handler will disable and then enable the wanIf
+
+===== How Calculation is Performed =====
+* Calculation is only relevant to one extension of RuleAbst ie. DataStoreMonitorRuleManager
+* performCalculations() is called from the override of executeRules() in DataStoreMonitorRuleManager
+* performCalculations() iterate over a list of calculations to perform in dataStoreToMonitor list.
+	* //isItTimeToPerformCalculation(ruleID, config, calcConfig)// checks if the set time has elapsed to perform the calculation
+	* otherwise, the calculation is skipped for now
+	* //doCalculate()// performs the actual calculation, using the Equation that was set when the Rule was added
+		* Equation's variables are updated and the equation evaluated based on the operator found in the //postfix// of the string input
+		* eg. "*", "/", "_", "-", "^", and "%"
+		* Expression, which is in //infix// format, is first converted to its //Reverse Polish Notation// equivalent
+		* Then, calculation is performed with help of operand and operator stacks.
+* Each of the calculation is performed and the result is set into the parameter of //CalculatedValue// object
 
 ===== Understand Walled Garden =====
 * How to add a rule
