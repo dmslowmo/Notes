@@ -33,6 +33,19 @@ Created Thursday 05 May 2016
 		* It is separate from the rule action where SDHL Engine updates TR69 parameter in BHR
 		* ParentalControl will update iptables with the rules (eg block certain site)
 
+===== How Rule is Processed =====
+* BHR process sends new Rule to SDHL Engine (JAVA)
+* SDHL Engine receives the rule and add it to a list
+* A thread will loop through the list to periodically perform calculation and compare the results with the threshold. The frequency and the threshold values are specified in the Rule.
+* If a threshold is hit/surpassed, an Action is triggered.
+	* A POST message will be sent to notify BHR process
+	* BHR process will send a response (?)
+	* SDHL Engine will send the Action to be performed (WanReset, WalledGarden, logging, etc) to BHR
+* In BHR, there is a REST API handler for every request type, and they are contained in a list of ApiHandler
+* The REST request in buffered in a list, and the ApiHandler will loop this list to process the requests.
+* Eg. WanReset:
+	* WanReset handler will disable and then enable the wanIf
+
 ===== Understand Walled Garden =====
 * How to add a rule
 * How to execute rule's action

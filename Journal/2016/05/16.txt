@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-16T09:39:43+08:00
+
+====== Monday 16 May 2016 ======
+
+[ ] SHDL 2.0:
+	[ ] ARP Gateway Unreachable rule: test that it is currently working
+	[*] Studied the code flow:
+[*] File upload:
+	[*] documentation update, if needed
