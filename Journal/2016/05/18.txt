@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-18T09:15:38+08:00
+
+====== Wednesday 18 May 2016 ======
+
+[ ] SDHL 2.0
+	[ ] what else to study?
+[ ] Guest Wifi
+	[ ] pick a ticket to study how to do it: https://greenwavesystems.atlassian.net/browse/BHR2X-40

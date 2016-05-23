@@ -5,7 +5,7 @@ Creation-Date: 2016-03-31T19:52:22+08:00
 ====== Parallel Ping ======
 Created Thursday 31 March 2016
 
-Pseudo code:
+===== Pseudo code: =====
 {{{code: lang="python" linenumbers="True"
 //spawn N goroutines
 //each goroutine ping a host and print the result
@@ -26,13 +26,13 @@ for each host in the file
 * Codes uploaded in Github: https://github.com/dmslowmo/go-n-multiping
 	* //git clone //https://github.com/dmslowmo/go-n-multiping.git
 
-* Design and implementation:
+===== Design and implementation: =====
 	* ping multiple hosts in parallel via ICMP ping
 	* by making use of goroutines
 	* synchronized using WaitGroup
 	* ping is wrapping native Linux ping function using os/exec
 
-* Concepts learned:
+===== Concepts learned: =====
 	* Synchronization using WaitGroup
 		* defer
 		* Wait
@@ -43,3 +43,12 @@ for each host in the file
 		* open/close and read file
 		* exec (execute a program from Go program)
 	* handling multiple output from a function
+	* channels
+
+===== Improvement ideas =====
+* Use buffered channels, such that
+	* when sending result to a channel that is full, the next one that has space is used
+	* when waiting to receive result from a channel that is empty, the receiver can switch to another channel that has result
+	* need to learn about **select** feature
+* goroutines, buffered channels, and **select**
+* useful example: http://stackoverflow.com/questions/25657207/golang-how-to-know-a-buffered-channel-is-full

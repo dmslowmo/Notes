@@ -5,8 +5,7 @@ Creation-Date: 2016-05-05T15:34:04+08:00
 ====== SDHL ======
 Created Thursday 05 May 2016
 
-===== SDHL Java Application =====
-* SDHL-1.4.9 (in BHR5), in BHR4 may be different
+===== SDHL Engine (JAVA) and SDHL Application (part of BHR) =====
 * Java classes:
 	* Monitor: add/remove/executes Action
 	* Action: action to be performed (based on rules)

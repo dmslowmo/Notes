@@ -24,6 +24,8 @@ Created Friday 04 March 2016
 				[ ] Compile and cross-compile
 				[ ] Try it out
 	[ ] Go implementation of C++ code style checker
+	[ ] Go-Dasmo
+	[ ] Go-SDHL
 [ ] Try out existing embedded systems in Go using Raspbery Pi:
 	[ ] Router system implementation in Go
 		[ ] http://www.sajalkayan.com/post/golang-openwrt-mips.html

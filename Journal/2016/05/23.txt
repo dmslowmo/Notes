@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-23T08:48:54+08:00
+
+====== Monday 23 May 2016 ======
+
+[ ] SDHL 2.0 !
+	[ ] Still do not understand how to add new rule (which is not default rule)
