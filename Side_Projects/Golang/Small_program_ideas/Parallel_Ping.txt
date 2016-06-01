@@ -46,6 +46,7 @@ for each host in the file
 	* channels
 
 ===== Improvement ideas =====
+[*] Use Makefile
 * Use buffered channels, such that
 	* when sending result to a channel that is full, the next one that has space is used
 	* when waiting to receive result from a channel that is empty, the receiver can switch to another channel that has result

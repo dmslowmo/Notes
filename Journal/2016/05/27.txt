@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-27T17:44:22+08:00
+
+====== Friday 27 May 2016 ======
+
+[*] SDHL Java app unit tests
+	[*] fixed broken unit tests
+	[*] upgraded junit to 4.12
+		[*] new hamcrest dependency
+		[*] updated build.xml
+	[*] Monitor.selfHealing thread
+		[*] added Thread.join
+			[*] need to do live test to see what is the impact
+[*] Gradle
+	[*] the jar does not work:
+		[*] missing selfHealing.config.properties (or smth like that)

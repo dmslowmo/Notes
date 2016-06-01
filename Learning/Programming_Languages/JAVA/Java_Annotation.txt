@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-31T15:13:16+08:00
+
+====== Java Annotation ======
+Created Tuesday 31 May 2016
+
+see http://tutorials.jenkov.com/java/annotations.html
+
+Recently bumped into a situation where annotations are used in the code that is supposed to run with JRE5 (where annotations are not (fully) supported).
+Learned something new:
+* @Override annotation in JDK5 only used when overriding superclass methods
+* However, from JDK6 onwards, it is required also when implementing interface methods
+* Retention policy:
+	The RetentionPolicy class contains two more values you can use:
+	- RetentionPolicy.CLASS means that the annotation is stored in the .class file, but not available at runtime. This is the default retention policy, if you do not specify any retention policy at all.
+	- RetentionPolicy.SOURCE means that the annotation is only available in the source code, and not in the .class files and not a runtime. If you create your own annotations for use with build tools that scan the code, you can use this retention policy. That way the .class files are not polluted unnecessarily.

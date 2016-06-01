@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-05-31T10:41:41+08:00
+
+====== Working with old JDK ======
+Created Tuesday 31 May 2016
+
+===== How to have alternative JDK in your system =====
+see http://askubuntu.com/questions/469259/downgrade-java-1-7-to-java-1-5
+* Steps:
+	* Download the altenative JDK into your system (eg JDK5)
+	* copy/install it in a directory (let's define a var //OLDJDK//)
+	* //sudo update-alternatives --install "/usr/bin/java" "java" "$OLDJDK/bin/java" $ALT_JAVA_PRIORITY//
+		* where ALT_JAVA_PRIORITY is a number
+		* to avoid clashing of numbers, firstly do //sudo update-alternatives --config java// to check what numbers are already in use
+			* just press enter to select the default when prompted
+		* run //sudo update-alternatives --install "/usr/bin/java" "java" "$OLDJDK/bin/java" $ALT_JAVA_PRIORITY//
+		* change the current Java used: //sudo update-alternatives --config java//, then select priority number of the installed alternative JDK.
+	* do the same for javac: //sudo update-alternatives --install "/usr/bin/javac" "javac" "OLDJDK/bin/javac" $ALT_JAVAC_PRIORITY//
+	* Confirm the version of Java currently in use:
+		* //java -version//
+		* //javac -version//
+
+===== Remove alternative JDK from your system =====
+see http://askubuntu.com/questions/613016/removing-oracle-jdk-and-re-configuring-update-alternatives
+* //sudo update-alternatives --remove java $OLDJDK//
+	* notice that there is no quote ("")
