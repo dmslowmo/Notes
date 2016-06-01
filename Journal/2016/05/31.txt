@@ -4,5 +4,5 @@ Creation-Date: 2016-05-31T15:58:14+08:00
 
 ====== Tuesday 31 May 2016 ======
 
-[ ] Commit a fix for Java SDHL app so that the syntax complies to JDK5
-[ ] Started BHR2X-91: Actions for DHCP Release and DHCP Renew
+[*] Commit a fix for Java SDHL app so that the syntax complies to JDK5
+[*] Started BHR2X-91: Actions for DHCP Release and DHCP Renew
