@@ -5,6 +5,14 @@ Creation-Date: 2016-04-18T17:40:25+08:00
 ====== Git tips ======
 Created Monday 18 April 2016
 
+===== Push just 1 commit out of several staged commits =====
+see http://stackoverflow.com/questions/3230074/git-pushing-specific-commit
+	http://blog.dennisrobinson.name/push-only-one-commit-with-git/
+* Use interactive rebase to reorder the commits such that the one you want to push becomes **just above the remote branch**
+	* //git rebase -i HEAD~<number of commits to SHA>//
+* Then push the commit by specifying the its SHA
+	* //git push origin <commit SHA>:refs/for/master//
+
 ===== Show commits between tags/sha1 =====
 * //git log tag1..tag2//
 	* show just partial hash and title: //git log tag1..tag2 --oneline//
