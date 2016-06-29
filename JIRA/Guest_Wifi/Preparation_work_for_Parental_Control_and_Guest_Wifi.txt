@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-20T15:07:58+08:00
+
+====== Preparation work for Parental Control and Guest Wifi ======
+Created Monday 20 June 2016
+
+===== Background =====
+Leon is urging the design of those to reuse components, and to be more 'Axon-ised'
+
+===== Common functionality =====
+Redirect a user to a webpage
+
+===== Timeline =====
+* around sep/oct
+* hopefully enough time to design and develop in the right way
+
+===== Resource (manpower) =====
+From DK:
+	Allan Dickow (dedicated, though BHR5 may take his time ad-hoc), Lars Marqvart (80%)
+
+===== Planning =====
+Axon router project in Jira (https://greenwavesystems.atlassian.net/secure/RapidBoard.jspa?projectKey=AXRO&rapidView=115&view=planning.nodetail)
+
+==== Step 1 ====
+Identify EC-APIs, Modules, messaging between them
+
+==== Step 2 ====
+* Axon architecture from module perspective.
+* Lifecycle management on modules is missing today.
+* Rodrigo responsible for module architecture, onboard with this
+* Module development and implementation work.... rethink?
+* Modules written by: us, Lars, Allan
+
+===== Axon Router challenges: =====
+each target platform has different configuration needs / requirements.
+e.g. wifi ethernet present / not present.  capabilities different for different chipsets / hardware
+
+===== Others =====
+* Andreas PO for parental control
+* Bob & Andreas work together on requirements / priorities
+* Potentially native modules.  David did some work on module design previously.
+* Socket based message router available in Java
+* Native message router?
+* Lifecycle of the modules
+* Discovery of the modules
+* Need to be able to deploy modules, register them in the message router.

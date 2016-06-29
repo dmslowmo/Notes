@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-22T11:27:21+08:00
+
+====== Networking ======
+Created Wednesday 22 June 2016
+
+ref: http://serverfault.com/questions/279482/what-is-the-difference-between-unicast-anycast-broadcast-and-multicast-traffic
+
+===== Unicast vs Multicast vs Broadcast vs Anycast =====
+* Unicast:
+	* 1-to-1
+	* scope: whole network
+	* eg HTTP
+* Multicast:
+	* 1/Many to many
+	* scope: defined horizon
+	* eg. SLP (Service Location Protocol)
+* Broadcast:
+	* 1 to many
+	* scope: subnet
+	* eg ARP
+* Anycast:
+	* many to few
+	* scope: whole network
+	* eg 6to4

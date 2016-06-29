@@ -1,0 +1,71 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-21T11:07:03+08:00
+
+====== IPTV SDHL ======
+Created Tuesday 21 June 2016
+
+===== Network overview =====
+* for taking action, logging, or notification on or based on link quality
+* STB sends link information sent to BHR using MC2UC protocol, piggyback-ing Keep Alive Request sent every 10 secs
+* per-client rule for PHY
+* PHY rate is monitored every 5 or 15 minutes
+* calcultion taken for reading from last 60 minutes
+
+===== Misc requirements =====
+* TR69 new param required to control DNS diagnostics
+* Some TR69 values can be set via SDHL
+
+===== IPTV Daemon and SSM changes to support SDHL =====
+* an IPTV SDHL SSM
+* to observe IPTV clients and channels lists
+* and trigger dynamic addition/removal of SDHL rules
+
+==== When a client appears in the list ====
+* Rules from the per-client **template** list will be written and added to SDHL
+* **MACADDRESS** in the rule will be replaced with the client's MAC address
+* **PHYGOOD **and **PHYPOOR, **if present, are replaced with the currently configured value of good/poor PHY
+
+==== When a channel appears: ====
+* Rules from the per-channel template list will be written and added to SDHL
+* Replacements per the above client template are made
+* **CHANNEL_NO** is replaced with the channel number
+
+==== When a channel switch happens ====
+* Reset the SDHL rules for the channel, or remove and re-add them
+* or, the appropriate rules will be toggled (disabled and enabled)
+
+===== TR69 Data Model Changes =====
+BHR shall support:
+* enabling/disbaling the IPTV SDHL related features via TR69 (enabled by default)
+* modification of dynamic rules applied to new clients and channels
+
+===== Calculations =====
+
+==== Running average and running diff ====
+
+==== Rate of change ====
+ROC = (delta in //numerator)///(delta in //denominator)//
+
+===== Per-client rule =====
+
+===== Per-channel rule =====
+
+===== Retransmission rate =====
+* rate of change of RData/OData, calculated and logged every 5 minutes
+
+===== NNAK rate =====
+* rate of change of NNAK/OData, calculated and logged every 5 minutes
+
+===== NAK rate =====
+* rate of change of NAK/OData, calculated and logged every 5 minutes
+
+===== Aggregate/general rule =====
+
+==== Video buffer utilization ====
+
+==== Poor aggregate PHY rate ====
+
+==== Frequent teardowns ====
+* indicates router in a "missing heartbeat mode"
+

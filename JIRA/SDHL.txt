@@ -5,6 +5,43 @@ Creation-Date: 2016-05-05T15:34:04+08:00
 ====== SDHL ======
 Created Thursday 05 May 2016
 
+Sources:
+https://support.greenwavereality.com/projects/gwr-embedded/wiki/SDHL
+https://cto-wiki.greenwavereality.com/index.php/BHR4_Overview
+
+docs:
+https://docs.google.com/document/d/1dtucj4VNN0rJVW8BfXQemPVD1g0VSJjzRN8bt6GjJp8/edit
+https://docs.google.com/document/d/1CyfO-Z51jM2IDH3vK_JZDBlVFpRsj4KVln_hH7dN5NY/edit
+
+===== SDHL jars in lego =====
+* It is downloaded into output/dl directory as sdhl-x.x.x.tar.gz archive
+* you can execute //tar -tzvf sdhl-x.x.x.tar.gz// to list the content of the archive, eg:
+{{{code: lang="sh" linenumbers="True"
+drwxrwxr-x jenkins/jenkins   0 2016-03-31 17:57 sdhl-1.4.9/
+drwxrwxr-x jenkins/jenkins   0 2016-03-31 17:57 sdhl-1.4.9/lib/
+-rwxrwxr-x jenkins/jenkins 32119 2016-03-31 17:57 sdhl-1.4.9/lib/slf4j-api-1.7.10.jar
+-rw-rw-r-- jenkins/jenkins 16046 2016-03-31 17:57 sdhl-1.4.9/lib/json_simple-1.1.jar
+-rwxrwxr-x jenkins/jenkins  7895 2016-03-31 17:57 sdhl-1.4.9/lib/slf4j-jdk14-1.7.10.jar
+-rwxrwxr-x jenkins/jenkins   232 2016-03-31 17:57 sdhl-1.4.9/run.sh
+-rw-rw-r-- jenkins/jenkins 18907 2016-03-31 17:57 sdhl-1.4.9/sdhlRules.json
+-rw-rw-r-- jenkins/jenkins 200882 2016-03-31 17:57 sdhl-1.4.9/selfHealing.jar
+-rw-rw-r-- jenkins/jenkins   1907 2016-03-31 17:57 sdhl-1.4.9/sdhlConfig.properties
+-rw-rw-r-- jenkins/jenkins   1709 2016-03-31 17:57 sdhl-1.4.9/logging.properties
+}}}
+
+
+===== Build and run SDHL from the repository on the BHR4, =====
+* Go to sdhl/SelfHealing
+* Run ant to build and run the unittest
+* Go to sdhl/SelfHealing/bhr4deployment
+* Run package.sh sdhl-{Version}
+	* Set the version to something newer than the current BHR4 setup.
+	* Copy the sdhl-{Version}.tgz to the dl directory in your lego repository if it is not located at ../../lego/dl (The package.sh will copy to this path)
+* Go to lego/thirdparty/sdhl
+* Update the Makefile version to the new version you specified in {Version}
+* Run make once and update the hashes.mk with the string provided by the error from the make command
+* Run the BHR4 build to build the BHR4 image.
+
 ===== SDHL Engine (JAVA) and SDHL Application (part of BHR) =====
 * Java classes:
 	* Monitor: add/remove/executes Action
@@ -53,6 +90,12 @@ Created Thursday 05 May 2016
 * Eg. WanReset:
 	* WanReset handler will disable and then enable the wanIf
 
+==== Experimenting with Rules ====
+* use the JSON editor in //sdhl/tools/editor//
+* run //firefox index.html//
+* On the Firefox browser, you can use the editor to create/edit JSON schema of a rule
+* the new rule schema can be copy-pasted to the rule's schema in GDT under //sdhl/rules/rulexx/rule//
+
 ===== How Calculation is Performed =====
 * Calculation is only relevant to one extension of RuleAbst ie. DataStoreMonitorRuleManager
 * performCalculations() is called from the override of executeRules() in DataStoreMonitorRuleManager
@@ -66,41 +109,5 @@ Created Thursday 05 May 2016
 		* Then, calculation is performed with help of operand and operator stacks.
 * Each of the calculation is performed and the result is set into the parameter of //CalculatedValue// object
 
-===== Understand Walled Garden =====
-* How to add a rule
-* How to execute rule's action
-* How REST API request is made
-* how to update the firewall based on the performed action
-* how to redirect the HTTP request
-* how to display a new webpage (redirected)
 
-===== Customer Notification - WAN Link Down =====
-* New rule for WAN Link Down
-* Action:
-	* Interface reset
-	* redirect to a Walled Garden page
-* Walled Garden page:
-	* 3 unique Web pages for Walled Garden functionality
-	* Locations to be created as TR69 variables including Webpage filename which can be invoked from SDHL
-	* Web pages need to be remotely capable of being updated via TR69 sending the appropriate HTML code
-	* Web page has the following functions:
-		* Button to reboot Router
-		* Button to reset WAN connection
-		* Toggle Switch to allow clearing of Walled Garden
-		* Link to URL to access UI (router mgmnt page)
-		* The HTML code will be a subset of the whole page, sent via TR69 parameters
-	* Need changes in REST API
-* Needs "WANLinkMonitorSSM" (or existing one) and business logic
-
-===== Customer Notification - WAN Unable to Rout =====
-* New rule for WAN Unable to Rout
-* Action:
-	* DHCP release/renew
-	* redirect to a Walled Garden page
-* Walled Garden page:
-	* similar to WAN link down
-	* Need changes in REST API
-* Shares the “WANLinkMonitorSSM” (or existing one) and business logic with WAN Link Down
-	* If link is down, then unable to rout → WAN Link Down rule and action is performed
-	* If link is up, test whether it is able to rout → WAN Unable to Rout rule and action is performed
 

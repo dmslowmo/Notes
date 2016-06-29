@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-20T10:25:45+08:00
+
+====== Monday 20 Jun 2016 ======
+
+[ ] IPTV SDHL
+	[ ] study the documentation, target is to explain to the team
+	[*] sdhl code review: clarify Kokkee's comment on actionString

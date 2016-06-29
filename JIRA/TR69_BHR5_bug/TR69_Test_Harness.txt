@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-07T15:11:26+08:00
+
+====== TR69 Test Harness ======
+Created Tuesday 07 June 2016
+
+===== Objective =====
+	Create an automated test framework which includes the following functionality:
+		Simulate the functions of ACS and support the frequently-used RPC methods.
+		Mirror the SSMs on the DUT.
+		Compare values in the mirror SSMs with the values SPV/GPV to/from DUT.
+
+===== Architecture =====
+{{~/Documents/BHR4/tr69_test_harness/TestHarness_arch.png}}
+
+===== Business Logic =====
+1. CWMP client in DUT connects to ACS simulator in TH
+2. TH connects to value store observer in DUT
+3. Value store observer in DUT synchronizes SSMs value changes to TH in real time. TH stores SSMs in value map.
+4. TH parses test plan to test items, then sequentially sends test items to DUT by RPC methods (GPV/SPV/GPA/SPA/...)
+5. TH receives test response from DUT and generates test results. If the test item is GPV/SPV, TH compares the parameter values with SSMs value map and generates analysis results.
+Notes: TH is independent of data model. For GPV/SPV, test analysis results depend on whether the correct SSMs are synchronized to TH.

@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-23T09:37:41+08:00
+
+====== Thursday 23 Jun 2016 ======
+
+[ ] Try running SDHL on BHR4 with debug options enabled in [[/mnt/config]]
+	[ ] to understand how SDHL works in general
+	[ ] to understand how rule is loaded, added, executed
+[ ] Going deep:
+	[ ] study the codes on how calculation is done and results stored
+	[ ] study what needs to be done for BHR2X-222 SDHL IPTV: Design mechanism for not discarding samples at calc interval - running average

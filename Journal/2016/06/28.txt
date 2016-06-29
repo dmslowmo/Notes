@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-29T09:29:47+08:00
+
+====== Tuesday 28 Jun 2016 ======
+
+[*] Fixed broken commit for BHR2x-203 Refactoring ActionValidator, submitted for review
+[*] Suggest gradle as alternative build tool, submitted code review
+[*] Refactoring Calculation
+	[*] Fixed broken unit tests affected by refactoring
+	[*] Created CalculationFactory to keep the creational logic in one place
+		[*] still need to use 2 different overloads of create() because of the unit tests that don't use JSONMap

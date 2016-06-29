@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-06-23T09:31:41+08:00
+
+====== Wednesday 22 Jun 2016 ======
+
+[*] Read IPTV Design doc
+[*] Sprint planning meeting:
+	[*] will work on BHR2X-222 https://greenwavesystems.atlassian.net/browse/BHR2X-222: SDHL IPTV: Design mechanism for not discarding samples at calc interval - running average
+	[*] will work together with Mostafa
+[*] SDHL tips from Kokkee
+	[*] use BHR4Simulator to simulate BHR4 process and run it together with SDHL selfHealing process
+	[*] mechanisms has changed ie. no longer using config file as param
+	[*] so, got jars of BHRSimulator and SelhHealing based on old codes from Kokkee
+		[*] tested, but need to fix the properties file in [[/config]] (change to my local paths)
+	[*] We can run SDHL in BHR4 router, and enable debug in logging option in /mnt/config
