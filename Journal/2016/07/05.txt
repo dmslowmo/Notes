@@ -16,3 +16,7 @@ Creation-Date: 2016-07-05T17:04:24+08:00
 			[ ] calculated every 5 minutes
 			[ ] calculation: (no. of raised alerts)/(no. of possible alerts) * 100%
 			[ ] then reset the count/list of raised alerts
+			[ ] Action will be taken when alerts are raised for more than 50% of the clients
+				[ ] Action could be resetting the connection, or just logging, etc
+			[ ] Need 1 rule, but per-client Alert?
+				[ ] NO, it is still 1 Rule object, 1 Alert object, but the rule per client follows a "template rule"
