@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-07-05T17:04:24+08:00
+
+====== Tuesday 05 Jul 2016 ======
+
+[*] Merged CalculationParameters
+[ ] New AlertMap matching type — wild-carded count
+	[ ] https://greenwavesystems.atlassian.net/browse/BHR2X-157
+	[ ] Desigin:
+		[ ] Per-client alert for a particular stats, eg PHY rate
+		[ ] when alert is raised, update raised-alert list
+			[ ] since the polling interval is the same as calculation interval, it is expected that the list contain unique alerts
+			[ ] alert, if raised, should occur every 5*n minutes, where n >= 1
+		[ ] Poor Aggregate PHY rate (for eg)
+			[ ] calculated every 5 minutes
+			[ ] calculation: (no. of raised alerts)/(no. of possible alerts) * 100%
+			[ ] then reset the count/list of raised alerts
