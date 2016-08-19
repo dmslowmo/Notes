@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-07-22T17:27:27+08:00
+
+====== Run SDHL jar on BHR4 for testing ======
+Created Friday 22 July 2016
+
+===== View logs =====
+To view the log messages of SDHL, you need to change the logging properties of SDHL.
+Currently, on BHR4 1.4, this is configured in /usr/local/apps/dasmo/logging.properties and SDHL is default to SEVERE at the moment.
+This directory is readonly so you need to copy this file to /mnt/config/dasmo/logging.properties.
+After that, edit the file and change the SDHL Log file level to a lower level, FINEST will display everything.
+
+	com.gwr.dasmo.vz.launcher.logger.SDHLLogFileHandler.level=FINEST.
+
+Once you save the file, use ps to find the process ID of the siege JVM, then kill it to trigger SDHL to be restarted with the new log level.
+You can also change the other settings to get a larger log file and location of the log (i.e. /mnt/usbstick/sdhl%u.log )
+
+===== Run SDHL jar =====
+SDHL jar can be put in [[/mnt/config]] or [[/mnt/usbstick.]]
+Restart BHR4.
+
+===== Create rule for testing =====
+How to create a rule which will trigger periodically, regardless?

@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-17T15:00:25+08:00
+
+====== 3 Extended Func Req for VZ ======
+Created Wednesday 17 August 2016
+
+//only noted the important ones//
+
+===== TestRequest =====
+[ ] 3.1.2 When ThroughputTestingEnabled = True, the device must send a TestRequest packet to the Test Server periodically (period =  TestRequestInterval) with the initial request starting at a (unformly distributed) random time.
+	[ ] alternatively, BHR may send a TestRquest at a random time within each TestRequestInterval.
+	[ ] //Each BHR must be assigned a unique random seed for the random time selection//
+	[ ] Hence, the tests requests are recurring with one attempt every TestRequestInterval (either periodically with constant period and random initial time, or at a random time in each interval)
+	[ ] TestRequest pkt are sent to the UDP Port TestRequestUDPPort of the Test Server which has IP address TestServerIPAddress. The TestRequest packet is a UDP packet having the payload fomat depicted in Figure 6.
+
+[ ] 3.1.3 A BHR may send its next TestRequest packet starting from its scheduled random time epoch (per 3.1.2) but after a LowActivityWaitTime seconds have passed with the WAN port utilization having a value less than LowActiveityThreshold (buts/sec). The purpose of this requirement is to trigger tests **during periods of low to no subscriber activity.**
+

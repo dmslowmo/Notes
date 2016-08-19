@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-15T10:54:55+08:00
+
+====== Wireshark ======
+Created Monday 15 August 2016
+
+===== wireshark (unix) =====
+* used to capture network traffic on a particular interface(s)
+* How to install and use:
+{{{code: lang="sh" linenumbers="True"
+$ sudo apt-get install wireshark             #install wireshark on Ubuntu
+$ sudo dpkg-reconfigure wireshark-common     #need this step, not sure why
+$ sudo usermod -a -G wireshark $USER         #add your username to wireshark group
+#$ sudo reboot                                #reboot your system or simply exit the console
+$ exit
+}}}
+
+* see https://ask.wireshark.org/questions/7523/ubuntu-machine-no-interfaces-listed
+* Start wireshark as root with sudo (ignore the warning)
+* Select the interface you want to monitor eg. eth0

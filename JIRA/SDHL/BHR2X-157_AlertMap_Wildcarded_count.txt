@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-07-11T10:55:27+08:00
+
+====== BHR2X-157 AlertMap Wildcarded count ======
+Created Monday 11 July 2016
+
+[ ] New AlertMap matching type — wild-carded count
+	[ ] https://greenwavesystems.atlassian.net/browse/BHR2X-157
+	[ ] Desigin:
+		[ ] Per-client alert for a particular stats, eg PHY rate
+		[ ] when alert is raised, update raised-alert list
+			[ ] since the polling interval is the same as calculation interval, it is expected that the list contain unique alerts
+			[ ] alert, if raised, should occur every 5*n minutes, where n >= 1
+		[ ] Poor Aggregate PHY rate (for eg)
+			[ ] calculated every 5 minutes
+			[ ] calculation: (no. of raised alerts)/(no. of possible alerts) * 100%
+			[ ] then reset the count/list of raised alerts
+			[ ] Action will be taken when alerts are raised for more than 50% of the clients
+				[ ] Action could be resetting the connection, or just logging, etc
+			[ ] Need 1 rule, but per-client Alert?
+				[ ] NO, it is still 1 Rule object, 1 Alert object, but the rule per client follows a "template rule"
+
+[ ] Todo:
+	[ ] Mechanism to create pre-client rule
+		[x] Need 'template' rule
+		[x] Need to have a SDHL Request type in JSON schema for 'per-client rule'?
+			[x] NO
+		[*] Or, how do you distinguish per-client rule from normal new rules?
+			[*] by its "alertMatchingType" property
+			[*] need to create a new alertMatchingType
+			[ ] we can assume the ruleID from BHR is already in the [RuleID+MACADDR] form
+	[*] Mechanism to take stats of alerts raised pertaining to certain per-client rule
+		[*] added //raisedPrefixedWildcardAlerts// map in Monitor class which is a //synchronized// Map
+		[*] added methods to add, clear, and get the counts
+	[*] I think the per-client rule will be created and used to calculate the aggregate stats
+		[*] whereas for individual prefixed, wildcarded rule, it follows normal process
+		[*] Therefore, we create special handling for per-client rule:
+			[*] if the alertMatchingType is PREFIXED_WILDCARD
+			[*] get the counts of the raised PREFIXED_WILDCARD alerts over the last 5 minutes
+			[*] and raise the Alert and perform the specified action
+
+[ ] Documentation
+	[ ] draw activity diagram using PlantUML to present the design for review
+
+[ ] Testing
+	[*] Test individual 'unit'
+	[ ] Test the flow
+		[*] using unit test
+		[ ] using GDT

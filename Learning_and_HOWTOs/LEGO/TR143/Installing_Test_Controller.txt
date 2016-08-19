@@ -1,0 +1,113 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-10T16:22:32+08:00
+
+====== Installing Test Controller ======
+Created Wednesday 10 August 2016
+
+This guide is to install Test Controller afresh in a host of your choice, eg your own laptop.
+
+===== Requirements =====
+* rpm packages for vmi-scheduler and vmi-tester (copy it from //10.0.10.241:/home/zhoubin/vmi-tester-*.rpm (pick the latest one)
+* activemq (download one from http://activemq.apache.org/download-archives.html)
+
+===== Vmi packages =====
+* installing vmi-scheduler and vmi-tester is straight forward
+	* unpack rpm
+	* put in some location (like [[/opt/vmi/]])
+	* check and see if any configuration changes needed (see the *.conf files)
+	* scheduler.conf:
+		* set the VMI_USER to your username in the host
+	* tester.conf:
+		* set AddressTestNode to 'localhost' or the IP of the host machine
+	* vmi-tester.conf:
+		* set the VMI_USER to your username in the host, same as scheduler.conf
+* both need to be run as root, if you put them in [[/opt/vmi/]]
+
+===== Set up Mysql database for VMI =====
+* VMI requires database
+* the configuration can be found in [[/opt/vmi/etc/acs.conf]] and [[/opt/vmi/etc/acs-db.conf]]
+* take note of some important configurations in acs.conf:
+	* DBName --- the DB name (create the DB with this name, and create user/passw as below if not exist yet)
+	* DBUser --- the DB username
+	* DBPass --- the DB password
+	* UploadConfigToDb ---- set to '1'
+* in acs-db.conf:
+	* UdpThroughputPhase1ClientDownloadUrl --- should be the UdpThroughput://localhost:10:0:6030:6031:6032:6033
+	* UdpThroughputPhase1ClientUploadUrl --- should be the UdpThroughput://localhost:10:0:6030:6031:6032:6033
+* Assuming that mysql is already installed, then
+* Create a database, using your root privileges:
+	* mysql -u root -p
+	* enter root password when prompted
+	* in mysql application, create the database and give full privileges to a user of your choice (that you set in acs.conf):
+**CREATE DATABASE IF NOT EXITS [DBName];**
+**SHOW DATABASES LIKE '[DBName]'; #to verify the DB has been created**
+**GRANT ALL PRIVILEGES ON [DBName].* TO '[DBUser]'@'hostname' IDENTIFIED BY '[DBPass]';**
+	* after that, exit mysql by typing 'exit' and then hit enter
+* Verify that you can access the database with [DBName] and [DBPass]:
+	* mysql -u [DBName] -p
+	* enter [DBPass] when prompted
+	* assuming everything went well (otherwise, need to create DB again):
+**SHOW DATABASES LIKE '[DBName]';**
+	* the database [DBName] should be listed on the console
+
+===== ActiveMQ installation =====
+* This is a **pain** because the packages don't "just work" and instruction is too simple
+	* lots of suggestion to use downloaded package from Apache rather than using the apt-get installation
+	* many missing instruction, probably depends on what distro you use, or what OS
+
+Following are the steps to install:
+1. Create user for ActiveMQ service:
+**useradd activemq**
+
+2. Download activemq from apache and unpack the archive in a directory eg [[/opt/activemq-*]]. In this case, I renamed the directory to simply [[/opt/activemq.]]
+3. Create symlink:
+**ln -s /opt/activemq/bin/linux-x86-64/activemq /etc/init.d/activemq**
+
+4. Modify [[/opt/activemq/bin/linux-86_64/activemq:]]
+**RUN_AS_USER=activemq**
+
+5. Make sure **java** is installed, otherwise install it first
+6. Make sure file [[/opt/activemq/data/wrapper.log]] exists and owned by activemq user and group (otherwise create and chown)
+7. Create [[/opt/activemq/data/activemq.pid]] file and chown to activemq user and group
+8. Check that [[/opt/activemq/data/wrapper.log]] exists and ensure it is owned by activemq user and group:
+**find /opt/activemq/ -type f -name wrapper.log -o -name activemq.pid | xargs ls -latrh**
+**-rw-r--r-- 1 activemq activemq 0 Aug 10 14:12 ./data/wrapper.log**
+**-rw-r--r-- 1 dmartana daniel   6 Aug 10 16:10 ./data/activemq.pid**
+
+9. (not sure if absolutely needed but no harm installing) sysv-rc-conf to set the appropriate startup and shudown levels:
+**apt-get install sysv-rc-conf**
+
+10. Create direcotry for Active MQ logs:
+**mkdir /var/log/activemq**
+**chown activemq.activemq /var/log/activemq**
+**chmod 0755 /var/log/activemq**
+
+11. Add logging configuration in /opt/activemq/bin/linux-x86_64/wrapper.conf
+**wrapper.logfile=/var/log/activemq/activemq.log**
+
+12. The following commands can be used (in [[/opt/activemq]]):
+	a. bin/activemq start ---> to start the broker
+	b. bin/activemq status ---> to check whether the broker is running
+	c. bin/activemq stop ---> to stop the service
+	d. bin/activemq console ---> to run activemq in foreground, used for debugging
+13. By right, we can invoke the service via //service activemq start// (but didn't work for me)
+14. Gotchas:
+	a. .conf and startup script may have wrong path set
+		* hardcode the path if relative path doesn't work
+		* see http://mriddle.com/2011/07/28/Installing-ActiveMQ-as-a-service-on-Linux.html
+	b. if previously activemq was installed via apt-get, there may be leftover config file which will affect the startup
+		* delete the file: **/etc/default/activemq**
+	c. Jetty requires a writable [[/opt/activemq/tmp]] directory
+		a. create one if it doesn't exist yet, and set user.group to your normal user.group (not activemq, and not root)
+
+===== Running Test Controller =====
+1. Start activemq
+	a. To check that it is running, open from browser //http://localhost:8161/admin (user and password: admin, admin), or//
+	b. //netstat -an | grep 61616//
+2. start vmi-tester
+3. start vmi-scheduler
+Logs to check:
+* [[/opt/activemq/data/activemq.log]]
+* [[/opt/vmi/log/vmi.log]] for scheduler
+* [[/opt/vmi/log/vmi-tester]] for tester

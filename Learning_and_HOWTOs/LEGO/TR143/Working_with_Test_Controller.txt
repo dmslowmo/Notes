@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-05T14:22:06+08:00
+
+====== Working with Test Controller ======
+Created Friday 05 August 2016
+
+Test controller (TC) is a test server. It consists of 2 parts, namely:
+1. Scheduler
+2. Tester
+
+General flow:
+1. The client (BHR4) sends request to the test server for running the a test.
+2. Test Scheduler sees the request, then negotiate with the client. Once done, a test is scheduled and Scheduler will call the Tester.
+3. The Tester executes **tr143_diag** program which can run upload/download test for various protocols (TCP/HTTP/UDP/FTP) according to the request.
+	a. tr143_diag needs to be executed with appropriate options parameters (tons of them!!!)
+	b. it is in server-mode in download test (BHR is the client waiting for data), and client-mode in upload test (it waits for BHR to upload)
+
+Test can be started via GDT's net.tr69_diagnostics (scheduled mode) or via HDM (on-demand mode).
+In on-demand mode, HDM still sends the test request to BHR (which we control via GDT). So instead of we trigger the test on GDT ourselves, we
+use HDM to toggle the trigger in GDT.
+
+**Caveat:**
+1. If the test is started from HDM, Download test cannot be done in the usual way. That's because the tr143_diag has been run by the Tester with
+   a certain options and the client's IP is not our BHR4 (probably the IP of the host where Scheduler and Tester are running, in our case 10.0.10.241)
+2. For it to work, we need to start tr143_diag manually in the Tester's host (Zhou Bin has a script for that)
+3. The flow then becomes:
+	a. Start Download test by SPV (change the Diagnostic_state to "Requested")
+	b. When we see Diagnostic_state changed to "Requested" on GDT, it means BHR is waiting for data from a "server" (ie. tr143_diag in server mode). It will timeout in abt 30 sec (probably configurable)
+	c. Then, start tr143_diag in the Tester's host, specify the client (BHR4) IP (use the script, with BHR4's IP as the input parameter). Actually, tr143_diag is //uploading// the data to BHR4, hence it needs to know the IP.
+	d. If tr143_diag download test starts before the client timeout, download test is run successfully.
+4. For Upload test, it will still work, because the Tester is the one waiting for the data pushed from the client (BHR4), and it does not need to know the client's IP
+
+

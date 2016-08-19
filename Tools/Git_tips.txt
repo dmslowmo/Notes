@@ -5,6 +5,22 @@ Creation-Date: 2016-04-18T17:40:25+08:00
 ====== Git tips ======
 Created Monday 18 April 2016
 
+===== Make local folder a local git repository =====
+http://stackoverflow.com/a/33646077
+* Suppose you have a path [[~/Project/tc]]
+* **git init** in that folder, so that .git is generated in [[~/Project/tc/.git]]
+* go to [[~/Project]]
+* run **git clone --bare tc** (//bare is important). //As a result, a **tc.git** folder will be created
+* go to ~/Project/tc/
+* do **git remote add local ../tc.git**
+* Now you can add, commit, and push the files:
+	* git add -A
+	* git commit -m "some message"
+	* git push local master
+* Test:
+	* from another folder, do **git clone ~/Project/et.git**. The **tc** folder should be checked out into it
+	* You may do **git pull origin master** and **git push origin master** from inside tc.
+
 ===== Push just 1 commit out of several staged commits =====
 see http://stackoverflow.com/questions/3230074/git-pushing-specific-commit
 	http://blog.dennisrobinson.name/push-only-one-commit-with-git/

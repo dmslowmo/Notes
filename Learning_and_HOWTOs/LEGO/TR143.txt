@@ -1,0 +1,111 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-02T14:52:51+08:00
+
+====== TR143 ======
+Created Tuesday 02 August 2016
+
+===== Docs =====
+1. ECR: https://docs.google.com/document/d/1JlqYYUdG724mDOyZe8-OXUBGghkLOz3iMRWJCrILl6U/edit#heading=h.4d34og8
+	a. [[./BHRTR-143ECR122215.doc.pdf]]
+2. Design doc (outdated): https://docs.google.com/document/d/1_oaDU1cQdy72ByuieDnv4m0HSC0Ib46uoh4sfr3JAfo/edit?pli=1
+	a. [[./TR-143ImplementationDesign.pdf]] 
+
+===== Wiki =====
+https://support.greenwavereality.com/projects/bhr4/wiki/TR-069 **(very important!)**
+
+===== Overview =====
+TR143 is for throughput test.
+Important keywords/concepts to remember:
+1. GDT: net/tr69/diagnostic
+2. libpcap ---- packet capture, used to get information about a packet
+	a. typically used to capture first and last packets
+	b. in order to see the timestamp
+	c. or may be other info
+3. tcpdump --- linux utility, but executed from within tr143_diag
+	a. the results are dumped to stdout
+	b. and in tr143_diag, there is a filter to extract selective information
+4. iPerf --- to perform througput test on the kernel
+	a. used as benchmark for tr143_diag
+5. HDM:
+	a. on-demand in nature
+	b. used to trigger changes in bhr4/5
+	c. useful when trigger needs to change multiple parameters at once
+	d. Website URL: 10.0.7.35:7003/hdm
+	e. username: netopmgr
+	f. password: gws241115 (NOTE: QA changes the username and password from time to time, so need to check with them, or their Wiki)
+	g. To set in GDT: tr69 client managerment server's
+		1. url: https://greenwave-bhr4test.verizon.com/cwmpWeb/CPEMgt
+		2. username: serial id
+		3. passw: verizon (for bhr4); for bhr5, don't change the value, should be automatically changed
+	h. So, by right when tr69 client starts, it connects to the HDM server and register the router, and after that it should appear in HDM website
+	i. At first the "Activated" column may show "X". It may take a while before it is changed to 'v' (OK) sign.
+6. Test Controller
+	a. Verizon's propietary
+	b. can set scheduled test
+	c. there are value mirrors between HDM, bhr, and TestController
+	d. Test server URL: 10.0.10.241
+		* user: gws
+		* paswd: thinkgreen
+	e. The test server application and configuration are in [[/opt/vmi]]
+		* [[/opt/vmi/bin:]] where the .jar of the test tester and scheduler are
+		* [[/opt/vmi/etc:]] configurations
+		* restarting the server/scheduler can be done via [[/etc/init.d/vmi-<tester]] or scheduler>
+		* Check the results via brower at 10.0.10.241:9090/results
+	f. GDT settings in net.tr69.diagnostics.:
+		* cfg_test_control: **This is the setting for working with Test Controller**
+		* (the settings that worked for me, or default)
+			* **client_version_number**: 1
+			* debug_cmd: 0
+			* debug_cmd_ext: 0
+			* debug_dl_url:
+			* debug_ul_url:
+			* device_serial_number:
+			* **download_transports**: HTTP, FTP, UDPThroughput, DNS, WebPage (but when specifying in **'url'** field, use **"http", "ftp", "UdpThroughput"**, etc (not sure about DNS and WebPage))
+			* downstream_speed_tier:
+			* GWR_ID:
+			* LATA_ID:
+			* low_activity_resolution: 50
+			* low_activity_threshold: 0
+			* low_activity_wait_expiration_count: 0
+			* low_activity_wait_expiration_time: 30
+			* low_activity_wait_time: 0
+			* OLT_ID: 0
+			* ONT_ID: 0
+			* **perform_download_throughput_test**: set to 'true' to run
+			* **perform_upload_throughput_test:** set to 'true' to run
+			* **requested_test_protocol**: (select from the list according the test you want to run)
+			* **test_request_interval**: test will be run each time this interval elapsed (in Seconds)
+			* **test_request_limit**: how many times the test should be requested and run
+			* **test_request_timeout:** duration in ms before timeout
+			* **test_request_UDP_port**: 9000 — the port at tester which BHR sends UDP requests to (see tester.conf in [[/opt/vmi/etc/]])
+			* **test_results_TCP_port**: 8000 — the port at BHR which tester sends results to
+			* **test_server_IP_address**: test controller host IP address
+			* **throughput_testing_enabled**: to enable/disable the throughput test
+			* upload_transports: HTTP, FTP, UDPThroughput
+			* upstream_speed_tier:
+		* udp_throughput:
+			* cmd_path: /bin/tr143_diag
+			* ctrl_tcp_port: 6020
+				* this is the default port that BHR listen to for the commands from the tester in 10.0.10.241
+				* commands such as: init/config, start, end, close (see ECR)
+				* the init/config command will auto-populate all internal parameters required on the GDT
+			* udp_port:
+				* Download
+					* results: should show some numbers if test has run correctly (for download test)
+				* Upload:
+					* results: should show some numbers if test has run correctly (for upload test)
+			* udp_port_list: 6030
+		* download:
+			* concurrent_sessions: number of download sessions created. If you set upload for x MB, then since there are 4 sessions, the actual download will be 4*x MB.
+			* url: eg. http://10.0.10.87:9999/test.zip
+				* use the protocol appropriate for the test
+				* for http/ftp, must have file name to be downloaded (dummy one)
+				* This url is used if the test does not involve Test Controller, and consequently, you need to have an actual file server at that url
+				* use //tr143_fileserver <httpport> <ftpport> <file size in MB> //running in that url
+		* upload:
+			* concurrent_sessions: number of upload sessions created. If you set upload for x MB, then since there are 4 sessions, the actual upload will be 4*x MB.
+			* url: UdpThroughput://localhost:10:0:6030:6031:6032:6033 (for UDP)
+				* set it according to the protocol tested (http, ftp, etc)
+ 
+ 

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-15T10:55:43+08:00
+
+====== tracepath ======
+Created Monday 15 August 2016
+
+===== tracepath/tracepath6 (unix) =====
+* It traces path to destination discovering MTU along this path. It uses UDP port port or some random port. It is similar to traceroute, only does not require superuser privileges and has no fancy options.
+* tracepath6 is good replacement for traceroute6 and classic example of application of Linux error queues. The situation with IPv4 is worse, because commercial IP routers do not return enough information in icmp error messages. Probably, it will change, when they will be updated. For now it uses Van Jacobson’s trick, sweeping a range of UDP ports to maintain trace history.
+* quick example: //tracepath6 <dest ipv6>//

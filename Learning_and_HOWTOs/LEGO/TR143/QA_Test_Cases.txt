@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-05T15:15:42+08:00
+
+====== QA Test Cases ======
+Created Friday 05 August 2016
+
+Test cases from QA which verifies TR143 functionalities, useful for understanding the concepts:
+https://testrail.greenwavereality.com/index.php?/suites/view/3033&group_by=cases:section_id&group_order=asc&group_id=42256
+
+username: dev@greenwavereality.com
+passw: thinkgreen
+
+===== Download Tests =====
+C340187	Trigger Multithreading HTTP Download Test	
+C439073	Trigger Multithreading HTTP Download Test Result	
+C439074	Trigger Multithreading HTTP for 1 session	
+C439075	Trigger Multithreading HTTP greater than the maximum allowed	
+C474171	Trigger HTTP Download Test (Firewall Mode : High)	
+C541919	Phase 2: Trigger Time Based HTTP Download Test	
+C541921	Phase 2: Trigger Time Based Multithreaded HTTP Download Test	
+C541922	Phase 2: Trigger Time Based HTTP Download Test with TimeBasedTestIncrement	
+C638838	Phase 2: Verify the result packet of HTTP Download Incremental test	
+C541923	Phase 2: Trigger Time Based Multithreaded HTTP Download Test with TimeBasedTestIncrement	
+C541924	Phase 2: Trigger Time Based Multithreaded HTTP Download Test with TimeBasedTestIncrement & Offset	
+C569738	Phase 2: Trigger HTTP Download with test increments	
+C569739	Phase 2: Trigger multithreading HTTP Download with test increments	
+C569742	Phase 2: Trigger multithreading HTTP Download with test increments & Offset
+
+===== Upload Tests =====
+C340189	Trigger Multithreading HTTP Upload Test	
+C439076	Trigger Multithreading HTTP Upload Test Result	
+C439077	Trigger Multithreading HTTP for 1 session	
+C439078	Trigger Multithreading HTTP greater than the maximum allowed	
+C474173	Trigger HTTP Upload Test (Firewall Mode : High)	
+C569743	Phase 2: Trigger Time Based HTTP Upload Test	
+C638839	Phase 2: Verify the result packet of HTTP Upload Incremental test	
+C569744	Phase 2: Trigger Time Based Multithreaded HTTP Upload Test	
+C569745	Phase 2: Trigger Time Based HTTP Upload Test with TimeBasedTestIncrement	
+C569746	Phase 2: Trigger Time Based Multithreaded HTTP Upload Test with TimeBasedTestIncrement	
+C569747	Phase 2: Trigger Time Based Multithreaded HTTP Upload Test with TimeBasedTestIncrement & Offset	
+C569749	Phase 2: Trigger HTTP Upload with test increments	
+C569750	Phase 2: Trigger multithreading HTTP Upload with test increments	
+C569751	Phase 2: Trigger HTTP Upload with test increments & Offset

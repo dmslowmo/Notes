@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-17T13:21:08+08:00
+
+====== 2 TR143 Functional Requirements ======
+Created Wednesday 17 August 2016
+
+===== 2.1.1 HTTP download and upload throughput =====
+* .DownloadDiagnostics. and .UploadDiagnostics.
+* using HTTP protocol
+
+[*] 1. HTTP download at speed >80% of the port speed
+[*] 2. HTTP upload at speed >80% of the port speed
+
+===== 2.1.2 FTP download and upload throughput =====
+[ ] 1. FTP download at >80% of the port speed
+[ ] 2. FTP upload at >80% of the port speed
+
+===== 2.1.3 UDP EchoPlus test =====
+[ ] must be supported
+* BHR shall operate as UDPEcho server when .UDPEchoConfig.Enable is **True**
+* BHR shall operate as UDPEchoPlus server when .UDPEchoConfig.Enable AND .UDPEchoConfig.EchoPlusEnabled is **True**
+
+===== 2.1.4 HTTP/FTP download throughput test =====
+[*] must be supported
+* when .DownloadDiagnostics.DiagnosticState = **Requested**
+* status of the test will be reflected in this variable
+
+===== 2.1.5 HTTP/FTP upload throughput test =====
+[*] must be supported
+
+===== 2.1.6 Simultaneous HTTP/FTP throughput and UDPEcho/EchoPlus =====
+[ ] must be supported
+
+===== 2.1.7 PPPoE for High Speed Internet (HSI) service =====
+[ ] must support all functionality when operating in this mode
+

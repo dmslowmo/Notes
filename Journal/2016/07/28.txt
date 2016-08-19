@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-07-28T14:11:06+08:00
+
+====== Thursday 28 Jul 2016 ======
+
+[ ] Task for next Sprint (starts next Monday):
+	[ ] New SDHL release:
+		[ ] version 1.4.10
+		[ ] tag, build, and download the resultant archive (tgz/zip)
+		[ ] upload the archive to lego mirror or some location for download when building BHR (ask Marc where)
+		[ ] update the lego/thirdparty/sdhl .mk file
+			[ ] SDHL version and the SHA
+		[ ] Test it by building BHR4 and BHR5
+	[ ] Learn TR-143 stuff
+		[ ] ZhouBin's current commit
+		[ ] and previous commits

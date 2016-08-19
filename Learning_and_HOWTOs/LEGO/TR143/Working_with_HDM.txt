@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-05T14:59:03+08:00
+
+====== Working with HDM ======
+Created Friday 05 August 2016
+
+user: netopmgr
+passw: gws241115
+
+===== Set Up =====
+The router needs to be registered in HDM:
+1. In GDT, change:
+	a. net.tr69_client.management_server.url to https://greenwave-bhr4test.verizon.com/cwmpWeb/CPEMgt (same URL can be used for BHR5)
+	b. username is the //serial number// of BHR4/BHR5
+	c. password is //verizon (for bhr4); for bhr5, don't change the value, should be automatically changed//
+2. Make sure tr69_client is running (should run upon changing the parameters)
+3. In HDM, try to find our router by searching the serial ID
+
+===== Controlling the BHR4 parameters =====
+1. perform GPV to get the latest parameter values from GDT (connected to BHR4)
+2. perform SPV to make any changes
+
+GPV/SPV are just some of the operations that can be done via HDM's **Queue Function** tab (on bottom right panel)
+So we have to select the operation, queue it, and send it to BHR (there should be a button appearing on bottom left to Send/Queue/Add).

@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-10T11:35:37+08:00
+
+====== Terminal Tricks ======
+Created Thursday 10 March 2016
+
+===== Open terminal shortcut =====
+* to open terminal: **Ctrl+Alt+T**
+* open terminal menu: **Alt+Space**
+* select 'Maximize': press **'x'**
+
+===== Run command on another new terminal =====
+http://askubuntu.com/questions/484993/run-command-on-anothernew-terminal-window
+* this is to set Title to another terminal we open: http://askubuntu.com/questions/22413/how-to-change-gnome-terminal-title

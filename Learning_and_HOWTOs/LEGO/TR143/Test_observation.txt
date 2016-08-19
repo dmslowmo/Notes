@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-16T13:47:36+08:00
+
+====== Test observation ======
+Created Tuesday 16 August 2016
+
+1. C773282: UDP Throughput Download Packet loss
+	* Cannot find in GDT InternetGatewayDevice.UDPThroughput.UdpPortDownload.Results.PacketsLost/.PacketsLostRatio
+	* Scheduler failed because not enough UDP ports available (requested is 4, only 1 available), hence test was not run
+		* in acs-db.conf: UDPThroughputPortsNumber is 4. This may have to be set to 1.
+2. C775457: UDP Throughput Upload Packet loss
+	* typo: InternetGatewayDevice.X_D4A928_PerformanceDiagnostics.PerformDownloadThroughputTest = true
+		* should be 'upload'
+3. C689471: NextRequestTime is within the 2*TestRequestInterval from current time -­ TBD
+	* Fail: NRT bit not set
