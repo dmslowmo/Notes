@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-19T10:49:02+08:00
+
+====== Managing multiple versions of installed software ======
+Created Monday 19 September 2016
+
+Use //update-alternatives// utility.
+
+General command: //update-alternatives --[option] [installed-lib/software]//
+
+===== Options =====
+1. Install
+	How to have alternative JDK in your system
+	
+	see http://askubuntu.com/questions/469259/downgrade-java-1-7-to-java-1-5
+	Steps:
+	* Download the altenative JDK into your system (eg JDK5) from Oracle website
+	* copy/install it in a directory (let's define a var OLDJDKDIR)
+	* sudo update-alternatives --install "/usr/bin/java" "java" "$OLDJDKDIR/bin/java" $ALT_JAVA_PRIORITY where ALT_JAVA_PRIORITY is a number **(notice the quote (""))**
+	* to avoid clashing of numbers, firstly do sudo update-alternatives --config java to check what numbers are already in use
+	* just press enter to select the default when prompted
+	* run sudo update-alternatives --install "/usr/bin/java" "java" "$OLDJDKDIR/bin/java" $ALT_JAVA_PRIORITY
+	* change the current Java used: sudo update-alternatives --config java, then select priority number of the installed alternative JDK.
+	* do the same for javac: sudo update-alternatives --install "/usr/bin/javac" "javac" "OLDJDKDIR/bin/javac" $ALT_JAVAC_PRIORITY
+	* Confirm the version of Java currently in use:
+		* java -version
+		* javac -version
+
+2. list
+	* //update-alternatives --list java//
+		* list all the java version installed
+
+3. config
+	* //update-alternatives --config java//
+		* show which java version is in used and prompt user to select a different one
+
+4. remove
+	* //update-alternatives --remove java//
+		* sudo update-alternatives --remove java $OLDJDKDIR **(notice that there is no quote (""))**
+

@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-14T14:20:39+08:00
+
+====== RSA Key ======
+Created Wednesday 14 September 2016
+
+===== How to regenerate the keys =====
+http://serverfault.com/a/445059
+
+$ ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+$ ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+$ ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+$ /etc/init.d/sshd start

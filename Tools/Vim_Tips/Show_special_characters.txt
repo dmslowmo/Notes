@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-25T15:37:51+08:00
+
+====== Show special characters ======
+Created Thursday 25 August 2016
+
+===== Show tab as a group of characters =====
+**:set list**
+**:set listchars=tab:>- **#to show tab as '>' for the first character followed by '-' for the rest (>---)
+
+for special characters, see:
+https://codepoints.net/basic_multilingual_plane

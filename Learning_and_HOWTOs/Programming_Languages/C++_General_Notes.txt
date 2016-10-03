@@ -5,6 +5,25 @@ Creation-Date: 2016-04-21T09:34:54+08:00
 ====== C++ General Notes ======
 Created Thursday 21 April 2016
 
+===== Static and Dynamic Linking =====
+* In static linking, the codes required by the dependant are included in the final binary/executable/library. However, not the whole lib is included, only the parts that are necessary.
+* If a static library depends on (make a non-inlined call) to a shared library, the burden of dynamically linking the shared library falls to the final binary/executable/library.
+* Order of the linking matters
+* References:
+	* http://stackoverflow.com/questions/7841920/how-do-static-libraries-do-linking-to-dependencies
+	* http://stackoverflow.com/questions/5332609/c-and-c-static-linking-just-a-copy
+	* LEGO Build System (lego/bs)
+* For general procedures on creating static or dynamic libraries: http://www.adp-gmbh.ch/cpp/gcc/create_lib.html
+* Mixing static and dynamic libraries in compiling an executable is possible: http://l4u-00.jinr.ru/usoft/WWW/www_debian.org/Documentation/elf/node18.html
+	* Using gcc -o main main.o -Wl,-Bstatic -lfoo -Wl,-Bdynamic -lbar
+* Whenever shared library is used, its path need to be specified:
+	* during compilation, so that compiler/linker can find it: //-L<path/to/lib>// option
+	* during execution, we have to set LD_LIBRARY_PATH to the path of the .so file, OR
+	* we have to specify it during compilation to look for it in a specific path **first:** g++ -o main main.o -Wl,-Bstatic -lbar -L/home/dmartana/sandbox/cpp -Wl,-Bdynamic,-R/home/dmartana/sandbox/cpp -lfoo
+		* The -Wl,-R part tells the resulting binary to also look for library in [[/home/dmartana/sandbox/cpp]] at runtime before trying to use the one in default LD_LIBRARY_PATH
+		* However, if this path is not found, the binary won't run
+
+
 ===== Standard Library =====
 * to check whether a type is a base of another:
 	* std::is_base_of: http://en.cppreference.com/w/cpp/types/is_base_of

@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-01T10:13:16+08:00
+
+====== Code or Text formatting ======
+Created Thursday 01 September 2016
+
+===== Shift a block of codes/text =====
+http://vim.wikia.com/wiki/Shifting_blocks_visually
+* To adjust the indent on three lines:
+	* Put the cursor anywhere in the first line.
+	* Press V then jj to visually select the three lines.
+	* Press > to indent (shift text one 'shiftwidth' to the right), or press < to shift left.
+	* Press . to repeat the indent, or u to undo if you have shifted too far.
+	* Type gv if you want to reselect the lines (not needed).
+* Alternatively, if you know that you want to adjust three lines, you can simply:
+	* Type 3>> to shift right or 3<< to shift left. Or:
+	* Type >2j to shift right or <2j to shift left.
+As mentioned above, the > and < commands combine with arbitrary Vim movements and text objects.
+For example, >} to indent from the cursor to the next blank line, or <aB to un-indent the current C-like {...} "block" structure.

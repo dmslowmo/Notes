@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-29T17:26:05+08:00
+
+====== Build System ======
+Created Thursday 29 September 2016
+
+===== Target type =====
+* each module can be compiled as $TARGET_TYPE which includes:
+	* library (create static lib .a)
+	* shared_library (create static .a **and** shared lib .so)
+	* executable
+	* (and others)

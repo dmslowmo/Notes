@@ -2,11 +2,14 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
 Creation-Date: 2016-03-10T15:34:21+08:00
 
-====== Highlight Search ======
+====== Search ======
 Created Thursday 10 March 2016
 
+===== Highlight search =====
 {{{code: lang="sh" linenumbers="True"
 :set hlsearch
 }}}
 
 
+===== Search and replace =====
+http://vim.wikia.com/wiki/Search_and_replace

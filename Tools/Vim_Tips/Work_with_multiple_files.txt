@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-19T17:10:26+08:00
+
+====== Work with multiple files ======
+Created Monday 19 September 2016
+
+http://stackoverflow.com/questions/53664/how-to-effectively-work-with-multiple-files-in-vim

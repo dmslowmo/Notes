@@ -37,6 +37,11 @@ see http://stackoverflow.com/questions/3230074/git-pushing-specific-commit
 ===== Unstage a staged change =====
 * //git reset <staged file>//
 
+===== Undo git commit --amend =====
+http://stackoverflow.com/a/1459264
+Steps:
+* //git reset --soft HEAD@{1} --- //**this will revert the last commit ammend**
+
 ===== Display branch name on prompt =====
 * see http://stackoverflow.com/questions/15883416/adding-git-branch-on-the-bash-command-prompt
 * Steps:
