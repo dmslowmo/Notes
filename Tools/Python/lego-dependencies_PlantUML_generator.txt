@@ -1,0 +1,132 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-04T17:01:42+08:00
+
+====== lego-dependencies PlantUML generator ======
+Created Tuesday 04 October 2016
+
+{{{code: lang="python" linenumbers="True"
+#!/usr/bin/python
+
+import argparse
+import sys
+import os
+import subprocess
+
+def getLineNo(searchTerm, depFilePath):
+	cmd = ["grep", "-n", searchTerm, depFilePath]
+	res = -1
+	try:
+		res = subprocess.check_output(cmd)
+	except subprocess.CalledProcessError as e:
+		#print "Error when searching " + searchTerm + ": " + e.output
+		return res
+	return int(res.split(":")[0])
+
+def buildOffsetList(lineOffset, depFilePath):
+	offset = 0
+	fo = open(depFilePath, "r")
+	for line in fo:
+		lineOffset.append(offset)
+		offset += len(line)
+	fo.close()
+
+def getDeps(start, mapNode, lineOffset, depFilePath, dependency=None):
+	module = start.strip()
+	moduleStart = module + " :"
+	lineNo = getLineNo(moduleStart, depFilePath)
+
+	if lineNo == -1:
+		moduleStart = module + " ="
+		lineNo = getLineNo(moduleStart, depFilePath)
+		if lineNo == -1:
+			print "Dependency " + module + " not found!"
+			return
+
+	fo = open(depFilePath, "r")
+	fo.seek(lineOffset[lineNo])
+	depList = []
+	if module not in mapNode.keys():
+		for line in fo:
+			lineNo += 1
+			if line.strip() == "": break
+			if "[" in line: continue
+			if module == line.strip(): continue
+			key = line.strip().lstrip("$") # remove prefix "$" if any
+			if key != "": depList.append(key)
+
+		if dependency is not None:
+			if dependency in depList:
+				mapNode[module] = depList
+		else:
+			if depList:
+				mapNode[module] = depList
+
+	fo.close()
+
+	for dep in depList:
+		getDeps(dep, mapNode, lineOffset, depFilePath)
+
+def printList(mapNode, dependency):
+	for i in mapNode:
+		if dependency is not None:
+			if dependency in mapNode[i]:
+				print i + ": " + repr(mapNode[i])
+				print ""
+		else:
+			print i + ": " + repr(mapNode[i])
+			print ""
+
+def printPuml(mapNode, dependency):
+	print "@startuml"
+	for k in mapNode:
+		#handle '/' and replace it with '.'
+		module = k.replace("/", ".")
+		print "class " + module
+		if dependency is not None:
+			if dependency not in mapNode[k]: continue
+			for v in mapNode[k]:
+				deps = v.replace("/", ".")
+				print module + " -down-> " + deps
+		else:
+			for v in mapNode[k]:
+				deps = v.replace("/", ".")
+				print module + " -down-> " + deps
+		print ""
+	print "hide members"
+	print "hide circle"
+	print "@enduml"
+	
+
+def main():
+	depFilePath = "lego-dependencies"
+	dependency = None
+	outputFormat = "list"
+
+	# argument parsing
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-m", "--module", type=str, required=True, help="the dependant module as specified in lego-dependencies")
+	parser.add_argument("-d", "--dependency", type=str, help="a dependency of the module, as specified in lego-dependencies")
+	parser.add_argument("-l", "--depFile", type=str, help="the dependency filepath, default: lego-dependencies")
+	parser.add_argument("-f", "--outputFormat", type=str, default="list", help="the format of the output: 'list' or 'puml' (PlantUML)")
+	args = parser.parse_args()
+	if args.module      : start = args.module
+	if args.dependency  : dependency = args.dependency
+	if args.depFile     : depFilePath = args.depFile
+	if args.outputFormat: outputFormat = args.outputFormat
+
+	lineOffset = []
+	buildOffsetList(lineOffset, depFilePath)
+	mapNode = {}
+	getDeps(start, mapNode, lineOffset, depFilePath, dependency) # execution
+
+	# printing output
+	if outputFormat == "list":
+		printList(mapNode, dependency)
+	elif outputFormat == "puml":
+		printPuml(mapNode, dependency)
+
+
+if __name__ == '__main__':
+	main()
+}}}
