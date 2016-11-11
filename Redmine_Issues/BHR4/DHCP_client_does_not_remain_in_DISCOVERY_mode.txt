@@ -1,0 +1,56 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-08T10:17:01+08:00
+
+====== DHCP client does not remain in DISCOVERY mode ======
+Created Tuesday 08 March 2016
+
+link: https://support.greenwavereality.com/issues/26363
+
+**10/03/2016**
+Findings:
+* Running test with **debug mode** enabled in CDRouter: passed on 1.3.2.33/35 (dev build) and 1.3.2.34 (prod build)
+* **However,** if the debug mode is turned off, it failed on prod build
+
+**09/03/2016**
+Findings:
+* According to http://www.tcpipguide.com/free/t_DHCPLeaseRenewalandRebindingProcesses-2.htm:
+	* Client will attempt to issue unicast request for renewal to the server
+	* If no response from server, or it gets a NACK, Client will attempt to broadcast request for the same IP
+	* Failing that, it will restart the lease allocation process, ie going to discovery mode
+* In the CDRouter log of 1.3.2 run, those steps are observed
+* Questions:
+	* what really happens in 1.3.1? why does it pass?
+	* Is it really failing everytime in 1.3.2? Seems to me at best this is intermittent, OR
+	* the test script in CDRouter is wrong
+* Actionables:
+	* Ambarish will generate CDRouter logs with debug mode for 1.3.1, 1.3.2, 1.4
+	* as well as the BHR4 logs with WanMgr and DhcpClientLog set to 'trace'
+	* Ambarish will check with Haiping on the test script
+
+[ ] 1.3.2 has problem, 1.3.1 and 1.4 are fine
+[ ] read RFC 2131 secion 3.1 para 5
+[ ] needs CDRouter test equipment (work with Ambarish)
+
+Notes on DHCP:
+* https://technet.microsoft.com/en-us/library/cc780760%28v=ws.10%29.aspx
+
+**08/03/2016**
+Findings:
+* Code inspection of wan_mgr.cpp and Test_wan_mgr.cpp:
+	* No logic changes between 1.3.2 and master
+	* Changes are on data structure ie solid instance to pointer
+	* wan_mgr.cpp uses state machine ⇒ based on state changes
+		* There could be wrong state changes, but
+		* as there was no logic changes, then
+		* **Hypothesis:** the wrong state-change is probably due to external factor (user of the class)
+* Digging into master:
+	* WanMgr is no longer used
+	* NetworkInterface class is used, but seems the design and logic have completely changed
+	* wan_mgr.cpp/h are still there in master, no logic changes
+	* ⇒ this problem has never been "fixed" on wan_mgr.cpp/h, probably
+* NEW: 1.3.1 is OK
+	* 01.03.01.38 build
+	* so there is a change between this commit and 01.03.02.28 that might have introduce this problem
+	* verified that the changes are not in wan_mgr.cpp/h or board_bhr4_configuration.cpp/h
+* Emailed Anton and Flemming for help

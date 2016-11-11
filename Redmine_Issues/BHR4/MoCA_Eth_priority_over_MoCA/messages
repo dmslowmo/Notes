@@ -1,0 +1,1207 @@
+Mar 30 01:39:57 2016 syslog.info<46> syslogd 1.5.0: restart.
+Mar 30 01:39:57 2016 kern.info<6> kernel: klogd 1.5.0, log source = /proc/kmsg started.
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Cannot find map file.
+Mar 30 01:39:57 2016 kern.info<6> kernel: Loaded 32890 symbols from 1 module.
+Mar 30 01:39:57 2016 kern.info<6> kernel: back transfers disabled
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:01:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:02:00.0: [14e4:4360] type 00 class 0x028000
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:02:00.0: reg 10: [mem 0x00000000-0x00007fff 64bit]
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:02:00.0: supports D1 D2
+Mar 30 01:39:57 2016 kern.info<6> kernel: PCI: bus2: Fast back to back transfers disabled
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_pcie_setup: NUM_PCIE_PORTS=3, num_port_sb_phy=3, nr=2, sys->busnr=3
+Mar 30 01:39:57 2016 kern.info<6> kernel: PCI host bridge to bus 0000:03
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci_bus 0000:03: root bus resource [io  0xc0100000-0xc01fffff]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci_bus 0000:03: root bus resource [mem 0xc02fffff-0xdfffffff]
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:03:00.0: [16c3:abcd] type 01 class 0x060400
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:03:00.0: supports D1 D2
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:03:00.0: PME# supported from D0 D1 D3hot
+Mar 30 01:39:57 2016 kern.info<6> kernel: PCI: bus3: Fast back to back transfers disabled
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:03:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:04:00.0: [14e4:4331] type 00 class 0x028000
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:04:00.0: reg 10: [mem 0x00000000-0x00003fff 64bit]
+Mar 30 01:39:57 2016 kern.debug<7> kernel: pci 0000:04:00.0: supports D1 D2
+Mar 30 01:39:57 2016 kern.info<6> kernel: PCI: bus4: Fast back to back transfers disabled
+Mar 30 01:39:57 2016 kern.warn<4> kernel: pcie_find_free_irq: interrupt pin of bus=2, devfn=0x0 is 1^M
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_pcie_map_irq: call set_irq_chip_and_handler(), interrupt_pin=1^M
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_pcie_map_irq: is a EP, irq=96, sys->busnr=1
+Mar 30 01:39:57 2016 kern.warn<4> kernel: pcie_find_free_irq: interrupt pin of bus=4, devfn=0x0 is 1^M
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_pcie_map_irq: call set_irq_chip_and_handler(), interrupt_pin=1^M
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_pcie_map_irq: is a EP, irq=97, sys->busnr=3
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:03:00.0: BAR 8: assigned [mem 0xc0300000-0xc03fffff]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:04:00.0: BAR 0: assigned [mem 0xc0300000-0xc0303fff 64bit]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:03:00.0: PCI bridge to [bus 04-04]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:03:00.0:   bridge window [mem 0xc0300000-0xc03fffff]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:01:00.0: BAR 8: assigned [mem 0xa0300000-0xa03fffff]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:02:00.0: BAR 0: assigned [mem 0xa0300000-0xa0307fff 64bit]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:01:00.0: PCI bridge to [bus 02-02]
+Mar 30 01:39:57 2016 kern.info<6> kernel: pci 0000:01:00.0:   bridge window [mem 0xa0300000-0xa03fffff]
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_pcie_init, set the PCIe interrupt to CPU0 only^M
+Mar 30 01:39:57 2016 kern.notice<5> kernel: Initialise module verification
+Mar 30 01:39:57 2016 kern.info<6> kernel: ROMFS MTD (C) 2007 Red Hat, Inc.
+Mar 30 01:39:57 2016 kern.info<6> kernel: msgmni has been set to 410
+Mar 30 01:39:57 2016 kern.notice<5> kernel: Asymmetric key parser 'x509' registered
+Mar 30 01:39:57 2016 kern.info<6> kernel: io scheduler noop registered
+Mar 30 01:39:57 2016 kern.info<6> kernel: io scheduler deadline registered (default)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: 
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs75xx_gpio_init
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Function: cs75xx_gpio_probe, pdev->name = cs75xx_gpio
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_global_base = f0000000
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_gpio_base[0] = f00701d0
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_gpio_base[1] = f00701f0
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_gpio_base[2] = f0070210
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_gpio_base[3] = f0070230
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_gpio_base[4] = f0070250
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_irq_gpio[0] = 00000056
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_irq_gpio[1] = 00000057
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_irq_gpio[2] = 00000058
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_irq_gpio[3] = 00000059
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^Ics75xx_irq_gpio[4] = 0000005a
+Mar 30 01:39:57 2016 kern.info<6> kernel: gpiochip_add: registered GPIOs 0 to 159 on device: cs75xx_gpio
+Mar 30 01:39:57 2016 kern.warn<4> kernel: , rc = 0
+Mar 30 01:39:57 2016 kern.info<6> kernel: cortina_serial.0: ttyS0 at I/O 0x0 (irq = 38) is a Cortina UART0
+Mar 30 01:39:57 2016 kern.info<6> kernel: cortina_serial.1: ttyS1 at I/O 0x0 (irq = 39) is a Cortina UART1
+Mar 30 01:39:57 2016 kern.info<6> kernel: console [ttyS0] enabled
+Mar 30 01:39:57 2016 kern.info<6> kernel: cortina_serial.2: ttyS2 at I/O 0x0 (irq = 40) is a Cortina UART2
+Mar 30 01:39:57 2016 kern.info<6> kernel: cortina_serial.3: ttyS3 at I/O 0x0 (irq = 41) is a Cortina UART3
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Debug:...Clearing memory....
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs75xx_trng cs75xx_trng.0: Function: cs75xx_trng_probe, pdev->name = cs75xx_trng
+Mar 30 01:39:57 2016 kern.info<6> kernel: brd: module loaded
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs752x_nand_init : Flash type : 0x5200 
+Mar 30 01:39:57 2016 kern.warn<4> kernel: --> cs752x_nand_init
+Mar 30 01:39:57 2016 kern.warn<4> kernel: CS752X NAND init ...
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Error Correction Method: ecc 256
+Mar 30 01:39:57 2016 kern.info<6> kernel: NAND device: Manufacturer ID: 0x01, Chip ID: 0xda (AMD NAND 256MiB 3,3V 8-bit)
+Mar 30 01:39:57 2016 kern.info<6> kernel: Scanning device for bad blocks
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Bad eraseblock 874 at 0x000006d40000
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Bad eraseblock 1181 at 0x0000093a0000
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 10 cmdlinepart partitions found on MTD device cs752x_nand_flash
+Mar 30 01:39:57 2016 kern.notice<5> kernel: Creating 10 MTD partitions on "cs752x_nand_flash":
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000020000-0x0000000a0000 : "bootloader"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000100000-0x000000180000 : "uboot_env_pri"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000180000-0x000000200000 : "uboot_env_sec"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000200000-0x000000300000 : "bootloader_even"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000300000-0x000000380000 : "uboot_even_env_pri"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000380000-0x000000400000 : "uboot_even_env_sec"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000500000-0x000000600000 : "bootloader_odd"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000600000-0x000000680000 : "uboot_odd_env_pri"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000000680000-0x000000700000 : "uboot_odd_env_sec"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: 0x000001600000-0x00000f600000 : "ubi"
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cx752x NAND init ok...
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs75xx-spi cs75xx-spi: master is unqueued, this is deprecated
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs75xx-spi cs75xx-spi: at (mapped) 0xF0070064, bus 0
+Mar 30 01:39:57 2016 kern.warn<4> kernel: spiagent_init
+Mar 30 01:39:57 2016 kern.warn<4> kernel: spi_slave_dbs[0].slave.driver.name = ve880_slot0
+Mar 30 01:39:57 2016 kern.info<6> kernel: tun: Universal TUN/TAP device driver, 1.6
+Mar 30 01:39:57 2016 kern.info<6> kernel: tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+Mar 30 01:39:57 2016 kern.info<6> kernel: CS75xx Gigabit Ethernet driver0.2.1 built at Mar 29 2016 13:56:14
+Mar 30 01:39:57 2016 kern.warn<4> kernel: MAC0: 48:5d:36:33:c0:34
+Mar 30 01:39:57 2016 kern.warn<4> kernel: MAC1: 48:5d:36:33:c0:35
+Mar 30 01:39:57 2016 kern.warn<4> kernel: MAC2: 48:5d:36:33:c0:36
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Use external DDR for QM
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=1 lpm is enabled
+Mar 30 01:39:57 2016 kern.warn<4> kernel: vtable_setup_def_hashmask Err in create 2 hash tuples at vtable_type=1 (need 1) 
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=2 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=3 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=4 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=5 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=6 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=7 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=8 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=9 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=10 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=11 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=12 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=13 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=15 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=16 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=17 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=18 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=19 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=20 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=21 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=22 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=23 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=24 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_vtable_set_def_action: table->sdb_index=25 lpm is enabled
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=2
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=2
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=4
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=2
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash f810 for 1P = 0 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash 8db0 for 1P = 1 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash c2c0 for 1P = 2 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash b760 for 1P = 3 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash 6d60 for 1P = 4 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash 18c0 for 1P = 5 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash 57b0 for 1P = 6 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: gwr_set_mc_1p_dscp_mapping_qos_hash create hash 2210 for 1P = 7 (hash_mask_idx=8)
+Mar 30 01:39:57 2016 kern.info<6> kernel: eth%d: speed 1000 Mb/s, full duplex
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Init MAC address for GE-0: 48:5d:36:33:c0:34
+Mar 30 01:39:57 2016 kern.info<6> kernel: eth%d: speed 1000 Mb/s, full duplex
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Init MAC address for GE-1: 48:5d:36:33:c0:35
+Mar 30 01:39:57 2016 kern.info<6> kernel: eth%d: speed 1000 Mb/s, full duplex
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Init MAC address for GE-2: 48:5d:36:33:c0:36
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=48
+Mar 30 01:39:57 2016 kern.info<6> kernel: G2 default proc value:
+Mar 30 01:39:57 2016 kern.info<6> kernel: ^Ics_rt3593_noncache=0
+Mar 30 01:39:57 2016 kern.info<6> kernel: ^Ics_ni_fastbridge=0
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs_wfo_mc_mac_table_init
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 3
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 4
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=6
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=18
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=48
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=48
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 20
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 5
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 6
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=48
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 14
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=48
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=6
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=6
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 2
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 1
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 10
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 12
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=2
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 15
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=4
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=4
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=16
+Mar 30 01:39:57 2016 kern.debug<7> kernel: cs_hmu_table_alloc: key_size=16
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs_iplip_ipc_register::successfully register IPC for CS tunnel acceleration
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs_pe_ipc_register::successfully register IPC for CS HW acceleration msg_count=2
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs_pe_ipc_register::successfully register IPC for CS HW acceleration msg_count=2
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 16
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Set callback 00000001 at pos 17
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver asix
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ehci: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Mar 30 01:39:57 2016 kern.warn<4> kernel: cs752x_ehci_probe-host: wait for USB PHY Clocks come up 
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ==>cs752x_ehci_probe ehci hcd->regs 0x8f080000
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ehci cs752x_ehci: cs752x EHCI Host Controller
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ehci cs752x_ehci: new USB bus registered, assigned bus number 1
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ehci cs752x_ehci: irq 62, io mem 0xf4000000
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ehci cs752x_ehci: USB 0.0 started, EHCI 1.00
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb1: Product: cs752x EHCI Host Controller
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb1: Manufacturer: Linux 3.4.104 cs752x_ehci
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb1: SerialNumber: cs752x_ehci
+Mar 30 01:39:57 2016 kern.info<6> kernel: hub 1-0:1.0: USB hub found
+Mar 30 01:39:57 2016 kern.info<6> kernel: hub 1-0:1.0: 2 ports detected
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ohci: USB 1.1 'Open' Host Controller (OHCI) Driver
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ==>cs752x_ohci_probe ohci hcd->regs 0x8f00e000
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ohci cs752x_ohci: cs752x OHCI
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ohci cs752x_ohci: new USB bus registered, assigned bus number 2
+Mar 30 01:39:57 2016 kern.info<6> kernel: cs752x_ohci cs752x_ohci: irq 63, io mem 0xf4040000
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb2: New USB device found, idVendor=1d6b, idProduct=0001
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb2: Product: cs752x OHCI
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb2: Manufacturer: Linux 3.4.104 cs752x_ohci
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb usb2: SerialNumber: cs752x_ohci
+Mar 30 01:39:57 2016 kern.info<6> kernel: hub 2-0:1.0: USB hub found
+Mar 30 01:39:57 2016 kern.info<6> kernel: hub 2-0:1.0: 2 ports detected
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver cdc_acm
+Mar 30 01:39:57 2016 kern.info<6> kernel: cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+Mar 30 01:39:57 2016 kern.info<6> kernel: Initializing USB Mass Storage driver...
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver usb-storage
+Mar 30 01:39:57 2016 kern.info<6> kernel: USB Mass Storage support registered.
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver ums-datafab
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver ums-freecom
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver usbserial
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbserial: USB Serial Driver core
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver cp210x
+Mar 30 01:39:57 2016 kern.info<6> kernel: USB Serial support registered for cp210x
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver ftdi_sio
+Mar 30 01:39:57 2016 kern.info<6> kernel: USB Serial support registered for FTDI USB Serial Device
+Mar 30 01:39:57 2016 kern.info<6> kernel: ftdi_sio: v1.6.0:USB FTDI Serial Converters Driver
+Mar 30 01:39:57 2016 kern.info<6> kernel: usbcore: registered new interface driver pl2303
+Mar 30 01:39:57 2016 kern.info<6> kernel: USB Serial support registered for pl2303
+Mar 30 01:39:57 2016 kern.warn<4> kernel: CS-XXXX RTC, (c) 2010 Cortina System
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_rtc_probe: Physcial base address = f4920000 g2_rtc_probe: Virtual base address =f4920000  Alarm IRQ=42...
+Mar 30 01:39:57 2016 kern.info<6> kernel: g2-rtc g2-rtc.0: rtc disabled, re-enabling
+Mar 30 01:39:57 2016 kern.info<6> kernel: g2-rtc g2-rtc.0: rtc core: registered g2-rtc as rtc0
+Mar 30 01:39:57 2016 kern.info<6> kernel: G2 Watchdog Timer: 0.1. g2_noboot=0 g2_margin=30 sec (nowayout= 0)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: g2_wdt_probe: base address =f8000600  IRQ=30...
+Mar 30 01:39:57 2016 kern.debug<7> kernel: Registered led device: wifi:red
+Mar 30 01:39:57 2016 kern.debug<7> kernel: Registered led device: wifi:white
+Mar 30 01:39:57 2016 kern.debug<7> kernel: Registered led device: fault_led
+Mar 30 01:39:57 2016 kern.debug<7> kernel: Registered led device: power_led
+Mar 30 01:39:57 2016 kern.debug<7> kernel: Registered led device: pwm_led
+Mar 30 01:39:57 2016 kern.info<6> kernel: GACT probability on
+Mar 30 01:39:57 2016 kern.info<6> kernel: Mirror/redirect action on
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Failed to load ipt action
+Mar 30 01:39:57 2016 kern.info<6> kernel: u32 classifier
+Mar 30 01:39:57 2016 kern.info<6> kernel:     Performance counters on
+Mar 30 01:39:57 2016 kern.info<6> kernel:     input device check on
+Mar 30 01:39:57 2016 kern.info<6> kernel:     Actions configured
+Mar 30 01:39:57 2016 kern.warn<4> kernel: ^I***cs_pni_register_chip_callback_xmit:: instance 1, pAd   (null)
+Mar 30 01:39:57 2016 kern.info<6> kernel: etherhook: init
+Mar 30 01:39:57 2016 kern.info<6> kernel: Netfilter messages via NETLINK v0.30.
+Mar 30 01:39:57 2016 kern.info<6> kernel: nf_conntrack version 0.5.0 (3286 buckets, 13144 max)
+Mar 30 01:39:57 2016 kern.info<6> kernel: ctnetlink v0.93: registering with nfnetlink.
+Mar 30 01:39:57 2016 kern.info<6> kernel: xt_time: kernel timezone is -0000
+Mar 30 01:39:57 2016 kern.info<6> kernel: IPv4 over IPv4 tunneling driver
+Mar 30 01:39:57 2016 kern.info<6> kernel: gre: GRE over IPv4 demultiplexor driver
+Mar 30 01:39:57 2016 kern.info<6> kernel: ip_gre: GRE over IPv4 tunneling driver
+Mar 30 01:39:57 2016 kern.info<6> kernel: ip_tables: (C) 2000-2006 Netfilter Core Team
+Mar 30 01:39:57 2016 kern.info<6> kernel: TCP: cubic registered
+Mar 30 01:39:57 2016 kern.info<6> kernel: Initializing XFRM netlink socket
+Mar 30 01:39:57 2016 kern.info<6> kernel: NET: Registered protocol family 10
+Mar 30 01:39:57 2016 kern.info<6> kernel: Mobile IPv6
+Mar 30 01:39:57 2016 kern.info<6> kernel: ip6_tables: (C) 2000-2006 Netfilter Core Team
+Mar 30 01:39:57 2016 kern.info<6> kernel: IPv6 over IPv4 tunneling driver
+Mar 30 01:39:57 2016 kern.info<6> kernel: NET: Registered protocol family 17
+Mar 30 01:39:57 2016 kern.info<6> kernel: NET: Registered protocol family 15
+Mar 30 01:39:57 2016 kern.info<6> kernel: Ebtables v2.0 registered
+Mar 30 01:39:57 2016 kern.info<6> kernel: L2TP core driver, V2.0
+Mar 30 01:39:57 2016 kern.info<6> kernel: L2TP IP encapsulation support (L2TPv3)
+Mar 30 01:39:57 2016 kern.info<6> kernel: L2TP netlink interface
+Mar 30 01:39:57 2016 kern.info<6> kernel: L2TP ethernet pseudowire support (L2TPv3)
+Mar 30 01:39:57 2016 kern.info<6> kernel: 8021q: 802.1Q VLAN Support v1.8
+Mar 30 01:39:57 2016 kern.info<6> kernel: DCCP: Activated CCID 2 (TCP-like)
+Mar 30 01:39:57 2016 kern.info<6> kernel: DCCP: Activated CCID 3 (TCP-Friendly Rate Control)
+Mar 30 01:39:57 2016 kern.info<6> kernel: sctp: Hash tables configured (established 4096 bind 5461)
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb 1-2: new high-speed USB device number 2 using cs752x_ehci
+Mar 30 01:39:57 2016 kern.info<6> kernel: lib80211: common routines for IEEE802.11 drivers
+Mar 30 01:39:57 2016 kern.debug<7> kernel: lib80211_crypt: registered algorithm 'NULL'
+Mar 30 01:39:57 2016 kern.debug<7> kernel: lib80211_crypt: registered algorithm 'WEP'
+Mar 30 01:39:57 2016 kern.debug<7> kernel: lib80211_crypt: registered algorithm 'CCMP'
+Mar 30 01:39:57 2016 kern.debug<7> kernel: lib80211_crypt: registered algorithm 'TKIP'
+Mar 30 01:39:57 2016 kern.notice<5> kernel: TIPC: Activated (version 2.0.0)
+Mar 30 01:39:57 2016 kern.info<6> kernel: NET: Registered protocol family 30
+Mar 30 01:39:57 2016 kern.notice<5> kernel: TIPC: Started in single node mode
+Mar 30 01:39:57 2016 kern.info<6> kernel: VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 2
+Mar 30 01:39:57 2016 kern.info<6> kernel: ThumbEE CPU extension supported.
+Mar 30 01:39:57 2016 kern.notice<5> kernel: Loading module verification certificates
+Mar 30 01:39:57 2016 kern.notice<5> kernel: MODSIGN: Loaded cert 'Magrathea: Glacier signing key: 2b6bbac1912065628ae759c21a788eed8ca9e881'
+Mar 30 01:39:57 2016 kern.info<6> kernel: input: gpio-keys as /devices/platform/gpio-keys/input/input0
+Mar 30 01:39:57 2016 kern.info<6> kernel: g2-rtc g2-rtc.0: setting system clock to 2016-03-30 01:39:37 UTC (1459301977)
+Mar 30 01:39:57 2016 kern.info<6> kernel: ACP Enabled
+Mar 30 01:39:57 2016 kern.notice<5> kernel: RAMDISK: xz image found at block 0
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb 1-2: New USB device found, idVendor=0930, idProduct=6544
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb 1-2: Product: TransMemory     
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb 1-2: Manufacturer: TOSHIBA 
+Mar 30 01:39:57 2016 kern.info<6> kernel: usb 1-2: SerialNumber: 001D92AD6C6FC8C1034A00A0
+Mar 30 01:39:57 2016 kern.info<6> kernel: scsi0 : usb-storage 1-2:1.0
+Mar 30 01:39:57 2016 kern.info<6> kernel: VFS: Mounted root (romfs filesystem) readonly on device 1:0.
+Mar 30 01:39:57 2016 kern.info<6> kernel: devtmpfs: mounted
+Mar 30 01:39:57 2016 kern.info<6> kernel: Freeing init memory: 168K
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: attaching mtd9 to ubi0
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: physical eraseblock size:   131072 bytes (128 KiB)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: logical eraseblock size:    129024 bytes
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: smallest flash I/O unit:    2048
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: sub-page size:              512
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: VID header offset:          512 (aligned 512)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: data offset:                2048
+Mar 30 01:39:57 2016 kern.notice<5> kernel: scsi 0:0:0:0: Direct-Access     TOSHIBA  TransMemory      1.00 PQ: 0 ANSI: 2
+Mar 30 01:39:57 2016 kern.notice<5> kernel: sd 0:0:0:0: [sda] 3911616 512-byte logical blocks: (2.00 GB/1.86 GiB)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: sd 0:0:0:0: [sda] Write Protect is off
+Mar 30 01:39:57 2016 kern.debug<7> kernel: sd 0:0:0:0: [sda] Mode Sense: 65 44 09 30
+Mar 30 01:39:57 2016 kern.err<3> kernel: sd 0:0:0:0: [sda] No Caching mode page found
+Mar 30 01:39:57 2016 kern.err<3> kernel: sd 0:0:0:0: [sda] Assuming drive cache: write through
+Mar 30 01:39:57 2016 kern.err<3> kernel: sd 0:0:0:0: [sda] No Caching mode page found
+Mar 30 01:39:57 2016 kern.err<3> kernel: sd 0:0:0:0: [sda] Assuming drive cache: write through
+Mar 30 01:39:57 2016 kern.info<6> kernel:  sda: sda1
+Mar 30 01:39:57 2016 kern.err<3> kernel: sd 0:0:0:0: [sda] No Caching mode page found
+Mar 30 01:39:57 2016 kern.err<3> kernel: sd 0:0:0:0: [sda] Assuming drive cache: write through
+Mar 30 01:39:57 2016 kern.notice<5> kernel: sd 0:0:0:0: [sda] Attached SCSI removable disk
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: max. sequence number:       263229
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: attached mtd9 to ubi0
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: MTD device name:            "ubi"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: MTD device size:            224 MiB
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: number of good PEBs:        1790
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: number of bad PEBs:         2
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: number of corrupted PEBs:   0
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: max. allowed volumes:       128
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: wear-leveling threshold:    256
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: number of internal volumes: 1
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: number of user volumes:     9
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: available PEBs:             591
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: total number of reserved PEBs: 1199
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: number of PEBs reserved for bad PEB handling: 51
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: max/mean erase counter: 257/147
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: image sequence number:  1015976084
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBI: background thread "ubi_bgt0d" started, PID 53
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: static UBI volume - read-only mode
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted UBI device 0, volume 8, name "sig_odd"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted read-only
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: file system size:   1935360 bytes (1890 KiB, 1 MiB, 15 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: journal size:       1161217 bytes (1134 KiB, 1 MiB, 9 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: media format:       w4/r0 (latest is w4/r0)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: default compressor: zlib
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: reserved for root:  0 bytes (0 KiB)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: un-mount UBI device 0, volume 8
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: static UBI volume - read-only mode
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted UBI device 0, volume 1, name "rootfs_odd"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted read-only
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: file system size:   39997440 bytes (39060 KiB, 38 MiB, 310 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: journal size:       1161217 bytes (1134 KiB, 1 MiB, 9 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: media format:       w4/r0 (latest is w4/r0)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: default compressor: zlib
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: reserved for root:  0 bytes (0 KiB)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted UBI device 0, volume 2, name "config"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: file system size:   9160704 bytes (8946 KiB, 8 MiB, 71 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: journal size:       9033728 bytes (8822 KiB, 8 MiB, 71 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: media format:       w4/r0 (latest is w4/r0)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: default compressor: lzo
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: reserved for root:  0 bytes (0 KiB)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted UBI device 0, volume 3, name "log"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: file system size:   19611648 bytes (19152 KiB, 18 MiB, 152 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: journal size:       9033728 bytes (8822 KiB, 8 MiB, 71 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: media format:       w4/r0 (latest is w4/r0)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: default compressor: lzo
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: reserved for root:  0 bytes (0 KiB)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted UBI device 0, volume 4, name "jvm"
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: mounted read-only
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: file system size:   9160704 bytes (8946 KiB, 8 MiB, 71 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: journal size:       9033728 bytes (8822 KiB, 8 MiB, 71 LEBs)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: media format:       w4/r0 (latest is w4/r0)
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: default compressor: zlib
+Mar 30 01:39:57 2016 kern.notice<5> kernel: UBIFS: reserved for root:  0 bytes (0 KiB)
+Mar 30 01:39:57 2016 kern.warn<4> kernel: mod_pgm: module license 'Proprietary' taints kernel.
+Mar 30 01:39:57 2016 kern.warn<4> kernel: Disabling lock debugging due to kernel taint
+Mar 30 01:39:57 2016 kern.info<6> kernel: PGM: mod: Initialize PGM support module
+Mar 30 01:39:57 2016 kern.info<6> kernel: PGM: tx: Initialize with pool size = 1024, instance data size = 12
+Mar 30 01:39:57 2016 kern.info<6> kernel: IPTV: PGM device created and initialized
+Mar 30 01:39:57 2016 kern.info<6> kernel: IPTV: Created proc entry
+Mar 30 01:39:57 2016 kern.info<6> kernel: etherhook_register: sw_action: 291
+Mar 30 01:39:57 2016 kern.info<6> kernel: IPTV: Initialized
+Mar 30 01:39:57 2016 kern.info<6> kernel: kerSysBcmSpiSlaveInit called for dev 0
+Mar 30 01:39:58 2016 kern.err<3> kernel: kerSysBcmSpiSlaveInit: BcmSpiReserveSlave2 returned error 0
+Mar 30 01:39:58 2016 kern.info<6> kernel: kerSysBcmSpiSlaveInit called for dev 1
+Mar 30 01:39:58 2016 kern.err<3> kernel: kerSysBcmSpiSlaveInit: BcmSpiReserveSlave2 returned error 0
+Mar 30 01:39:58 2016 kern.info<6> kernel: bmoca: Found MoCA device 0 RF Band 5
+Mar 30 01:39:58 2016 kern.info<6> kernel: bmoca: Found MoCA device 1 RF Band 4
+Mar 30 01:39:58 2016 kern.info<6> kernel: bmoca: adding minor #0 at base 0x10600000, IRQ 295, I2C 0x10406200/0x70
+Mar 30 01:39:58 2016 kern.info<6> kernel: bmoca: adding minor #1 at base 0x10600000, IRQ 300, I2C 0x10406200/0x70
+Mar 30 01:39:58 2016 cron.info<78> crond[182]: crond: crond (busybox 1.22.1) started, log level 8
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for Port#0 using FE AN_BNG_MAC idx 0.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#0 using FE AN_BNG_MAC idx 1.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#1 using FE AN_BNG_MAC idx 2.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: NI Setting MAC address for eth0, 48:5d:36:33:c0:34
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for Port#2 using FE AN_BNG_MAC idx 6.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#0 using FE AN_BNG_MAC idx 7.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#1 using FE AN_BNG_MAC idx 8.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: NI Setting MAC address for eth2, 48:5d:36:33:c0:34
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for Port#1 using FE AN_BNG_MAC idx 3.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#0 using FE AN_BNG_MAC idx 4.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#1 using FE AN_BNG_MAC idx 5.
+Mar 30 01:39:59 2016 kern.warn<4> kernel: NI Setting MAC address for eth1, 48:5d:36:33:c0:35
+Mar 30 01:39:59 2016 kern.warn<4> kernel: bcm53125_spi_get_device : BCM53125 Robo Switch found.
+Mar 30 01:40:01 2016 kern.warn<4> kernel: Set wifi_offload_enable as 0x00000001
+Mar 30 01:40:01 2016 kern.warn<4> kernel: enable kernel module WFO(0x8000) 
+Mar 30 01:40:01 2016 kern.warn<4> kernel: disable kernel module TUNNEL(0x10000) 
+Mar 30 01:40:02 2016 kern.warn<4> kernel: Set hw_accel_enable as 0x0002b0e7
+Mar 30 01:40:02 2016 kern.warn<4> kernel: Set accel kernel enable status as 0x0002b0e7
+Mar 30 01:40:02 2016 kern.warn<4> kernel: Set acp_enable as 0x00000025
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl_module_init: passivemode set to 0x1
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl_module_init: txworkq set to 0x0
+Mar 30 01:40:03 2016 kern.warn<4> kernel: PCI: enabling device 0000:02:00.0 (0140 -> 0142)
+Mar 30 01:40:03 2016 kern.warn<4> kernel: dbus_attach 
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wlc_cs_ipc_init done!!!
+Mar 30 01:40:03 2016 kern.warn<4> kernel: bcm_rpc_up: waiting to be connected
+Mar 30 01:40:03 2016 kern.warn<4> kernel: bcm_rpc_buf_recv_mgn_high: Recvd:3 Version: 0x6250e13
+Mar 30 01:40:03 2016 kern.warn<4> kernel: State: 3 Session:105
+Mar 30 01:40:03 2016 kern.warn<4> kernel: bcm_rpc_buf_recv_mgn_high: Reason: 0 Dongle Version: 0x6250e13
+Mar 30 01:40:03 2016 kern.warn<4> kernel: bcm_rpc_buf_recv_mgn_high: Connected!
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl0: wlc_attach: CXO 1
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add wlc_host=8ca9e000, wlc_host->rpc=8d927680 pub=8bf6e200 hw_pub=8cbfbc30
+Mar 30 01:40:03 2016 kern.warn<4> kernel: ^I wlc_host=0x8ca9e000 wlc_host->osh=8d927000 
+Mar 30 01:40:03 2016 kern.warn<4> kernel: ------------------------------------------- a0300000 
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add:: FIFO 0 dmaxmt a0300200 dmarcv a0300220
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add:: FIFO 1 dmaxmt a0300240 dmarcv   (null)
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add:: FIFO 2 dmaxmt a0300280 dmarcv   (null)
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add:: FIFO 3 dmaxmt a03002c0 dmarcv   (null)
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add:: FIFO 4 dmaxmt a0300300 dmarcv   (null)
+Mar 30 01:40:03 2016 kern.warn<4> kernel: __wlc_cxo_wlc_add ret(== wlc_cx)=f6000d94 
+Mar 30 01:40:03 2016 kern.warn<4> kernel: ^I pub=0x8bf6e200 physical pub=0bf6e200 size=256
+Mar 30 01:40:03 2016 kern.warn<4> kernel: ^I hw_pub=0x8cbfbc30 physical hw_pub=0cbfbc30 size=24
+Mar 30 01:40:03 2016 kern.warn<4> kernel: ^I wlc_host=0x8ca9e000 wlc_host->osh=8d927000 
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl_attach: txworkq set to 0
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl0: Broadcom BCM4360 802.11 Wireless Controller 6.37.14.79041 (r624714) / GreenWave brcm_wl_split_driver-6.37.14.79041_bhr4_release_v1.0.0
+Mar 30 01:40:03 2016 kern.warn<4> kernel: CS_BRCM_WFO_PNI_init WFO enable!!!!!!!!!!!!!!!!!!!! wl=8c06ec00
+Mar 30 01:40:03 2016 kern.warn<4> kernel: ^I***cs_pni_register_chip_callback_xmit:: instance 0, pAd 8c06ec00
+Mar 30 01:40:03 2016 kern.warn<4> kernel: CS_BRCM_proc_init_module 
+Mar 30 01:40:03 2016 kern.warn<4> kernel: PCI: enabling device 0000:04:00.0 (0140 -> 0142)
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl1: wlc_attach: CXO 0
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl_attach: txworkq set to 0
+Mar 30 01:40:03 2016 kern.warn<4> kernel: unmask_intx_irq: irq=97, bus_number=3^M
+Mar 30 01:40:03 2016 kern.warn<4> kernel: wl1: Broadcom BCM4331 802.11 Wireless Controller 6.37.14.79041 (r624714) / GreenWave brcm_wl_split_driver-6.37.14.79041_bhr4_release_v1.0.0
+Mar 30 01:40:11 2016 kern.warn<4> kernel: 
+Mar 30 01:40:11 2016 kern.warn<4> kernel: Set cp_use_dscp_prio as 0
+Mar 30 01:40:11 2016 daemon.info<30> init: reloading /etc/inittab
+Mar 30 01:40:11 2016 daemon.info<30> init: starting pid 594, tty '': '-/sbin/getty -L ttyS0 115200'
+Mar 30 01:40:13 2016 user.err<11> bhr4: ValueSerializer: No matching value for: net.external. eth0 
+Mar 30 01:40:14 2016 syslog.info<46> syslogd 1.5.0: restart.
+Mar 30 01:40:15 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine system_bl.cpp:36 took a long time: 244 ms 
+Mar 30 01:40:15 2016 user.debug<15> System: BHR4 restart event
+Mar 30 01:40:15 2016 kern.warn<4> kernel: cs_ni_set_flowctrl: flowctrl 0x3
+Mar 30 01:40:15 2016 kern.warn<4> kernel: cs_ni_set_flowctrl: flowctrl 0x3
+Mar 30 01:40:15 2016 kern.warn<4> kernel: cs_ni_set_flowctrl: flowctrl 0x3
+Mar 30 01:40:15 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1, rd 0x1
+Mar 30 01:40:15 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1, rd 0x1
+Mar 30 01:40:15 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1, rd 0x1
+Mar 30 01:40:15 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1, rd 0x1
+Mar 30 01:40:15 2016 user.debug<15> bhr4: System.AppShowLongTime: haveOutput netlink_connection.cpp:20 took a long time: 115 ms 
+Mar 30 01:40:15 2016 kern.warn<4> kernel: cs_hw_accel_wireless_register 48:5d:36:33:c0:36 
+Mar 30 01:40:15 2016 kern.warn<4> kernel: ^I allocate idx=0 mc_mac_idx=3
+Mar 30 01:40:16 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 169 ms 
+Mar 30 01:40:16 2016 kern.info<6> kernel: eth1: link down, 
+Mar 30 01:40:16 2016 kern.info<6> kernel: device eth2.2 entered promiscuous mode
+Mar 30 01:40:16 2016 kern.info<6> kernel: device eth2 entered promiscuous mode
+Mar 30 01:40:16 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:16 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:16 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:16 2016 kern.info<6> kernel: device wl0 entered promiscuous mode
+Mar 30 01:40:16 2016 kern.info<6> kernel: device wl0.1 entered promiscuous mode
+Mar 30 01:40:16 2016 kern.info<6> kernel: device wl1 entered promiscuous mode
+Mar 30 01:40:16 2016 kern.info<6> kernel: device eth2.1 entered promiscuous mode
+Mar 30 01:40:16 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:16 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 5(eth2.1) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 5(eth2.1) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 4(wl1) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 4(wl1) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 2(wl0) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 2(wl0) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 1(eth2.2) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 1(eth2.2) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 3(wl0.1) entered forwarding state
+Mar 30 01:40:16 2016 kern.info<6> kernel: br-lan: port 3(wl0.1) entered forwarding state
+Mar 30 01:40:16 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:17 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:17 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:17 2016 user.debug<15> bhr4: System.AppShowLongTime: timer configurator.cpp:40 took a long time: 151 ms 
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for Port#1 using FE AN_BNG_MAC idx 3.
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#0 using FE AN_BNG_MAC idx 4.
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#1 using FE AN_BNG_MAC idx 5.
+Mar 30 01:40:17 2016 kern.warn<4> kernel: NI Setting MAC address for eth1, 48:5d:36:33:c0:35
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_flowctrl: flowctrl 0x3
+Mar 30 01:40:17 2016 kern.info<6> kernel: ADDRCONF(NETDEV_UP): eth1: link is not ready
+Mar 30 01:40:17 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for Port#0 using FE AN_BNG_MAC idx 0.
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#0 using FE AN_BNG_MAC idx 1.
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_mac_address:setting up MAC address for PE#1 using FE AN_BNG_MAC idx 2.
+Mar 30 01:40:17 2016 kern.warn<4> kernel: NI Setting MAC address for eth0, 48:5d:36:33:c0:34
+Mar 30 01:40:17 2016 kern.warn<4> kernel: cs_ni_set_flowctrl: flowctrl 0x3
+Mar 30 01:40:17 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Selected interface is Ethernet = eth1 
+Mar 30 01:40:17 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:40:17 2016 kern.warn<4> kernel: 
+Mar 30 01:40:17 2016 kern.warn<4> kernel: Set hash_default_lifetime as 0
+Mar 30 01:40:17 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `NFLOG' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `NFCT' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `IFINDEX' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `IP2STR' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `IP2BIN' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `PRINTPKT' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `HWHDR' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `PRINTFLOW' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `LOGEMU' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `SYSLOG' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `XML' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `GPRINT' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `BASE' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `NFACCT' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: registering plugin `GRAPHITE' 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: forcing unbind of existing log handler for protocol 2 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: forcing unbind of existing log handler for protocol 10 
+Mar 30 01:40:18 2016 daemon.notice<29> ulogd[703]: forcing unbind of existing log handler for protocol 7 
+Mar 30 01:40:19 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:19 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:19 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:19 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 auth.info<38> login[988]: root login on 'ttyS0'
+Mar 30 01:40:20 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:20 2016 user.err<11> bhr4: Firewall.PortTriggeringLog: Service: L2TP Triggering - Layer Two Tunneling Protocol is not of type NetworkServiceType::PortTriggeringService 
+Mar 30 01:40:20 2016 user.err<11> bhr4: Firewall.PortTriggeringLog: Service: TFTP Triggering - Trivial File Transfer Protocol is not of type NetworkServiceType::PortTriggeringService 
+Mar 30 01:40:21 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:21 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:40:21 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:21 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:21 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:22 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:22 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:22 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:22 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:23 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:23 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:23 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:23 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:27 2016 kern.warn<4> kernel: 
+Mar 30 01:40:27 2016 kern.warn<4> kernel: Set cp_use_dscp_prio as 1
+Mar 30 01:40:27 2016 kern.info<6> kernel: eth1: link up, 
+Mar 30 01:40:27 2016 kern.info<6> kernel: eth1: speed 100 Mb/s, full duplex
+Mar 30 01:40:27 2016 kern.info<6> kernel: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
+Mar 30 01:40:28 2016 user.err<11> cwmpclient: [ERROR] Unknown protocol in ACS URL ><
+Mar 30 01:40:28 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine system_bl.cpp:36 took a long time: 10938 ms 
+Mar 30 01:40:28 2016 user.info<14> rsad: RsaDaemonLog: GreenWave Systems Inc. (c) RSA Daemon v. 1.0.0 
+Mar 30 01:40:28 2016 user.debug<15> rsad: RsaDaemonLog: Enter: void GreenWave::RsaDaemon::serve() 
+Mar 30 01:40:28 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:28 2016 kern.info<6> kernel: warning: `named' uses 32-bit capabilities (legacy support in use)
+Mar 30 01:40:28 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:28 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: starting BIND 9.10.1 -f -c /tmp/named/named.conf -n 1
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: built with '--host=arm-greenwave-linux-gnueabihf' '--target=arm-greenwave-linux-gnueabihf' '--prefix=' '--localstatedir=/tmp' '--with-openssl=/home/dmartana/workspace/lego/output/bhr4_dev' '--with-ecdsa=yes' '--with-gost=no' '--with-gssapi=no' '--with-randomdev=no' '--with-libxml2=no' '--with-libjson=no' '--disable-threads' '--disable-atomic' 'host_alias=arm-greenwave-linux-gnueabihf' 'target_alias=arm-greenwave-linux-gnueabihf' 'CC=arm-greenwave-linux-gnueabihf-gcc' 'CFLAGS=-Os -ffunction-sections -fdata-sections -g -I/home/dmartana/workspace/lego/output/bhr4_dev/include -isystem /home/dmartana/workspace/lego/output/bhr4_dev/thirdparty-include -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=hard ' 'LDFLAGS=-L/home/dmartana/workspace/lego/output/bhr4_dev/lib -Wl,-O1 -Wl,--as-needed -Wl,--gc-sections ' 'LIBS=-Wl,-rpath-link=/home/dmartana/workspace/lego/output/bhr4_dev/lib -Wl,-L/home/dmartana/workspace/lego/output/bhr4_dev/lib ' 'CPPFLAGS=-Os -ffu
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: ----------------------------------------------------
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: BIND 9 is maintained by Internet Systems Consortium,
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: Inc. (ISC), a non-profit 501(c)(3) public-benefit 
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: corporation.  Support and training for BIND 9 are 
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: available at https://www.isc.org/support
+Mar 30 01:40:28 2016 daemon.notice<29> named[1479]: ----------------------------------------------------
+Mar 30 01:40:28 2016 daemon.info<30> named[1479]: using 1 UDP listener per interface
+Mar 30 01:40:28 2016 daemon.info<30> named[1479]: using up to 1024 sockets
+Mar 30 01:40:28 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:40:28 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: loading configuration from '/tmp/named/named.conf'
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: using default UDP/IPv4 port range: [1024, 65535]
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: using default UDP/IPv6 port range: [1024, 65535]
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: listening on IPv6 interfaces, port 53
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: listening on IPv4 interface lo, 127.0.0.1#53
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: listening on IPv4 interface br-lan, 192.168.1.1#53
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: generating session key for dynamic DNS
+Mar 30 01:40:29 2016 daemon.info<30> named[1479]: sizing zone task pool based on 9 zones
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: starting BIND 9.10.1 -f -c /tmp/named/named.conf -n 1
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: built with '--host=arm-greenwave-linux-gnueabihf' '--target=arm-greenwave-linux-gnueabihf' '--prefix=' '--localstatedir=/tmp' '--with-openssl=/home/dmartana/workspace/lego/output/bhr4_dev' '--with-ecdsa=yes' '--with-gost=no' '--with-gssapi=no' '--with-randomdev=no' '--with-libxml2=no' '--with-libjson=no' '--disable-threads' '--disable-atomic' 'host_alias=arm-greenwave-linux-gnueabihf' 'target_alias=arm-greenwave-linux-gnueabihf' 'CC=arm-greenwave-linux-gnueabihf-gcc' 'CFLAGS=-Os -ffunction-sections -fdata-sections -g -I/home/dmartana/workspace/lego/output/bhr4_dev/include -isystem /home/dmartana/workspace/lego/output/bhr4_dev/thirdparty-include -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=hard ' 'LDFLAGS=-L/home/dmartana/workspace/lego/output/bhr4_dev/lib -Wl,-O1 -Wl,--as-needed -Wl,--gc-sections ' 'LIBS=-Wl,-rpath-link=/home/dmartana/workspace/lego/output/bhr4_dev/lib -Wl,-L/home/dmartana/workspace/lego/output/bhr4_dev/lib ' 'CPPFLAGS=-Os -ffu
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: ----------------------------------------------------
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: BIND 9 is maintained by Internet Systems Consortium,
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: Inc. (ISC), a non-profit 501(c)(3) public-benefit 
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: corporation.  Support and training for BIND 9 are 
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: available at https://www.isc.org/support
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: ----------------------------------------------------
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: using 1 UDP listener per interface
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: using up to 1024 sockets
+Mar 30 01:40:29 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: loading configuration from '/tmp/named/named.conf'
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: using default UDP/IPv4 port range: [1024, 65535]
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: using default UDP/IPv6 port range: [1024, 65535]
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: listening on IPv6 interfaces, port 53
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: listening on IPv4 interface lo, 127.0.0.1#53
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: listening on IPv4 interface br-lan, 192.168.1.1#53
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: generating session key for dynamic DNS
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: sizing zone task pool based on 9 zones
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: set up managed keys zone for view internal-clients, file '1a86b4379c0454105f76ef9ed5f3ec3d00d65fd62ab98fbf94a2e184eee6e081.mkeys'
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 10.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 16.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 17.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 18.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 19.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 20.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 21.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 22.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 23.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 24.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 25.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 26.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 27.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 28.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 29.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 30.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 31.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 168.192.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 64.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 65.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 66.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 67.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 68.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 69.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 70.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 71.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 72.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 73.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 74.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 75.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 76.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 77.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 78.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 79.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 80.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 81.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 82.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 83.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 84.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 85.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 86.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 87.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 88.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 89.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 90.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 91.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 92.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 93.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 94.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 95.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 96.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 97.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 98.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 99.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 100.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 101.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 102.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 103.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 104.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 105.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 106.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 107.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 108.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 109.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 110.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 111.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 112.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 113.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 114.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 115.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 116.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 117.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 118.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 119.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 120.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 121.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 122.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 123.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 124.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 125.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 126.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 127.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 0.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 254.169.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 2.0.192.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 100.51.198.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 113.0.203.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: D.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 8.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 9.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: A.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: B.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view internal-clients: 8.B.D.0.1.0.0.2.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: set up managed keys zone for view guest-clients, file '91b9b2402ff5d0d79d343c0b789238df00e106a71acf40b51318080ef008c1a2.mkeys'
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 10.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 16.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 17.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 18.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 19.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 20.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 21.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 22.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 23.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 24.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 25.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 26.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 27.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 28.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 29.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 30.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 31.172.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 168.192.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 64.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 65.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 66.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 67.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 68.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 69.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 70.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 71.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 72.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 73.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 74.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 75.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 76.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 77.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 78.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 79.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 80.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 81.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 82.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 83.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 84.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 85.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 86.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 87.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 88.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 89.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 90.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 91.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 92.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 93.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 94.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 95.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 96.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 97.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 98.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 99.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 100.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 101.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 102.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 103.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 104.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 105.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 106.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 107.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 108.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 109.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 110.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 111.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 112.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 113.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 114.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 115.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 116.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 117.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 118.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 119.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 120.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 121.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 122.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 123.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 124.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 125.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 126.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 127.100.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 0.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 254.169.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 2.0.192.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 100.51.198.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 113.0.203.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 255.255.255.255.IN-ADDR.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: D.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 8.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 9.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: A.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: B.E.F.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: automatic empty zone: view guest-clients: 8.B.D.0.1.0.0.2.IP6.ARPA
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: configuring command channel from '/etc/rndc.key'
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: couldn't add command channel 127.0.0.1#953: file not found
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: configuring command channel from '/etc/rndc.key'
+Mar 30 01:40:29 2016 daemon.notice<29> named[1517]: couldn't add command channel ::1#953: file not found
+Mar 30 01:40:29 2016 daemon.info<30> named[1517]: no source of entropy found
+Mar 30 01:40:29 2016 user.debug<15> bhr4: System.AppShowLongTime: haveInput netlink_connection.cpp:20 took a long time: 110 ms 
+Mar 30 01:40:29 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:29 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:29 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:29 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:40:29 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 1 
+Mar 30 01:40:29 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 
+Mar 30 01:40:29 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:40:29 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:40:29 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 user.err<11> bhr4: ProcessMonitorBs: Process not running 
+Mar 30 01:40:29 2016 daemon.debug<31> root: Running wlconf wl0 down
+Mar 30 01:40:29 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0xf
+Mar 30 01:40:29 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:29 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:40:29 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Enable with chunk size = 2500, packet size = 1500
+Mar 30 01:40:29 2016 daemon.debug<31> root: wl0: cmd=124: Operation not supported 
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Number of chunks = 0 (clean up)wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:29 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:29 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:29 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:29 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:29 2016 daemon.debug<31> root: Running wlconf wl1 down
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Disable (and free all memory)
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Enable with chunk size = 2500, packet size = 1500
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Number of chunks = 0 (clean up)
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Disable (and free all memory)
+Mar 30 01:40:29 2016 kern.info<6> kernel: PGM: buffer: Enable with chunk size = 2500, packet size = 1500
+Mar 30 01:40:29 2016 daemon.debug<31> root: wl1: cmd=124: Operation not supported 
+Mar 30 01:40:29 2016 daemon.debug<31> root: Running wlconf wl1.1 down
+Mar 30 01:40:29 2016 daemon.debug<31> root: Running wlconf wl0.1 down
+Mar 30 01:40:30 2016 user.err<11> lighttpd[1546]: (log.c.194) server started 
+Mar 30 01:40:30 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine network_devices_monitor_module.cpp:160 took a long time: 110 ms 
+Mar 30 01:40:30 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:40:30 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:40:30 2016 user.err<11> bhr4: System: NetlinkConnection::processBuffer kernel return error: 16 
+Mar 30 01:40:30 2016 user.err<11> bhr4: System: NetlinkConnection::processBuffer kernel return error: 16 
+Mar 30 01:40:30 2016 user.err<11> bhr4: System: NetlinkConnection::processBuffer kernel return error: 16 
+Mar 30 01:40:30 2016 user.err<11> bhr4: System: NetlinkConnection::processBuffer kernel return error: 16 
+Mar 30 01:40:30 2016 kern.info<6> kernel: PGM: buffer: Number of chunks = 0 (clean up)
+Mar 30 01:40:30 2016 kern.info<6> kernel: device wl1.1 entered promiscuous mode
+Mar 30 01:40:30 2016 daemon.info<30> dhcpd: Internet Systems Consortium DHCP Server 4.2.6
+Mar 30 01:40:30 2016 daemon.info<30> dhcpd: Copyright 2004-2014 Internet Systems Consortium.
+Mar 30 01:40:30 2016 daemon.info<30> dhcpd: All rights reserved.
+Mar 30 01:40:30 2016 daemon.info<30> dhcpd: For info, please visit https://www.isc.org/software/dhcp/
+Mar 30 01:40:30 2016 kern.warn<4> kernel: cs_hw_accel_wireless_register 4a:5d:36:33:c0:37 
+Mar 30 01:40:30 2016 kern.warn<4> kernel: ^I allocate idx=1 mc_mac_idx=4
+Mar 30 01:40:30 2016 kern.info<6> kernel: br-guest: port 1(wl1.1) entered forwarding state
+Mar 30 01:40:30 2016 kern.info<6> kernel: br-guest: port 1(wl1.1) entered forwarding state
+Mar 30 01:40:30 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 234 ms 
+Mar 30 01:40:30 2016 daemon.debug<31> root: Running wlconf wl0 up
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(apsta): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: cmd=231: Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(psta): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(leddc): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(chanspec): Invalid argument 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(avg_dma_xfer_rate): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(nar): Operation not supported 
+Mar 30 01:40:30 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(taf): Operation not supported 
+Mar 30 01:40:30 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:30 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:30 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:30 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1fff, rd 0x1fff
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ebos_enable): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: cmd=64: Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(pspretend_threshold): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: Running wlconf wl1 up
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(apsta): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: cmd=231: Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(psta): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(leddc): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(chanspec): Invalid argument 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(rx_amsdu_in_ampdu): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(avg_dma_xfer_rate): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(nar): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(taf): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ebos_enable): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: cmd=64: Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(pspretend_threshold): Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: Running wlconf wl1.1 up
+Mar 30 01:40:31 2016 daemon.debug<31> root: Running wlconf wl0.1 up
+Mar 30 01:40:31 2016 kern.info<6> kernel: br-lan: port 5(eth2.1) entered forwarding state
+Mar 30 01:40:31 2016 kern.info<6> kernel: br-lan: port 4(wl1) entered forwarding state
+Mar 30 01:40:31 2016 kern.info<6> kernel: br-lan: port 2(wl0) entered forwarding state
+Mar 30 01:40:31 2016 kern.info<6> kernel: br-lan: port 1(eth2.2) entered forwarding state
+Mar 30 01:40:31 2016 kern.info<6> kernel: br-lan: port 3(wl0.1) entered forwarding state
+Mar 30 01:40:31 2016 daemon.debug<31> root: Running acs_cli
+Mar 30 01:40:31 2016 kern.warn<4> kernel: nas calls setitimer() with new_value NULL pointer. Misfeature support will be removed
+Mar 30 01:40:31 2016 daemon.debug<31> root: Running wlconf wl0 start
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: cmd=139: Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: cmd=124: Operation not supported 
+Mar 30 01:40:31 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wdstimeout): Operation not supported 
+Mar 30 01:40:32 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=89dbdab8 bsscfg_idx=0 wlcif_idx=0 dev=8bc76000 bsscfg=48 5D 36 33 C0 34
+Mar 30 01:40:32 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=0x41f33ee4 done
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wmf_ucast_igmp_query): Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wmf_ucast_upnp): Operation not supported 
+Mar 30 01:40:32 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=89dbdab8 bsscfg_idx=1 wlcif_idx=1 dev=8c2a1800 bsscfg=4A 5D 36 33 C0 35
+Mar 30 01:40:32 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=0x41f33f04 done
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wmf_igmpq_filter): Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: Running wlconf wl1 start
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl1: cmd=139: Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl1: cmd=124: Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wdstimeout): Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wmf_ucast_igmp_query): Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wmf_ucast_upnp): Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wmf_igmpq_filter): Operation not supported 
+Mar 30 01:40:32 2016 daemon.debug<31> root: Running wlconf wl1.1 start
+Mar 30 01:40:32 2016 daemon.debug<31> root: Running wlconf wl0.1 start
+Mar 30 01:40:32 2016 daemon.debug<31> root: Running wlconf wl0 down
+Mar 30 01:40:33 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:33 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x2026
+Mar 30 01:40:33 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:33 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:33 2016 daemon.debug<31> root: wl0: cmd=124: Operation not supported 
+Mar 30 01:40:33 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:33 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:33 2016 daemon.debug<31> root: Running wlconf wl1 down
+Mar 30 01:40:33 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:33 2016 daemon.debug<31> root: wl1: cmd=124: Operation not supported 
+Mar 30 01:40:33 2016 daemon.debug<31> root: Running wlconf wl1.1 down
+Mar 30 01:40:33 2016 daemon.debug<31> root: Running wlconf wl0.1 down
+Mar 30 01:40:34 2016 user.debug<15> bhr4: System.AppShowLongTime: timer process_monitor.cpp:141 took a long time: 122 ms 
+Mar 30 01:40:34 2016 daemon.debug<31> root: Running wlconf wl0 up
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(apsta): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: cmd=231: Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(psta): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(leddc): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(chanspec): Invalid argument 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(avg_dma_xfer_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(nar): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(taf): Operation not supported 
+Mar 30 01:40:34 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:34 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:34 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:34 2016 kern.warn<4> kernel: wlc_cxo_ipc_msg_handle:wt 0x1817, rd 0x1817
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(ebos_enable): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: cmd=64: Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(pspretend_threshold): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: Running wlconf wl1 up
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(apsta): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: cmd=231: Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:dwds): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(psta): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(leddc): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(chanspec): Invalid argument 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(rx_amsdu_in_ampdu): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bg_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(a_mrate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(avg_dma_xfer_rate): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(nar): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(taf): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(ebos_enable): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: cmd=64: Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(bsscfg:pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(pspretend_retry_limit): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(pspretend_threshold): Operation not supported 
+Mar 30 01:40:34 2016 daemon.debug<31> root: Running wlconf wl1.1 up
+Mar 30 01:40:34 2016 daemon.debug<31> root: Running wlconf wl0.1 up
+Mar 30 01:40:35 2016 daemon.debug<31> root: Running acs_cli
+Mar 30 01:40:35 2016 daemon.debug<31> root: Running wlconf wl0 start
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl0: cmd=139: Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl0: cmd=124: Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wdstimeout): Operation not supported 
+Mar 30 01:40:35 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=8981dab8 bsscfg_idx=0 wlcif_idx=0 dev=8bc76000 bsscfg=48 5D 36 33 C0 34
+Mar 30 01:40:35 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=0x41f33ee4 done
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wmf_ucast_igmp_query): Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wmf_ucast_upnp): Operation not supported 
+Mar 30 01:40:35 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=8981dab8 bsscfg_idx=1 wlcif_idx=1 dev=8c2a1800 bsscfg=4A 5D 36 33 C0 35
+Mar 30 01:40:35 2016 kern.warn<4> kernel: __wlc_cxo_bsscfg_add bsscfg=0x41f33f04 done
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl0: WLC_SET_VAR(wmf_igmpq_filter): Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: Running wlconf wl1 start
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl1: cmd=139: Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl1: cmd=124: Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wdstimeout): Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wmf_ucast_igmp_query): Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wmf_ucast_upnp): Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: wl1: WLC_SET_VAR(wmf_igmpq_filter): Operation not supported 
+Mar 30 01:40:35 2016 daemon.debug<31> root: Running wlconf wl1.1 start
+Mar 30 01:40:35 2016 daemon.debug<31> root: Running wlconf wl0.1 start
+Mar 30 01:40:35 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine net_general.cpp:30 took a long time: 147 ms 
+Mar 30 01:40:36 2016 daemon.info<30> dhcpd: Internet Systems Consortium DHCP Server 4.2.6
+Mar 30 01:40:36 2016 daemon.info<30> dhcpd: Copyright 2004-2014 Internet Systems Consortium.
+Mar 30 01:40:36 2016 daemon.info<30> dhcpd: All rights reserved.
+Mar 30 01:40:36 2016 daemon.info<30> dhcpd: For info, please visit https://www.isc.org/software/dhcp/
+Mar 30 01:40:36 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:40:36 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:40:38 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:40 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 162 ms 
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:44 2016 kern.err<3> kernel: NOHZ: local_softirq_pending 08
+Mar 30 01:40:45 2016 kern.info<6> kernel: br-guest: port 1(wl1.1) entered forwarding state
+Mar 30 01:40:50 2016 user.err<11> cwmpclient: [ERROR] Could not resolve cpe-ems0271.verizon.com: nodename nor servname provided, or not known
+Mar 30 01:40:51 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 158 ms 
+Mar 30 01:41:12 2016 user.err<11> cwmpclient: [ERROR] Could not resolve cpe-ems0271.verizon.com: nodename nor servname provided, or not known
+Mar 30 01:41:13 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 165 ms 
+Mar 30 01:41:34 2016 user.err<11> cwmpclient: [ERROR] Could not resolve cpe-ems0271.verizon.com: nodename nor servname provided, or not known
+Mar 30 01:41:35 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 154 ms 
+Mar 30 01:41:56 2016 user.err<11> cwmpclient: [ERROR] Could not resolve cpe-ems0271.verizon.com: nodename nor servname provided, or not known
+Mar 30 01:41:57 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 204 ms 
+Mar 30 01:41:59 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 3 
+Mar 30 01:41:59 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Connection timeout, switching interface 
+Mar 30 01:41:59 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:41:59 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Selected interface is MOCA = eth0 
+Mar 30 01:41:59 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::selectInterface() 
+Mar 30 01:41:59 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 
+Mar 30 01:42:00 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine dhcpcd_adaptor.cpp:155 took a long time: 486 ms 
+Mar 30 01:42:00 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:00 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 2 
+Mar 30 01:42:00 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 
+Mar 30 01:42:00 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:00 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:00 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:00 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:00 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:01 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine dasmo_bl.cpp:51 took a long time: 1289 ms 
+Mar 30 01:42:01 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:01 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:01 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:01 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:42:01 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:01 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine ipv4_reserved_ports.cpp:34 took a long time: 263 ms 
+Mar 30 01:42:01 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:01 2016 user.err<11> bhr4: System: virtual void GreenWave::NlUtils::addDefaultGateway(const string&, const GreenWave::IPv4&) const - ioctl failure - 3: No such process 
+Mar 30 01:42:02 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 1 
+Mar 30 01:42:02 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 daemon.info<30> dhcpd: Internet Systems Consortium DHCP Server 4.2.6
+Mar 30 01:42:02 2016 daemon.info<30> dhcpd: Copyright 2004-2014 Internet Systems Consortium.
+Mar 30 01:42:02 2016 daemon.info<30> dhcpd: All rights reserved.
+Mar 30 01:42:02 2016 daemon.info<30> dhcpd: For info, please visit https://www.isc.org/software/dhcp/
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: starting BIND 9.10.1 -f -c /tmp/named/named.conf -n 1
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: built with '--host=arm-greenwave-linux-gnueabihf' '--target=arm-greenwave-linux-gnueabihf' '--prefix=' '--localstatedir=/tmp' '--with-openssl=/home/dmartana/workspace/lego/output/bhr4_dev' '--with-ecdsa=yes' '--with-gost=no' '--with-gssapi=no' '--with-randomdev=no' '--with-libxml2=no' '--with-libjson=no' '--disable-threads' '--disable-atomic' 'host_alias=arm-greenwave-linux-gnueabihf' 'target_alias=arm-greenwave-linux-gnueabihf' 'CC=arm-greenwave-linux-gnueabihf-gcc' 'CFLAGS=-Os -ffunction-sections -fdata-sections -g -I/home/dmartana/workspace/lego/output/bhr4_dev/include -isystem /home/dmartana/workspace/lego/output/bhr4_dev/thirdparty-include -march=armv7-a -mcpu=cortex-a9 -mtune=cortex-a9 -mfpu=vfpv3-d16 -mfloat-abi=hard ' 'LDFLAGS=-L/home/dmartana/workspace/lego/output/bhr4_dev/lib -Wl,-O1 -Wl,--as-needed -Wl,--gc-sections ' 'LIBS=-Wl,-rpath-link=/home/dmartana/workspace/lego/output/bhr4_dev/lib -Wl,-L/home/dmartana/workspace/lego/output/bhr4_dev/lib ' 'CPPFLAGS=-Os -ffu
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: ----------------------------------------------------
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: BIND 9 is maintained by Internet Systems Consortium,
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: Inc. (ISC), a non-profit 501(c)(3) public-benefit 
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: corporation.  Support and training for BIND 9 are 
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: available at https://www.isc.org/support
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: ----------------------------------------------------
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: using 1 UDP listener per interface
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: using up to 1024 sockets
+Mar 30 01:42:02 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:02 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: loading configuration from '/tmp/named/named.conf'
+Mar 30 01:42:02 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: using default UDP/IPv4 port range: [1024, 65535]
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: using default UDP/IPv6 port range: [1024, 65535]
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: listening on IPv6 interfaces, port 53
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: listening on IPv4 interface lo, 127.0.0.1#53
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: listening on IPv4 interface eth0, 192.168.0.101#53
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: listening on IPv4 interface br-lan, 192.168.1.1#53
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: generating session key for dynamic DNS
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: sizing zone task pool based on 11 zones
+Mar 30 01:42:02 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:42:02 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: set up managed keys zone for view internal-clients, file '1a86b4379c0454105f76ef9ed5f3ec3d00d65fd62ab98fbf94a2e184eee6e081.mkeys'
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: set up managed keys zone for view guest-clients, file '91b9b2402ff5d0d79d343c0b789238df00e106a71acf40b51318080ef008c1a2.mkeys'
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: configuring command channel from '/etc/rndc.key'
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: couldn't add command channel 127.0.0.1#953: file not found
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: configuring command channel from '/etc/rndc.key'
+Mar 30 01:42:02 2016 daemon.notice<29> named[2197]: couldn't add command channel ::1#953: file not found
+Mar 30 01:42:02 2016 daemon.info<30> named[2197]: no source of entropy found
+Mar 30 01:42:02 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine ipv4_reserved_ports.cpp:34 took a long time: 269 ms 
+Mar 30 01:42:02 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 kern.notice<5> kernel: g2-ne g2-ne.0: eth2: Promiscuous mode enabled
+Mar 30 01:42:02 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Enter: void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 2 
+Mar 30 01:42:02 2016 user.debug<15> bhr4: Bhr4NetworkInterfaceSelectorLog: Exit : void GreenWave::Bhr4NetworkInterfaceSelector::wanStatusChanged() 
+Mar 30 01:42:03 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine dasmo_bl.cpp:51 took a long time: 1320 ms 
+Mar 30 01:42:03 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:03 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:03 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:03 2016 user.err<11> bhr4: Firewall.FirewallLog: Failed to execute script: iptables -t nat -F PC_PREROUTING iptables -t nat -F PC_GUEST_PREROUTING iptables -t nat -D GNW_OPEN_APPR_GUESTS_HOOK -j PC_GUEST_PREROUTING iptables -t nat -D PREROUTING_GNW -j PC_GUEST_PREROUTING 
+Mar 30 01:42:03 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:04 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine ipv4_reserved_ports.cpp:34 took a long time: 244 ms 
+Mar 30 01:42:04 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:04 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 160 ms 
+Mar 30 01:42:05 2016 kern.warn<4> kernel: Set hash_hw_entry as 0x00000001
+Mar 30 01:42:07 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine static_nat_entry.cpp:61 took a long time: 108 ms 
+Mar 30 01:42:08 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 155 ms 
+Mar 30 01:42:08 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine static_nat_entry.cpp:61 took a long time: 105 ms 
+Mar 30 01:42:10 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 153 ms 
+Mar 30 01:42:18 2016 daemon.info<30> dhcpd: Internet Systems Consortium DHCP Server 4.2.6
+Mar 30 01:42:18 2016 daemon.info<30> dhcpd: Copyright 2004-2014 Internet Systems Consortium.
+Mar 30 01:42:18 2016 daemon.info<30> dhcpd: All rights reserved.
+Mar 30 01:42:18 2016 daemon.info<30> dhcpd: For info, please visit https://www.isc.org/software/dhcp/
+Mar 30 01:42:32 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine static_nat_entry.cpp:61 took a long time: 108 ms 
+Mar 30 01:42:33 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 174 ms 
+Mar 30 01:42:33 2016 user.debug<15> bhr4: System.AppShowLongTime: coroutine static_nat_entry.cpp:61 took a long time: 109 ms 
+Mar 30 01:42:34 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 163 ms 
+Mar 30 01:42:40 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 168 ms 
+Mar 30 01:44:02 2016 user.debug<15> bhr4: System.AppShowLongTime: timer value_serializer.cpp:20 took a long time: 152 ms 

@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-26T10:29:07+08:00
+
+====== Persistence ======
+Created Wednesday 26 October 2016
+
+===== General concepts =====
+http://www.datastax.com/dev/blog/a-deep-look-to-the-cql-where-clause
+http://docs.datastax.com/en/cql/3.0/cql/ddl/ddl_compound_keys_c.html
+https://issues.apache.org/jira/browse/CASSANDRA-7981
+http://stackoverflow.com/questions/24587869/understand-cassandra-replication-factor-versus-consistency-level
+
+===== Keyspaces =====
+* axon
+* monitor
+
+===== Cassandra Migration =====
+Schema management
+[[/mintdata/sources/cloud/cassandra/cassandra-migrations/src/main/java/com/greenwave/cassandra/migrations/]]
+* axon
+* monitor

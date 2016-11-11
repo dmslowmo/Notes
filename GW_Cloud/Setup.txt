@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-24T16:08:10+08:00
+
+====== Setup ======
+Created Monday 24 October 2016
+
+===== Installation =====
+[*] Cassandra
+	[ ] $HOME/applications/cassandra/apache-cassandra-3.9
+[*] Kafka (as user 'kafka')
+	[ ] https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-14-04
+[*] Zookeeper (as user 'kafka')
+[*] nodejs
+	[ ] https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+[*] npm
+	[ ] sudo npm install npm -g
+[*] mintdata source
+[*] axon-inspector source
+[*] upgrade mvn to 3.3.9
+[Optional]
+[*] KafkaT
+
+===== Start-up =====
+[ ] Zookeeper: //sudo services zookeeper start//
+[ ] Kafka: (in [[/home/kafka/bin]]) //./kafka-server-start.sh ../config/server.properties//
+[ ] Cassandra: (in your Cassandra home) //./cassandra//
+
+===== Configuration (for simulation) =====
+Application configurations in IntelliJ Idea:
+
+Clients:
+Main class:
+mint.rest.common.Application
+Program arguments:
+cloud/util/**clients**/src/main/resources/reference.conf 8091
+Working directory: 
+<PROJECT>/sources
+
+Clients:
+Main class:
+mint.rest.common.Application
+VM Options:
+-Doverride.storage.type="local"
+Program arguments:
+cloud/**api**/src/main/resources/app.conf 8181
+Working directory: 
+<PROJECT>/sources
+
+Front-tier:
+Main class:
+com.greenwave.FronttierApp
+Program arguments:
+cloud/**front-tier-launcher**/src/main/resources/app.conf
+Working directory: 
+<PROJECT>/sources
+
+Back-tier:
+Main class:
+com.greenwave.BacktierApp
+Program arguments:
+cloud/**back-tier-launcher**/src/main/resources/app.conf
+Working directory: 
+<PROJECT>/sources
+
+Migrate Cassandra:
+Main class:
+com.greenwave.cassandra.schema.Main
+Program arguments:
+migrate axon
+Working directory: 
+<PROJECT>/sources
+
+===== Troubleshooting/Cleanup =====
+* Remove kafka-log and zookeeper folder in /tmp

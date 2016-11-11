@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-31T10:20:08+08:00
+
+====== Docker App packaging ======
+Created Monday 31 October 2016
+
+* Dockerfile
+	* a file that contains specific steps/configuration needed to build and run the docker app
+
+* Essential docker commands
+	* build
+	* exec
+	* kill
+	* inspect
+	* login
+	* logout
+	* images
+	* port
+	* ps
+	* pull
+	* push
+	* rm — remove container
+	* rmi — remove images
+	* run
+	* tag
+
+* Docker ports
+	* [[Host_port:container_port]]
+		* eg 12002:8080
+		* that means, we can have multiple application, which assume, they are working on port 8080
+
+* Docker volumes
+	* when docker container run with db and restarted, all data will be lost
+	* solution: volume
+		* mapping host volume to container volume
+
+* Essential Dockerfile commands
+	* FROM - declare a bse img to use
+	* ENV - setup env var
+	* ADD — add file to docker container. Remove urls are supported
+	* COPY
+	* RUN - run any script to modify container
+	* CMD and ENTRYPOINT — exec this commnad when container iss started. Only one CMD is allowed
+	* VOLUME - define durable storage. Simply saying this is a dir mapped to external dir. All changes inside the docker container will be gone, except volumes
+
+* Make (makefile)
+	* for building, tagging, release jobs
+
+* How does Docker get all the dependencies required?
+	* no Maven in release Docker img. It's too large
+	* we need to have all jar files in container folder before we start docker build command
+	* to do that, we need a separate Docker container with Maven installed
+		* dedicated to download all deps
+		* into build/lib dir
+
+* Docker Compose
+	* for dealing with multiple docker images
+	* docker-compose.yml
+	* docker-compose can do build, but it is recommended to use make for build

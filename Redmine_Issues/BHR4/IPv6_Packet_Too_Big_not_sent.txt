@@ -1,0 +1,234 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-30T17:18:02+08:00
+
+====== IPv6 Packet Too Big not sent ======
+Created Wednesday 30 March 2016
+
+Redmine: https://support.greenwavereality.com/issues/19464
+JIRA: https://greenwavesystems.atlassian.net/browse/SB-150
+
+===== 18/04/2016 =====
+* Wrapping up in JIRA-150
+	* recommendation to upgrade the kernel
+* List of related patches to "packet too big" issue:
+	* net: ipv6: send pkttoobig immediately if orig frag size > mtu
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=418a31561d594a2b636c1e2fa94ecd9e1245abb1
+	* ipv6: don't increase size when refragmenting forwarded ipv6 skbs
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=485fca664d76c47fb2a17dcd2ce705a0f137cc3b
+	* __net: ip, ipv6: handle gso skbs in forwarding path__
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=29a3cd46644ec8098dbe1c12f89643b5c11831a9
+	* ipvs: IPv6 MTU checking cleanup and bugfix
+		* https://github.com/torvalds/linux/commit/590e3f79a21edd2e9857ac3ced25ba6b2a491ef8
+	* netfilter: nf_conntrack_ipv6: improve fragmentation handling:
+		* https://github.com/torvalds/linux/commit/4cdd34084d539c758d00c5dc7bf95db2e4f2bc70
+	* IPv6: Complete IPV6_DONTFRAG support
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=4b340ae20d0e2366792abe70f46629e576adaf5e
+	* ipv6: Use 1280 as min MTU for ipv6 forwarding
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=14f3ad6f4a12495b32b0dd743bc7179f36658208
+	* sctp: Drop ICMP packet too big message with MTU larger than current PMTU
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=91bd6b1e030266cf87d3f567b49f0fa60a7318ba
+	* IPVS: Add handling of incoming ICMPV6 messages
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=94b265514a8398ba3cfecb5a821a027b68a5c38e
+	* ipv6: Fix ip6_xmit to send fragments if ipfragok is true
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=77e2f14f71d68d05945f1d30ca55b5194d6ab1ce
+	* ipv6: allow to send packet after receiving ICMPv6 Too Big message with MTU field less than IPV6_MIN_MTU
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=f2228f785a9d97307aa8ba709088cfda6c3df73f
+	* [IPV6]: Send ICMPv6 error on scope violations.
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=5bb1ab09e4f6287c0b6c9cdbd463147cbd003f54
+	* ipv6: ip6_append_data_mtu do not handle the mtu of the second fragment properly
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=4b6da9193692acfe4889cb0a6050239cc613f756
+	* bridge: fix forwarding of IPv6
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=d8083deb4f1aa0977980dfb834fcc336ef38318f
+	* ipv6: addrconf: validate new MTU before applying it
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=59c8392ffcf3d6e39dcdd558e0354afc545f4c91
+
+===== 15/04/2016 =====
+* Trying out the patches
+* Dependencies found:
+	* https://github.com/torvalds/linux/commit/590e3f79a21edd2e9857ac3ced25ba6b2a491ef8, followed by
+	* https://github.com/torvalds/linux/commit/4cdd34084d539c758d00c5dc7bf95db2e4f2bc70
+	* ... and possibly many more
+* Abandoned this patching approach because of the complexity in resolving the conflict and managing the dependencies
+
+===== 14/04/2016 =====
+* Found that in kernel 3.x.y, the issue is addressed by this patch:
+	* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=29a3cd46644ec8098dbe1c12f89643b5c11831a9
+	* the above patch existed since 3.14.y
+	* BHR4 uses kernel version 3.4.104
+	* However, this patch was reverted in 3.16/17.y (no reason given)
+	* and in the latest version (after 4.6.y), it's there again
+	* We may be interested in these patches as well to make it work properly, in addition to the above:
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=418a31561d594a2b636c1e2fa94ecd9e1245abb1 (added since kernel rev 3.15.y)
+		* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=485fca664d76c47fb2a17dcd2ce705a0f137cc3b (added since kernel rev 4.2.y)
+
+===== 13/04/2016 =====
+* Browsing linux kernel patches from branch 3.4.y for any changes related to ipv6
+	* https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y
+	* keyword search: //ipv6, icmpv6, packet too big//
+
+===== 12/04/2016 =====
+* Trying to ask a forum in https://njetwork.wordpress.com/2014/01/17/ping6-and-fragments
+
+===== 08/04/2016 =====
+* Watching the traffic on both ends with tcpdump reveals:
+	* when PMTU_BC < packetSize <= PMTU_AB
+		* Packet sent unfragmented
+		* BHR4 forwards the packet to the destination end
+		* On the destination, the packet is received, then
+		* replies are sent in 2 fragments
+		* both fragments received by the original sender (Wireshark failed to show all fragments)
+	* when PMTU_AB < packetSize
+		* Packet sent in 2 fragments (unless options //-M do// is used, which will prevent the packet to be sent)
+		* BHR4 forwards both fragments
+		* On the destination, both fragments received, then
+		* replies are sent for each fragments
+		* both fragments received by the original sender (Wireshark failed to show all fragments)
+* Qns:
+	* What is the role of a router in Path MTU Discovery process?
+
+===== 07/04/2016 =====
+* Learn how to use //tcpdump//
+	* To watch the traffic on Raspberry-pi
+* If no luck with Raspberry-Pi, try borrowing a laptop
+	* with Wireshark on it
+	* to be used as a Receiving client
+	* and watch incoming/outgoing traffic on it
+
+===== 05/04/2016 =====
+* **What we learned so far:**
+	* **Fragmentation should only happen at the sending source (OK)**
+	* **Routers do not/should not fragment packets (OK in forwarding case, NG in reply case)**
+	* **As part of Path MTU Discovery process, "packet too big" message should be sent by Router if packet is larger than PMTU of the link between it and the destination (NG)**
+* Insight from https://www.quora.com/Why-is-an-ICMPv6-Echo-Request-type-128-larger-than-MTU-is-replied-with-a-fragment-of-Echo-Reply-type-129-instead-of-a-packet-too-big-type-2/answer/Tony-Li-19?srid=RuRJ :
+	* Since the network is only formed out of two nodes ie PC and Router,
+	* the MTU is irrelevant, because
+	* the Router isn't going to forward the packet, and
+	* **since it is able to receive the packet**, and
+	* apparently able to parse the header, then
+	* it replies the Echo Request with Echo Reply (fragment)
+* Question is, **why is the Router able to receive the packet larger than Path MTU, or its own MTU ??**
+	* shouldn't it reject/drop the packet, and
+	* send "packet too big" message
+	* But instead, it receives the packet and send a fragmented reply (fragmentation at the source)
+* Experiment with a Sending Client, a Router, and a Receiving Client
+	* Setup:
++-------------------------+                    +------------+                        +-----------------+
+|                       C |   PMTU_BC = 1280   |          B |    PMTU_AB = 1500      |               A |
+|                         |                    |            |                        |                 |
+|   Raspberry-pi box      +--------------------+    BHR4    +------------------------+      PC         |
+|                         |                    |            |                        |                 |
+|                         |                    |            |                        |                 |
++-------------------------+                    +------------+                        +-----------------+
+	   MTU = 1280                                 MTU = 1500                               MTU = 5000
+
+	* Steps:
+		* Set MTU of A = 5000, MTU of B = 1500, MTU of C = 1280
+		* Experiment #1: From A, **PMTU_BC < packet size < PMTU_AB**: //ping6 -c1 -Ieth0 -s1452 <IPv6 of C>//
+		* Experiment #2: From A, **PMTU_AB < packet size:** //ping6 -c1 -Ieth0 -s1453 <IPv6 of C>//
+	* Results:
+		* Experiment #1:
+			* Echo Request sent unfragmented
+			* Echo Reply is sent from C, fragmented =====> **B should send "Packet Too Big" to A instead**
+			* Observation:
+				* Packet is larger than PMTU_BC, but within PMTU_AB, hence B forwards it to C
+				* Seems it is a default behaviour to receive the large ICMPv6 packet if it does arrive
+				* If the node's next action is to reply, it replies in fragments (fragmentation at source)
+		* Experiment #2:
+			* Echo Request sent but did not reach C, hence
+			* no reply, and timeout
+			* Observation:
+				* The packet is larger than PMTU_AB, so it is discarded and no reply (because it's next action is supposed to be 'forwarding')
+				* **Bug: no "packet too big" ICMPv6 type 2 message from B (BHR4)**
+* Attempted to replace BHR4 with other router (TP-Link):
+	* Same behaviour observed
+	* This is not helpful in concluding what should be the correct behaviour
+	* Perhaps Linux kernel has not fully supported IPv6 rules?
+
+
+===== 04/04/2016 =====
+* Investigating how fragmentation works
+	* In IPv6 datagram, there are fragmentable and **non-fragmentable** headers
+	* non-fragmentable headers must be replicated in each of the fragments
+	* each data fragment needs to be of "multiple-of-8" size
+	* Tried to ping from the opposite direction, but same results
+		* so it is not pertaining to BHR4 end only
+* According to http://www.tcpipguide.com/free/t_IPv6DatagramSizeMaximumTransmissionUnitMTUFragment-2.htm
+	* Fragmentation happens on SOURCE end only
+	* which is confusing because we ping with "-M do" options already
+		* so perhaps in the kernel layer the packets are still fragmented anyway
+		* and the destination end really received only the fragments
+		* shown in wireshark when pinging from BHR4 to PC where only the small fragment is received
+
+===== 01/04/2016 =====
+* The header sizes:
+	* ICMP = 8 bytes
+	* IP = 40 bytes
+	* So total message size is payload + headers = payload + 48
+
+* **Testing with max size (MTU = 1500 on both sender and receiver side):**
+	* Total length of bytes captured: 1514 bytes
+		* clean payload: 1452 bytes
+		* ICMP
+			* header: 8 bytes
+			* payload length  =1452
+		* IP payload = 1452 + 8 = 1460 bytes
+	* IP header + others: 54 bytes
+		* IP header = 40 bytes
+		* Eth header = 14 bytes
+	* Reply packet's is the same
+* **Testing with max size + 1 (MTU = 1500 on both sender and receiver side):**
+	* There is a fragmentation header: packet fragmented into 2 packets of lengh 1448 and 13:
+		* Reassembled: 1448 + 13 = 1461
+	* ICMP:
+		* header (8 bytes):
+		* payload length = 1453 (but IP payload is only 21 ?!)
+	* 1 fragment discarded:
+		* ~~IP payload 1 = 1448 + 8 = 1456 ~~ Not shown !
+		* IP header only shows payload 2: 13 + 8 = 21 bytes
+			* 8 byte is from ICMP header (or IPv6 fragment header)
+	* Total length of bytes sent: 75 bytes !
+		* payload = 21 bytes
+		* IP header + others = 54 bytes
+	* Reply packet's size is also 75 bytes, as probably the request received is only 75 bytes?
+	* It seems the packets are fragmented by the sender before sending. However, the larger packet is discarded.
+* **Testing with size = receiver's MTU + 2 = 1502, while sender's MTU increased to 1600**
+	* Increase sender's MTU: //sudo ifconfig eth0 mtu 1600//
+	* No fragmentation, because packet size is within sender's MTU size
+	* ICMP
+		* header (8 bytes):
+		* payload = 1454
+	* IP
+		* header + others = 54 
+		* payload = 1462 (ie ICMP header + payload)
+	* However, fragmentation was done on the reply packet
+		* 1448 + 14
+		* the larger one discarded
+		* the reply size is only 76
+
+* **Hypothesis of why no "Packet Too Big" message is sent:**
+	* Too-large IPv6 packet is sent
+	* The packet is fragmented into smaller packets, one of them is, unfortunately, discarded
+		* If fragmentation is allowed at sender, it is fragmented before sending
+		* Else, it is fragmented at receiver, if it allows fragmentation
+		* Otherwise, packet should be discarded
+	* The one received at the destination is small (just a fragment of original packet)
+	* Hence, no "Packet Too Big" message is sent, because the packet that arrived was small
+	* could not use ip6tables command
+
+===== 31/03/2016 =====
+* What might have happened:
+	* the too-big packet is fragmented on the sender side
+	* the small-sized packet detected per ping on wireshark is probably the smaller fragment, the larger one discarded (??)
+
+===== 30/03/2016 =====
+* Installed **packETH**
+* Installed **wireshark**
+* was able to send packet larger than MTU=1500
+{{{code: lang="sh" linenumbers="True"
+ping6 -c4 -Ieth0 -s1453 fe80::4a5d:36ff:fe33:c034
+}}}
+
+* Monitored the ICMPv6 packets on wireshark
+* Packet is fragmented (?) when //packet_size >1452//
+* No "packet too big" ICMPv6 packet sent

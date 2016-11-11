@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-16T17:58:59+08:00
+
+====== TestBytes greater than TotalBytes in Client FTP BW Test ======
+Created Wednesday 16 March 2016
+
+**16/03/2016**
+Findings:
+* Observed in Client
+* Sometimes OK, not always bad
+* Happens when the filesize is approx 10KB and below (needs more test, but at 500KB, didn't happen)
+* Using Curl as Client: looks fine, even with 6-byte file
+* Next:
+	* FTP Client: tr143 diag?
+	* check how the TestBytes and TotalBytes are computed
+	* Check how SSM does it, perhaps need to clear some counter before starting new tests
+
+**Findings:**
+* Able to reproduce
+* generally happens more on small data size, the smaller, the more likely it happens
+* not able to run 1r143_diag from host (need to check with Zhou Bin on his latest change)
+* still can run the tr143_diag standalone from inside BHR4 '/bin[[']] dir
+	* shows same behaviour as from the upnp bandwidth test
+	* it means this behaviour is from tr143_diag itself
+* How TestBytes and TotalBytes are computed:
+	* stats of the traffic from "br-lan" interface is collected
+	* Still not clear on how it is computed, but underneath it is **curl** that does the actual transfer
+	* tr143_diag just parse the results
+	* There are 2 parameters:
+		* "fullLoadTotalBytes"
+			* when TestBytes are low (below ~100K), this value is usually extremely low (in the hundreds)
+			* when TestBytes are high (above ~100K), the value is closer to the TestBytes (still lower)
+		* "TotalBytes"
+			* not same as "fullLoadTotalBytes"
+			* when TestBytes are low, this value usually lower than TestBytes
+			* when TestBytes are high, thsi value usually higher than TestBytes

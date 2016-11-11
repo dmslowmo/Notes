@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-11T15:54:14+08:00
+
+====== Porting Load Simulator to Epoxy ======
+Created Friday 11 November 2016
+
+===== Description =====
+To integrate Load Simulator application into Epoxy. The Load Simulator becomes a sub-app of Epoxy and will no longer be accessible directly from web browser.
+The Load Simulator itself still runs on its own instance, but accessible through Epoxy.
+
+===== General Requirements =====
+* Load Simulator (LS) GUI has to be migrated to Epoxy, probably will need to be re-designed.
+	* migrate all the js and mustache files
+	* New design:
+		* color scheme and layout follows Epoxy (side bars and headers)
+		* Top menu links on LS should be changed to Tabs
+* The backend of LS is accessed via REST API
+	* Need to see if there is already REST API endpoints between LS GUI and Backend
+	* If no REST interface in LS, then need to create it and make pull request to Mintdata
+	* Need new REST endpoint in Epoxy to access LS
+* Epoxy must be able to do the following:
+	* track/log the activities on LS
+	* takeover the responsibilities of:
+		* Profile creation ===> ported from LS
+		* Monitoring ===> ported from LS
+	* control the access to LS
+		* via configuration (mechanism already exists) ===> probably falls under which admin accounts can use it or not
+		* if disabled, then user cannot see the link or access it directly via command line
+* Database
+	* LS uses Mysql for profiles, and Cassandra for the rest
+	* May be needed to migrate everything to Cassandra
+
+===== Internal requirements =====
+* Write more tests
+
+
+===== Plan =====
+* Familiarize with LS codes
+	* Add unit tests (but don't need to
+* Migrate UI
+	* Create Mock LS to test
+* Migrate the features:
+	* profile creation
+	* monitoring
+	* Create Mock LS to test

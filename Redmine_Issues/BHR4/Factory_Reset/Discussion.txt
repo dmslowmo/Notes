@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-26T10:52:52+08:00
+
+====== Discussion ======
+Created Friday 26 February 2016
+
+**Problem:**
+Upon factory reset, it is expected that the Admin password to be reset as well. However, in 1.4 it doesn't.
+
+04/03/2016
+* The salt: 346be570-0811-41f4-9975-fbd1a6139467
+* Experiment 1:
+	* Deleted password_salt
+	* attempted to login with 'roses64bad'
+	* Results in GDT: login failed, but password and salt changes to:
+		* salt: 1023dd86-bb33-42d3-a0e3-bc1733a0c71a
+		* password: 778223b5ebe42d501203671edf2f3dc53604cea51e8e14f2e369de2d6ce5c4cb34424008fc160c3c6f181b1c3ea243d2b95fa95b7d633676e8b3931ad15ca814
+		* Still cannot login with this new password though
+		* reset_password set to true, the password and salt were back to original value
+		* Still cannot login
+	* Perhaps the issue is with the login module, not resetting of the password
+	* What we know:
+		* TR69 admin password is empty (typicially it is)
+		* upon resetting the password from GDT, the default password and password_salt are restored
+
+* Experiment 2: install 1.4.0.43 and tried factory reset
+	* Issue did not happen, still able to login

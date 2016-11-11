@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-19T17:21:03+08:00
+
+====== Image size reduction ======
+Created Monday 19 September 2016
+
+https://greenwavesystems.atlassian.net/browse/BHR2X-308
+
+===== Hypothesis =====
+* some commonly used dependencies accross multiple modules are statically linked, which could be dynamically linked
+
+===== Approach =====
+* listing the Makefiles under **proprietary** dir that are relevant to bhr4/bhr4_dev, then grep for "Bstatic"
+* list the dependencies that are statically linked
+* list the commonly used dependencies and their sizes (calculating possible saving)
+* one by one, replace the static linking with dynamic linking
+* finalize the list of dependencies that can be dynamically linked rather than statically linked

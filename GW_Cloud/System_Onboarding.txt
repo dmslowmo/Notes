@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-27T15:31:58+08:00
+
+====== System Onboarding ======
+Created Thursday 27 October 2016
+
+===== Requirements =====
+* init system with XMPP credentials and account information
+* Prevent communication of non-initialized systems with Cloud
+* Allow monitoring of online systems that have not completed onboarding procedure
+
+===== Constraints =====
+* System is identified by its SerialNo — MAC addr pair
+* Only Serial No. is encoded into the QR code that user can scan
+* System activation and registration by user can be made in any order
+* Serial No. / MAC addr must be treated as case-insensitive
+
+===== Onboarding Service =====
+* XMPP service
+* validates Serial No. / MAC via Roxy service
+* Systems connect using Serial No. / MAC addr as credentials
+* Processes back-tier gateway registration notifications

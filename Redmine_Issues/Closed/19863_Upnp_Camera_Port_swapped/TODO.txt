@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-26T17:30:56+08:00
+
+====== TODO ======
+Created Friday 26 February 2016
+
+[ ] [[https://support.greenwavereality.com/issues/19863#note-25|19863]] revisited:
+	* Veerendra reported: 
+	  //I don't the specified Q-See Camera Server to test. I have tested using D-Link DCS 932L and found the port forwarding entries working. //
+	  //DCS-932L opens port 80 and 443 on the BHR for the WAN side access. In one scenario the port forwarding entries are swapped.//
+	* Need to borrow the camera with similar model to reproduce and see the issue. Check with Minhou next week.

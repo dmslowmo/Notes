@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-22T10:21:10+08:00
+
+====== MoCA not linked if trying to connect after 1++ minutes ======
+Created Tuesday 22 March 2016
+
+Redmine: https://support.greenwavereality.com/issues/26589
+* Description:
+	* build .48
+	* Connect BHR4 to WAN with DHCP enabled
+	* wait until it gets an IP
+	* wait another 10 minutes
+	* try to connect to MoCA
+	* EXPECTED: MoCA gets IP from DHCP
+	* ACTUAL: MoCA not linked
+		* According to Gavin MoCA process got killed
+			* But I could not reproduce it on .55
+			* The log does not show enough information (got cut off on 9 March, suddenly resumed on 22 March and only showing very short time period)
+
+* Findings:
+	* BHR4 gets its internet connection from Eth WAN or MoCA WAN
+	* It seems in this case, MoCA WAN is **expected** to be prioritized over Eth WAN
+		* so, if Eth is already connected, then MoCA is connected, the internet connection source should switch to MoCA
+	* **[recovery steps]** When we bumped into this bug, the way to recover is to:
+		* keep MoCA connection
+		* disconnect Eth WAN and wait
+		* after about 2-3 minutes, the MoCA link is up again and BHR4 gets internet connection again
+	* I suspect the **ETH** actually is prioritized over MoCA:
+		* after bumping into this bug, perform the [recovery steps]
+		* then reproduce this bug again:
+			* reconnect Eth WAN
+			* disconnect MoCA, and wait until //mocap 0 get --interface_status// keeps showing "Error -8". Usually takes around 3 minutes
+			* reconnect MoCA. MoCA will not recover. Internet connection is still up (because of Eth WAN).
+		* then perform the [recovery steps] again

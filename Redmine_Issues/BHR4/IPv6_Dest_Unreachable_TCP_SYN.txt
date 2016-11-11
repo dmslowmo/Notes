@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-21T17:13:32+08:00
+
+====== IPv6 Dest Unreachable TCP SYN ======
+Created Thursday 21 April 2016
+
+Redmine: https://support.greenwavereality.com/issues/19852
+		 https://support.greenwavereality.com/issues/19853
+JRIA: https://greenwavesystems.atlassian.net/browse/SB-151
+
+firewall rule:
+$IP6TABLES -I INPUT -i $WAN_IF -p tcp --syn -j DROP
+$IP6TABLES -I FORWARD -i $WAN_IF -p tcp --syn -j DROP
+
+or
+
+$IP6TABLES -I INPUT -i $WAN_IF -p tcp --syn -j REJECT --reject-with addr-unreach
+$IP6TABLES -I FORWARD -i $WAN_IF -p tcp --syn -j REJECT --reject-with addr-unreach
+
+
+* Applied firewall rule to drop TCP SYN packet on WAN
+	* worked for INPUT rule
+	* does not work for FORWARD rule
+* tested by applying ip6tables manually
+* tested via code change in ipv6_firewall.cpp

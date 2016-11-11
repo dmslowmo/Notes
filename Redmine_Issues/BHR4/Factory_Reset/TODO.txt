@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-26T10:56:28+08:00
+
+====== TODO ======
+Created Friday 26 February 2016
+
+To check:
+[*] Connect the router to GDT and see under **users** the informations that remained (the router has been factory-reset before)
+	* admin password remains as 'roses64bad' (expected)
+	* password_salt shows some value. If this is erased the it should be restored after setting 'reset_password' to 'true' (expected)
+	* if we change the 'reset_password' flag to **true**, it will immediately change back to false (expected)
+	* CONCLUSION: seems that the password reset works correctly, but somehow user's input may not get through to the password checker, or some other reason.
+	* putting this aside for now...
+[*] See the codes related to this, see if we can find something
+	* see above 

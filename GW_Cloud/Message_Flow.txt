@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-24T13:51:56+08:00
+
+====== Message Flow ======
+Created Monday 24 October 2016
+
+**Terminology:**
+* Northbound --- towards AXON Cloud
+* Southbound --- down to lower layer
+
+Vysper XMPP server using Netty for transport
+
+**Northbound communication**
+* General flow:
+	* A client sends message to fronttier
+	* Fronttier sends the message to a partition under 'device' Topic in Kafka
+	* Kafka sends the msg to backttier
+
+* fronttier --- Kafka
+	* messages are stored in different Topics in Kafka
+	* uses Kafka acc as key
+	* fronttier registered in Zookeeper
+		* Zookeeper manages the fronttiers (detection/heartbeat, add and remove)
+
+* Kafka --- app modules
+	* There is a topic for each app module
+	* Sends via message router
+	* one partition serves multiple clients
+
+* backttier --- Kafka
+	* all backttier has the same group ID
+
+**Southbound communication**
+* General flow:
+	* A backttier needs to look up the Zookeeper which client to reply to
+		* Zookeeper keeps track of the communication
+	* If Client is not online, get owner of client from Cassandra
+	* backttier sends to a partition under 'reply' Topic in Kafka, as per Zookeeper's record
+	* Kafka sends to the fronttier
+	* fronttier sends to client
+
+* backttier --- Kafka
+	* backttier must publish to the correct partition in Kafka
+
+* Kafka --- fronttier
+	* ?
+
+* fronttier --- client
+

@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-24T17:45:53+08:00
+
+====== TODO ======
+
+Created Wednesday 24 February 2016
+-----------------------------------------------------
+[*] Check last few commits in 1.3.2 up to 1.3.2.19, what may introduce the bug
+	* DONE: identified that in .15 there is a BCM WIFI fw changes, so asked Vineet to test with .13 (ongoing)
+[x] Check whether any commits in 1.3.1 not propagated to 1.3.2
+[*] Create a script that watches memory utilization, to be run inside BHR4 router. It is to do:
+	[*] get the report from Top utility periodically, and
+	[*] add timestamp to it, and
+	[*] pipe it to a file in the thumbdrive
+[*] Create a script which capture a snapshot of **status** file in the /proc, to be run inside BHR4 router. It is to do:
+	[*] 'cat' its content, and
+	[*] pipe them into a file in the thumbdrive based on file name/type
+	[*] make it work in **busybox :(:(:(:(**
+	[*] use existing gw_*.sh as example
+
+

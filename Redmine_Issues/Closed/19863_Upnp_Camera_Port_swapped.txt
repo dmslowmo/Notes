@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-26T17:30:40+08:00
+
+====== 19863 Upnp Camera Port swapped ======
+Created Friday 26 February 2016
+

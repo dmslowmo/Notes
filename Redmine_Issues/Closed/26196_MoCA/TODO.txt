@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-26T17:29:52+08:00
+
+====== TODO ======
+
+
+
+26 February 2016 - 2 March 2016
+[*] [[https://support.greenwavereality.com/issues/26196|26196]]: BHR4 MoCA and UI: Coax channel didn't show on UI correctly as configured on MoCA SPF device @moca 
+	[*] How to set up MoCA?
+		* Moca is still down, shown in GDT
+		* The instructions didn't work, or my setup is wrong?
+		* Any documentation on Moca setup?
+		* BRICKED THE MOCA DEVICE!!!! :D:D:D ----> Actually, need to use Moca-enabled BHR4 instead of the one you "bricked"
+	[*] Replicate the setup used by Eric Thu
+	[*] Reproduced the problem
+ 
+[*] So it seems that the SSM did not take the actual value ('from') to set the 'to' value
+	[*] What variable stores the actual value that is changeable from the mocap cli ?
+	* Hypothesis:
+		* So the MocaWan's coaxChannel variable is set and get ONLY from GUI
+		* but, NOT from //mocap// cli
+[*] How does GDT gets the latest update?
+	* //MocaApplyThread// is a runnable object that helps to do the update
+	* It is spawned and started whenever there are changes to be applied or when connecting for the first time
+	* In GDT //operFreq// stores the Moca operating frequency, similar to //coaxChannel// in GUI
+	* However, coaxChannel is not updated by the MocaApplyThread
+		* Could this be the cause? ⇒ seems so, BUT
+		* After changing the code to get it updated, the GUI and console did not see the update until 2 mins later, which is too long
+			* it should be immediate
+		* Other info:
+			* This bug observed in 01.04.00.34/35
+			* The last time it passes in 01.04.00.26/27
+			* Hence, we need to see what changes may cause this between 29..35 ⇒ not easy to see
+
+[*] Try to download the firmware from the tags between 27a..33 and check which version this bug is observed
+	[*] First observe the correct behaviour in .27
+		[*] Even in this version the desired behaviour is not observed
+		[*] Updated Redmine ticket on the observation in this version
+		[*] QA (Gavin) will help to setup a forum with Hoang to discuss on this behaviour
+	[*] then try one-by-one the higher version builds ⇒ ** no need**
+	[*] Once found, we can narrow down the list of commits ⇒ **no need**
+
+
+

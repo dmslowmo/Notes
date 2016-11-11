@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-25T10:08:02+08:00
+
+====== Kafka ======
+Created Tuesday 25 October 2016
+
+===== Topic =====
+Kafka has **Topic: a category or feed name to which messages are published**
+* Topic has multiple partitions
+
+===== Partition =====
+* an ordered, **immutable** sequence of messages that is continually appended to — a commit log.
+* each msg in the partition are assigned sequential id no
+* ID no is called the **offset**
+* ID no is unique
+* messages are retained for a configurable period of time regardless whether it has been consumed or not
+* Offset is controlled by the Consumer
+
+===== Consumers =====
+* Traditional mmessaging models: queuing and pub-sub
+* Kafka offers a single consumer abstraction that generalizes both of those: the consumer group
+* Consumers label themselves with a consumer group name,
+* and each message published to a topic is delivered to one consumer instance
+* within subscribing consumer group
+* Consumer instances can be in separate processes or on separate machines
+
+**Scenario:**
+* Msg comes: 'device is offline'
+* multiple modules subscribing to this event
+* msg sent to a topic 'device' under Kafka
+* Device module sends notification to subscription module (via 'subscription' topic in Kafka?)
+* subscription module sends the notification to all subscribing modules
+
+===== Tracking offset =====
+* we read from each kafka partition sequentially, but can be notified abt msg processing in any order due to concurrency
+* if a particular msg takes too long to process → **at least once** policy
+	* the application gives up and resend the message,
+	* then advance the offset pointer
+	* so that it does not block other messages

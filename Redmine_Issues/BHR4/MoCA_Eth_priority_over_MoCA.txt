@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-29T15:15:08+08:00
+
+====== MoCA Eth priority over MoCA ======
+Created Tuesday 29 March 2016
+
+Enhancing Kokkee's patch in: https://gitgerrit-01.greenwavereality.eu/#/c/25061
+
+===== 30/03/2016 =====
+* Requirements conflicted:
+	* "last interface to be retried after bootup" vs "Eth will be attempted/switched-to when both Eth and Moca are connected"
+	* so stick with original patch from Kokkee
+* Testing to see how long does it take to finally connected to Moca when both interface are connected but no DHCP from Eth. Breakdown:
+	* Time for trying to connect to DHCP via Eth: 90 secs
+	* Time to switch to Moca: 10-12 secs
+	* Time to connect to DHCP and get IP (able to ping www.google.com successfully): 1-2 secs
+	* **Total: 101~104 secs**
+	* Logs captured [[./messages]] 
+
+===== 29/03/2016 =====
+Missing:
+	* storing the last connected interface and
+	* retry that interface first upon reboot
+
+

@@ -1,0 +1,78 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-26T17:29:28+08:00
+
+====== 26196 MoCA ======
+Created Friday 26 February 2016
+**Redmine link:** https://support.greenwavereality.com/issues/26196
+
+**07/03/2016:**
+* This ticket is rejected by Hoang (refer to email): Verizon's requirement
+
+**02/03/2016 notes:**
+1. This "bug" is a new finding, there is no version which shows the desired behaviour before
+2. There is 2+min delay between frequency setup in Moca and reestablishing connection in BHR4
+3. From the code, if the frequency is set to value other than 1000 or 1400, the variable will be forced to 1400. However the actual frequency used is still what the user sets.
+4. Email conversation started to get the history on this "bug" from Hoang
+
+**Channel Scanning mechanism:**
+1. When MocaBl is instantiated, a timer //tsChannelScan_// which is binded to the //channelScan() //function is created
+2. The timer period is set at 45s
+3. When timer is up, channelScan() is executed and then the timer is restarted
+
+**01/03/2016 Findings:**
+**"enabled" flag:**
+{{{code: lang="cpp" linenumbers="True"
+void MocaBaseBl::enabledChanged()
+{
+	FunctionLog(MocaLog);
+
+	auto state = ssm_.enabled->get();
+	if (enabled_ == state)
+		return;
+	enabled_ = state;
+	setLinkStatus(ssm_.link_status->get() && enabled_);
+	co_.schedule();
+}
+}}}
+
+
+* so the //enabled_// flag is updated only when the value in the ssm is different than the current flag value
+	* Does it mean ssm needs to be set to enabled first in GDT before executing //mocap// commands in console?
+
+**Happens when RF Band is changed:**
+{{{code: lang="cpp" linenumbers="True"
+void MocaBaseBl::rfBandChanged()
+{
+	FunctionLog(MocaLog);
+
+	uint32_t band = ssm_.rfBand->get();
+	dirties_[Dirty::RfBand] = [=](){ return ::moca_set_rf_band(handle_, band); };
+
+	// NOTE: if we change rf_band, that will restore all default setting for moca,
+	//       so if we change rf_band, we must restore other settings
+	ncModeChanged();
+	privacyChanged();
+	currentPasswordChanged();
+	txPowerChanged();
+	txPowerLimitChanged();
+	preferredNcChanged();
+	lofUpdateChanged();
+	turboEnChanged();
+
+	schedule();
+}
+}}}
+
+
+**When Coax Channel is changed:**
+{{{code: lang="cpp" linenumbers="True"
+void MocaWanBl::channelChanged()
+{
+	FunctionLog(MocaLog);
+
+	auto channel = uint32_t(MocaWan::instance().channel->get());
+	dirties_[Dirty::Lof] = [ = ]() { return ::moca_set_lof(handle_, channel); };
+	schedule();
+}
+}}}

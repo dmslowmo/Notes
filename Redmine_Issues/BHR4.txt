@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-24T16:24:33+08:00
+
+====== BHR4 ======
+Created Wednesday 24 February 2016
+
+[[Closed:19863 Upnp Camera Port swapped|19863 Upnp Camera Port swapped]]
+[[Closed:26196 MoCA|26196 MoCA]]
+[[Closed:26208 Memory Low|26208 Memory Low]]
+[[BHR4:Factory Reset|Factory Reset]]

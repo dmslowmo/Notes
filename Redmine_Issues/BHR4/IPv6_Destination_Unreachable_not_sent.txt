@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-04-12T09:30:16+08:00
+
+====== IPv6 Destination Unreachable not sent ======
+Created Tuesday 12 April 2016
+
+Redmine: https://support.greenwavereality.com/issues/23407
+JIRA: https://greenwavesystems.atlassian.net/browse/SB-149
+
+===== 19/04/2016 =====
+* Code walthrought on linux kernel master repo:
+	* ip6_output.c, starting from keywords "destination unreachable"
+	* zooming in on ip6_forward(struct sk_buff *sb)
+		* packets are dropped if LRO is used (LRO: Learning:IPV6:Linux Kernel)
+		* if destination is not the source, and it is linklocal address, then send Destination Unreachable
+		* the above logic is unchanged even since 3.4.104
+* Testing by following the steps to reproduce in Redmine https://support.greenwavereality.com/issues/23407
+	* Unable to reproduce: Destination Unreachable was indeed sent
+	* logs attached: [[./unreachable.dat]] 
+	* Redmine and JIRA updated
+		* Sent back to QA for retest
+	* The difference from last week's setup: DHCPv6 server is now operational (at Zhou Bin's desk)
+
+===== 14/04/2016 =====
+* code walkthrough: linux/net/ipv6/
+* ip6_output.c and route.c
+* Summary:
+	* routing entry is a struct which is inserted to a (presumably) routing tabable
+	* each struct (rt) has data members and function pointers to execute: ip6_input, ip6_output
+	* ip6_output.c's ip6_forward(skbuf) function may be assigned to ip6_output of the rt->dst
+	* in ip6_forward(skbuf), decision is made to send icmpv6 packets including "packet too big" and "destination unreachable"
+
+===== 13/04/2016 =====
+* Browsing linux kernel patches in branch 3.4.y:
+	* [IPV6]: Send ICMPv6 error on scope violations.
+		* link: https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.4.y&id=5bb1ab09e4f6287c0b6c9cdbd463147cbd003f54
+		* Description seems related to "Destination unreachable" ICMPv6 message
+		* will browse the patch and codes around it to learn more
+
+===== 11/04/2016 =====
+* Managed to reproduced the problem. Steps:
+	* set up wireshark to listen to eth0 of host
+	* On host: //ping6 -c4 -Ieth0 <bhr4 ipv6>//
+	* On wireshark: see that ping is sent, and (less than a minute) later, router solicitation and advertisement will be broadcast
+	* repeat the pinging and waiting another 2 cycles
+	* after we see router solicitation has been broadcast, that means neighbor table has been cleared
+		* check on BHR4: //ip -6 neigh show//
+	* after this, there should be "Destination Unreachable" ICMPv6 packet sent, **but there wasn't**

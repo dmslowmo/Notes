@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-29T15:04:54+08:00
+
+====== Conf Call ======
+Created Monday 29 February 2016
+
+29/02/2016
+----------------
+* Attendees: US,DK, SGP (Bob, Elvie, Daniel)
+* An old bug (since 1.3.0) is found on Verizon JIRA (FQG-2269), and another older one since 1.2
+* Will explain to Verizon that this bug has existed since 1.3.0 with no impact to user

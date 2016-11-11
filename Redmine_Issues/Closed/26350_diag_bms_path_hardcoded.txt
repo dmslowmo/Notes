@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-03-03T09:33:12+08:00
+
+====== 26350 diag bms path hardcoded ======
+Created Thursday 03 March 2016
+
+https://support.greenwavereality.com/issues/26350#change-199913
+* target branch 1.3.2

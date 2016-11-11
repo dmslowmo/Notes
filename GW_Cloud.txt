@@ -1,0 +1,105 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-24T09:41:03+08:00
+
+====== GW Cloud ======
+Created Monday 24 October 2016
+
+Training materials:
+https://drive.google.com/drive/folders/0B87mIA5AhBlyaE96NnV2M2I5U28
+
+===== AXON Cloud =====
+
+==== Properties: ====
+* Event based
+* distributed
+* highly scalable
+
+===== DASMO Protocol =====
+Domain / Acc / Sys / Module / Object
+
+===== DASMO Messages Types =====
+* Request types
+	* GET, UPDATE, CREATE, DELETE, BATCH, UNPAIR
+* Response types
+	* IS, UPDATED, CREATED, DELETED, BATCH, UNPAIRED, ERROR
+
+===== Constraints =====
+* comm is allowed only betw systems of the same account
+* no assumptions are made in what protocol used in transport layer
+* potential multi-tenancy (no hardcoded domain)
+
+===== DASMO <> REST =====
+Similar to REST protocol used on Web
+	* JSON encoding
+	* similar resource addressing scheme
+	* set of predefined request types w defined semantics
+
+===== core classes =====
+* DasmoMessage
+* Request
+* Path
+* DasmoType ie Request or Response type
+
+===== Conventions =====
+System naming:
+* Gateways — gwX (gw1, gw2, etc)
+* UIs — uiX (ui1, ui2, etc)
+* Portal — portal
+Sequential IDSs are used where possible across the modules.
+
+===== Module Endpoints =====
+* public methods annotated with @GET, @CREATE, etc
+* Can be annotated with @UNKNOWN to handle response messages or notifications
+* Endpoint path defined in the annothation attribute eg. @GET(":device")
+* DeviceWhitelistModuleComponent
+	* interface to the devices whitelist repository
+	* DeviceWhitelistResponse get(DasmoMessage message)
+		* get the //from// and //path// from the message
+		* check the whitlist database
+		* build the message
+		* return the response (list of devices)
+
+==== Path ====
+* multiple path bindings
+* wildcard support
+* path params
+
+==== Return values ====
+* matchng response type is set automatically in the response messsage
+	* no reply - no respnonse message is sent
+	* void — send response message with empty body
+	* DasmoMessage - sent back to the sender w/o any modification
+		* a general type which is used when we don't know the format expected in the return
+	* Other objects — send response message w the returned obj as the body encoded in JSON
+
+==== Error Handling ====
+* Respnose type — ERROR
+* Error code identifies the type of error that occurred
+* Error message
+* when device not found, //HaltException// is thrown with the above info
+
+===== New Request API =====
+* //MessageContext// to replace //Request//
+* Path params injection (@PathParam)
+	* inject directly into the endpoint
+* Body params injection (@Body)
+	* inject directly into the endpoint
+* Optional field support (Optional<T>)
+	* JSON deserializer has limitation whereby we can't know if the field is not set or missing
+	* Optional helps to identify whether the field is 'not set' or 'missing' in the message
+	* Dozer helps us to do this
+* Dozer with //Optional support//
+	* a library that transfer the data from on object to another
+
+
+===== Runtime Services =====
+* Modules should be declared as Mintdata Runtime Components (@Component)
+* Services can be injected using @Inject annotations
+* Runtime concurrency guarantees
+	* No need to manage concurrency manually
+
+===== Unit Tests =====
+Standard approach
+* BaseModuleComponents
+* Mocks are injected

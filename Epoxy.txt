@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-04T17:58:09+08:00
+
+====== Epoxy ======
+Created Friday 04 November 2016
+
+===== Running localhost/epoxy =====
+* Assuming tomcat7 is installed
+* deploy epoxy in tomcat
+	* put epoxy.war in [[/var/lib/tomcat7/webapps]] and expand it, OR
+	* use tomcat manager page to get the epoxy.war and click "Deploy"
+* copy the workspace/Epoxy/web/epoxy folder into [[/var/www/]]
+* go to browser and go to https://dev2.greenwavereality.com/epoxy
+	* login with ldap
+	* using the //Inspect// utility find the token string and copy it
+	* paste this token string as the value of token in the appConfig.js (//epoxy/app/services/appConfig.js)//
+* put the content of workspace/Epoxy/java/deploy into [[/opt/greenwave/debug/conf]] (create it first if not exist)
+	* modify the epoxy.properties (see below)
+	* note that defaultServer value can be set to the values in serversList (but probably only axon-qa or axon-dev works)
+* restart tomcat
+* go to browser and go to localhost/epoxy
+	* should automatically logged in because we already copied the token (if the session has not expired)
+		* if session already expired, need to repeat the process of getting the new token
+	* on top right, select the server (AXON QA, or AXON DEV) according to the value of defaultServer in the epoxy.properties
+
+**epoxy.properties:**
+#databaseServers=scalr.cassandra
+#memcachedServer=scalr.memcached
+#solrServer=10.124.7.126:8983
+databaseServers=54.190.178.34:12050
+domain=axon-v3
+#memcachedServer=dev2.greenwavereality.com
+solrServer=dev2.greenwavereality.com:8983
+serverList={"axon-dev": {"name": "Axon Dev", "ha_proxy": "axon-dev.greenwavesystems.com", "marathon": "54.184.87.219", "kibanaui": "axon-dev.greenwavesystems.com:5601"},\
+ "axon-qa": {"name": "Axon QA", "ha_proxy": "axon-qa.greenwavesystems.com", "marathon": "50.112.67.204", "kibanaui": "axon-qa.greenwavesystems.com:5601"},\
+ "axon-partner": {"name": "Axon Partner", "ha_proxy": "axon-partner.greenwavesystems.com", "marathon": "52.13.99.179", "kibanaui": "axon-partner.greenwavesystems.com:5601"} }
+ldap={"host": "98.189.211.66", "port": 389, "dn": "dc=greenwavereality,dc=com", "dn_ro": ""}
+#elasticServer=54.190.178.34:12010
+dudeServer=10.100.141.204:8080
+xmpp={"host": "axon-qa.greenwavesystems.com", "port": 5222, "keystorePath": "/opt/greenwave/dude/config/keystore.jks", "keystorePassword": "12345678", "domain": "axon-v3"}
+jwtSharedKey=8runf831-2347-7t8d-y034-9tu47thfui72
+defaultServer=axon-qa
+roxy={"host": "https://update.greenwavereality.com/roxy", "token": "69fb4863ce8acd40a32aafc0d4e9b38e", "secret": "628071e008a20b538b5a9df19fb4c20e"}
+
