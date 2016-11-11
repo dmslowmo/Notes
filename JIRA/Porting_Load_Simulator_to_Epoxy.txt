@@ -37,7 +37,9 @@ The Load Simulator itself still runs on its own instance, but accessible through
 
 ===== Plan =====
 * Familiarize with LS codes
-	* Add unit tests (but don't need to
+	* Add unit tests (but don't need to create Pull Request)
+	* See how UI communicates with backend (see if REST is used, if not need to create)
+* Familiri
 * Migrate UI
 	* Create Mock LS to test
 * Migrate the features:
