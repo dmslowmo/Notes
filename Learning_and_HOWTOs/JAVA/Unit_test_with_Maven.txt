@@ -1,0 +1,53 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-14T16:56:23+08:00
+
+====== Unit test with Maven ======
+Created Monday 14 November 2016
+
+===== Setup =====
+* set the <testSourceDirectory> in pom.xml with the path to the source directory
+* Unit tests can be run with Junit or TestNG
+	* Unit tests can also be disabled by using <exclusion> under the test runner. eg
+							<groupId>org.testng</groupId>
+		-                       <artifactId>testng</artifactId>
+		-                       <version>6.8.8</version>
+		-                       <scope>test</scope>
+		-                       <exclusions>
+		-                               <exclusion>
+		-                                       <artifactId>junit</artifactId>
+		-                                       <groupId>junit</groupId>
+		-                               </exclusion>
+		-                               <exclusion>
+		-                                       <artifactId>snakeyaml</artifactId>
+		-                                       <groupId>org.yaml</groupId>
+		-                               </exclusion>
+		-                               <exclusion>
+		-                                       <artifactId>bsh</artifactId>
+		-                                       <groupId>org.beanshell</groupId>
+		-                               </exclusion>
+		-                       </exclusions>
+	* In the snippet above, testng is used as runner, but it excludes junit. Hence, the tests will never be run.
+	* Use Maven surefire plugin as test runner, and it can automatically detect whether Junit or TestNG is installed
+		* We can also force surefire to use Junit or TestNG. Eg with Junit
+					<groupId>org.testng</groupId>
+-                       <artifactId>testng</artifactId>
+-                       <version>6.8.8</version>
+-                       <scope>test</scope>
+-                       <exclusions>
+-                               <exclusion>
+-                                       <artifactId>junit</artifactId>
+-                                       <groupId>junit</groupId>
+-                               </exclusion>
+-                               <exclusion>
+-                                       <artifactId>snakeyaml</artifactId>
+-                                       <groupId>org.yaml</groupId>
+-                               </exclusion>
+-                               <exclusion>
+-                                       <artifactId>bsh</artifactId>
+-                                       <groupId>org.beanshell</groupId>
+-                               </exclusion>
+-                       </exclusions>
+
+
+

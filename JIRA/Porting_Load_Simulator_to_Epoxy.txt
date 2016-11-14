@@ -36,13 +36,40 @@ The Load Simulator itself still runs on its own instance, but accessible through
 
 
 ===== Plan =====
-* Familiarize with LS codes
-	* Add unit tests (but don't need to create Pull Request)
-	* See how UI communicates with backend (see if REST is used, if not need to create)
-* Familiri
-* Migrate UI
-	* Create Mock LS to test
-* Migrate the features:
-	* profile creation
-	* monitoring
-	* Create Mock LS to test
+[ ] Familiarize with LS codes
+	[ ] Add unit tests (but don't need to create Pull Request)
+	[ ] Understand how UI communicates with backend (see if REST is used, if not need to create)
+	[ ] Separate frontend from backend
+		[ ] will port frontend with UI to Epoxy
+		[ ] backend will include a REST listener
+[ ] Familiarize with Epoxy codes
+	[ ] Add unit tests for understanding
+		[ ] Junit
+		[ ] Angular unit test
+		[ ] E2E?
+[ ] Migrate features (just the front-end service, making REST requests to LS backend):
+	[ ] Port LS UI to Epoxy, need to convert ExpressJs+Mustache to AngularJS+HTML
+		[ ] Conversion is the long-term goal
+		[ ] Short-term: make the t
+	[ ] simulation creation
+	[ ] profile creation
+	[ ] monitoring
+	[ ] logging
+	[ ] access control
+
+===== Side plan — improvement ideas =====
+[ ] Refactor the codes where
+	[ ] there are big methods
+	[ ] there are lots of nested ifs and loops
+	[ ] JSON: instead of JSONObject/JSONArray, let's use Jackson and convert JSON string to custom object
+	[ ] unit tests are required before making any change
+	[ ] Use dependency injection to improve testability
+	[ ] Use mocking framework eg Mockito
+	[ ] Set up unit tests
+		[ ] use Junit
+		[ ] set up job/runner in pom.xml
+		[ ] refactor the codes to make it testable
+			[ ] small increment at a time
+	[ ] Set up a code review server
+		[ ] run CodeBrag
+
