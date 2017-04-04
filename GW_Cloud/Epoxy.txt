@@ -10,12 +10,15 @@ Created Friday 04 November 2016
 * deploy epoxy in tomcat
 	* put epoxy.war in [[/var/lib/tomcat7/webapps]] and expand it, OR
 	* use tomcat manager page to get the epoxy.war and click "Deploy"
+		* url: localhost:8080
+		* user: admin
+		* password: password
 * copy the workspace/Epoxy/web/epoxy folder into [[/var/www/]]
 * go to browser and go to https://dev2.greenwavereality.com/epoxy
 	* login with ldap
 	* using the //Inspect// utility find the token string and copy it
 	* paste this token string as the value of token in the appConfig.js (//epoxy/app/services/appConfig.js)//
-* put the content of workspace/Epoxy/java/deploy into [[/opt/greenwave/debug/conf]] (create it first if not exist)
+* put the content of workspace/Epoxy/java/deploy into [[/opt/greenwave/dude/conf]] (create it first if not exist)
 	* modify the epoxy.properties (see below)
 	* note that defaultServer value can be set to the values in serversList (but probably only axon-qa or axon-dev works)
 * restart tomcat

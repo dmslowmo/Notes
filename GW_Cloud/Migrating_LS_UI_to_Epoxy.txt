@@ -1,0 +1,78 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-21T10:26:13+08:00
+
+====== Migrating LS UI to Epoxy ======
+Created Monday 21 November 2016
+
+Load Simulator (LS) front-end is to be separated from its back-end and migrated to Epoxy.
+The LS back-end will remain as a separate process whose functionality is accessed from its front-end in Epoxy via REST API.
+
+===== Requirements =====
+(gathered from discussions with KC):
+
+[*] Load Simulator (LS) needs to be re-designed:
+	[*] in AngularJS.
+	[*] New design:
+		[*] color scheme and layout follows Epoxy (side bar and headers)
+		[*] Top menu links on LS should be changed to Tabs
+[ ] The backend of LS is accessed via REST API
+	[*] Need to see if there is already REST API endpoints between LS GUI and Backend **[yes, there is]**
+		* {url}:{port}/api/xxxx
+	[x] If no REST interface in LS, then need to create it and make pull request to Mintdata
+	[ ] Need new REST endpoint in Epoxy to access LS
+[ ] Epoxy needs new functionalities:
+	[ ] track/log the activities on LS
+	[ ] takeover the responsibilities of:
+		[ ] Profile creation (ported from LS)
+		[ ] Monitoring (ported from LS)
+	[ ] control the access to LS
+		[ ] via existing mechanism in Epoxy to give privilege to certain users
+		[ ] if LS is disabled in Epoxy: 	
+			[ ] the link to LS should not be visible
+			[ ] the user without the privilege must not be able to access LS directly (via ssh or browser)
+[ ] Remove UI from original LS (?) so that access is exclusively via Epoxy
+[ ] Database migration:
+	[ ] May be needed to migrate MySQL database to Cassandra
+
+===== Plan =====
+[ ] Familiarize with LS codes
+	[*] Understand how UI communicates with backend (see if REST is used, if not need to create)
+	[ ] Separate frontend from backend
+		[ ] will port frontend with UI to Epoxy
+		[*] backend will include a REST listener **[REST endpoint exists]**
+[ ] Familiarize with Epoxy codes
+	[ ] Add unit tests for understanding
+		[ ] Junit
+		[ ] Angular unit test
+		[ ] E2E?
+[ ] Migrate features (just the front-end service, making REST requests to LS backend):
+	[ ] Port LS UI to Epoxy, need to convert ExpressJs+Mustache to AngularJS+HTML
+	[*] simulation creation
+		[*] AngularJS UI
+		[*] as a Tab
+		[ ] complete functionalities
+	[ ] profile creation
+		[ ] AngularJS UI
+		[ ] as a Tab
+	[ ] monitoring/reports
+		[ ] AngularJS UI
+		[ ] as a Tab
+	[ ] logging
+	[ ] access control (Entitlements?)
+
+===== Side plan — improvement ideas =====
+[ ] Refactor the codes where
+	[ ] there are big methods
+	[ ] there are lots of nested ifs and loops
+	[ ] JSON: instead of JSONObject/JSONArray, let's use Jackson and convert JSON string to custom object
+	[ ] unit tests are required before making any change
+	[ ] Use dependency injection to improve testability
+	[ ] Use mocking framework eg Mockito
+	[ ] Set up unit tests
+		[ ] use Junit
+		[ ] set up job/runner in pom.xml
+		[ ] refactor the codes to make it testable
+			[ ] small increment at a time
+	[ ] Set up a code review server
+		[ ] run CodeBrag

@@ -26,7 +26,7 @@ Created Monday 31 October 2016
 	* tag
 
 * Docker ports
-	* [[Host_port:container_port]]
+	* Host_port:container_port
 		* eg 12002:8080
 		* that means, we can have multiple application, which assume, they are working on port 8080
 

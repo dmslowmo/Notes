@@ -1,0 +1,151 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-17T17:23:40+08:00
+
+====== Running Load Simulator locally ======
+Created Thursday 17 November 2016
+
+link to documentation:
+https://greenwavesystems.atlassian.net/wiki/pages/viewpage.action?spaceKey=AXCLOUD&title=Configure+Load+Simulator
+https://greenwavesystems.atlassian.net/wiki/display/AXCLOUD/Load+Simulator
+
+===== Setup =====
+
+==== Change configuration ====
+Because in described setup we have load simulator database and load simulator web ui on separate machine we should touch only sim.conf file - file used during simulation startup. You should replace a number of <PLACEHOLDERS> to reflect your configuration.
+
+module.packages = ["mint", "com.greenwave.load", "com.greenwave.db"]
+ 
+database.axon = {
+  dialect  = "MYSQL"
+  driver   = "com.mysql.jdbc.Driver"
+  username = "root"
+  password = ""
+  host     = "<MYSQL_HOST>"
+  port     = <MYSQL_PORT>
+  schema   = "axon"
+  max.pool = 5
+  min.idle = 0
+  idle.timeout = 10000
+  max.lifetime = 30000
+  url      = "jdbc:mysql://<MYSQL_HOST>:<MYSQL_PORT>/axon?charset=utf8mb4&use_unicode=0&zeroDateTimeBehavior=convertToNull"
+}
+ 
+database.simulator = {
+  dialect  = "MYSQL"
+  driver   = "com.mysql.jdbc.Driver"
+  username = "root"
+  password = ""
+  host     = "<MYSQL_LOAD_HOST>"
+  port     = <MYSQL_LOAD_PORT>
+  schema   = "simulator"
+  max.pool = 2
+  min.idle = 1
+  idle.timeout = 10000
+  max.lifetime = 30000
+  url      = "jdbc:mysql://<MYSQL_LOAD_HOST>:<MYSQL_LOAD_PORT>/simulator?charset=utf8mb4&use_unicode=0&zeroDateTimeBehavior=convertToNull"
+}
+ 
+xmpp = {
+  host = "<XMPP_HOST>"
+  servers = ["<XMPP_HOST>"]
+  port = <XMPP_PORT>
+  provision.port = <XMPP_REST_PORT>
+  keystore = {
+	path = "keystore.jks"
+	password = "12345678"
+  }
+  reply.timeout = 20000
+}
+ 
+dasmo.domain = "axon-v3"
+#log.directory="/var/log"
+ 
+cassandra = {
+	hosts = ["<CASSANDRA_HOST>:<CASSANDRA_PORT>"]
+	keyspace = "monitor"
+  }
+ 
+pid.watcher.enabled = false
+
+**Placeholder 	Default value 	Description 						Docker image 	Mesos service port**
+MYSQL_HOST	localhost	Host or ip address of axon MySql database		mysql	 
+MYSQL_PORT	3306		Port of axon MySql database				mysql		12028
+MYSQL_LOAD_HOST localhost	Host or ip address of load simulator MySql database	loadmysql	 
+MYSQL_LOAD_PORT 3306		Port of load-simulator MySql database			loadmysql	12082
+XMPP_HOST	localhost	Host or ip address of XMPP server			fronttier	
+XMPP_PORT 	5222		Port of XMPP server					fronttier	12014
+XMPP_REST_PORT  5555		Rest port of XMP server					fronttier	12036
+CASSANDRA_HOST  localhost	Host or ip address of Cassandra database		cassandra	 
+CASSANDRA_PORT  9042		Port of Cassandra database				cassandra	12050
+
+==== Run simulation ====
+After you have created simulation through load simulator web ui, you should remember simulation id - <SIMULATION_ID>.
+Now you are ready to start simulation:
+**./load_sim.sh <SIMULATION_ID>**
+
+==== Troubleshooting ====
+Logs of simulation will be present in directory from which simulation was started. It will have the name yyyy.MM.dd-hh.mm.ss-simulation-<SIMULATION_ID>.log for example 2016.04.28-10.03.00-simulation-1.log. Look to the logs to observe any problems.
+
+===== From Mikalai =====
+module.packages = ["mint", "com.greenwave.load"]
+database.simulator = {
+dialect  = "MYSQL"
+driver   = "com.mysql.jdbc.Driver"
+username = "admin"
+password = "thinkgreen"
+host     = loadmysql
+port     = 12082
+schema   = "simulator"
+max.pool = 2
+min.idle = 1
+idle.timeout = 10000
+max.lifetime = 30000
+url      = "jdbc:mysql://gws-dev-mesos:12082/simulator?charset=utf8mb4&use_unicode=0&zeroDateTimeBehavior=convertToNull&useLegacyDatetimeCode=false"
+}
+xmpp.host = "gws-dev-mesos"
+xmpp.servers = ["gws-dev-mesos"]
+xmpp.port = 12014
+xmpp.provision.port = 12036
+xmpp.keystore.path = "/tmp/keystore.jks"
+xmpp.keystore.password = "12345678"
+xmpp.reply.timeout = 20000
+dasmo.domain = "axon-v3"
+log.directory="/logs"
+cassandra.contactpoints = ["gws-dev-mesos:12050"]
+cassandra.keyspace = "axon"
+cassandra.monitor.keyspace = "monitor"
+pid.watcher.enabled = false
+
+* Change gws-dev-mesos, because you will not have this alias in your [[/etc/hosts]]
+* To setup everything on your local machine, just launch mysql, **create simulator database, migrate tables**.
+* And run simulator web ui with following configuration: (already set-up in IDEA)
+
+===== Without setting up Mysql =====
+You even don't need MySQL locally. What I have done is the following:
+1) change port 3306 to 3333 in the following files configurations:
+	* db/resources/application.properties
+	* load-simulation-launcher/src/main/resources/application.conf
+	* load-simulator-web/src/main/resources/application.conf
+2) run [[./build.sh]] in bin directory
+	* package directory will be created
+3) run [[./load_db.sh]] in package directory
+	* in load_db.sh there is a call to //sudo docker run --name mysql_simulator -p 3333:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v $SCRIPT_DIR/simulator.sql:/docker-entrypoint-initdb.d/simulator.sql -d mysql:5.6//
+	* port 3333 is docker container's public port
+	* port 3306 is docker container's private/internal port
+	* so the simulator app is connecting to //mysql_simulator// docker container at port 3333 (which maps to port 3306 internally), rather than connecting to our localhost's mysql server at port 3306
+4) Running the Load Simulator Web application:
+	* start cassandra
+	* copy the keystore.jks in the package directory to [[/tmp/]] directory
+	* run ./load_web.sh 6643
+	* go to localhost:6643 to start creating and running simulation
+	* In the UI, when Simulation is started, the SimulatorApp process is created and run
+		* SimulatorApp creates SimulationRun
+		* SimulatorApp creates the simulation data
+		* SimulatorApp connects directly to fronttier via xmpp (currently it doesn't work locally)
+			* If run locally, need to change the xmpp host and port in the load-simulation-launcher's application.conf file:
+				* <ip from marathon> and <service port>
+			* if run in actual cloud environment, it is localhost port 5222
+5) Simulator App can also be started without UI
+	* but the Simulation must exist in database
+	* use load_sim.sh: //./load_sim.sh <simulation_id>//

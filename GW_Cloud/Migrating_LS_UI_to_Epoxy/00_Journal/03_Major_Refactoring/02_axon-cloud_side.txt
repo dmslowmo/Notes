@@ -1,0 +1,70 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-04-04T17:08:01+08:00
+
+====== 02 axon-cloud side ======
+Created Tuesday 04 April 2017
+
+===== General Requirements =====
+* Need totally new API, cannot just create abstraction and add implementation
+* load-simulator-web will depend on cassandra-db AND load-db in order to keep the current Load Simulator
+
+===== Major Challenges =====
+* For the modules that depend directly on the Services from the *-db layer, there could be major changes
+* Should we start clean (without SUA-9046 branch changes)?
+	* a lot of work has been done to factor out the dependencies to load-db in some places
+	* probably it's better to continue from where we left off
+	* we can revert back selectively later
+	* now that "name" is used instead of "ID", more rework on the modules that directly depends on load-db/cassandra-db
+
+===== General Plan =====
+
+==== Frontend ====
+* don't change, basically will not work with Cassandra (too bad)
+* Use Postman to test backend
+
+==== API ====
+* new set of APIs while keeping the current ones intact
+* For now, keep the new architecture (post-refactoring) ie *ResourceBusinessLogic, can revert back later
+
+==== Service layer ====
+* In cassandra-db
+* Revamp from the current one
+
+==== Repository layer ====
+* Total revamp, will not use the old ones
+
+==== Modules that directly dependent on *-db module ====
+* Bootstrap, load-simulation-launcher, load-simulator-web
+* Bootstrap:
+	* Bootstrapper interface uses simulationRunId currently
+		* need to use name and state
+		* easy way out is just to add new interface method, and for the Impl that does not use it, provide empty implementation (ugly)
+	* MtProfileProvisioner uses simulationRunId
+		* only called in BoostrapperImpl, so it's ok to create a new version of this
+	* MAJOR ISSUE 1: simulationRunID is needed to create deviceID !!!!
+		* in TaskBuilder.createTasks()
+		* provided by SimulationRunData.getSimulationRunId()
+		* Possible solution: just use deviceID because it's guaranteed to be unique
+	* SimulationRunData set/get simulationRunId
+	* MAJOR ISSUE 2: during SimulationRun creation, cannot query with ID, so how to query and update
+		* need to use all keys: simulation_name, simulation_copy, state, **created**
+		* **created** column must be used because there could be multiple users starting the same simulation
+		* **state** column requires us to create INDEX to make query easier
+		* Possibly need to refactor TaskBuilder to accomodate MAJOR ISSUES
+	* NameResolver needs simulationRunId
+		* now it needs all keys: simulation_name, simulation_copy, state, **created**
+		* MAJOR ISSUE 3: does the account name format need to follow certain rule imposed by DASMO or other cloud modules?
+			* Currently it's "acc-s%d-p%d-n%d" where
+				* **acc** is prefix
+				* **s** is followed by SimulationRunId ---- can this use simulation name instead?
+				* **p** is followed by ProfileId
+				* **n** is followed by profile instance number
+	* Need to ensure ID fields are nullable, if we don't want to do major changes by creating new version of the classes
+	* Considering the MAJOR ISSUES, a new SimulationRunData is required:
+		* cannot abstract out an interface, needs totally different implementation
+* load-simulation-launcher:
+	* SimulationLaunchService start(long simulationId) needs simulationId. Will create another interface method that takes in simulation name
+* schedule-service:
+	* Needs different TaskBuilder implementation
+	* seems we can abstract out an interface and provide different implementation

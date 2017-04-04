@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-02-01T09:20:32+08:00
+
+====== 000 TODO ======
+Created Wednesday 01 February 2017
+
+===== TODO =====
+[*] Create new module **cassandra-db** under load-simulator module
+	[*] **pom.xml** dependencies:
+		[*] mintdata:standalone ---> not exactly sure for what for now
+		[*] com.datastax.cassandra:cassandra-driver-mapping ---> cassandra driver
+		[*] axon:cassandra-tier ---> not sure if necessary to use Entity.class and ExtendedMapper.class from this module or just copy-paste the relevant classes.
+[x] Create the table mapping POJOs in cassandra-db under java/dto ~~(implements Entity.class)~~
+	[x] Device
+	[x] DeviceType
+	[x] ScheduleItem
+	[x] Profile
+	[x] Simulation
+	[x] SimulationProfile
+	[x] SimulationRun
+[*] Update the tables
+	[*] to include** 'created' and 'updated' **columns
+	[*] add the search-by term as primary key eg. //simulation_id// as primary key in //run// table
+[*] Redo the ~~DTOs~~ POJOs
+	[*] 1 POJO per table eg DeviceById, DeviceByProfileId, etc
+	[*] use **long** as ID type
+[*] Create the Mapper class: copying from **ExtendedMapper.class** from Cassandra-tier
+	[*] which does not depend on Entity.class of cassandra-tier
+	[x] do we need to use mapper factory?
+[*] **Redesign the schema**
+	[*] Create multiple (though redundant) variant of the same table based on each query on that table:
+		[*] Primary key is the search term
+[ ] new Service interface and implementation for use with Cassandra
+	[*] Interface
+	[ ] Service Impl wraps the Repository object
+	[*] Repository object wraps the ~~DTO~~ POJO
+		[*] Interface
+		[*] contains the queries, please refer to the list of queries in google sheet
+	[*] ~~DTO~~ POJO maps to a table in keyspace
+[ ] UNIT TESTS! For each RepositoryImpl and ServiceImpl
+	[ ] Database connection
+	[ ] insertion
+	[ ] deletion
+	[ ] queries
+	[ ] updates
+	[ ] Unit tests must be able to be disabled conditionally eg. if no database connection and no 'simulator' keyspace (when run in Jenkins)
+[ ] Spring: create LoadCassandraServiceConfig.java
+	[ ] and include it in LoadSimulatorWebSpringConfig.java
+	[ ] LoadCassandraServiceConfig.java instantiates the service implementations
+	[ ] //simulatorConfig.java// connects to the keyspace in the database
+[ ] Deploy **simulator** keyspace in dev2's Cassandra db for development and testing

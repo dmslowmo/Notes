@@ -4,3 +4,47 @@ Creation-Date: 2016-03-16T10:08:05+08:00
 
 ====== Learning ======
 Created Wednesday 16 March 2016
+
+Stock taking:
+
+==== Embedded (IoT) ====
+
+=== Learned: ===
+1. Git
+2. Gerrit
+3. C++11
+4. Makefile
+5. UPnP
+6. TR69
+7. CoAP
+
+=== Should learn but didn't get to: ===
+1. Security (SSL, TSL)
+2. MQTT
+
+==== Cloud ====
+
+=== Learned: ===
+1. Cassandra
+2. Spring 4.x (Dependency Injection)
+3. AngularJS
+4. REST
+5. Maven
+6. mysql
+7. Tomcat
+
+=== Would like to or should learn: ===
+1. Security (SSL, TSL)
+2. OAuth
+3. Kafka
+4. Docker
+5. Cloud deployment
+6. Elastic search
+ 
+
+=== Hope to have a chance at work to learn/use: ===
+1. Go
+2. Spark
+3. Storm
+4. Hadoop
+5. PIWIK (web analytics tool)

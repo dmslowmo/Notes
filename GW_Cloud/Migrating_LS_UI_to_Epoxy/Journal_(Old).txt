@@ -1,0 +1,196 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-23T18:29:14+08:00
+
+====== Journal (Old) ======
+Created Wednesday 23 November 2016
+
+==== 23/11/2016 ====
+1. Able to run LoadSim locally using docker mysql-simulator
+2. Wrote the stub Js and HTML for Simulation page
+	* Currently still debugging, loadsimulator.js is unable to load
+
+==== 24/11/2016 ====
+* Able to get loadsimulator.js loaded, but still can't login
+	* net::ERR_SSL_PROTOCOL_ERROR
+	* Cause: in the config.js, the url uses 'https' which would require tomcat server to have self-signed certificate (troublesome)
+	* Workaround: for development, just use 'http'
+* Able to show Load Simulator internal page, but no content (empty table)
+	* REST request returns with error 404
+	* Cause: the angular call was JSONP which is not supported by Load Simulator backend
+	* Fix: use GET instead and returns response.data
+
+==== 25/11/2016 ====
+* Enabled:
+	* start simulation
+	* copy simulation
+	* delete simulation
+* Progress has been slow because of unfamiliarity with angularJs
+* For faster but dirty results, may be start to create the other 2 tabs (Profiles and Reports)
+* Still have logging functionalities!
+
+==== 28/11/2016 ====
+* Enable the other tabs:
+	* Profiles
+		* NEW button
+		* Table
+		* Clicking 'Name' and 'NEW' button will redirect to a new page
+			* and come back to LoadSimulator/Profiles page upon 'OK'/'Save'/'Cancel'
+	* Run Reports
+		* Clicking 'ID' or 'Name' will redirect to a new page (same one) to show simulation detail
+		* and come back to LoadSimulator/RunReports page upon 'OK'/'Save'/'Cancel'
+		* Clicking 'down arrow' will expand profile details on the same page
+		* Checkbox to filter only running simulations on the page
+		* need pagination
+* Remaining Simulations tab features:
+	* Simulation Details (expand the down arrow icon)
+	* Edit simulation
+	* NEW simulation button and create new simulation
+		* need to redirect to new page to create new simulation
+		* and come back to LoadSimulator/<tab> page upon 'OK'/'Save'/'Cancel'
+	* Icon not showing
+	* find way not to reload whole page for 'copy new simulation'
+* PROGRESS: NOTHING WORKED! Wasted one day!
+
+===== 29/11/2016 =====
+* Managed to enable all three tabs now
+	* Cause for previous failure: didn't realize the return from $http is assynchronous. The command returns a promise. Hence, need the .then() clause to get the data.
+		* http://stackoverflow.com/a/32568670
+	* Each tab's template is contained in its own .html file
+	* Currently all shares 1 controller and service
+	* Only showing static data, for Simulation Runs only 1st 10 entries (1st page)
+	* Added filter "Show Running Simulations Only"
+* Next target:
+	* Enable creating NEW Simulations
+		* Partially done, missing Profile(s) attachment and input validation
+	* Enable creating NEW Profile
+		* Partially done, missing Device(s) attachment and input validation
+	* Instead of icons, just use buttons for start/edit/clone/delete **[done]**
+	* Display Simulation details from clicking '+' or name hyperlink
+	* Display Profile details from clicking '+' or name hyperlink
+	* Graphic for Simulation Runs
+
+===== 01/12/2016 =====
+* Today's goal:
+	* NEW Simulations with Profile(s) attachment enabled
+	* If relatively easy, do the same for NEW Profile creation
+	* Grey out the icons after Simulation starts **[done]**
+	* Change Date format to proper format **[done]**
+	* "Record Events"
+		* Implement this **[done]**
+
+===== 02/12/2016 =====
+Goals for today:
+[*] NEW Simulations with Profile attachment
+[ ] NEW Profile with Device attachment
+[ ] Error handling and notification
+	[ ] when server not responding (404 etc)
+	[ ] When Simulation started
+	[ ] when Simulation Stopped
+[*] Clear form when exiting Simulation/Profile creation form
+[*] Merge to master
+
+===== 05/12/2016 =====
+Goals for today:
+[ ] Simulation's Profile Detail list on clicking the 'down-arrow' icon (read only)
+[ ] Simulation's Detail on clicking the Simulation Name (can edit)
+[ ] Edit Simulation (same as above)
+
+===== 06/12/2016 =====
+* Found major hole in the Epoxy LoadSimulator: does not work because Epoxy runs on HTTPS in production
+	* Since all REST calls are made in Javascript frontend, the browser will block these HTTP calls
+	* Need to build the backend which will make the REST calls to LoadSimWeb
+	* Frontend just make REST calls to this backend
+* TODO:
+	* Api classes (split per page). This is the REST end point
+		* LoadSimulatorSimulationsApi
+		* LoadSimulatorProfilesApi
+		* LoadSimulatorSimulationRunsApi
+	* Service classes
+		* LoadSimulatorSimulationsService
+		* LoadSimulatorProfilesService
+		* LoadSimulatorSimulationRunsService
+	* Model classes. This is for REST calls to the LoadSimWeb
+		* LoadSimulatorSimulationsModel
+		* LoadSimulatorProfilesModel
+		* LoadSimulatorSimulationRunsModel
+	* Update EpoxyApiServiceFactory
+
+===== 12/12/2016 =====
+* Done backend REST endpoints for those required by current UI only
+* integrated Minh UI code, but without my own changes (need to merge the changes manually)
+
+===== 13/12/2016 - 15/12/2016 =====
+[ ] Replace the direct frontend $http calls to LoadSimulator with the call to backend
+	[*] get all simulations
+	[*] start simulation
+	[*] copy simulation
+	[*] delete simulation
+	[*] update simulation
+	[*] save simulation
+	[*] get all profiles
+	[*] copy profile
+	[*] delete profile
+	[ ] update profile
+	[*] save profile
+		[*] without devices
+		[*] with devices
+	[*] get all runs
+	[*] stop run
+[*] Implement "Update/Edit" Simulation feature
+[*] Integrate the drop-down Simulation's Profile list
+
+===== 15/12/2016 - 19/12/2016 =====
+
+[*] Implement security: send token in every request
+[*] change the API for get profiles
+[*] implement stop simulation button
+[ ] implement the chevron icon for showing profile list in Simulation Runs page (same as in simulation)
+[*] implement Simulation Runs detail page
+	[*] Name, etc (text inputs)
+	[*] show graphs features:
+		[*] Simulation Monitor Data
+		[*] Simulator Cumulative Monitor Data
+		[*] System Monitor Data
+		[*] System Cumulative Monitor Data
+		[*] Simulator State Data
+		[*] System State Data
+		[*] Probably need to use chartist to be used with angular (angular-chartist). Check whether these are installed:
+			[*] angular-chartist.js: https://github.com/paradox41/angular-chartist.js
+			[*] chartist angular directives: https://github.com/gruberb/chartistAngularDirective
+			[*] how to install for Epoxy?
+	[*] Error Log
+[ ] Pagination for Simulation Runs page
+
+===== 19/12/2016 =====
+[*] REST endpoints:
+	[*] Accounts
+	[*] gateways
+	[*] devices
+[*] Create Simulation Run Detail page
+	[*] state changes
+	[*] display list of accounts, gateways, devices
+	[*] Line chart for Running Simulations:
+		[*] how is data generated? **REST API ../chart-data/...**
+		[*] how is data sent to front-end? **REST API above also**
+		[*] learn to display line chart:
+			[*] if cannot make this work with real, increasing data by end of the day, just hardcode the data for display first
+		[x] **Still missing:**
+			[x] seems Chartist does not support tooltip when points are not shown on the line
+			[ ] pagination
+
+===== 20/12/2016 - 22/12/2016 =====
+[ ] Based on feedback from Christian:
+	[*] add Refresh button in Simulation Run page
+	[*] give more space at the top and bottom of the checkbox
+	[ ] Use uniform style for Simulation and Profile, and the rest of the application
+	[*] get rid of the horizontal scrollbars
+[*] Massage the chart-data/monitor into the form that Chartist accept
+	[*] simulator details
+	[*] simulator cumulative details
+	[*] system details
+	[*] system cumulative details
+[*] Simulator Run details page improvement
+	[*] shade area under line
+	[*] add 'All' option in dropdown lists
+	[*] change refresh button to follow other pages

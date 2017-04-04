@@ -5,6 +5,64 @@ Creation-Date: 2016-04-18T17:40:25+08:00
 ====== Git tips ======
 Created Monday 18 April 2016
 
+===== Disable push to origin and set push to a specific branch =====
+http://stackoverflow.com/questions/10260311/git-how-to-disable-push
+http://stackoverflow.com/questions/948354/default-behavior-of-git-push-without-a-branch-specified
+* Disable push to origin by setting the url to an invalid url
+	* //git remote set-url --push origin {any string, eg: DISABLED}//
+* Create your remote branch and pull it to your workspace (if you have not)
+* Go to our branch: //git checkout {branch}//
+* to set push behaviour such that it only push to specific branch without specifying any branch eg. git push {remote's name/alias}:
+	* set the //push.default// property:
+		* **nothing:** do not push anything
+		* **matching**: push all matching branches
+		* **upstream**: push the current branch to its upstream branch
+		* **current**: push the current branch to a branch of the same name
+		* **simple**: like upstream, but refuses to push if the upstream branch's name is different from the local one
+	* to set it: //git config --local push.default current//
+		* meaning: set //push.default// to 'current' and write this to repository config file
+		* if //--global// is used, then it is written to global config file
+	* to see the setting: //git config --local push.default//
+ 
+Subsequent work should be done on this branch only. Git pull from origin is not affected.
+
+===== Revert a Pushed Commit =====
+* //git revert <commit SHA>//
+* //git pull//
+
+===== How to Sync a Forked Repository =====
+http://stackoverflow.com/a/7244456
+* add the main repo as remote upstream:
+	* //git remote add upstream https://mainrepourl.git//
+* to check:
+	* //git remote -v//
+	* see if the remote has been added
+* fetch the changes from upstream:
+	* //git fetch upstream//
+* ensure we are on master branch: 
+	* //git checkout master//
+* 2 options: **rebase** or **merge**
+	* rebase:
+		* //git rebase upstream/master//
+		* this will change your local history
+		* recommended if you are going to make more pull requests in future (it's cleaner)
+	* merge:
+		* //git merge upstream/master//
+		* this will not change your local history
+* you may need to force push to your local repo the first time after rebase:
+	* //git push -f origin master//
+
+
+===== Cherry-pick a Commit from another Git Repository =====
+1. http://stackoverflow.com/a/9507417:
+	a. //git --git-dir=../<some_other_repo>/.git format-patch -k -1 --stdout <commit SHA> | git am -3 -k//
+	b. Explanation:
+		* The git format-patch command creates a patch from some_other_repo's commit specified by its SHA (-1 for one single commit alone). This patch is piped to git am, which applies the patch locally (-3 means trying the three-way merge if the patch fails to apply cleanly). Hope that explains.
+2. using //git remote add// method
+	a. Add the local repo's path as remote: //git remote add <your choice of name for the remote> <path>//
+	b. Fetch the commit from the remote: //git fetch <remote name>//
+	c. Cherry-pick the commit: //git cherry-pick <SHA>//
+
 ===== Make local folder a local git repository =====
 http://stackoverflow.com/a/33646077
 * Suppose you have a path [[~/Project/tc]]

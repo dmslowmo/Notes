@@ -1,0 +1,120 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-03-03T12:00:43+08:00
+
+====== 01 Wire up DTO and Service layer ======
+Created Friday 03 March 2017
+
+===== 31/03/2017 =====
+* Discovered design flaw in schedule item table
+	* It's not really practical to add simulation_id column in there, because populating the column becomes really hard
+	* Many other tables need to be queried, defeat the purpose of adding the column in the first place
+* Going to try DB Team's schema
+* Otherwise, removed simulation_id and profile_id from schedule_item table
+	* Then to search schedule_item by simulation_id, we have to query multiple tables (inefficient, but if no other choice...)
+
+===== 27-29/03/2017 =====
+[ ] Fixing DI wiring for cassandra profile:
+	[*] can start the Simulator
+	[ ] Add device doesn't respond
+	[ ] Save profile throw NullPointerException from CassandraResourceBl.checkProfileNameUsed()
+	[ ] other errors expected, probably from Bean naming and lack of @Qualifier
+
+===== 24/03/2017 =====
+[ ] SimulationStateWatcher still depends on load-db, need to refactor
+[*] imported cassandra axon keyspace data to my local cassandra, now no need to connect to remote cassandra
+[ ] still a lot of DI problem, bean not found etc when running with cassandra profile
+
+===== 23/03/2017 =====
+[ ] Need to read environment's active profile instead of depending on application.conf
+	[ ] fixed that in SimulationLaunchServiceImpl
+	[ ] need to remove the usage of DatabaseCassandraChoice.java and DatabaseMysqlChoice.java
+
+===== 21/03/2017 =====
+[ ] Table review
+	[ ] no need profile id, just use name
+	[ ] use custom type to store multiple instance of an entity that are related to a row eg profile — devices, simulation — profiles
+	[ ] for simulator.ids table, use counter instead of managing it in the application
+
+===== 16/03/2017 =====
+[*] Refactor Hearbeater and SimulationLauncherService
+[*] Cassandra implementation of SimulationRunData
+[x] Unable to test SimulatorApp
+
+===== 15/03/2017 =====
+[*] Able to run Simulation without XMPP error once we use Cassandra DB in Cloud instead
+	[*] the axon keyspace has the data required for authentication to fronttier, most probably the reason
+[*] Use @Profile and //'-Dspring.profile.active='// argument to select Bean implementation of SimulationLaunchService
+[*] Refactor SimulationLaunchServiceConfig.java, separate config for mysql and cassandra launch service config:
+	[*] MysqlSimulationLaunchServiceConfig.java
+	[*] CassandraSimulationLaunchServiceConfig.java
+[ ] Can we improve the current settings:
+	[ ] need to set "mysql" or "cassandra" in multiple places:
+		[ ] **configuration**: load-simulator-web's **application.conf**
+		[ ] **run script**: load_web.sh
+[*] Unit tests need to use @IfProfileValues to ignore/run them depending on active profile during build with build.sh
+	[*] DRAWBACK: cannot run test on IDE. Need to force the required profile active using @ActiveProfiles
+	[*] However, this annotation must be commented out before build.sh
+
+===== 14/03/2017 =====
+[*] Simulation Run problem:
+	[*] was due to missing tables. After missing tables added manually, SimulationApp can be launched
+	[*] Simulation running, data generated, graph showing
+	[*] Connection to fronttier via xmpp establish
+	[x] Still failed to send message to fronttier via xmpp
+		[x] LOG: 8993     2017-03-14 16:02:46,760          [ERROR] [   device-executor-1]            c.g.l.s.s.i.StandaloneSimulatedDevice:127   - Failed to send xmpp message
+		org.jivesoftware.smack.sasl.SASLErrorException: SASLError using PLAIN: not-authorized
+		**The setup**: run LoadSimulator with Cassandra's axon keyspace and MySQL DB in localhost
+
+
+===== 13/03/2017 =====
+[*] Fixed build, able to start Load Simulator now, but...
+[ ] Running Load Simulator locally still not 100% working
+	[*] Startup OK
+	[*] Create Profile OK
+	[*] Create Simulation OK
+	[x] Start Simulation NG
+		[ ] Failed Bean injection related to Cassandra axon tables: Table metadata is null
+
+===== 10/03/2017 =====
+[ ] __LoadSimWeb build pass, but failed at runtime because "could not inject CassandraSimulationResourceBl". But why? I don't want this Bean because I configure for mysql!__
+
+===== 08/03/2017 =====
+[ ] Implementing CassandraResourceBl
+	[*] CassandraDeviceResourceBl
+	[*] CassandraProfileResourceBl
+	[ ] CassandraSimulationRunResourceBl
+		[*] Needs to add columns in Simulation:
+			[*] cumulative_profiles
+		[*] and Simulation_run tables
+			[*] cumulative_profiles
+			[*] original_simulation_id
+		[*] Modify the Repository Pojos and Service classes
+		[ ] Unit tests
+
+===== 03/03/2017 =====
+TODO:
+[ ] Refactor LoadSimulatorWeb module:
+	[*] move the existing Resource business logic to MySQLResourceBL
+		[*] Create Configuration for "mysql" and "cassandra"
+			[*] backend.database = "mysql" in application.conf
+			[*] if something other than "mysql" is specified, the default is cassandra
+		[*] Achieved using @Conditional
+	[ ] ~~create ResourceBLFactory to instantiate MySQLResourceBL and CassandraResourceBL~~
+	[*] Still need to resolve for MysqlSimulationResource and MysqlSimulationRunResource:
+		[*] Dependency to AxonCassandraConfig.class !!!!
+			[*] created a wrapper AxonCassandraWrapperConfig.class to import AxonCassandraConfig.class and do lazy loading on the beans from AxonCassandraConfig.
+		[*] Dependency to MonitorCassandraConfig.class
+			[*] Simply move the import to MysqlResourceConfig.class
+	[*] Using @Profile and @Conditional
+		[*] Needed to mark the LoadServiceConfig.class in db module to be loaded only when profile is not "ResourceTest", to avoid it being loaded in unit test in LoadSimWeb module
+	[*] which one to create is based on ~~hard-coded constant or~~ config file
+	[ ] consider using Spring dependency injection, something like https://spring.io/blog/2014/11/04/a-quality-qualifier
+	[ ] Both implements ResourceBusinessLogic
+	[ ] CassandraResourceBL
+		[ ] uses Service from cassandra-db module
+[ ] Fix remaining TODOs in cassandra-db module
+	[*] get the keyspace name, port, and hostname from config file
+	[*] remove dependence on com.grenwave.cassandra.common
+	[ ] create merge request
+

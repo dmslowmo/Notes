@@ -1,0 +1,61 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-12-05T09:27:19+08:00
+
+====== Remaining Features ======
+Created Monday 05 December 2016
+
+**Backend proxy**
+required because frontend REST calls over HTTP is not allowed as Epoxy runs in HTTPS mode
+[*] Api classes (split per page). This is the REST end point
+	[*] LoadSimulatorSimulationsApi
+	[*] LoadSimulatorProfilesApi
+	[*] LoadSimulatorSimulationRunsApi
+[*] Service classes
+	[*] LoadSimulatorSimulationsService
+	[*] LoadSimulatorProfilesService
+	[*] LoadSimulatorSimulationRunsService
+[*] Model classes. This is for REST calls to the LoadSimWeb
+	[*] LoadSimulatorSimulationsModel
+	[*] LoadSimulatorProfilesModel
+	[*] LoadSimulatorSimulationRunsModel
+[*] Update EpoxyApiServiceFactory
+
+**Simulations**
+[*] Simulation's Profile Detail list on clicking the 'down-arrow' icon (read only)
+[*] Simulation's Detail on clicking the Simulation Name (can edit)
+[*] Edit Simulation (same as above)
+
+**Profiles**
+[*] NEW Profile page with Device attachment
+[*] Profile's detail on clicking the Profile name (can edit)
+[*] Edit Profile (same as above)
+
+**Simulation Runs**
+[*] Simulation's Profile Detail list on clicking the 'down-arrow' icon (read only, same as in Simulation)
+[*] Simulation Run detail on clicking the Simulation ID or Name
+	[*] accounts, gateways, devices
+	[*] charts
+		[*] using Highcharts, tooltip and crosshair included
+
+[*] Page navigation (1,2,3...)
+	[*] Might have been done for Simulations and Profiles, but have to check (database has been reset recently)
+	[*] Not yet implemented in SimulationRuns
+[*] Show 'Stop' icon when simulation is still running
+[*] Log Message field when expanding the chevron icon
+	[*] Wait for Ruth to change the UI
+[*] BUG: chevron profile list expansion doesn't appear
+[*] BUG: charts not showing
+[*] Charts data should change when query is more specific ie with account, gateway, devices specified
+
+**Others**
+[*] Error handling (nice error messages)
+[*] Enable deleting a Simulation or Profile from within detail page
+[x] Check whether the Simulation/Profile is used by a running simulation
+	[x] Problem: need to download all SimulationRun data and then search for the simulation whether it is running, and what profiles it uses
+	[x] Since we don't want to modify Mintdata source for now, workaround is to use MemCache
+
+**My Consumer account:**
+user: dmartana
+email: @greenwavesystems.com
+password: M****$01

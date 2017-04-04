@@ -1,0 +1,126 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-03-09T18:01:57+08:00
+
+====== 02 TECH NOTES ======
+Created Thursday 09 March 2017
+
+==== NOTES: ====
+[ ] Modify cassandra-db to use new schema design from Pratheep:
+	[ ] quick fix: use string CQL Queries, expose ExtendedMapper's method which takes in string query
+	[ ] Whole new Service and Repository layer
+		[ ] Service can implement the same interface
+		[ ] Repository is completely new
+	[ ] Need custom implementation of TypeCodec (for mapping between Java and CQL type), and register it in CodecRegistry.
+		[ ] User-defined type: device and profile
+		[ ] http://docs.datastax.com/en/developer/java-driver/3.1/manual/custom_codecs/
+			[ ] use JsonCodec
+		[ ] Register it in the 
+	[ ] Tables:
+		[ ] profile
+		[ ] deviceid_counter (device still uses ID)
+		[ ] device_type
+		[ ] simulation
+		[ ] run
+		[ ] schema_version
+		[ ] Types:
+			[ ] device
+			[ ] profile (there is a table called 'profile' as well)
+[ ] Modify load-simulator-web's Resource layer
+	[ ] new implementation, same interface
+[ ] For the other modules, keep them the same, hence those cassandra-db's Service layer interface used by them need to remain the same
+[*] Unit tests need to use @IfProfileValues to ignore/run them depending on active profile during build.sh
+	[*] DRAWBACK: cannot run test on IDE. Need to force the required profile active using @ActiveProfiles
+	[*] However, this annotation must be commented out before build.sh
+
+[*] Table review
+	[*] no need profile id, just use name
+	[*] use custom type to store multiple instance of an entity that are related to a row eg profile — devices, simulation — profiles
+	[*] for simulator.ids table, use counter instead of managing it in the application
+	[*] DB team is going to propose a new schema based on the review
+
+==== BUGS ====
+**LOGIC IS BROKEN!**
+[ ] It's wrong to have simulation_id in schedule_item table just so we can find by simulation id. It makes creation of schedule item complicated and we end up needing to query and update many more tables. INEFFICIENT!
+	[ ] Will try Pratheep's new schema
+[*] FindById when ID is NULL caused error. Need to handle NULL ID, eg when checkProfileNameVailable(String name, long id), where most likely the ID is null. Cannot use primitive type 'long' in this case but use Long instead.
+[*] ScheduleItem.SimulationId not updated when Simulation is created
+[ ] In device table, following columns not updated:
+	[ ] default_report_interval_millis
+	[ ] default_report_value
+	[ ] device_type_name
+	[ ] report_type
+	[ ] report_unit
+[*] In simulation_profile table, following columns not updated:
+	[*] profile_name
+	[*] profile_description
+[ ] Different behaviour in delete of simulation in simulation_by_id and simulation_by_name tables:
+	[ ] in simulation_by_id only the non-copy are set to deleted, but in simulation_by_name, all the copy are also deleted
+[*] Cannot delete Profile even when the Simulation has been deleted
+[ ] Cannot RUN simulation:
+	[ ] stopped due to inacitivity
+	[ ] Square icon not showing
+[ ] Cannot see simulation Run details
+[ ] Cannot Stop simulation run
+
+==== TECHNICAL DEBTS: ====
+
+[*] SimulationStateWatcher still depends on load-db
+
+[ ] Configuration:
+	[ ] should not depend on application.conf to select "mysql" or "cassandra" bean because it still requires the application to be recompiled in load-simulator-web/src/main/resource/application.conf
+
+[ ] Unit tests
+	[ ] Make SimulatorApp unit-testable: test loading the correct Bean
+	[ ] write tests for Cassandra Resource BL
+	[ ] Create unit tests with Cassandra-unit so that we don't need actual Cassandra running
+	[ ] reference:
+		[ ] http://christopher-batey.blogspot.sg/2014/05/using-stubbed-cassandra-unit-testing.html
+		[ ] http://www.scassandra.org/
+		[ ] https://github.com/scassandra/scassandra-server
+
+[ ] Need to configure the config classes to be loaded depending on active profile
+
+[ ] Can we improve the current settings:
+	[ ] need to set "mysql" or "cassandra" in multiple places:
+		[ ] **configuration**: load-simulator-web's **application.conf**
+		[ ] **run script**: load_web.sh
+
+
+[*] __Implement/refactor/add-to the following for Cassandra__:
+	[*] load-simulator-launcher
+		[*] CassandraSimulationLaunchServiceImpl
+		[*] Heartbeater
+			[*] factor out the dependencies to load-db package to SimulationLaunchServiceImpl
+	[*] schedule-service, ~~new definition~~ remove dependencies to load-db in
+		[*] DeviceSimulationTask — using Adaptor
+		[*] Schedule — using Adaptor
+		[*] ScheduleItemDistance — using Adaptor
+		[*] SimulatedDeviceInfo — moved some Enums to load-simulator-common module
+		[*] StandaloneSimulatedDevice — moved some Enums to load-simulator-common module
+		[*] TaskBuilder — moved some Enums to load-simulator-common module
+	[*] bootstrap
+		[*] need CassandraBootstrapperImpl
+			[*] Refactored Bootstrapper and SimulationRunData to remove dependencies to load-db
+			[*] need to depend on cassandra-load-db
+		[*] ~~need CassandraSimulationRunData~~
+			[*] ~~need to depend on cassandra-load-db~~
+		[*] need CassandraBootstrapConfig
+		[*] Need to modify NamesResolver
+			[*] Just need to remove getSimRunIdForProfileInstances() because it's not necessary even for Mysql
+				[*] It returns the supposedly next simulationRun ID, but in fact it's no use because mysql will create the next ID and return it
+			[*] Then we can remove RunService, and no more dependency to load-db
+			[*] ~~Move the logic to abstract class~~
+			[*] ~~make getSimRunIdForProfilesInstances() abstract~~
+			[*] ~~have implementations for mysql and cassandra~~
+	[*] Refactored MtProfileProvisioner, ProvisionedGateway, SimulationDataGenerator
+		[*] use Adaptor to remove dependencies to load-db
+
+[*] Cassandra migration tool to create keyspace and initial data
+	[*] first run migration tool with param: create axon (to create axon keyspace)
+	[*] then run with param: migrate axon
+ 
+[*] CassandraSimulationResourceBl
+	[*] start() now contains the service logic which are not supposed to be called there. It is a temporary holding for the logic.
+	[*] The logic should be in Bootstrapper. Need to refactor com.greenwave.load.bootstrap.BootStrapper.
+

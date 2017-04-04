@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-01-19T10:44:16+08:00
+
+====== 00 Journal ======
+Created Thursday 19 January 2017
+
+Please add new day entry at the TOP!
+
+

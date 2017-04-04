@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-01-17T10:40:39+08:00
+
+====== 01 Mysql to Cassandra migration ======
+Created Tuesday 17 January 2017
+
+Tags: @mysql_to_cassandra @cassandra
+
+===== Consideration =====
+Customer (Verizon) wants it (duh!)
+But suppose, we are to weigh the cost and benefits...
+1. Is Mysql currently preventing development of new features or providing acceptable uptime, reliability, and scalibility?
+2. Cassandra is NOT a relational database: what is the implication of the migration?
+3. Change in data model is most likely required.
+	a. from relational to de-normalized from
+4. Lack of JOIN in Cassandra
+
+===== Strategy =====
+We will run 2 DB in parallel, one is the existing Mysql and the other one is the new Cassandra DB as containers in dev servers.
+In the beginning, write operations will be done twice, one to each DB. Read operations will be from Mysql.
+Then, gradually, read operations will be migrated to Cassandra.
+This approace will allow us to gradually fine-tune Cassandra schema.
+
+===== What to do? =====
+[ ] **Understand how LoadSimWeb used Mysql data**
+	[ ] Identify the queries
+	[ ] https://docs.google.com/spreadsheets/d/1fCaVuVmW4ex3djJGOtM7Y7_pqulTLA0PTOKiUjHPVDc/edit#gid=1639811649
+[ ] **Export Load Simulator's Mysql database**
+	[ ] The export to CSV should not be done by simply exporting all columns of all tables,
+	[ ] but rather, done after we understand how the data is used,
+	[ ] partly because there is no JOIN in Cassandra, so tables need to be de-normalized
+[ ] CSV can be imported to Cassandra
+[ ] **Prepare the schema** of the tables (aka //column families)// in Cassandra
+[ ] Initialize the Cassandra DB with the existing data from Mysql
+[ ] **Implement the services to access the Cassandra database **(existing ones are for MySQL)
+	[ ] DeviceServiceCassImpl
+	[ ] DeviceTypeServiceCassImpl
+	[ ] ProfileServiceCassImpl
+	[ ] RunServiceCassImpl
+	[ ] ScheduleItemServiceCassImpl
+	[ ] SimulationProfileServiceCassImpl
+	[ ] SimulationServiceCassImpl
+[ ] **Migration of read/write operations**
+	[ ] In early stage, have Mysql and Cassandra DB running in parallel
+		[ ] Write new data twice: first to Cassandra, then to MysqlDB
+		[ ] Read data from MySQL
+	[ ] Gradually migrate read operations from Mysql to Cassandra (on Java code side)
+		[ ] along the way, discover what is lacking in Cassandra DB and update the schema, and migrate the data again
+		[ ] do this for each operation (eg CRUD on Profile, Device, Simulation, Runs etc), until it is stable before moving on to next operation
+[ ] **Deployment**
+	[ ] learn how to create docker container and manage it from Marathon
+[ ] Backup the Cassandra schema regularly.
+[ ] Backup the data in Mysql DB regularly.
+[ ] **Prepare migration scripts**:
+	[ ] Mysql to csv to Cassandra
+	[ ] Cassandra to csv
+
+===== Resources =====
+Migration
+https://academy.datastax.com/planet-cassandra/mysql-to-cassandra-migration
+http://www.datastax.com/dev/blog/bulk-loading
+
+Create auto-cincrement IDs in Cassandra
+http://stackoverflow.com/a/29391877
+
+Get SQL queries from DSL
+http://stackoverflow.com/questions/8561317/how-can-we-profile-jooq-statements-for-speed
+
+Mysql vs Cassandra
+http://www.slideshare.net/tmcallaghan/use-your-mysql-knowledge-to-become-an-instant-cassandra-guru
+https://www.hakkalabs.co/articles/cassandra-data-modeling-guide
+https://mariadb.com/kb/en/mariadb/handling-joins-with-cassandra/

@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-12-08T15:36:27+08:00
+
+====== Requirements ======
+
+[*] UI Redesign:
+	[*] Recreate the UI in Epoxy
+	[*] Simulations, Profiles, and Simulation Runs as Tabs
+	[*] Grey-out play/edit/delete icons when simulation is running
+[ ] Epoxy needs new functionalities:
+	[*] track/log the activities on Load Simulator (LS)
+	[ ] control the access to LS
+		[ ] via existing mechanism in Epoxy to give privilege to certain users
+		[ ] if LS is disabled in Epoxy: 	
+			[ ] the link to LS should not be visible
+			[ ] the user without the privilege must not be able to access LS directly (via ssh or browser)
+[ ] Database migration:
+	[ ] migrate MySQL database to Cassandra
+

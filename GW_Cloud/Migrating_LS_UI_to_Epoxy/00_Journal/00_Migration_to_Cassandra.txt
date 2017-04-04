@@ -1,0 +1,239 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-03-03T11:58:56+08:00
+
+====== 00 Migration to Cassandra ======
+Created Friday 03 March 2017
+
+===== 24/02/2017 =====
+TODO:
+[ ] Refactor LoadSimulatorWeb module:
+	[ ] move the existing Resource business logic to MySQLResourceBL
+		[ ] Create Configuration for "mysql" and "cassandra"
+		[ ] Still need to hardcode which implementation (Configuration) to use, don't know how to do otherwise
+		[ ] Try using @Conditional (Tabiul's suggestion)
+	[ ] create ResourceBLFactory to instantiate MySQLResourceBL and CassandraResourceBL
+		[ ] which one to create is based on hard-coded constant or config file
+		[ ] consider using Spring dependency injection, something like https://spring.io/blog/2014/11/04/a-quality-qualifier
+		[ ] Both implements/extends from ResourceBL
+	[ ] CassandraResourceBL
+		[ ] uses Service from cassandra-db module
+[ ] Fix remaining TODOs in cassandra-db module
+	[*] get the keyspace name, port, and hostname from config file
+	[*] remove dependence on com.grenwave.cassandra.common
+	[ ] create merge request
+
+* NOTES:
+	* Database schema updates:
+		* for the redundancy tables, since delete in the main table (by ID) also means need to delete in redundancy tables, need another delete function that takes ID as parameter. Tables then need ID as clustering key.
+		* Affected tables:
+			* schedule_item_by_device_id
+			* schedule_item_by_profile_id
+			* schedule_item_by_simulation_id
+		* Removed bigint 'id' from simulation_profile tables because it does not make sense for these tables
+		* Added run_by_state table
+		* Profile table:
+			* added 'name' as cluster key
+			* remove all but 'id' from partition keys
+			* created index on column 'name'
+		* Remove complex partition keys combination from primary keys. Now partition key is a single column and the rest are cluster keys
+
+===== 09-23/02/2017 =====
+[*] ServiceImpl
+	[*] DeviceServiceImpl
+	[*] DeviceTypeServiceImpl
+	[*] ProfileServiceImpl
+	[*] ScheduleItemServiceImpl
+	[*] SimulationProfileServiceImpl
+	[*] SimulationRunServiceImpl
+	[*] SimulationService
+		[*] all done except
+		[*] start()
+	[x] TableIdsService
+[ ] TODO:
+	[*] add object copier utility in ServiceUtil class
+	[*] change updated timestamp when update() is called
+	[ ] BootstrapperCassandraImpl
+	[*] Spring Configuration class for Cassandra-db services
+		[*] LoadCassandraServiceConfig.class
+		[*] LoadRepositoryConfig.class
+	[*] unit test for the Repository classes, check database operations work
+		[*] DeviceRepositoryImpl
+		[*] DeviceByProfileIdRepositoryImpl
+		[*] DeviceTypeRepositoryImpl
+		[*] TableCounterRepositoryImpl
+		[*] DeviceTypeByNameRepositoryImpl
+		[*] ProfileRepo
+		[*] ScheduleItemRepo
+		[*] ScheduleItemByDeviceIdRepo
+		[x] ScheduleItemByProfileIdRepo
+		[*] ScheduleItemBySimulationIdRepo
+		[*] SimulationRepo
+		[*] SimulationByNameRepo
+		[*] SimulationProfileBySimulationIdRepo
+		[*] SimulationProfileByProfileIdRepo
+		[*] SimulationRunRepo
+		[*] SimulationRunByStateRepo
+	[*] unit test for the Service classes, check various databases are updated correctly
+		[*] DeviceService
+		[*] DeviceTypeService
+		[*] ScheduleItemService
+		[*] ProfileService
+		[*] SimulationService
+			[*] except 'start' function, waiting for SimulationProfile and SimulationRun done with testing
+		[*] SimulationProfileService
+		[*] SimulationRunService
+
+
+===== 07-08/02/2017 =====
+[*] Create Repository Interfaces
+	[*] DeviceRepo
+	[*] DeviceByProfileIdRepo
+	[*] DeviceTypeRepo
+	[*] DeviceTypeByNameRepo
+	[*] ProfileRepo
+	[*] ScheduleItemRepo
+	[*] ScheduleItemByDeviceIdRepo
+	[x] ScheduleItemByProfileIdRepo
+	[*] ScheduleItemBySimulationIdRepo
+	[*] SimulationRepo
+	[*] SimulationByNameRepo
+	[*] SimulationProfileBySimulationIdRepo
+	[*] SimulationProfileByProfileIdRepo
+	[*] SimulationRunRepo
+	[*] TableIdsRepo
+[ ] RepositoryImpl
+	[*] DeviceRepositoryImpl
+	[*] DeviceByProfileIdRepositoryImpl
+	[*] DeviceTypeRepositoryImpl
+	[*] DeviceTypeByNameRepositoryImpl
+	[*] ScheduleItemRepositoryImpl
+	[*] ScheduleItemByDeviceIdRepositoryImpl
+	[*] ScheduleItemBySimulationIdRepositoryImpl
+	[*] ProfileRepositoryImpl
+	[*] SimulatonRepositoryImpl
+	[*] SimulationByNameRepositoryImpl
+	[*] SimulationProfileBySimulationIdRepositoryImpl
+	[*] SimulationProfileByProfileIdRepositoryImpl
+	[*] SimulationRunRepositoryImpl
+	[*] SimulationRunByStateRepositoryImpl
+	[ ] TableIdsRepositoryImpl
+[*] TODO:
+	[*] need to take care of the nextID generation --->in separate service class?
+		[*] nextID generation should only be done by the MAIN table ie. the one that uses ID as partition key
+		[*] the other redundancy tables are expected to be updated (with a copy of the new entry) after the MAIN table is updated
+
+
+===== 06/02/2017 =====
+[*] Create the POJOs for the tables:
+	[*] device_type_by_id
+		[*] use **long** for ID
+		[*] fix @Table(name = "...")
+		[*] assign the correct @PartitionKey(value = "...")
+		[*] assign the correct @ClusterColumn(value = "...")
+		[*] fix @Column(name = "...")
+	[*] device_type_by_name
+	[*] device_by_id
+	[*] device_by_profile_id
+	[*] profile
+	[*] schedule_item_by_id
+	[*] schedule_item_by_device_id
+	[*] schedule_item_by_profile_id
+	[*] schedule_item_by_simulation_id
+	[*] run
+	[*] simulation_profile_by_simulation_id
+	[*] simulation_profile_by_profile_id
+	[*] ids
+	[*] simulation
+	[*] simulation_by_name
+
+===== 02/02/2017 =====
+**PRIORITY:**
+[*] Redesign the schema
+	[*] 1 table schema per query
+	[*] Implement counter table (modify ids table to use //counter// type)
+		* NOTE: in every query, the //consistency level// **must** be specified; recommended: write QUORUM and read QUORUM
+
+**Postponed:**
+[ ] new Service interface and implementation for use with Cassandra
+	[ ] Service wraps the Repository object
+	[ ] Repository object wraps the DTO
+		[ ] contains the queries, please refer to the list of queries in google sheet
+	[ ] DTO maps to a table in keyspace
+
+
+===== 01/02/2017 =====
+[ ] new Service interface and implementation for use with Cassandra
+	[ ] Service wraps the Repository object
+	[ ] Repository object wraps the DTO
+		[ ] contains the queries, please refer to the list of queries in google sheet
+	[ ] DTO maps to a table in keyspace
+
+
+===== 31/01/2017 =====
+[*] Create Mapper (adapting from ExtendedMapper.class)
+[*] Create SimulatorEntity (adapting from Entity.class)
+[*] Update DTOs to implement SimulatorEntity
+[*] Updated the tables with 'created' and 'updated' columns
+
+===== 25-26/01/2017 =====
+[ ] Rewrite service layer of Load Simulator ([[https://jira.greenwavesystems.com/browse/SUA-8669|SUA-8669]])
+[ ] Notes:
+	[ ] LoadSimulator (and other modules in Axon Cloud project) uses Cassandra-Tier as ORM layer to Cassandra DB
+	[ ] The default implementation is for 'axon' keyspace, but seems it may be possible to be used for other keyspace
+		[ ] thinking of not using 'axon' keyspace, because it is for axon cloud and managed by Ramin's team
+		[ ] will create a new keyspace instead eg 'simulator' keyspace
+		[ ] probably it's better to just extend Cassandra-tier and implement the mapping, DTO, repo, etc for load simulator
+	[ ] LoadSimulator currently uses keyspaces:
+		[ ] axon
+		[ ] monitor
+	[ ] Need to implement:
+		[ ] new Spring config class for the new service because apparently the current Service interface/implementation depends on Jooq
+		[ ] new Service interface and implementation for use with Cassandra
+		[ ] POJO equivalent to auto-generated POJO from Jooq eg. Device, Simulation, Profile, etc.
+			[ ] DTO/DAO/model which implements Entity.class from Cassandra-tier, which acts as the gateway to the database table via datastax driver library
+		[ ] repository service layer, extending from ExtendedMapper.class from Cassandra-tier
+	[ ] Transition from MySQL to Cassandra:
+		[ ] Spring load BOTH LoadServiceConfig.class (existing, for MySQL) and the new LoadServiceCassConfig.class
+		[ ] Write operations for both must be called
+		[ ] Read operations for Cassandra will be called first
+			[ ] if not implemented or no data, call the one for MySQL
+
+
+===== 24/01/2017 =====
+[*] Create tables for Load Simulator Cassandra database, with primary key of (id, created) and clustering order by (created DESC)
+	[*] ids
+		[ ] storing the various id names and their next sequence for the tables that need it
+		[ ] eg schema_version table
+		[ ] clashing of ids is possible, but very unlikely, since this table is not updated at runtime but more likely before application starts or restarts
+	[*] simulation
+	[*] profile
+	[*] simulation_profile
+	[*] schema_version
+		[*] the primary key is version (int)
+		[*] usually we need uuid for primary key, but in this case it does not make sense
+		[*] the ids table is a good idea here
+	[*] run
+		[*] primary key includes state (may be useful when querying by state)
+		[*] clustering order also by state ASC, in addition to created DESC
+	[*] schedule_item
+	[*] device (need //device_name// column?)
+	[*] device_type
+
+
+===== 23/01/2017 =====
+[*] TODO: create task and sub-tasks in JIRA based on [[01 Mysql to Cassandra migration]]
+[*] TODO: Design database schema for Load Simulator in Cassandra
+	[*] to use incrementable ID or just UUID? Tyring out the former using this way: http://stackoverflow.com/a/29391877
+[ ] TODO: Deploy the Cassandra database in a Docker container
+
+
+===== 20/01/2017 =====
+[*] Listing all LS's Mysql queries in Google spreadsheet https://docs.google.com/spreadsheets/d/1fCaVuVmW4ex3djJGOtM7Y7_pqulTLA0PTOKiUjHPVDc/edit#gid=1639811649
+[*] TODO: create task and sub-tasks in JIRA based on [[01 Mysql to Cassandra migration]]
+
+===== 19/01/2017 =====
+[*] Understand how Simulation Run works
+	[*] what is going on when simulation starts
+	[*] how Cassandra is involved in simulation run
+[ ] Listing all LS' Mysql queries

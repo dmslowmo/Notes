@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-03-09T18:03:02+08:00
+
+====== 03 Major Refactoring ======
+Created Thursday 09 March 2017
+
+[ ] Revamp (2nd time) of load simulator:
+	[ ] Use new DB schema from DB team
+	[ ] Applications need major overhaul including Frontend:
+		[ ] Frontend and HTML of Load Simulator app in Epoxy
+			* change all "by id" operations to "by name"
+	[ ] REST Proxy in Epoxy
+		* all URL that accepts [[/{id}]] needs to change to [[/{name}]]
+		* Services need to change
+	[ ] REST endpoint in Axon-cloud's load-simulator-web
+		* all URL that accepts [[/{id}]] needs to change to [[/{name}]]
+		* implementations change as Service layer also change
+	[ ] Services and DAO in cassandra-db
+	[ ] Boostrap
+	[ ] simulator-launcher
+	[ ] scheduler
+[x] Can we totally build everything from scratch?
+	[*] Not part of axon-cloud project
+	[*] Use any technology we choose
+	[*] Use different language?
+	[*] Consideration:
+		[*] cassandra-db already independent of other module
+		[*] We can re-implement the logic of bootstrap, launcher, and scheduler once we understand the logic
+		[*] It's totally different application from existing load simulator
+		[*] but more testing needed, logic totally changed
+		[*] **Still need to depend on Cassandra-tier!!** ⇒ this is a deal breaker. This module can be changed anytime without notice and we have to track its changes anyway even when we build our own.
+	[*] CONCLUSION: **CANNOT!!**
+
+[*] __Major refactoring of the "Simulation Runner" modules__:
+	[*] load-simulator-launcher
+	[*] schedule-service
+	[*] bootstrap
+	[*] load-db may need to be refactored, but try not to
+
+===== 09/03/2017 =====
+[*] List of Types from load-db needed by the Simulation Runner modules:
+	[*] scheduler-service
+		[*] Device
+		[*] DeviceType
+		[*] DeviceReportType
+		[*] DeviceReportUnit
+		[*] ScheduleItem
+	[*] bootstrap
+		[*] Device
+		[*] DeviceType
+		[*] Profile
+		[*] Run
+		[*] ScheduleItem
+		[*] Simulation
+		[*] SimulationProfile
+		[*] deviceService
+		[*] DeviceTypeService
+		[*] ProfileService
+		[*] RunService
+		[*] ScheduleItemService
+		[*] SimulationProfileService
+		[*] SimulationService
+	[*] simulation-launcher
+		[*] SimulationService
+		[*] ProfileService
+		[*] Simulation
+[x] If dbmanager were to support load-db and cassandra-db, it needs to replace the dependencies above with its own versions of those types
+[x] Replace those types from load-db using the dbmanager's version
+[*] ALTERNATIVELY,
+	[*] have Cassandra's version of bootstrap, schedule-service, load-simulator-launcher
+	[*] load-simulator-web has to choose at runtime based on configuration which implementation to use
+
