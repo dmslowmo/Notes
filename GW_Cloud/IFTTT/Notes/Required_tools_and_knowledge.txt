@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-03T18:46:20+08:00
+
+====== Required tools and knowledge ======
+Created Thursday 03 August 2017
+
+[ ] subscriptions mechanism
+	* Prior work:
+		* login to XMPP server endpoint with an account (JID)
+		* upon establishing connection to XMPP server, (according to CS), the client (ifttt-broker) is already listening to pushed messages from server (need to verify)
+	* (UIx) sends subscription request to Cloud (ie Fronttier's endpoint: fronttier:8080/http-bind for BOSH, or the normal XMPP ie fronttier:5222[[)]]
+	* subscription created, now listening for notification
+[ ] XMPP connection mechanism
+	* BOSH (fronttier port 8080/http-bind)
+	* XMPP (fronttier port 5222)
+[ ] XMPP library to use
+	* Smack (recommended, because the mobile and UI team uses it)
+	* Babbler (new, still not 1.0 yet, but looks interesting)
+[ ] in ifttt project, the subscription for notification flow is roughly:
+	* assuming user already logged in, his/her JID should be in DB
+	* retrieve the JID and password
+	* use them to connect to XMPP server
+		* store connection object in memory and DB, one connection per account in its own thread
+		* when broker restarted, connection should be re-established
+	* check subscription table (our own, not axon's one) for existing subscription for this account
+		* if exists, create new subscription and store in database again
+			* if subscription creation succesful, delete the old subscription
+			* else, don't delete, so we can retry next time
+	* on notification from Cloud:
+		* process notification (source, type, values, etc)
+		* if matches trigger condition, notify IFTTT
+[ ] deleting subscription

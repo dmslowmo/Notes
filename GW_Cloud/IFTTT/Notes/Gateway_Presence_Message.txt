@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-11T17:15:19+08:00
+
+====== Gateway Presence Message ======
+Created Friday 11 August 2017
+
+{
+  "from" : "/axon-v3/91/portal/presence",
+  "to" : "/axon-v3/91/ui2",
+  "type" : "updated",
+  "timestamp" : 1502442158381,
+  "id" : "1599340103681794",
+  "body" : {
+	"elements" : [ {
+	  "presence" : true,
+	  "type" : "system",
+	  "path" : "/axon-v3/91/portal/gateways/1",
+	  "created" : 1502442158306,
+	  "updated" : 1502442158308
+	} ]
+  },
+  "token" : "5MTi3qVtwrFna6jXZw-r3FY_fLy9zfYX",
+  "spanId" : 0,
+  "tracingEnabled" : false
+}

@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== Notes ======
+Created Wednesday 05 July 2017
+
+===== Subscription =====
+
+* Need to be careful when subscribing to something as it may not be able to be deleted eg. presence.
+* As a result, we keep getting presence updated messages, which will litter our Queue and affect performance
+* Subscription 'created' message from Cloud is **different** for '{acc}/{gw}/devices/{obj}' and '/portal/scenes/{id}'
+	* in the former, the key is '**path'**, but in the latter is **'id'**
+	* this causes hackish workaround, for now
+

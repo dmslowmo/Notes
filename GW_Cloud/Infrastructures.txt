@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-16T11:04:02+08:00
+
+====== Infrastructures ======
+Created Wednesday 16 August 2017
+
+**List of servers, and others nitty-gritty details**
+(so we don't keep asking the same questions!!!)
+
+* gwr-dev2: 46.137.110.127
+	* Where Epoxy lives, and other auxiliary services eg. axon-cloud-service, ifttt, etc
+	* The services in this server **act as proxy** to access services and DB in the actual Cloud servers namely //axon-dev, axon-qa, axon-partner, etc//
+	* There is Cassandra running here, with all the keyspaces like in the cloud servers, but only some of the tables are actually used by the services in Epoxy and other services in this server
+		* eg. ifttt, usertoken, useroauth
+	* When you need to access keyspaces in Cloud or other services in Cloud, **you need to go through the proxy**, which provides you some advantages:
+		* You don't need to know what server the data or services live in. As long as you **send the token along with the request**, the proxy will determine that for you
+		* Minimal Cassandra transaction except for those required for the proxy or local services (see above)
+	* Disadvantage:
+		* You need to add APIs in the proxy ie axon-cloud-service ==> Maintaining/synchronizing codes in 2 different projects
+		* Extra dependencies on other services basically
+* Cassandra in gwr-dev2
+	* ANNOYING
+	* you don't use the locally installed cqlsh or cassandra!!! :o
+	* you use cassandra instance mounted on [[/mnt/cassandra/....]] on port 12050 .... not 9042
+	* This also means, I cannot use Datastax Developer client (which is convenient) to see the data
+
+* gwr-dev2 is shared among developers, so communication is important. Ask before overwriting anything.

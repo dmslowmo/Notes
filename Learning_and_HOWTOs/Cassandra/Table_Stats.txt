@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-11-10T16:49:57+08:00
+
+====== Table Stats ======
+Created Friday 10 November 2017
+
+In the shell (not in cqlsh):
+	
+	//nodetool tablestats axon.system_presence//
+
+to see the statistics of this table
+
+

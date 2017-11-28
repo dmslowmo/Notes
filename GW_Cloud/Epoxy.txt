@@ -1,11 +1,60 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
-Creation-Date: 2016-11-04T17:58:09+08:00
 
 ====== Epoxy ======
 Created Friday 04 November 2016
 
 ===== Running localhost/epoxy =====
+* Set up configurations:
+	* cp epoxy/java/deploy/* /opt/greenwave/dude/conf/
+	* mv epoxy.properties.dev2 epoxy.properties
+	* comment out ldap config in epoxy.properties
+	* use this config.js:
+{{{code: lang="js" linenumbers="True"
+'use strict';
+
+var epoxyApp = require("../bootstrap/ngmodule");
+
+epoxyApp.ngmodule.factory('CONFIG', function($location) {
+
+	var domainBase = 'localhost';
+	var domain = 'axon-v3';//'axon-v3';
+	var skin = 'skin-blue';//'skin-blue' ;
+	var googleKey = 'epoxy_ui_google_key'; //AIzaSyCV04td4sT5vgBuamI1GBqhxzOFAw6cL_A;
+
+	var epoxyApiPort = 8080; //8443;
+	var epoxyApiPath = 'epoxy'; //epoxyapi 
+
+	return {
+		SKIN : skin,
+		HOST: domainBase,
+		DOMAIN_URL: 'https:'+domainBase,  //e.g. https://axon-dev.greenwavesystems.com
+		EPOXY_API_PORT : epoxyApiPort,
+		EPOXY_API_PATH : epoxyApiPath,
+		EPOXY_URL: 'http://localhost:8080/epoxy',  //e.g. https:axon-dev.greenwavesystems.com/epoxy/epoxyapi 
+		XMPP_DOMAIN: domain,
+		GKEY: googleKey
+	};
+});
+}}}
+
+	* Use this epoxy.properties in [[/opt/greenwave/dude/conf/epoxy.properties]]
+{{{code: lang="js" linenumbers="True"
+serverList={"axon-dev": {"name": "Axon Dev", "ha_proxy": "axon-dev.greenwavesystems.com", "marathon": "54.245.97.206", "kibanaui": "http://axon-dev.greenwavesystems.com:5601", "cassandra" : "54.245.97.206:12050"},\
+	"axon-qa": {"name": "Axon QA", "ha_proxy": "axon-qa.greenwavesystems.com", "marathon": "54.244.159.53", "kibanaui": "axon-qa.greenwavesystems.com:5601", "cassandra" : "54.244.159.53:12050"},\
+	"axon-partner": {"name": "Axon Partner", "ha_proxy": "axon-partner.greenwavesystems.com", "marathon": "52.13.99.179", "kibanaui": "axon-partner.greenwavesystems.com:5601", "cassandra" : "54.244.240.102:12050"},\
+	"axon-qa2": {"name": "Axon QA2", "ha_proxy": "axon-qa2.greenwavesystems.com", "marathon" : "50.112.110.19", "kibanaui": "axon-qa2.greenwavesystems.com:5601", "cassandra" : "50.112.110.19:12050"},\
+	"ctl-uat": {"name": "CTL UAT", "ha_proxy": "ctl-uat.greenwavesystems.com", "marathon" : "54.245.245.96", "url":"ctl-uat.greenwavesystems.com", "kibanaui": "ctl-uat.greenwavesystems.com:5601", "cassandra" : "54.245.245.96:12050"}  \
+   }
+defaultServer=axon-dev
+jwtSharedKey=8runf831-2347-7t8d-y034-9tu47thfui72
+#ldap={"host": "98.189.211.66", "port": 389, "dn": "dc=greenwavereality,dc=com", "dn_ro": ""}
+xmpp={"keystorePath": "/opt/greenwave/dude/conf/keystore.jks", "keystorePassword": "12345678"}
+roxy={"host": "https://update.greenwavereality.com/roxy", "token": "69fb4863ce8acd40a32aafc0d4e9b38e"}
+}}}
+
+
+
 * Assuming tomcat7 is installed
 * deploy epoxy in tomcat
 	* put epoxy.war in [[/var/lib/tomcat7/webapps]] and expand it, OR

@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-11T10:43:29+08:00
+
+====== SystemOffline Message ======
+Created Friday 11 August 2017
+
+====== SYSTEMOFFLINE NOTIFICATION: ======
+
+{
+	"from": "/axon-v3/91/gw1",
+	"to": "/axon-v3/91/ui4",
+	"type": "systemOffline",
+	"id": "15024193689175985",
+	"timestamp": 1502419368917,
+	"tracingEnabled": false,
+	"spanId": 0,
+	"body": {}
+}
+
+================================================================

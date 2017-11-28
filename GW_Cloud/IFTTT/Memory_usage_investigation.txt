@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-23T15:27:35+08:00
+
+====== Memory usage investigation ======
+Created Wednesday 23 August 2017
+
+* Heap profile after running locally for 5 minutes (app start up test)
+	* Epoxy: 
+		* Allocated: ~1.5GB
+		* Used (max): ~800MB
+	* Axon-cloud-service:
+		* Allocated: ~700MB
+		* Used (max): ~300MB ---> a spike in the beginning
+	* ifttt (without subscription module)
+		* Allocated: ~1GB
+		* Used (max): ~300MB
+* **Overall:**
+	* Allocated: ~3.2GB
+	* Used (max): ~1.4GB
+
+* Heap profile of ifttt with subscription module:
+	* Allocated: 1GB+
+	* Used (max): 500MB+ (after few minutes, and few subscriptions)
+
+* QUESIONS:
+	* should we tune the GC?
+		* how aggressive it is, at which % of memory usage should GC be invoked?
+	* How much memory used at worst case?
+	* How should we code such that memory usage and GC are efficient?

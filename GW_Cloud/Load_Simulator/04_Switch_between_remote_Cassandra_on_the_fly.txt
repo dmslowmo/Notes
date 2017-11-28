@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== 04 Switch between remote Cassandra on the fly ======
+Created Wednesday 07 June 2017
+
+===== Current state =====
+* Cassandra Cluster and Session beans are //eagerly instantiated// by Spring
+	* Such that, if connection is unavailable, the app will not even start
+* Hostname is stored in the Run table of simulator keyspace
+* Target cloud's URL is hardcoded in the app.conf and cannot be changed on the fly ie needs to recompile the JAR
+* Simulation data is written directly into monitor keyspace
+
+===== What we want =====
+* Load Simulator is able to run without Cassandra Cluster and Session beans until it is required
+* OR, have local cassandra with simulator keyspace, and only create Cluster and Session for axon keyspace when needed
+	* the URL will have to be supplied by the caller
+* API needs to change to include target server's URL
+* Load Simulator does not depend on the target cloud's URL, or just default it to 'localhost' until a request is made
+* Simulation data should not be written by Load Simulator directly, but rather it's done via Fronttier -> Backtier -> Firehose -> Cassandra
+
+==== How the message flow works ====
+* messages sent to the Fronttier is sent to Kafka
+* the messages are consumed by **backtier and firehose**
+	* Not sure what backtier does with the messages
+	* Firehose then writes data to cf_monitor_* tables
+* For Load Simulation, the simulated-device's threads will write the data to cf_simulator_monitor_* tables
+* see https://docs.google.com/presentation/d/1xfzMynMGRPoo611C6qNzAZVXGTL0-cSyPTUldHNzqyI/edit#slide=id.g1388edfbd5_0_63
+
+==== Possible solution: ====
+* removing dependency to //monitor// keyspace:
+	* migrate the cf_simulator_monitor-* tables to separate keyspace, say, **simulator_monitor**
+	* simulator keyspace can run in the local Cassandra just as simulator keyspace
+	* while axon and monitor keyspace is from the remote Cassandra
+	* Hence, need to configure in app.conf the Fronttier to be in remote Cloud eg. axon-dev, and Cassandra in localhost

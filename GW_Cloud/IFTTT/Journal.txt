@@ -1,0 +1,265 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-07-24T18:43:06+08:00
+
+====== Journal ======
+Created Monday 24 July 2017
+
+__PUT NEW ENTRY AT THE TOP!__
+**AXON Inspector credentials**
+* Created new account: daniel.martana@greenwavesystems.com
+* password: Mmmmm()0
+**Gateways under my account in axon-dev**
+* 155_gw4: water, smart switch
+* 155_gw5
+**Gateways under Ruth's account in axon-qa**
+* 91_gw1: lightbulb, temperature, motion
+**Servers:**
+* axon-dev: 54.245.97.206
+* axon-qa: 54.214.145.196
+
+===== 18/08/2017 =====
+[ ] Integration test in dev2
+	[ ] **Pending Cassandra tables to be restored there**
+	[ ] Need to deploy axon-cloud-service in axon-qa and axon-dev
+[*] Testing with multiple accounts
+	[*] use Postman to send trigger
+		* Need to run 2 instances of axon-cloud-services, one to simulate axon-dev and one to simulate axon-qa, on different ports
+		* Have code to check the servername, and then change the url accordingly 
+		* **RESULT: **it is able to send to the correct "server". Axon-dev seems to be broken, so the device detail request failed. No issue with Axon-qa
+
+
+===== 17/08/2017 =====
+[*] Migrate all DB queries to axon-cloud-service project
+	[*] Models: ~~TriggerModel~~, UserTokenModel, XmppUserAccountModel, ~~UserOauth~~(?)
+		[*] Trigger and UserOauth lives in gwr-dev2 Cassandra
+		[*] Others are in other Cloud servers, hence need axon-cloud-service
+	[*] Create APIs for those models in axon-cloud-service project
+
+
+===== 16/08/2017 =====
+[ ] Integration test in dev2
+	[>] **Pending Cassandra tables to be restored there**
+[>] Testing with multiple accounts
+	[>] use Postman to send trigger
+
+
+===== 14-15/08/2017 =====
+[>] Integration test in dev2
+	[>] **Pending Cassandra tables to be restored there**
+[*] Testing with multiple accounts (in same server)
+	[*] onboard the 'KC' gateway to ~~axon-qa ~~ axon-dev
+		[*] need to borrow new gateway
+		[*] now in the process of upgradeing the firmware
+		[*] put in (old) roxy axon-dev group
+		[*] included water sensor (***627) and smart switch (***628)
+	[*] loan out a lightbulb or any bistate device from Ming Hou
+	[*] ~~create a new account in axon-qa ~~ Use the account 155 in axon-dev
+	[>] use Postman to send trigger
+
+[>] Migrate all DB queries to axon-cloud-service project
+	[>] Models: TriggerModel, UserTokenModel, XmppUserAccountModel, UserOauth(?)
+	[>] Create APIs for those models in axon-cloud-service project
+
+===== 07/08/2017 =====
+[*] Refactored the codes (in ifttt-refactor experimental branch) as per last week's requirements:
+	[*] Refactor SubscriptionManager to create AT MOST n MessageConsumer
+		[*] Currently, n=1 (static MessageConsumer) and not scalable, need to figure out how to do this
+	[*] Message Consumer is now instantiated in SubscriptionManagerFactory and it is static.
+		[*] It is injected into SubscriptionManager
+	[*] Decouple SubscriptionManager and MessageConsumer
+	[*] Created EventReactor (or maybe should rename to EventService)
+		[*] create/recreate subscriptions, being called by the consumer threads
+	[*] SubscriptionManager now does:
+		* Create XMPPClient 
+		* send XMPP subscription request
+	[*] Queue is static, and owned by MessageConsumergit 
+
+[x] Working on how to subscribe to presence
+	[x] **Testing**
+	* Findings:
+		* ~~Subscription to /presence should be done per device, not per gateway. The presence update is actually per device~~
+		* ~~Hence, the algorithm should be:~~
+			* ~~upon making new device subscription, subscribe also to its presence eg ~/portal/presence/1/{device_id}~~
+			* ~~upon receiving presence update, check the device id from the from field and re-subscribe~~
+			* ~~no need to re-subscribe presence even when gateway became offline (this will require DB for tracking)~~
+			* **DOWNSIDE:**
+				* presence message is broadcast not only on gateway subscribed coming online, but also on any UI coming online (even w/o subscription to that UI)
+		* ~~OR, don't use /presence message, but use systemoffline message~~
+			* ~~it is broadcasted upon gateway offline, but when the gateway is online again~~
+[ ] Need to handle determining the IP of the current server
+	[*] Read //gws.useroauth// table using the token as key to get the server for that account
+	[*] Prepare a config file (like in epoxy) with the JSON arrays of all the servers, external services' IP
+	[*] Use the server name to get the various IPs of the services eg Cassandra and Fronttier
+	[>] **Testing (pending network to be up in office)**
+
+* **After devices moved to account 91, things are broken:**
+	* Cannot get the device from DeviceModel because token is different now (where to get token from ??)
+	* Still have not tested XMPP authentication in this server
+	* Now we have doubt as to what tables are to be used to determine all the informations. Currently we rely on:
+		* gws.usertoken
+		* axon.xmpp_user_account_by_ui_id
+
+
+===== 02-04 /08/2017 =====
+__TODO:__
+[ ] Try the virtual gateway and create new device for testing
+[ ] Test the Subscription flow again for multiple accounts
+[ ] Test the events when there are multiple subscriptions from multiple accounts
+[ ] Handle resubscription when Gateway becomes online again
+	[ ] There is no 'systemOnline" notification from the Cloud when a gateway becomes online
+	[ ] There is an 'updated' message from [[~/portal/config]] periodically, broadcast to all clients containing the configuration of all devices in the cloud (it's a HUGE message)
+	[x] Interestingly, 'systemOffline' message is not sent upon a gateway becoming offline. It is sent //after it comes online again//. **Is this a bug or expected behavior**?
+	[ ] We can subscribe to [[/axon-v3/{acc}/portal/presence/systems/{gw_no}]] ===> need to do this on startup and on trigger on new gateway
+[*] **Create class/method for sending alert to IFTTT, currently it's hardcoded**
+[*] Api to delete subscribed trigger from DB
+	[*] delete the subscription from Cloud
+	[*] delete the trigger from DB
+[*] When we failed to delete subscription from Cloud, we mark it as 'to_delete=true'. What's next:
+	[*] During initialization, those rows will be skipped and request to delete from Cloud (if still fails, then same behavior)
+[*] Api to list all or get 1 subscribed trigger from DB
+[ ] Refactor SubscriptionManager to create AT MOST n MessageConsumer. BUT, current problems are:
+	* SubscriptionManager (hence XMPPClient) is per JID (necessary), and it is tightly coupled with MessageConsumer
+		* **What it should be**: they should not be tightly coupled
+	* SubscriptionManager has too many reponsibilities. Currently it does:
+		* Create XMPPClient 
+		* send XMPP subscription request
+		* handle message from Cloud: handle update and add subscription
+		* **What it should be:** Break up the responsibilities to 2 classes:
+			* SubscriptionManager:
+				* creates XMPPClient
+				* Maintain a list of XMPPClient (which is one per JID/account)
+				* sends messages only
+			* SubscriptionHandler:
+				* handles received messages
+				* this object is injected to MessageConsumer
+	* Queue should not be owned by SubscriptionManager because it is now not a single manager, but per-JID manager
+		* **What it should be: **Queue should be independent and injected to MessageConsumer and SubscriptionManager
+[*] Create class from JSONObject received from POST ~~to /lightbulb_status~~, rather than raw codes for parsing JSONObject
+[*] Remove the additional Trigger in IFTTT. Actually, the Subscription service need to cater for all existing triggers, no need to create new one
+[*] Add subscription request in getDeviceState(). 
+[*] Added the subscription request in every getXXX() method. The reason is that a lot of variables depend on the logic of individual trigger type/name and it should only be done when the POST message is valid and successfully processed.
+[ ] ifttt_trigger table schema:
+	[ ] 'key' is not necessary, no use for it now
+	[ ] 'mode' not necessary
+
+
+===== 01/08/2017 =====
+* Created new account: daniel.martana@greenwavesystems.com
+* password: Mmmmm()0
+* but some issue with Epoxy, the virtual gateway cannot be seen, pending Ruth to fix
+[*] Fixed SubscriptionContextListener with correct assumption: unique user token PER ACCOUNT, hence, a SubscriptionManager per ACCOUNT
+[*] need to add handling codes in TriggersController (use DeviceModel to retrive device details and get the property 'intensity.path' or 'bistate.path')
+[*] Tested the endpoint 'lightbulb_status', bypassing the OAuth and Security ie, hardcoding the serverName and token
+	[*] POST via Postman: localhost:8888/ifttt/v1/triggers/lightbulb_status?token=67vJQs67V2mbJUIzsvgxuE3DZsgcH2WI
+	[*] However, there is supposed to be a security wrapper, which I don't know, so I bypassed it in the code
+**Header:**
+Accept:application/json
+Accept-Charset:utf-8
+User-Agent:IFTTT-Protocol/v1
+IFTTT-Channel-Key:cBcZAcgy0FqpCaGpi6trOpTExLL8QnmtSOUWQgghjBrGE9H9cdOl8g4wGhQSJIbx
+X-Request-ID:123456
+Accept-Encoding:gzip, deflate
+IFTTT-Test-Mode:1
+**Body:**
+{
+"trigger_identity":"348eebcfe62945186960a99327493f5029ab5aae",
+"triggerFields":{"mode":"eq", "key":"level", "value":"50", "deviceid":"72058602083388945"},
+"ifttt_source":{"id":"eaee2479c17342b0", "url":"http://example.com/eaee2479c17342b0"}
+}
+
+
+
+===== 31/07/2017 =====
+[*] ContextListener to start Subscription module at Tomcat's startup
+[ ] Link up trigger endpoint with SubscriptionManager: create subscription if the Trigger has not been linked to a subscription
+	[*] need new endpoint for 'lighbulb_status'
+	[ ] need to add handling codes in TriggersController (__partially done, pending 'subscribeTo')__
+	[*] created a new trigger in IFTTT for 'lightbulb_status'
+* NOTES:
+	* JID of ifttt broker is tied to an account, eg '45_ui2' is tied to account 45
+		* That means there is possibly one SubscriptionManager per account
+		* unless, experiment with sending GET request from one account to a gateway of another account see what happens
+	* Need to make sure Consumer thread is AT MOST n for the whole application
+		* Do not submit job every time SubscriptionManager is created because it can be many
+	* At startup, does not matter which account, simply resubscribe for all
+	* HOW TO GET THE FOLLOWING (needed to construct 'subscribeTo'):
+		* Account ID
+		* Gateway ID
+
+leetcode:
+ https://leetcode.com/problems/set-mismatch/description/
+ https://leetcode.com/problems/replace-words/description/
+
+===== 24/07/2017 =====
+1. Refactored the codes to simplify the original class diagram
+2. Remove the Subscriber/SubscribeManager, have SubscriptionManager instead
+3. Design the table schema for Trigger
+
+===== 25/07/2017 =====
+1. created schema for ifttt_trigger table and the POJO for mapping
+2. tested communication after the refactoring which moves the logic to SubscriptionManager
+3. Play around with subscription:
+	a. can subscribe down to object or sub-object level, but NOT to the attribute level
+	b. eg. can subscribe to "/axon-v3/45/gw1/devices/72058602083388945/intensity" but not "/axon-v3/45/gw1/devices/72058602083388945/intensity/level"
+
+===== 27/07/2017 =====
+[*] Test DB connection to usertoken and xmpp_user_account tables
+[ ] Test the flow:
+	[*] Trigger created
+	[*] get JID
+	[*] get/create SubscriptionManager
+	[ ] create subscription
+		[*] On successful request: update SubscriptionManager
+		[ ] On failed request: ???
+	[*] able to get notification from cloud
+
+===== 28/07/2017 =====
+[ ] Flow charts for:
+	[*] create subscription for a trigger
+	[ ] re-subscription all triggers (at startup or manually)
+	[*] reacting to events
+	[ ] handling gateway offline
+	[ ] deleting subscription
+[*] Sequence diagrams for:
+	[*] Producer - queue - consumer - msg_handler
+[*] Deployment diagram for describing the components involved:
+	[*] Cloud - ChatListener as Producer(boundary) - Queue - MessageConsumer (control) - worker threads (actor)
+[*] Update Class Diagram for Subscription Manager
+
+**NOTES:**
+1. between ACK and actual update on the level can be quite long (10s++)
+	a. so consider reacting to ACK msg rather than UPDATED msg
+	b. BUT, ACK may be sent but the Cloud may not have updated the DB
+	c. UPDATED is the sure indication that data is already in the DB (although it may come so late)
+2. Need the calling service to store complete path of "subscribeTo" in the Trigger table
+3. Cloud only sends ONE notification on update from a device subscribed by multiple triggers
+	a. Hence, we need to handle that case and send notification to the cloud separately
+4. Tried to send notification to https://realtime.ifttt.com/v1/notifications with the trigger id and channel key
+	a. POST was replied with 200/OK
+	b. but the message body is empty
+	c. **can see in dev2's /var/log/tomcat7/catalina.out that IFTTT polls our endpoint**
+5. ORDER OF NOTIFICATIONS IS IMPORTANT: need to order the results from worker threads
+6. Example request body from IFTTT:
+{
+  "trigger_identity": "348eebcfe62945186960a99327493f5029ab5aae",
+  "triggerFields": {
+	"state": 0,
+	"deviceid": "72058602083388945"
+  },
+  "user": {
+	"timezone": "Pacific Time (US & Canada)"
+  },
+  "ifttt_source": {
+	"id": "eaee2479c17342b0",
+	"url": "http://example.com/eaee2479c17342b0"
+  }
+}
+
+
+TODO:
+1. ~~create schema for table Trigger in gws keyspace~~
+2. ~~create the POJO for mapping the Trigger table~~
+3. create a model to be called by REST endpoint service which will call SubscriptionManager's createDeviceSubscription()
+4. create a model to be called by REST endpoint service to manually re-subscribe for all triggers
+5. create the ContextListener to start SubscriptionManager when tomcat starts

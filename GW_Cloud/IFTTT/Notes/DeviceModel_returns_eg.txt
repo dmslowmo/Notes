@@ -1,0 +1,765 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-01T14:58:49+08:00
+
+====== DeviceModel returns eg ======
+Created Tuesday 01 August 2017
+
+* What DeviceModel returns, eg:
+{{{code: lang="js" linenumbers="True"
+{
+    "body": [
+        {
+            "color": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388945/color",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388945/color",
+                "type": "Color",
+                "value": "#FA5FC15E00"
+            },
+            "networkStatus": "normal",
+            "origin": "134-196706-1.5",
+            "type": "device",
+            "manufacturer": "Aeon Labs",
+            "features": "[ \"Light\" ]",
+            "path": "/axon-v3/45/gw1/devices/72058602083388945",
+            "uid": "72058602083388945",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388945/manufactureInfo",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388945/manufactureInfo",
+                "model": "ZW098-C55",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.5",
+                "manufacturer": "Aeon Labs"
+            },
+            "modified": 1494222158784,
+            "model": "ZW098-C55",
+            "firmwareVersion": "1.5",
+            "mainFeature": "Light",
+            "paired": false,
+            "showExcludeInstructions": true,
+            "capabilities": [
+                "setColorTemperature",
+                "turnOff",
+                "setColor",
+                "turnOn",
+                "incrementColorTemperature",
+                "setPercentage",
+                "decrementColorTemperature"
+            ],
+            "created": 1494222158784,
+            "targetPath": "/axon-v3/45/gw1/controls/72058602083388945",
+            "bistate": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388945/bistate",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388945/bistate",
+                "state": true,
+                "type": "Bistate"
+            },
+            "intensity": {
+                "currentLevel": 20,
+                "path": "/axon-v3/45/gw1/devices/72058602083388945/intensity",
+                "unit": "%",
+                "min": "0.0",
+                "level": 20,
+                "max": "99.0",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388945/intensity",
+                "type": "Intensity",
+                "bistateAssociated": true
+            },
+            "lastSeen": 1501472270835,
+            "portalPath": "/axon-v3/45/portal/devices/72058602083388945",
+            "name": "BULB",
+            "online": true,
+            "driverProtocol": "zwave"
+        },
+        {
+            "tamper": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/tamper",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/tamper",
+                "state": false,
+                "type": "BinarySensor",
+                "enabled": true
+            },
+            "networkStatus": "normal",
+            "origin": "134-131172-1.7",
+            "dynamicConfiguration": {
+                "2": "1",
+                "3": "16",
+                "4": "1",
+                "5": "2",
+                "40": "1",
+                "111": "240",
+                "112": "240",
+                "113": "240",
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/dynamicConfiguration",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/dynamicConfiguration",
+                "type": "DynamicConfiguration"
+            },
+            "battery": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/battery",
+                "unit": "%",
+                "wakeUpInterval": 3600,
+                "min": "0.0",
+                "lowBattery": false,
+                "level": "null",
+                "max": "100.0",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/battery",
+                "threshold": 30,
+                "type": "Battery"
+            },
+            "configMetadataPath": "/axon-v3/45/gw1/controls/.config/134-131172-1.7",
+            "type": "device",
+            "manufacturer": "Aeon Labs",
+            "features": "[ \"AirTemperatureSensor\", \"LuminanceSensor\", \"HumiditySensor\", \"SolarRadiationSensor\", \"MotionSensor\" ]",
+            "path": "/axon-v3/45/gw1/devices/72058602083388956",
+            "uid": "72058602083388956",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/manufactureInfo",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/manufactureInfo",
+                "model": "ZW100-C",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.7",
+                "manufacturer": "Aeon Labs"
+            },
+            "modified": 1496215512113,
+            "model": "ZW100-C",
+            "nodeCount": 5,
+            "firmwareVersion": "1.7",
+            "mainFeature": "MultiSensor",
+            "paired": false,
+            "showExcludeInstructions": true,
+            "created": 1496215501857,
+            "targetPath": "/axon-v3/45/gw1/controls/72058602083388956",
+            "node1": {
+                "features": "[ \"AirTemperatureSensor\" ]",
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/node1",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/node1",
+                "sensor": {
+                    "unit": "F"
+                },
+                "type": "container"
+            },
+            "node4": {
+                "features": "[ \"SolarRadiationSensor\" ]",
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/node4",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/node4",
+                "sensor": {
+                    "unit": "UVIndex"
+                },
+                "type": "container"
+            },
+            "node5": {
+                "features": "[ \"MotionSensor\" ]",
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/node5",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/node5",
+                "sensor": {
+                    "type": "TimedBinarySensor"
+                },
+                "type": "container"
+            },
+            "node2": {
+                "features": "[ \"LuminanceSensor\" ]",
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/node2",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/node2",
+                "sensor": {
+                    "unit": "lux"
+                },
+                "type": "container"
+            },
+            "lastSeen": 1500638625099,
+            "node3": {
+                "features": "[ \"HumiditySensor\" ]",
+                "path": "/axon-v3/45/gw1/devices/72058602083388956/node3",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388956/node3",
+                "sensor": {
+                    "unit": "%"
+                },
+                "type": "container"
+            },
+            "portalPath": "/axon-v3/45/portal/devices/72058602083388956",
+            "name": "Aeon Labs",
+            "online": false,
+            "driverProtocol": "zwave"
+        },
+        {
+            "capabilities": [
+                "turnOff",
+                "turnOn"
+            ],
+            "data": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388959/data",
+                "unit": "N/A",
+                "min": 0,
+                "level": 255,
+                "max": 255,
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388959/data",
+                "state": true,
+                "type": "BasicController"
+            },
+            "created": 1498026626656,
+            "meter": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388959/meter",
+                "unit": "W",
+                "min": 0,
+                "level": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388959/meter",
+                "type": "Meter",
+                "accumulatedUnit": "kWh",
+                "accumulated": 0
+            },
+            "networkStatus": "configuration",
+            "origin": "generic",
+            "targetPath": "/axon-v3/45/gw1/controls/72058602083388959",
+            "type": "device",
+            "bistate": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388959/bistate",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388959/bistate",
+                "state": true,
+                "type": "Bistate"
+            },
+            "features": "[ \"Switch\" ]",
+            "path": "/axon-v3/45/gw1/devices/72058602083388959",
+            "uid": "72058602083388959",
+            "portalPath": "/axon-v3/45/portal/devices/72058602083388959",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388959/manufactureInfo",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388959/manufactureInfo",
+                "model": 196683,
+                "type": "ManufactureInfo",
+                "firmwareRevision": "3.26",
+                "manufacturer": "AEON Labs"
+            },
+            "name": "AEON Labs",
+            "modified": 1498026626656,
+            "online": true,
+            "driverProtocol": "zwave",
+            "mainFeature": "Switch",
+            "showExcludeInstructions": true
+        },
+        {
+            "tamper": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/tamper",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/tamper",
+                "state": false,
+                "type": "BinarySensor",
+                "enabled": true
+            },
+            "networkStatus": "normal",
+            "origin": "134-131172-1.7",
+            "dynamicConfiguration": {
+                "2": 1,
+                "3": 16,
+                "4": 1,
+                "5": 2,
+                "40": 1,
+                "111": 240,
+                "112": 240,
+                "113": 240,
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/dynamicConfiguration",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/dynamicConfiguration",
+                "type": "DynamicConfiguration"
+            },
+            "battery": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/battery",
+                "unit": "%",
+                "wakeUpInterval": 3600,
+                "min": 0,
+                "lowBattery": false,
+                "level": 100,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/battery",
+                "threshold": 30,
+                "type": "Battery"
+            },
+            "configMetadataPath": "/axon-v3/45/gw1/controls/.config/134-131172-1.7",
+            "type": "device",
+            "features": "[ \"AirTemperatureSensor\" , \"LuminanceSensor\" , \"HumiditySensor\" , \"SolarRadiationSensor\" , \"MotionSensor\" ]",
+            "path": "/axon-v3/45/gw1/devices/72058602083388961",
+            "uid": "72058602083388961",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/manufactureInfo",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/manufactureInfo",
+                "model": "ZW100-C",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.7",
+                "manufacturer": "Aeon Labs"
+            },
+            "modified": 1499049571640,
+            "nodeCount": 5,
+            "mainFeature": "MultiSensor",
+            "showExcludeInstructions": true,
+            "created": 1499049571640,
+            "targetPath": "/axon-v3/45/gw1/controls/72058602083388961",
+            "node1": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/node1",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/node1",
+                "sensor": {
+                    "unit": "F"
+                },
+                "type": "container"
+            },
+            "node4": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/node4",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/node4",
+                "sensor": {
+                    "level": 0
+                },
+                "type": "container"
+            },
+            "node5": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/node5",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/node5",
+                "sensor": {
+                    "state": false
+                },
+                "type": "container"
+            },
+            "node2": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/node2",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/node2",
+                "sensor": {
+                    "level": 105
+                },
+                "type": "container"
+            },
+            "lastSeen": 1501247345547,
+            "node3": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388961/node3",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388961/node3",
+                "sensor": {
+                    "level": 48
+                },
+                "type": "container"
+            },
+            "portalPath": "/axon-v3/45/portal/devices/72058602083388961",
+            "name": "Multisensor",
+            "online": true,
+            "driverProtocol": "zwave"
+        },
+        {
+            "serviceUri": "http://10.0.10.123/onvif/device_service",
+            "created": 1500279201358,
+            "targetPath": "/axon-v3/45/gw1/controls/b26e56b6-e17e-b468-5cbc-28107b2f9a54",
+            "type": "device",
+            "features": "[ \"Camera\" ]",
+            "path": "/axon-v3/45/gw1/devices/b26e56b6-e17e-b468-5cbc-28107b2f9a54",
+            "uid": "b26e56b6-e17e-b468-5cbc-28107b2f9a54",
+            "portalPath": "/axon-v3/45/portal/devices/b26e56b6-e17e-b468-5cbc-28107b2f9a54",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/b26e56b6-e17e-b468-5cbc-28107b2f9a54/manufactureInfo",
+                "serialNumber": "",
+                "hardwareId": "",
+                "targetPath": "/axon-v3/45/gw1/controls/b26e56b6-e17e-b468-5cbc-28107b2f9a54/manufactureInfo",
+                "model": "DCS-2136L",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "",
+                "manufacturer": ""
+            },
+            "name": "",
+            "modified": 1500627680615,
+            "online": true,
+            "driverProtocol": "onvif",
+            "authenticationStatus": "Failed",
+            "paired": true
+        },
+        {
+            "capabilities": [
+                "getLockState",
+                "setLockState"
+            ],
+            "created": 1499912895477,
+            "doorLockStatus": {
+                "path": "/axon-v3/45/gw6/devices/7fXblRVTZQ/doorLockStatus",
+                "targetPath": "/axon-v3/45/gw6/controls/7fXblRVTZQ/doorLockStatus",
+                "type": "DoorLockStatus",
+                "value": "Event inactive/Previous Events cleared"
+            },
+            "targetPath": "/axon-v3/45/gw6/controls/7fXblRVTZQ",
+            "battery": {
+                "path": "/axon-v3/45/gw6/devices/7fXblRVTZQ/battery",
+                "unit": "%",
+                "wakeUpInterval": 0,
+                "min": 0,
+                "lowBattery": true,
+                "level": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw6/controls/7fXblRVTZQ/battery",
+                "threshold": 30,
+                "type": "Battery"
+            },
+            "type": "device",
+            "features": "[ \"DoorLock\" ]",
+            "path": "/axon-v3/45/gw6/devices/7fXblRVTZQ",
+            "uid": "7fXblRVTZQ",
+            "portalPath": "/axon-v3/45/portal/devices/7fXblRVTZQ",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw6/devices/7fXblRVTZQ/manufactureInfo",
+                "serialNumber": "SN-0000000001",
+                "hardwareRevision": "1.0.0",
+                "softwareRevision": "1.0.0",
+                "dateManufactured": 1499912895475,
+                "targetPath": "/axon-v3/45/gw6/controls/7fXblRVTZQ/manufactureInfo",
+                "model": "control-001",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.0.0",
+                "manufacturer": "Greenwave Systems, Inc."
+            },
+            "name": "Front Door",
+            "lock": {
+                "path": "/axon-v3/45/gw6/devices/7fXblRVTZQ/lock",
+                "targetPath": "/axon-v3/45/gw6/controls/7fXblRVTZQ/lock",
+                "state": false,
+                "type": "Bistate"
+            },
+            "modified": 1499912895477,
+            "online": true,
+            "driverProtocol": "virtual",
+            "mainFeature": "DoorLock"
+        },
+        {
+            "capabilities": [
+                "turnOff",
+                "turnOn",
+                "setPercentage"
+            ],
+            "created": 1499912899015,
+            "targetPath": "/axon-v3/45/gw6/controls/ReWuKzw2B5",
+            "type": "device",
+            "bistate": {
+                "path": "/axon-v3/45/gw6/devices/ReWuKzw2B5/bistate",
+                "targetPath": "/axon-v3/45/gw6/controls/ReWuKzw2B5/bistate",
+                "state": false,
+                "type": "Bistate"
+            },
+            "volume": {
+                "path": "/axon-v3/45/gw6/devices/ReWuKzw2B5/volume",
+                "unit": "%",
+                "min": 0,
+                "level": 0,
+                "max": 99,
+                "targetPath": "/axon-v3/45/gw6/controls/ReWuKzw2B5/volume",
+                "type": "MultiLevelController"
+            },
+            "features": "[ \"Siren\" ]",
+            "path": "/axon-v3/45/gw6/devices/ReWuKzw2B5",
+            "uid": "ReWuKzw2B5",
+            "portalPath": "/axon-v3/45/portal/devices/ReWuKzw2B5",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw6/devices/ReWuKzw2B5/manufactureInfo",
+                "serialNumber": "SN-0000000001",
+                "hardwareRevision": "1.0.0",
+                "softwareRevision": "1.0.0",
+                "dateManufactured": 1499912899012,
+                "targetPath": "/axon-v3/45/gw6/controls/ReWuKzw2B5/manufactureInfo",
+                "model": "control-001",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.0.0",
+                "manufacturer": "Greenwave Systems, Inc."
+            },
+            "name": "Siren",
+            "modified": 1499912899015,
+            "online": true,
+            "driverProtocol": "virtual",
+            "mainFeature": "Siren"
+        },
+        {
+            "currentTemperature": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/currentTemperature",
+                "unit": "F",
+                "min": 0,
+                "level": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/currentTemperature",
+                "type": "MultiLevelSensor"
+            },
+            "fanMode": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/fanMode",
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/fanMode",
+                "type": "ThermostatFanMode",
+                "value": "auto_low"
+            },
+            "capabilities": [
+                "setTargetTemperature",
+                "getTargetTemperature",
+                "incrementTargetTemperature"
+            ],
+            "targetEnergyHeatTemperature": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/targetEnergyHeatTemperature",
+                "unit": "%",
+                "min": 0,
+                "level": 0,
+                "max": 99,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/targetEnergyHeatTemperature",
+                "type": "MultiLevelController"
+            },
+            "targetCoolTemperature": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/targetCoolTemperature",
+                "unit": "F",
+                "min": 0,
+                "level": "40.2",
+                "max": 99,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/targetCoolTemperature",
+                "type": "MultiLevelController"
+            },
+            "created": 1499912907177,
+            "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV",
+            "battery": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/battery",
+                "unit": "%",
+                "wakeUpInterval": 0,
+                "min": 0,
+                "lowBattery": true,
+                "level": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/battery",
+                "threshold": 30,
+                "type": "Battery"
+            },
+            "type": "device",
+            "fanState": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/fanState",
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/fanState",
+                "type": "ThermostatFanState",
+                "value": "idle_or_off"
+            },
+            "mode": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/mode",
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/mode",
+                "type": "ThermostatMode",
+                "value": "heat"
+            },
+            "features": "[ \"Thermostat\" ]",
+            "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV",
+            "uid": "ewhvPKZ1cV",
+            "targetHeatTemperature": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/targetHeatTemperature",
+                "unit": "F",
+                "min": 0,
+                "level": "40.2",
+                "max": 99,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/targetHeatTemperature",
+                "type": "MultiLevelController"
+            },
+            "portalPath": "/axon-v3/45/portal/devices/ewhvPKZ1cV",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/manufactureInfo",
+                "serialNumber": "SN-0000000001",
+                "hardwareRevision": "1.0.0",
+                "softwareRevision": "1.0.0",
+                "dateManufactured": 1499912907174,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/manufactureInfo",
+                "model": "control-001",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.0.0",
+                "manufacturer": "Greenwave Systems, Inc."
+            },
+            "name": "Thermostat",
+            "modified": 1499912907177,
+            "online": true,
+            "driverProtocol": "virtual",
+            "mainFeature": "Thermostat",
+            "targetEnergyCoolTemperature": {
+                "path": "/axon-v3/45/gw6/devices/ewhvPKZ1cV/targetEnergyCoolTemperature",
+                "unit": "%",
+                "min": 0,
+                "level": 0,
+                "max": 99,
+                "targetPath": "/axon-v3/45/gw6/controls/ewhvPKZ1cV/targetEnergyCoolTemperature",
+                "type": "MultiLevelController"
+            }
+        },
+        {
+            "capabilities": [
+                "getLockState",
+                "setLockState"
+            ],
+            "created": 1499912891953,
+            "doorLockStatus": {
+                "path": "/axon-v3/45/gw6/devices/mn3eO2pZGQ/doorLockStatus",
+                "targetPath": "/axon-v3/45/gw6/controls/mn3eO2pZGQ/doorLockStatus",
+                "type": "DoorLockStatus",
+                "value": "Event inactive/Previous Events cleared"
+            },
+            "targetPath": "/axon-v3/45/gw6/controls/mn3eO2pZGQ",
+            "battery": {
+                "path": "/axon-v3/45/gw6/devices/mn3eO2pZGQ/battery",
+                "unit": "%",
+                "wakeUpInterval": 0,
+                "min": 0,
+                "lowBattery": true,
+                "level": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw6/controls/mn3eO2pZGQ/battery",
+                "threshold": 30,
+                "type": "Battery"
+            },
+            "type": "device",
+            "features": "[ \"DoorLock\" ]",
+            "path": "/axon-v3/45/gw6/devices/mn3eO2pZGQ",
+            "uid": "mn3eO2pZGQ",
+            "portalPath": "/axon-v3/45/portal/devices/mn3eO2pZGQ",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw6/devices/mn3eO2pZGQ/manufactureInfo",
+                "serialNumber": "SN-0000000001",
+                "hardwareRevision": "1.0.0",
+                "softwareRevision": "1.0.0",
+                "dateManufactured": 1499912891945,
+                "targetPath": "/axon-v3/45/gw6/controls/mn3eO2pZGQ/manufactureInfo",
+                "model": "control-001",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.0.0",
+                "manufacturer": "Greenwave Systems, Inc."
+            },
+            "name": "Back Door",
+            "lock": {
+                "path": "/axon-v3/45/gw6/devices/mn3eO2pZGQ/lock",
+                "targetPath": "/axon-v3/45/gw6/controls/mn3eO2pZGQ/lock",
+                "state": false,
+                "type": "Bistate"
+            },
+            "modified": 1499912891953,
+            "online": true,
+            "driverProtocol": "virtual",
+            "mainFeature": "DoorLock"
+        },
+        {
+            "capabilities": [
+                "setColorTemperature",
+                "turnOff",
+                "setColor",
+                "turnOn",
+                "incrementColorTemperature",
+                "setPercentage",
+                "decrementColorTemperature"
+            ],
+            "color": {
+                "path": "/axon-v3/45/gw6/devices/tzCFJadShu/color",
+                "targetPath": "/axon-v3/45/gw6/controls/tzCFJadShu/color",
+                "type": "Color",
+                "value": "warmWhite"
+            },
+            "created": 1500429365558,
+            "meter": {
+                "path": "/axon-v3/45/gw6/devices/tzCFJadShu/meter",
+                "unit": "W",
+                "min": 0,
+                "level": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw6/controls/tzCFJadShu/meter",
+                "type": "Meter",
+                "accumulatedUnit": "kWh",
+                "accumulated": 0
+            },
+            "targetPath": "/axon-v3/45/gw6/controls/tzCFJadShu",
+            "type": "device",
+            "bistate": {
+                "path": "/axon-v3/45/gw6/devices/tzCFJadShu/bistate",
+                "targetPath": "/axon-v3/45/gw6/controls/tzCFJadShu/bistate",
+                "state": true,
+                "type": "Bistate"
+            },
+            "intensity": {
+                "currentLevel": 99,
+                "path": "/axon-v3/45/gw6/devices/tzCFJadShu/intensity",
+                "unit": "%",
+                "min": 0,
+                "level": 0,
+                "max": 99,
+                "targetPath": "/axon-v3/45/gw6/controls/tzCFJadShu/intensity",
+                "type": "Intensity",
+                "bistateAssociated": false
+            },
+            "features": "[ \"Light\" ]",
+            "path": "/axon-v3/45/gw6/devices/tzCFJadShu",
+            "uid": "tzCFJadShu",
+            "portalPath": "/axon-v3/45/portal/devices/tzCFJadShu",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw6/devices/tzCFJadShu/manufactureInfo",
+                "serialNumber": "SN-0000000001",
+                "hardwareRevision": "1.0.0",
+                "softwareRevision": "1.0.0",
+                "dateManufactured": 1500429365554,
+                "targetPath": "/axon-v3/45/gw6/controls/tzCFJadShu/manufactureInfo",
+                "model": "control-001",
+                "type": "ManufactureInfo",
+                "firmwareRevision": "1.0.0",
+                "manufacturer": "Greenwave Systems, Inc."
+            },
+            "name": "Microwave",
+            "modified": 1500429365558,
+            "online": true,
+            "driverProtocol": "virtual",
+            "mainFeature": "Light",
+            "paired": true
+        },
+        {
+            "created": 1497941114058,
+            "networkStatus": "configuration",
+            "origin": "generic",
+            "targetPath": "/axon-v3/45/gw1/controls/72058602083388947",
+            "type": "device",
+            "features": "[ \"UnknownDevice\" ]",
+            "path": "/axon-v3/45/gw1/devices/72058602083388947",
+            "uid": "72058602083388947",
+            "portalPath": "/axon-v3/45/portal/devices/72058602083388947/72058602083388947",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388947/manufactureInfo",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388947/manufactureInfo",
+                "model": "Unknown",
+                "type": "ManufactureInfo",
+                "manufacturer": "Unknown"
+            },
+            "name": "Unknown",
+            "modified": 1497941114058,
+            "driverProtocol": "zwave",
+            "showExcludeInstructions": true
+        },
+        {
+            "data": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388955/data",
+                "unit": "N/A",
+                "min": 0,
+                "max": 255,
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388955/data",
+                "type": "BasicController"
+            },
+            "created": 1497941101198,
+            "meter": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388955/meter",
+                "unit": "W",
+                "min": 0,
+                "max": 100,
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388955/meter",
+                "type": "Meter",
+                "accumulatedUnit": "kWh"
+            },
+            "networkStatus": "configuration",
+            "origin": "generic",
+            "targetPath": "/axon-v3/45/gw1/controls/72058602083388955",
+            "type": "device",
+            "bistate": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388955/bistate",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388955/bistate",
+                "type": "Bistate"
+            },
+            "features": "[ \"Switch\" ]",
+            "path": "/axon-v3/45/gw1/devices/72058602083388955",
+            "uid": "72058602083388955",
+            "portalPath": "/axon-v3/45/portal/devices/72058602083388955/72058602083388955",
+            "manufactureInfo": {
+                "path": "/axon-v3/45/gw1/devices/72058602083388955/manufactureInfo",
+                "targetPath": "/axon-v3/45/gw1/controls/72058602083388955/manufactureInfo",
+                "model": 196683,
+                "type": "ManufactureInfo",
+                "firmwareRevision": "3.26",
+                "manufacturer": "AEON Labs"
+            },
+            "name": "AEON Labs",
+            "modified": 1497941101198,
+            "driverProtocol": "zwave",
+            "mainFeature": "Switch",
+            "showExcludeInstructions": true
+        }
+    ]
+}
+}}}

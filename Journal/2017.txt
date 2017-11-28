@@ -1,0 +1,101 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-10-16T17:41:18+08:00
+
+====== Year 2017 ======
+
+===== 27/11/2017 =====
+
+==== AP-2030 ====
+* Changes to axon-docker just for the properties file, no need the .war files for now
+	* Do this first, and then Epoxy changes merged later
+* Testing Epoxy deployment
+	* Make the image and upload to docker.registry:
+		* VERBOSE=1 VERSION=AP2030 make tag
+		* VERBOSE=1 VERSION=AP2030 make release
+	* Go to Marathon and check whether our AP2030 tag image is there in registry
+	* Deploy the image:
+		* Change the image path in Marathon
+		* Advisable to do this in Axon-dev2 because it's rarely used so the impact is low
+
+===== 23/11/2017 =====
+
+==== Study on Websocket to get real-time update on UI ====
+* Websocket is a different protocol on top of TCP, it does not use HTTP
+* Websocket socket is created in the frontend to listen to an endpoint in our backend
+	* In the backend setup, the endpoint must be registered in a "registry", can be done on the fly
+	* There needs to be 3 components:
+		* Incoming channel: writes messages from producer (eg thread that polls Kafka) to a queue
+		* Outgoing channel: sends an update to client (frontend)
+		* Message handler: consume the messages in the queue and handles them
+* For our case, we need:
+	* backend to subscribe to a Kafka topic (one thread per topic) ---> our Incoming ch?
+	* an in-memory queue for the updates (or is this a message broker?)
+	* consumer thread that consumes and handles messages ---> our Message Handler?
+	* websocket server to which websocket client in UI connects to and gets the update from the queue/broker
+
+==== Config Relocation (AP-2030) ====
+* axoncloudws
+	* added API token in axoncloudws, stored in servers.properties
+	* Added ServerAPI to query XMPP (fronttier) server detail
+	* Added Api token filter (ApiSecurityFilter)
+	* Added the following to ifttt.properties
+		* keystore details
+		* cloudws token
+		* some xmpp config values
+	* Change in Xmpp Client and Xmpp configuration provider because of the new config source
+	* unit tests (to be @Ignored) before committing because it requires running axoncloudws locally
+
+
+===== 20/11/2017 =====
+
+==== Study on Kafka to get device updates and to update UI asynchronously ====
+* Consumer can be in a Consumer Group that subscribes to the same topic
+* After calling //consumer.subscribe([topic])//, the client is expected to loop forever and poll the Kafka periodically
+* Each polling's results can be 1 or more messages
+* What that implies:
+	* Epoxy needs to spawn a consumer thread that runs forever (or until certain period of no request from any UI) to poll a topic (presumably 'device ID')
+	* The thread probably starts upon first UI that requests an update, and other UIs just use that, so no need for new thread
+	* We can use a cache map of [topic][value], assuming topic=deviceId, value=reading/status
+	* Entry in the cache map persists for a while, and the TTL is renewed on every read. When TTL expires, the entry is removed and the thread is killed.
+	* The above seems to suggest this may be too much for Epoxy. Need a __separate service running in another container__, perhaps?
+	* On the UI side, with websocket, probably needs to keep polling the state from the backend periodically (may be 2x/second). Stops polling when exiting the page.
+	* The API on the backend just append a job to a (cache) map. If the key (probably deviceId) already exists, just return the latest reading. If not, then need to spawn new thread and poll Kafka.
+
+
+===== 13/11/2017 =====
+
+==== Filtering based on utility for online gateways ====
+TODO
+[*] Implement using Materialized View schema from Pratheep, to see if it works well
+[*] BY TODAY: email DB team to request for the changes, need to prepare justification:
+	[*] What is it for
+	[*] what is wrong with the table schema
+	[*] why we can't just create another table
+
+===== 16/11/2017 =====
+[*] AP-2049 Online Gateway list with Utility Partition
+	[*] DB change request (axon.system_presence_vw) submitted and approved
+	[*] cherry-pick commit to dev-sprint24
+	[*] tested in dev2
+	[*] pushed
+
+[*] AP-2050
+	[*] Code changes done
+	[*] cherry-pick commit to dev-sprint24
+	[*] tested in dev2
+	[*] pushed
+
+[*] AP-2064
+	[*] Code changes done
+	[*] cherry-pick commit to dev-sprint24
+	[*] tested in dev2
+	[*] pushed
+
+===== 17/11/2017 =====
+TODO:
+[*] Restrict access to Report/TomcatLog to only ldap/greenwave users
+	[*] Code changes done, changed directly in dev2 server
+	[*] committed to dev-sprint24
+	[*] tested in dev2
+	[*] pushed

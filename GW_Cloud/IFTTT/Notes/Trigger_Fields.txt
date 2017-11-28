@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-02T10:30:23+08:00
+
+====== Trigger Fields ======
+Created Wednesday 02 August 2017
+
+==== Device is turn on/off ====
+* deviceid
+* state
+
+==== Device is toggled ====
+* deviceid
+
+==== Temperature ====
+* mode ('above', 'below', 'equal')
+* deviceid
+* state (true/false)
+
+==== Battery ====
+* deviceid
+* state
+
+==== Smart Control ====
+* automationid
+
+==== Motion ====
+* deviceid

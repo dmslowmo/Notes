@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== 04 BUGS ======
+Created Monday 24 April 2017
+
+[ ] On the Run page, the Stop icon doesn't turn into stop timestamp upon stopping the simulation run. It could be that it's not refreshing or the refresh is too early
+[ ] On the Simulation/Profile page, the refreshed page do not show the correct list of Simulation/Profile upon editing the list via delete button
+
+[*] DELETE does not pass the query parameter
+[*] Broken feature: COPY/CLONE
+	* When a profile/simulation is copied, the string '(Copy)' is appended to the original name
+	* However, if even the new name already exists, save will fail
+	* Fixes:
+		[*] Error message pop up when save fails
+		[*] Need to open the Profile edit page and allow the user to edit the name (only for create new)
+		[*] Edit profile affected:
+			[*] Should we allow editing of names? It's complex because:
+				[*] It will insert instead of update as name is PRIMARY KEY
+				[*] Delete the old one and insert new one in one update operation, make frontend complex:
+					[*] insert new one
+					[*] fetch existing one
+					[*] delete existing one
+			[x] OR, create something like 'Copy-2, Copy-3, ...'
+				[x] Simpler, but potentially slows down the app when there are already so many copies

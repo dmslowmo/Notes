@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-10-04T18:00:05+08:00
+
+====== CtlCloudWs ======
+Created Wednesday 04 October 2017
+
+===== 04/10/2017 =====
+1. Implemented the APIs in https://confluence.greenwavesystems.com/confluence/display/SAM/CTL+Skill+Support
+	a. not tested
+	b. disableWifi need to use XMPPclient, not the adapterModel
+2. TODO:
+	a. implement XMPPClient
+	b. implement MessageConsumer
+	c. implement MessageProcessor
+	d. How to get the result and return it to the Controller?

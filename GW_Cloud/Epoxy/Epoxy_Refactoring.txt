@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-29T18:54:29+08:00
+
+====== Epoxy Refactoring ======
+Created Tuesday 29 August 2017
+
+* Added EpoxyContextListener
+* But still cannot get instance of CassandraCore: BaseApi throws null pointer as there is no marathon, haproxy

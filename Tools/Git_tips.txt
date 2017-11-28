@@ -5,6 +5,18 @@ Creation-Date: 2016-04-18T17:40:25+08:00
 ====== Git tips ======
 Created Monday 18 April 2016
 
+===== Compare History of 2 branches in command line =====
+* git log master..branch-X
+will show the commits that branch-X has but master doesn't
+
+===== Delete Remote branch from command line =====
+**Delete remote branch**
+* git push <remote_name> --delete <branch_name>
+
+**Delete local branch**
+* git branch -d <branch_name>
+* git branch -D <branch_name>
+
 ===== Disable push to origin and set push to a specific branch =====
 http://stackoverflow.com/questions/10260311/git-how-to-disable-push
 http://stackoverflow.com/questions/948354/default-behavior-of-git-push-without-a-branch-specified

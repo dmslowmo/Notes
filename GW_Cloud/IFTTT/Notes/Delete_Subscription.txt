@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-11T11:03:35+08:00
+
+====== Delete Subscription ======
+Created Friday 11 August 2017
+
+[{"id":"9115024201601872","data":{"from":"91_ui@@@@axon-v3","to":"portal@axon-v3","body":{"to":"/axon-v3/91/portal/subscriptions/36","from":"/axon-v3/91/ui@@@","type":"delete","token":"_BUkTLA4_eSblCbgil3IjzVlrh52oQVj","tracingEnabled":true,"id":"9115024201601872","validatedSuccess":false,"errorMsg":"JSON Schema not found."}}}]

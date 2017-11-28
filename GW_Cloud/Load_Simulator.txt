@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
 Creation-Date: 2016-11-21T10:26:13+08:00
 
-====== Migrating LS UI to Epoxy ======
+====== Load Simulator ======
 Created Monday 21 November 2016
 
 Load Simulator (LS) front-end is to be separated from its back-end and migrated to Epoxy.

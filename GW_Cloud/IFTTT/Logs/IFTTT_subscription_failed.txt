@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-09-12T16:13:47+08:00
+
+====== IFTTT subscription failed ======
+Created Tuesday 12 September 2017
+
+**Scenario:**
+* Trigger was deleted via API
+* the Light with device ID 72058444991522056 was excluded from the gateway
+* the Light re-included, got new device ID
+* IFTTT Trigger remains the same, not changed
+* IFTTT polled our Trigger API [[/device_state]]
+* It query the device list and still got the old ID 72058444991522056
+* Subscription failed because device not found
+
+
+2017-09-12T08:02:04.387Z CloudModel.java/77 DEBUG: POST>https://axon-qa.greenwavesystems.com/epoxy/api/ws/monitor/device?token=fSGdCJXjSjONC7ParmMvmO8zoClsxqF5
+2017-09-12T08:02:04.387Z CloudModel.java/78 DEBUG: Headers: {Content-Type=[application/x-www-form-urlencoded]}
+2017-09-12T08:02:04.387Z CloudModel.java/79 DEBUG: Body: {path=[bistate], limit=[10], days=[null], deviceid=[72058444991522056], key=[state]}
+2017-09-12T08:02:04.406Z Connection.java/1023 DEBUG: Connection[/10.19.159.100:12050-91, inFlight=0, closed=false] was inactive for 300 seconds, sending heartbeat
+2017-09-12T08:02:04.407Z Connection.java/1093 DEBUG: Connection[/10.19.159.100:12050-91, inFlight=0, closed=false] heartbeat query succeeded
+2017-09-12T08:02:04.485Z CloudModel.java/117 DEBUG: Response: {"result":"[{\"value\":\"false\",\"event_time\":1505187601247},{\"value\":\"true\",\"event_time\":1505187593294},{\"value\":\"false\",\"event_time\":1505187591949},{\"value\":\"false\",\"event_time\":1505187591141},{\"value\":\"true\",\"event_time\":1505187567722},{\"value\":\"null\",\"event_time\":1505186331066},{\"value\":\"null\",\"event_time\":1505185633932},{\"value\":\"true\",\"event_time\":1505154209598},{\"value\":\"true\",\"event_time\":1505132598547},{\"value\":\"true\",\"event_time\":1505132598097}]","status":200}
+2017-09-12T08:02:04.485Z ConvictionPolicy.java/88 DEBUG: [/10.19.159.100:12050] preparing to open 1 new connections, total = 180
+2017-09-12T08:02:04.487Z Connection.java/160 DEBUG: Connection[/10.19.159.100:12050-180, inFlight=0, closed=false] Connection established, initializing transport
+2017-09-12T08:02:04.489Z Connection.java/307 DEBUG: [/10.19.159.100:12050] Connection[/10.19.159.100:12050-180, inFlight=0, closed=false] Transport initialized, connection ready
+2017-09-12T08:02:04.489Z HostConnectionPool.java/153 DEBUG: Created connection pool to host /10.19.159.100:12050 (1 connections needed, 1 successfully opened)
+2017-09-12T08:02:04.489Z SessionManager.java/368 DEBUG: Added connection pool for /10.19.159.100:12050
+2017-09-12T08:02:04.492Z CloudModel.java/77 DEBUG: GET>https://axon-qa.greenwavesystems.com/epoxy/api/ws/devices/72058444991522056?token=fSGdCJXjSjONC7ParmMvmO8zoClsxqF5
+2017-09-12T08:02:04.493Z CloudModel.java/78 DEBUG: Headers: null
+2017-09-12T08:02:04.493Z CloudModel.java/79 DEBUG: Body: null
+2017-09-12T08:02:04.672Z CloudModel.java/117 DEBUG: Response: {"result":"{\"spanId\":0,\"from\":\"/axon-v3/91/portal/devices/72058444991522056\",\"to\":\"/axon-v3/91/ui4\",\"id\":\"d7214cf7-e69a-455e-a596-13b4fb7811c6\",\"type\":\"error\",\"body\":{\"code\":404,\"description\":\"Device not found\"},\"tracingEnabled\":false,\"timestamp\":1505203324614}","status":200}
+2017-09-12T08:02:04.674Z TriggersController.java/715 ERROR: Failed to create Subscription for trigger c728d06f870325940ba0fd59c1faafffd7e4387f: JSONObject["bistate"] not found.
+2017-09-12T08:02:04.674Z TriggersController.java/264 ERROR: Unable to subscribe for trigger device_state:c728d06f870325940ba0fd59c1faafffd7e4387f
+2017-09-12T08:02:04.674Z BaseApi.java/208 DEBUG: {"data":[{"meta":{"id":1505187593294,"timestamp":1505187593},"created_at":"2017-09-12T03:39:53Z","state":1,"deviceid":"72058444991522056"},{"meta":{"id":1505187567722,"timestamp":1505187567},"created_at":"2017-09-12T03:39:27Z","state":1,"deviceid":"72058444991522056"},{"meta":{"id":1505154209598,"timestamp":1505154209},"created_at":"2017-09-11T18:23:29Z","state":1,"deviceid":"72058444991522056"}]}

@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-11-15T09:36:07+08:00
+
+====== Services linked to AxonCloudWs ======
+Created Wednesday 15 November 2017
+
+===== AxonCloudWS Proxy =====
+* URL: https://axon-qa.greenwavesystems.com/cloudtools/api/ws/proxy/{proxy}
+* Currently sits in axon-qa
+
+===== IFTTT =====
+* URL: https://axon-qa.greenwavesystems.com/cloudtools/api/ifttt/{proxy}
+* Currently sits in axon-qa
+
+===== Google Home =====
+* URL: https://dev2.greenwavereality.com:8443/gws-ghome/{proxy}
+* Currently sits in dev2
+* Other links:
+	* https://rohkc96bd7.execute-api.us-east-1.amazonaws.com/ghome
+	* https://console.dialogflow.com/api-client/#/agent/0d9b0944-20a0-4b50-a1d5-967800c35049/fulfillment
+
+===== Ctl-Alexa =====
+* Endpoint default: API gateway that point to :https://axon-qa.greenwavesystems.com/cloudtools/api/ctl-alexa == https://dev2.greenwavereality.com:8443/ctl-alexa
+* Authorization URL: https://b8wncwzy89.execute-api.us-east-1.amazonaws.com/alexadev/authorize
+* Client Id: ctl-alexa
+* Other links:
+	* https://k8wet288yf.execute-api.us-east-1.amazonaws.com/alexa

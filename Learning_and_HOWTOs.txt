@@ -17,6 +17,7 @@ Stock taking:
 5. UPnP
 6. TR69
 7. CoAP
+8. ZWave
 
 === Should learn but didn't get to: ===
 1. Security (SSL, TSL)
@@ -28,10 +29,11 @@ Stock taking:
 1. Cassandra
 2. Spring 4.x (Dependency Injection)
 3. AngularJS
-4. REST
+4. HTTP
 5. Maven
 6. mysql
 7. Tomcat
+8. REST (Jersey)
 
 === Would like to or should learn: ===
 1. Security (SSL, TSL)
@@ -40,7 +42,11 @@ Stock taking:
 4. Docker
 5. Cloud deployment
 6. Elastic search
- 
+7. Microservices architecture, development, and deployment
+8. Ngnix
+9. Memcache
+10. Marathon
+11. Mesos 
 
 === Hope to have a chance at work to learn/use: ===
 1. Go

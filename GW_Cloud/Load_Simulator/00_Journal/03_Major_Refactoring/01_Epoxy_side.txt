@@ -1,0 +1,56 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-04-04T17:07:42+08:00
+
+====== 01 Epoxy side ======
+Created Tuesday 04 April 2017
+
+===== Development Checklist =====
+
+=== Sprint 2 (2nd half) ===
+[ ] API
+[ ] Service
+[ ] Test API and Service with Postman
+[ ] Frontend
+	[ ] new set of Javascript and HTML
+	[ ] ~~but no change in UI look and feel~~
+	[ ] minor change: make Simulation and Profile name read-only because it is used as PRIMARY KEY now
+		[ ] Simulation name in Simulation page
+		[ ] Profile name in Profile page and Simulation detail page
+		[ ] When creating a new Simulation, need to pass the **profile names**
+		[ ] If possible, also add **created** timestamp
+[ ] Test Simulator with Epoxy Frontend (simple test, SimulationRun may not work)
+
+==== Sprint 3 (Integration Testing) ====
+[ ] Testing and bugfixing
+	[ ] Create Profile
+	[ ] Edit Profile
+	[ ] Delete Profile
+	[ ] Create Simulation
+	[ ] Show Simulation details (expand details)
+	[ ] Edit Simulation
+	[ ] Delete Simulation
+	[ ] Run Simulation
+	[ ] Stop Simulation
+	[ ] Show SimulationRun details (expand details)
+		[ ] both stopped and running
+		[ ] even when simulation is deleted
+	[ ] Search Running Simulation only
+[ ] Switching over to the new Frontend and API in Epoxy
+
+===== General Requirements =====
+* Implementing new database in Cassandra, with optimized schema from DB Team requires Frontend and API to change.
+* Service layer probably needs to change as well.
+* The old Load Simulator add-on in Epoxy is to remain intact.
+
+===== General Plan =====
+
+==== Frontend ====
+* Copy from current frontend, but do not switch to this frontend yet until the backend is ready
+* backend (axon-cloud) should be done first
+
+==== API ====
+* Also copy from current one and modify but keep the current one
+
+==== Service ====
+* Whole new implementation, but mostly can be copy-pasted, just change "by id" to "by name"

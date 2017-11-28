@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== IFTTT ======
+Created Friday 23 June 2017
+
+https://jira-irv.greenwavesystems.com/browse/AP-836
+
+===== Objective =====
+To develop a subscription service so that status changes of devices in Axon cloud is fed back to IFTTT for "IF" queries.
+
+===== Tasks =====
+* ~~Learn about PubSub architecture~~
+[*] Understand how IFTTT works
+[*] Understand Subscription mechanism of DASMO
+	[*] to **devices module** via XMPP, or
+	[*] via REST DASMO API
+		[*] Callback Notification 
+[*] Initial design
+[*] Define requirements
+[*] Select the appropriate tools and technology stack
+* Detailed design
+* Refine the requirements
+* Project planning: create tasks and sub-tasks
+* Implementation
+
+===== General Requirements for axon-ifttt-sub broker =====
+1. axon-ifttt-sub subscribes to notification from a device via Cloud.
+2. Upon receiving notification, it notifies IFTTT that data is available so that IFTTT can poll the data later.
+3. axon-ifttt-sub must be able to persist the subscription in case it goes offline and need to resubscribe. 3 ways subscriptions can be lost:
+	a. axon-ifttt-sub goes offline
+	b. gateway goes offline
+	c. subscription is manually deleted
+4. axon-ifttt-sub must be able to maintain subscription(s) to all gateways. The subscriptions per gateway consist of subscription for each device of the gateway, for different conditions.
+	a. The current limitation of the subscription model of the Cloud is that it must be done via XMPP (or BOSH) and connections must be maintained throughout. Once connection is lost, subscription is lost, too.
+
+
+

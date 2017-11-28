@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-28T18:37:42+08:00
+
+====== Bugs ======
+Created Monday 28 August 2017
+
+[ ] Subscription request is sent twice upon polling for the 1st time, and this JID has not login before
+	[ ] because it sends a request AND
+	[ ] send again when [[/presence]] message arrives
+[ ] //subscriptionsMade// map has entries with null values
+	[ ] probably due to repeat subscription (above bug)
+[ ] subscription created, but no update received

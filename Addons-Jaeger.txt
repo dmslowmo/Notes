@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-10-11T18:15:54+08:00
+
+====== Addons-Jaeger ======
+Created Wednesday 11 October 2017
+
+===== 11/10/2017 =====
+1. Availability is via Mesos, but jaeger container cannot be accessed via its container port
+	a. need to somehow intercept and change the display in the UI to show servicePort instead?
+
+===== 13/10/2017 =====
+1. Done AP-1957:
+	[*] Added Jaeger in Healtch Check
+	[*] Enabled XTrace based on Jaeger
+	[*] Launch Jaeger with message's Trace ID when right-clicking and selecting 'XTrace' on it
+2. TODO:
+	[ ] Design async communication with gateway for CTL Echo to query speedtest
+	[ ] Investigate why messages in Epoxy's Axon-log are not shown when in Axon-dev
+ 
+

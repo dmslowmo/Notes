@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-10-26T11:48:14+08:00
+
+====== Swagger ======
+Created Thursday 26 October 2017
+
+===== Documenting axon-cloud-webservice API with Swagger =====
+
+1. Install dependencies and plugins for
+	a. Swagger
+	b. Asciidoc
+2. Configure the project to make the plugins work to generate swagger.json and *.adoc documentation
+3. Annotate the APIs with:
+	a. @Api
+	b. @ApiOperation
+	c. @ApiParam
+	d. @ApiResponse
+4. auto-generate swagger.json and asciidoc
+5. Asciidoc for Confluence:
+	a. convert the generated paths.adoc to *.md format for viewing in Confluence
+6. Enable Swagger UI:
+	a. configure the index.html to path in axon-cloud-webservice
+	b. must be able to see the UI in {axon-cloud-webservice}/api-doc
+7. On Confluence:
+	a. Create sub-page under https://confluence.greenwavesystems.com/confluence/display/AXCLOUD/Service+-+Cloud+Tools+Connect
+	b. Create sub-pages with structure:
+		* Brief description of axon-cloud-webservice
+		* API class
+			* Some description of the API class
+			* API paths
+
+===== Steps to generate the report =====
+1. build with mvn install
+2. build swagger.json: mvn swagger:generate
+3. build asciidoc: mvn swagger2markup:convertSwagger2markup asciidoctor:process-asciidoc
+4. Convert asciidoc to markdown:
+	* aciidoc -b docbook generated/asciidoc/paths.adoc
+	* pandoc -f docbook -t markdown_strict generated/asciidoc/paths.xml -o paths.md
+	* iconv -t utf-8 generated/asciidoc/paths.xml | pandoc -f docbook -t markdown_strict | iconv -f utf-8 > paths.md
+	* iconv -t utf-8 generated/asciidoc/paths.xml | pandoc -f docbook -t markdown_strict --wrap=none | iconv -f utf-8 > paths.md
+
+

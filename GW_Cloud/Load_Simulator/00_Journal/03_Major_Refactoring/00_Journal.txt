@@ -1,0 +1,424 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== 00 Journal ======
+Created Friday 07 April 2017
+
+===== 21/06/2017 =====
+1. Run LoadSimWeb container in Axon-Dev
+2. Study on PubSub
+
+===== 07/06/2017 =====
+Ideas for Load Simulator improvement:
+1. Make it independent of **axon and monitor** keyspaces in Cassandra, so that it is possible to simply connect to Fronttier
+	a. Learn how to not write directly into monitor keyspace, but rather sending messages to Fronttier to trigger Firehose to write the simulated data into monitor keyspace.
+2. As for **simulator** keyspace, it can be in local remote Cassandr
+a
+3. Enable choosing the remote endpoint (Fronttier) URL from the application rather than from config files. Config file values can serve as default.
+
+===== 06/06/2017 =====
+* Ramin merged !488 which is the Load Simulator changes in axon-docker project
+* !417 mintdata changes still pending merge
+* Load Simulator:
+	* run and display the worker/host server and target server
+		* hostname is in the simulator.run table
+		* need to add 'target_server' column
+	* how to correctly simulate the behaviour of device updating the cloud with some data/readings
+		* instead of writting directly to the monitor table
+
+===== 05/06/2017 =====
+[ ] Epoxy Load Simulator:
+	[*] remove the TODOs
+	[*] remove the hardcoded URL of load simulator (localhost:6643) before merge request
+	[*] When the remove axon-loadsimweb is unavailable, the view must show "Remove service unavailable"
+	[ ] If simulation or profile is edited by only adding/removing sub-tems while no text fields are changed, the 'Save' button remains disabled
+	[ ] Loading pages are slow, anything that can be improved?
+
+
+===== 01/06/2017 =====
+[ ] Mintdata Load Simulator:
+	[*] change **isProfileNameInUse()** to **checkNameAvailable()** for uniformity, changing the caller to 'checking for true' rather than 'checking for false'
+	[*] Bug fix
+		[*] profile_simulation not updated when updating or deleting simulation
+		[*] duplicate devices in the SimulationRun device list
+		[*] Fixed ID ordering in Run page
+		[*] Fixed Simulation where it is not updated after its Profile is updated
+		[ ] Device not created in **account_devices** table of **axon** keyspace (again!!!)
+			[ ] need to ask Satish
+	[ ] Code clean up
+		[*] remove unnecessary classes and methods from Bootstrap
+		[*] remove unnecessary classes (Empty Config and ResourceImpl)
+		[ ] remove the prefix 'Cassandra' from the methods and classes where appropriate
+	[*] Submit merge request
+
+[*] Axon-docker loadsimweb
+	[*] submit merge request
+
+[ ] Epoxy Load Simulator:
+	[ ] remove the TODOs
+	[ ] remove the hardcoded URL of load simulator (localhost:6643) before merge request
+	[ ] When the remove axon-loadsimweb is unavailable, the view must show "Remove service unavailable"
+	[ ] If simulation or profile is edited by only adding/removing sub-tems while no text fields are changed, the 'Save' button remains disabled
+	[ ] Loading pages are slow, anything that can be improved?
+
+
+===== 29-30/05/2017 =====
+* BUGS:
+	* ~~Saving item with the same name should fail~~
+	[ ] If simulation or profile is edited by only adding/removing sub-items while no text fields are changed, the 'Save' button remains disabled
+[*] **Simulation page**
+	[*] list all
+	[*] details
+	[*] edit
+		[*] text fields
+		[*] make Name read only (required after Cassandra migration)
+		[*] add/remove profiles
+	[*] copy/clone
+		[*] LOGIC CHANGE: do not create a clone directly, but create a new page with the copy of the details
+		[*] User must change the Simulation name first before saving
+		[*] Check simulation name exists before saving and prompt user to change the name if same
+	[*] create new
+	[*] delete
+	[*] drop-down details
+	[*] remove 'ID' column
+	[*] start
+[*] **Profile page**
+	[*] list all
+	[*] details
+	[*] edit
+		[*] text fields
+		[*] make Name read only (required after Cassandra migration)
+		[*] add/remove devices
+	[*] create new
+	[*] delete
+	[*] copy/clone
+		[*] LOGIC CHANGE: do not create a clone directly, but create a new page with the copy of the details
+		[*] User must change the Profile name first before saving
+[*] **Run page**
+	[*] list all
+	[*] list running only
+	[*] details
+		[*] filters
+		[*] charts
+	[*] drop-down details
+		[*] profiles, devices, schedules
+		[*] log
+	[*] stop simulation
+	[*] others:
+		[*] change cumulative graph from step to smooth (to follow the original Load Simulator)
+		[*] fix simulator state graph
+		[*] changed tooltip text to display device name rather than its UID
+
+===== 26/05/2017 =====
+* Set-up environment for Epoxy development:
+	* Apache2 for frontend
+	* tomcat7 plugin for backend
+	* various special configurations for development (see [[Epoxy]])
+* Functions done so far
+	* Able to call 'list' API from UI
+	* Able to get simulation details on UI
+
+===== 25/05/2017 =====
+* A bit of confusion on Cassandra merge request, so what needs to be done:
+	* **YimSan** needs to commit the change to axon-cassandra and submit merge request to Ramin or Vito (this is a dependency before I can merge the Load Simulator codes to mintdata)
+* Squash the Load Simulator changes and submit merge request to Ramin
+	* Squashing done, on squash_loadsim branch
+	* Will submit merge request once axon-cassandra changes done
+	* BLOCKER: **axon-cassandra simulator merge**
+* Axon-docker
+	* Need to revert docker-compose.yml then put in the loadsimweb changes
+	* Changes in axon-loadsimweb
+	* BLOCKER: **Load Simulator mintdata code merge**
+* How loadsimweb in the cloud starts:
+	* deploy and start all containers
+	* loadsimweb's start-app.sh has code to wait for cassandra to be ready
+	* once ready, loadsimweb starts the application
+		* NOTE: if cassandra does not have **simulator keyspace**, then loadsimweb container will fail (start then die a few minutes later because cannot find simulator keyspace)
+
+* Next TODO: Load Simulator interface in Epoxy
+	* GW Cloud:00 Journal:03 Major Refactoring:00 Journal:01 Epoxy side
+
+===== 24/05/2017 =====
+[ ] Create merge requet for LoadSimulator changes
+[ ] Create axon-docker merge request
+	[ ] Vito gives the green light for updating docker-compose.yml, so we don't need to add ENV in Dockerfile of axon-loadsimweb
+
+===== 23/05/2017 =====
+[*] got a pointer from Satish on what message to send to fronttier to get backtier to create a device, will try later
+	[*] It works now with some changes on the Dasmo message side, need to provide the properties
+		[*] targetPath
+		[*] name
+		[*] (optional?) type
+		[*] (optional?) features
+[*] check the master branch whether any logic which sends XMPP message to fronttier got removed during refactoring
+	[*] confirm I didn't remove any logic and the logic still the same ie send message with type '**update**' and event '**device_created**'
+[*] got the reviewed and updated cql files for simulator keyspace, YimSan will help to push to axon-docker project
+	[*] I made merge request to mintdata project
+* TODO:
+	* create a merge request for the LoadSimulator codes
+		* first, squash them into 1 commit in another branch
+	* commit the axon-docker change, but ask Vito whether I should change the docker-compose.yml of axon-dockeror just the Dockerfile for axon-loadsimweb
+		* first, fix the Dockerfile so that we don't need to hardcode the host IP
+
+===== 22/05/2017 =====
+1. Attempted to bypass Backtier and create the AccountDevice entry during profile provisioning:
+	a. Not so good because logic being repeated eg create deviceId, stateMap, etc
+	b. This is supposed to be backtier's job and the state map is supposed to contains more params
+	c. Currently, manual creation allow the AccountDevice to be saved, but retrieval from Run page gives error because device.getUid() returns null, because the param does not exist in stateMap. 
+
+===== 19/05/2017 =====
+[*] Fix Account format pattern (see CassandraNameResolver)
+	[*] don't convert the start timestamp to HEX form
+[*] Remove registration of SimpleTimestamp codec
+[ ] Code clean-up
+	[*] remove System.out.println from the codes
+	[*] Complete/remove outstanding TODOs and remove the comments
+	[ ] Remove the xxxxEmptyImpl.java because we don't have the dependency to modules using MySQL anymore
+	[ ] [low priority] rename those classes or method that has 'Cassandra' prefix
+* BUG:
+	* unable to create device in account_devices table, the command failed in back-tier for some reason because there is no client/receiver???
+[*] Clean-up Cassandra schema and submit cql merge request to mintdata project
+[*] Update Migration tool to create and migrate Simulator keyspace
+[ ] Copy data from Old PC:
+	[ ] [[/etc/hosts]]
+[ ] Make a branch of axon-docker and make pull request to Vito once we know how to populate CLIENTS_IP_MOCK
+	[ ] See how the axon-docker Makefile does it
+[ ] Document mintdata dev environment setup
+	[ ] create [[/mint]] folder and change the ownership to our user and group
+	[ ] change logback.xml to replace the [[/mnt/docker-volume/...]]
+	[ ] requires cassandra, zookeeper, kafka to be running
+	[ ] have settings.xml for maven in .m2 folder that point to Nexus as the source
+
+
+===== 15-18/05/2017 =====
+[*] Fixed the LoadSim packaging, and running the app from load_web.sh, which is important because if it works here, it should work with docker as well
+[*] Create Docker image for LoadSimWeb
+
+1. Managed to figure out how to create loadsimweb docker container using docker-compose with the help of [[/contrib/run_sdk.sh]] script in axon-docker
+	a. could not run, but probably due to missing 'simulator' keyspace in Cassandra
+	b. Able to run individually, after adding all the required ENV variables, and create simulator keyspace and tables
+	c. Error: could not filter Simulation Run by Devices, suspect the backttier communication, not sure what's the reason because my host it's working already
+2. Questions:
+	a. If I restart Cassandra container, will my database get reset (I suppose?)
+
+
+===== 12/05/2017 =====
+1. Done migrating Axon and Simulator keyspaces to Cassandra db, but not the data in simulator keyspace
+2. Migrated monitor keyspace
+3. Fixed Run Simulation page's filtering query
+4. About the environment problem that initially looks like Docker issue:
+	a. It seems to be environment problem (how come it works in my old laptop? may be I have actually set it up but forgot about it?)
+	b. Solved by changing env parameters eg log file locations and manually created some folders required by the system eg [[/mint.]] The enviroment seems to refer to env inside Docker container.
+	c. Able to test, with Kafka, Zookeeper, and Cassandra in the background
+5. Can be considered development is done for Mintdata's LoadSim
+6. Left with amending the axon-docker image for load simulator
+
+===== 11/05/2017 =====
+1. Done migrating work laptop to the new one
+2. Work environment migrated mostly:
+	a. Codes
+	b. IDE
+	c. install new Cassandra
+	d. install new Kafka
+	e. install new Zookeeper
+	f. install new Tomcat8
+3. Pending:
+	a. migrate Cassandra database from old laptop
+	b. Issue with docker (mounting log dir to docker container???)
+
+===== 09/05/2017 =====
+[ ] Running all the required modules from IDE (Cassandra must be running)
+	[*] front-tier (front-tier-launcher)
+	[*] back-tier (back-tier-launcher)
+	[*] kafka
+	[*] Zookeeper
+	[ ] Onboardingls
+	[ ] Firehose
+
+===== 08/05/2017 =====
+[*] To check for IPs of various servers, see epoxy.properties.dev2
+[*] The new token keystore.jks only works in Dev and QA2, don't use QA as it's too old
+[*] Need to fix 'Stop' function
+
+Log:
+1. So it seems the new keystore.jks from Rodrigo is required and **connection** to the XMPP server (Fronttier) works
+2. However, **login** with the //user// (<accountId>_<gatewayId>) and //password// (generated by the code) fails
+	a. this //user and password// is created upon starting the simulation run
+	b. they are stored as part of new account created in axon's keyspace's **accounts**(?) table
+	c. However, LoadSimulator is running locally and using local Cassandra DB, while pointing to the Fronttier at 50.112.110.19, which internally (I think) checks for the credentials from **accounts** database in axon keyspace, but in the Cassandra DB running in 50.112.110.19
+	d. To verify, and learning how to install axon-cloud at the same time, will run LS in the same env as axon-cloud in DELL laptop at Jessica's desk (now still building).
+3. Plan:
+	a. ~~Install the latest axon-cloud containers in DELL laptop~~ **DONE, exclude zipkin and all the 'talk' sevices**
+	b. ~~turn off loadsimweb and loadmysql containers~~ **NO NEED, they are not even started by default (grrrr)**
+	c. migrate simulator keyspace to the Cassandra container
+	d. run load-simulator (without container first) in the DELL laptop
+		* Need to configure application.conf, web.conf, sim.conf accordingly
+		* or pull down the codes from Gitlab and run in there, make it a full development environment with Intellij as well
+			* Intellij
+			* maven
+			* codes
+
+===== 05/05/2017 =====
+1. Still cannot figure out why LS cannot connect to Fronttier ie. the cert always not found or not accepted, although I'm using the latest one in mintdata project
+2. Probably need to test with actual or staged cloud environment:
+	a. Have a server and deploy the cloud instance (LS, cassandra, fronttier, backtier, etc)
+		* Request from IT, inform Christian to give endorsement/approval
+	b. Before that, need to figure out the change in the axon-loadsimweb docker image
+	c. Once LS docker can run, then we can verify the XMPP connection to the Fronttier
+3. OR, may be just need to test in Dev2 server?
+	a. Fix the installer package
+		* the scripts
+	b. the simulator keyspace needs to be created, and initial data migrated
+	c. deploy in Dev2
+
+Hence the plan if can't use Dev2:
+[ ] Set up server (install Ubuntu 14.04 same as AWS, see Axon-docker project in Gitlab)
+[ ] deploy all container as per latest releases, make sure cloud is up and running
+[ ] Migrate Cassandra data (if not implicitly done during cassandra container deployment)
+
+===== 04/05/2017 =====
+1. SimulationRun page is fixed...ish
+	a. Can see the charts at least
+	b. but more specific queries by selecting accountId, gatewayId, deviceId, still don't work
+	c. deviceId list requires querying axon:account_devices table, which is populated when LoadSimulator talks to the Fronttier
+	d. but, communication with Fronttier is still broken: “PKIX path building failed” and “unable to find valid certification path to requested target”
+2. Removed the usage of the old NamesResolver class
+3. Next:
+	a. Try to fix the communication with Fronttier
+	b. Next Sprint: fix the frontend in Epoxy
+	c. Consider migrating the simulation_accounts table to //simulator// keyspace and change the columns: no more simulationId and profileId, change according to current application design
+
+===== 03/05/2017 =====
+1. Removed more old codes
+2. Fixed the 'weird bug': extra quotes " " around the simulationName parameter
+3. Fixed bug to make Task creation works
+4. Need to try out with actual XMPP server (Fronttier) URL
+5. But first, need to fix the frontend of SimulationRun details
+
+===== 02/05/2017 =====
+1. Removed all "Profile("mysql")"
+2. Weird bug: Can start load-simulation-launcher on its own, but when launched from load-simulator-web, the database query always returns null, but the simulationService is not null (ie. the required Cluster object is not null)
+	a. could be the wrong Cluster object? but why does it work when it's executed on its own?
+
+===== 28/04/2017 =====
+1. Run Page
+	a. list view
+	b. simulation run start can trigger SimulationLauncher from UI, but run still not working
+	c. simulation run can be run directly via SimulationLauncher configuration, but boostrap batch failed
+	d. run details cannot be shown (REST calls to get accounts, gateway, devices depend on whether account created)
+
+===== 27/04/2017 =====
+1. Run Page
+	a. list view only
+	b. details somewhat not rendered, although REST call was successful
+
+===== 26/04/2017 =====
+1. Almost done with Simulation page
+2. Outstanding: start simulation
+
+===== 25/04/2017 =====
+1. Finished Profile page
+2. Started working on Simulation Page
+	a. Able to create new
+	b. Not able to view/edit/expand
+
+===== 20/04/2017 =====
+1. Need to modify **simulation_accounts** table in **axon keyspace**. Ramin gave the go ahead as no other module is using that table.
+2. Possible way to do this:
+	a. modify the table in the axon keyspace, OR
+	b. abandon the one in axon keyspace and instead create a new one in **simulator keyspace**
+3. Changes required are along the line of:
+	a. store simulation name and start time instead of simulation run ID
+	b. store profile name and created time instead of profile ID
+
+===== 13/04/2017 =====
+1. Need to check with LoadSimulator app on adding device and schedule, but local settings to run load simulator wiped out, so need to redo on Monday.
+2. Spring DI:
+	a. need to use ResourceImpl way and also need a 'fake' Impl which is used when the other profile is being activated, I think
+	b. this is because the mysql and cassandra profile no longer share the same interface
+3. Endpoint works, test started with ProfileResource, but still in doubt on how to store the DeviceScheduleUDT
+	a. This may call for the return of ScheduleUDT if it cannot be managed with DeviceScheduleUDT
+
+===== 12/04/2017 =====
+1. Started removing old Cassandra migration implementation
+2. Finished up Service and DAO layer
+3. Stub of new endpoints (aka currentresources)
+4. Found design bug:
+	a. A device can have multiple schedule items
+5. TODO: 
+	a. hence, the Device type must be changed to include set<frozen<schedule>>
+	b. need to create Schedule type
+	c. Modify the codecs, Daos, unit tests impacted
+
+===== 11/04/2017 =====
+1. Updated some table again (updated the list in previous day below)
+2. NOTE: SimulationRun creation and update:
+	a. Since 'start' is a primary key, the logic of creation must change such that Run is only inserted to DB just before simulation is run
+	b. or, accept that 'start' time is basically the creation time and that means it is not the actual start time (diff by few ms)
+	c. Everytime simulation is run, running_simulation table is inserted with the copy of the running simulation
+	d. Everytime running simulation is stopped, the said run is removed from running_simulation table
+
+===== 10-11/04/2017 =====
+1. Try to remove **copy** and **deleted** columns
+	a. The information in **simulator.run** table should serve as the copy already
+	b. Now we can really remove a row from Simulation, Profile, and Device instead of marking them as 'deleted', except when:
+		* A device is referenced inside an existing profile
+		* A profile is referenced inside an existing simulation
+	c. Because of (b), we need 'relational' tables:
+		* profile_simulation, with PRIMARY KEY (profile_name, simulation_name)
+		* with simulation_name column is indexed
+		* to check whether a simulation is using that profile
+		* to be created when a profile is created
+		* to be deleted when a simulation is deleted
+	d. Impacted tables:
+		[*] **device type**
+			[*] remove copy
+		[*] **profile type**
+			[*] remove deleted
+			[*] remove copy
+			[*] add description
+			[*] add devices set<frozen<device>>
+			[*] add count (how many instance of this profile used by the simulation)
+		[*] **profile table**
+			[*] remove muted
+			[*] change primary key: PRIMARY KEY (name, created)
+		[*] **simulation table**
+			[*] remove copy
+			[*] remove deleted
+			[*] remove count (just get the size of Set<Profiles> instead)
+		[*] **run table**
+			[*] add set<frozen<profile>>
+			[*] remove simulation_copy
+			[*] change primary key: PRIMARY KEY (simulation_name, start)
+		[*] **running_simulation table**
+			* purpose is to store only the simulationRun with state "RUNNING"
+			* row is deleted when simulation stopped
+			* table is queried when the checkbox on the Simulation Run page is checked (otherwise, the run table will be queried)
+			* 'state' column, although it's kind of redundant here, is retained because it's required by the UI (to decide whether to display the stop icon or not)
+	e. New table:
+		[*] **profile_simulation** with columns:
+			[*] profile_name
+			[*] profile_created
+			[*] simulation_name
+			[*] simulation_created
+			[*] created
+			[*] PRIMARY KEY (profile_name, simulation_name, created) 
+			[*] create INDEX on simulation_name
+	f. Impacted codes:
+		[*] DeviceUDT.java and DeviceCodec.java
+		[*] ProfileUDT.java and ProfielCodec.java
+		[*] Profile.java
+		[*] Simulation.java
+		[*] Run.java
+		[*] The DAOs
+
+
+===== 07/04/2017 =====
+1. Plan to change the way to handle a row's 'copy' and 'deleted':
+	a. merge the 2 flags into **muted** flag
+	b. store the copy and deleted row into a separate table
+	c. For displaying Simulation or Run details, we refer to the muted_* tables
+	d. Will try first with **profile** table
+
+2. Need a way to check which Simulation is associated with a particular Profile
+	a. We probably need the **simulation_profile** table back

@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-08-11T15:51:15+08:00
+
+====== Gw1 Devices ======
+Created Friday 11 August 2017
+
+{
+	"from": "/axon-v3/91/gw1/devices",
+	"to": "/axon-v3/91/ui2",
+	"type": "is",
+	"timestamp": 1502437854689,
+	"body": {
+		"nodes": [
+			{
+				"path": "/axon-v3/91/gw1/devices/ecapi",
+				"type": "driver",
+				"name": "ecapi"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/scenes",
+				"type": "Scene",
+				"name": "scene"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/72058579047758337",
+				"type": "Controller"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/72058579047758346",
+				"type": "device",
+				"name": "Laptop"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/72058579047758350",
+				"type": "device",
+				"name": "Switch"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/72058579047758351",
+				"type": "device",
+				"name": "Light"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/72058579047758352",
+				"type": "device",
+				"name": "Aeon Labs"
+			},
+			{
+				"path": "/axon-v3/91/gw1/devices/camera",
+				"type": "driver",
+				"name": "camera"
+			}
+		],
+		"path": "/axon-v3/91/gw1/devices",
+		"modified": 1502434500379,
+		"type": "module",
+		"name": "devices",
+		"currentMode": "Normal"
+	},
+	"spanId": 13012203,
+	"tracingEnabled": true,
+	"validatedSuccess": false
+}
