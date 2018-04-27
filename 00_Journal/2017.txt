@@ -4,6 +4,26 @@ Creation-Date: 2017-10-16T17:41:18+08:00
 
 ====== Year 2017 ======
 
+===== 15/12/2017 =====
+
+==== AP-2030 ====
+[*] Changes to axon-docker just for the properties file, no need the .war files for now
+	* Do this first, and then Epoxy changes merged later
+* Testing Epoxy deployment
+	* Make the image and upload to docker.registry:
+		* VERBOSE=1 VERSION=AP2030 make tag
+		* VERBOSE=1 VERSION=AP2030 make release
+	* Go to Marathon and check whether our AP2030 tag image is there in registry
+	* Deploy the image:
+		* Change the image path in Marathon
+		* Advisable to do this in Axon-dev2 because it's rarely used so the impact is low
+
+
+===== 06/12/2017 =====
+* TODO:
+	* Read up on Google Assistant API and grpc
+	* POC of kafka-websocket
+
 ===== 27/11/2017 =====
 
 ==== AP-2030 ====

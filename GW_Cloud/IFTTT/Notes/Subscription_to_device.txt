@@ -5,23 +5,21 @@ Creation-Date: 2017-09-05T10:11:59+08:00
 ====== Subscription to device ======
 Created Tuesday 05 September 2017
 
-{{{code: lang="js" linenumbers="True"
 {
-	"to": "/axon-v3/91/gw1/devices/.subscriptions",
-	"from": "/axon-v3/91/ui8",
+	"to": "/axon-v3/157/gw1509002179880/devices/.subscriptions",
+	"from": "/axon-v3/157/ui9",
+	"type": "get"
+}
+
+{
+	"to": "/axon-v3/157/gw1509002179880/devices/.subscriptions",
+	"from": "/axon-v3/157/ui9",
 	"type": "create",
-	"body": {
-               "type": "subscription",
-		"subscribeTo": "/axon-v3/91/gw1/devices/72058444991522056/bistate",
+		"body": {
+			   "type": "subscription",
+		"subscribeTo": "/axon-v3/157/gw1509002179880/devices/72058659659503623/bistate",
 		"events": [
 			"state==\"false\""
 		]
 	}
 }
-
-{
-	"to": "/axon-v3/91/gw1/devices/.subscriptions",
-	"from": "/axon-v3/91/ui8",
-	"type": "get"
-}
-}}}

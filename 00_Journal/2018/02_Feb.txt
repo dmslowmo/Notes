@@ -1,0 +1,79 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-03-13T10:44:06+08:00
+
+====== 02 Feb ======
+Created Tuesday 13 March 2018
+
+===== 21/02/2018 =====
+TODO:
+[ ] tr69 data model mapping:
+	[ ] does it need to be 'readWrite' or 'readOnly' will do?
+[ ] finish the mapping
+
+===== 19-20/02/2018 =====
+[*] SnapshotBL code review TODO:
+	[*] Have 3 status flags/enums:
+		[*] p~~rocessStatus: idle/in-progress~~
+		[*] lastOperation: passed/failed/none
+		[*] snapshotAvailability: ready/none
+		[*] last snapshot's timestamp
+		[*] processStatus to boolean save_settings_now
+	[*] Have a StructValue to contain all snapshot grouped items, then each group will be a member to this StructValue. This is to facilitate value visitor to recursively get the values
+		[*] Refactored WirelessSetingsSnapshot to extend StructValue
+		[*] Create SnapshotItems, which extends StructValue and have WirelessSettingsSnapshot as Member<>
+	[*] Fixed the naming WirelessSnapshot vs WirelessSnapshotSsm and make it consistent
+
+===== 09/02/2018 =====
+
+==== TODO ====
+[ ] Create mapping between SnapshotSsm and (autogen) tr69ssm
+	[ ] partially done
+	[ ] need to complete the rest of the wireless values
+[ ] Test the integration from GDT whether snapshot is taken
+
+
+===== 07-08/02/2018 =====
+
+==== TODO: ====
+[*] Create a function which copies the values inside non-copyable WepKeySsm
+	[*] get the values inside the WepKeySsm object
+	[*] ~~create new WepKeySsm and populate it with the values~~
+	[*] ~~Take care to give unique ValueId, different from the original WepKeySsm object~~
+[*] Create REST API design
+
+===== 05-06/02/2018 =====
+
+==== TODO: ====
+[ ] ~~Design data structure to represent wireless security settings~~
+[*] WirelessSettings: Add security-related settigns for each network type
+	[*] WEP Authentiation type
+	[*] WEP Active Key
+	[*] WEP Key (this is an SSM of its own)
+	[*] WPA allowed encryption method
+	[*] WPA Key
+[*] Complete the plumbing in SaveAndRestoreSsm.takeSnapshot()
+[*] Relocate the source files in proprietary folder:
+	[*] create a new directory named **snapshot_module**
+	[*] move the source files there
+		[*] need to fix the Makefile(s)
+	[*] include the necessary headers in feat_bhr4.cpp
+[*] Secondary goals: consider renaming the classes
+	[*] SaveAndRestoreSsm ---> SnapshotSsm
+
+===== 02/02/2018 =====
+* Plumbing of SaveAndRestoreSsm to featBhr4::Bhr4BusinessLogic
+	* Enabled basic plumbing, with wireless settings
+	* unit tested the trigger
+* TODO:
+	* Wireless settings:
+		* The password is per SecurityMode
+		* Each network (2G/5G/Guest) has 4 possible modes to choose from (need Enum)
+		* Each network needs to store password for each possible security mode (need Map)
+
+
+===== 01/02/2018 =====
+* We are not sure where is the TR69 interface which exposes all the wifi modes (2/5G, guest etc)
+	* NetWifiBssSSm is the generic Ssm for each mode, we need to find the TR69 one
+* Requirement updated to include security mode (WEP/WPA, etc)
+* We still do not have a good idea how to map from the frontend (XML mapping) and the backend (Ssm)

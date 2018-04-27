@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-03-06T17:26:25+08:00
+
+====== Coredump ======
+Created Tuesday 06 March 2018
+
+==== useful gdb command ====
+
+//gdb <executable> <coredump>//
+(gdb) info reg ---> to see the registers
+(gdb) x/64wa $sp ---> something like stack trace, but no guarantee in sequence

@@ -1,0 +1,171 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-01-03T18:38:36+08:00
+
+====== 01 Jan ======
+Created Wednesday 03 January 2018
+
+===== 30/01/2018 =====
+[*] WirelessSettingsSnapshotSsm stub
+[*] Starting on the super-Ssm SaveAndRestoreSsm
+[*] Clarified the design
+
+[[~/workspace/lego/puml_doc/save_and_restore.wsd]]
+
+===== 29/01/2018 =====
+[*] Identify the SSMs that need to be snapshot
+	[*] Possibly by tracing the path from REST API to the relevant SSM
+[*] Started the skeleton in .h files for the required SSMs
+	[*] Save and restore SSM
+	[*] Wireless settings SSM
+
+===== 26/01/2018 =====
+* Grooming and code studies
+* Understood so far:
+	* Saved Snapshot != saved configuration file
+	* User can restore individual parameter, or all params in snapshot
+	* REST API ---> fcgi ---> ... ---> SSM update/read
+	* The Snapshot does not have to follow the same tree structure as the copied SSM
+		* The Snapshot can be a flat list of parameters
+
+===== 25/01/2018 =====
+TODO:
+[ ] identify the items to be snapshot, by starting from their REST API:
+	[ ] use Chrome inspector or tcpdump/wireshark to see what HTTP calls are performed
+	[ ] goes deeper into the Ssm classes (there are multiple Ssm)
+[ ] General idea:
+	[ ] create a 'base' SSM eg SaveAndRestoreSSM
+	[ ] under this SSM, we have a tree of those items to be snapshot/backup
+
+===== 19/01/2018 =====
+* list images in .itb image archive:
+	* $LEGO/output/{product_name}/u-boot-2014.07/tools/mkimage -l [[../nfsroot/{product_name}/firmwareupgrade.itb]]
+* .itb image:
+	* U-Boot uImage Image Tree Blob
+* //mkimage:// https://www.systutorials.com/docs/linux/man/1-mkimage/
+	* a linux utility for generating image for U-Boot
+
+===== 16/01/2018 =====
+**Done:**
+* Split download verification
+
+TODO:
+* Multicast filtering for hidden pages
+	* Reading on multicast in QA wiki
+	* Get the necessary hardware/software for testing
+		* VLC
+		* iperf
+		* wireshark
+		* 2 PCs
+		* BHR
+	* What does "filtering for hidden page" mean?
+
+===== 15/01/2018 =====
+* Split download:
+	* If the fwUpdatePath is set in GDT, it goes to download to the staging area (temp) only, but the image not copied to the partition, it seems
+	* If the fwUpdatePath is set via HDM, it appears to proceed to reboot without waiting until the scheduled time (even after we follow the instruction in wiki)
+
+TODO:
+* try again tomorrow on BHR4
+* get an appropriate serial cable with male connector
+
+===== 11/01/2018 =====
+[*] Guest Wifi: fixed build error by rebasing, commit merged
+
+* TODO:
+	[ ] Split download:
+		[ ] Unable to set the reboot time from GDT, so can only test the default: reboot at 1am the next day
+		[ ] build new firmware image
+		[ ] keep laptop on until tomorrow to test
+	[ ] product renaming from bhr4v2 to expresso
+
+* Scope for verifications:
+	* if there are many items under the feature, just randomly pick a few
+
+===== 10/01/2018 =====
+* Continue debugging unit test(s) that failed after applying the wifi patches:
+	* Strongly believed it's not due to the patches as they are for wifi drivers which are not unit-tested or called in unit tests
+	* Failed unit tests seem to come from other modules (moca, talk, ...)
+	* rerun the build to see if the proble has been fixed
+
+* Done so far:
+	* Guest Wifi: unit test issue due to missing package, raised the issue to Allan Dickow about failed download of axon_platform_foundation package
+		* on local env, needed to do make localconfig, CLOSE and SAVE, if there is anything marked with '(NEW)'
+	* Verfified factory reset feature (closed)
+	* Started looking into WAN manager and updated the ticket, but this requires Moca to be ready. I understand Vibhor is working on Moca, so I reassigned the ticket back to ShiLei
+	* What's next:
+		* propose to look at Firewall or REST API
+		* if we are to look into Firewall, there are a lot of items in there, may need to break it into sub-tasks (should we just let QA verfify?)
+
+===== 09/01/2018 =====
+[*] Applied missing wifi driver patches to expresso
+[*] Guest wifi works after applying the patches
+[ ] unit tests failed in Jenkins, needs debugging and fixing
+
+===== 08/01/2018 =====
+[ ] Verifying BHR4.5 Guest WiFi functionality
+	[ ] currently does not work with iPhone, but android phone can connect. Missing firmware/driver patch?
+	[ ] the SSID takes a long time to be visible (in iphone)
+
+* Build bhr4v2 product
+	* this is the production version. Expresso is the dev version
+	* build failed because of missing key
+		* /home/dmartana/workspace/lego/products/bhr4v2/keys/stage0/secp521r1-pub.raw', needed by 'gen_keyfile'.  Stop
+* Guest wifi:
+	* wireshark:
+		* with android phone, after many probe requests, eventually association is successful
+		* with iphone, it fails immediately, impractical to re-attempt manually
+	* suspect missing Realtek driver patch
+		* Yiyuen is going to ask Realtek whether it is safe to use bhr5 patches
+		* OR, we follow wifi-extender's patches
+
+===== 05/01/2018 =====
+[*] patch to upgrade Quantenna firmware version for expresso
+	[*] Create another copy of the Quantenna wifi package and upload it to registry
+	[*] on defconfig, revert back the product name to 'expresso_dev' while the quantenna fw version can use the bhr5 one
+	[*] patch submitted and merged
+[ ] Explore wifi features and tests:
+	[ ] Guest Wifi
+		[*] client device able to see the SSID
+		[*] client device is registered
+		[ ] client device can join the network
+			* android phone ok, but iphone ng
+		[ ] client device can connect to internet
+			* android phone ok
+		[ ] client device can be kicked-out?
+	[ ] Firewall
+	[ ] ???
+
+
+===== 04/01/2018 =====
+[*] Exploratory test on Wifi functionality of Lab1 HW + expresso_dev
+	[*] created [[00 Journal:Notes:Expresso dev wifi test checklist]]
+
+* 5G wifi network not discoverable
+	[*] check if the interface is up
+	[*] do we need to upgrade Quantenna firmware?
+
+[*] 5G wifi status:
+	[*] after quantenna firmware updated to sync with latest BHR5's version, it works
+	[*] correct SSID is set and discoverable
+	[*] can associate with it
+	[*] can connect to internet
+
+[*] WPS
+	[*] able to discover both 2.4G and 5G, tested with android phone's WPS button
+
+* Next:
+	* Create another copy of the Quantenna wifi package and upload it to registry
+		* on defconfig, revert back the product name to 'expresso_dev' while the quantenna fw version can use the bhr5 one
+	* Guest Wifi
+	* Firewall
+	* Explore other WIfi options
+
+===== 03/01/2018 =====
+[*] Compile expresso_dev firmware
+[*] upgrade Lab 1 HW with expresso_dev firmware from Shilei's branch
+* Status:
+	* Firmware upgraded successfully via web UI
+	* Wifi can be associated but only the 2.4G
+	* 5G is not visible although it's turned on
+	* Can see traffic on the Wifi 2.4G

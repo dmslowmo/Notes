@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-01-22T09:43:34+08:00
+
+====== Secure Boot in BHR ======
+Created Monday 22 January 2018
+
+General security mechanism in BHR product starts from the **build** process and **deployment** to the devices
+
+===== Build stage =====
+A BHR firmware image is an .itb (Image Tree Blob) file (or archive). It consists of 5 sub-images:
+1. bootloader 1
+2. bootloader 2
+3. rootfs
+4. sig (what's this?)
+5. Quantenna firmware
+
+The bootloaders are signed with a security key pair generated with OpenSSL utility. The key uses ECC encryption algorithm.
+Here is are the steps to generate the key pair.
+* Generate the private key (example):
+	* o//penssl ecparam -genkey -name secp521r1 -conv_from uncompressed -out secp521r1-priv.pem//
+* Generate the public key (in PEM format), based on the private key:
+	* //openssl ec -in secp521r1-priv.pem -pubout -conv_form uncompressed -out secp521r1-pub.pem//
+* Generate the public key (in DER format):
+	* //openssl ec -in secp521r1-priv.pem -pubout -conv_form uncompressed -outform der -out secp521r1-pub.der//
+* Convert the PEM format key to RAW format:
+	* //dd if=secp521r1-pub.der of=secp521r1-pub.raw bs=1 skip=25//
+
+The key pair is used to sign the bootloader 1 and 2 images. At build time, these keys will be checked against the build.
+The build is invalid (fails) when the verification fails.
+
+===== Deployment stage =====
+Assuming the build was OK, now comes the firmware upgrade stage.
+The firmware .itb.signed file has been signed with a GPG key. This key is checked with uploading the firmware image to the BHR.
+Once upload is successful, the router reboots (or later if split download with schedule boot up time is set).
+
+Reboot involves 2 bootloading stages:
+* **Stage 1**: Bootloader firmware in Cortina chip checks the key pair burnt in OTP against the key pair of bootloader 1 image
+	* Once the check passes, proceed to verify and execute bootloader 2.
+	* If the key check fails, the boot process will stop and the BHR is now useless. It has to be recovered with JTAG programmer to flash new (valid) bootloader.
+* **Stage 2**: Load the firmware images ie rootfs and others
+

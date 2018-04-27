@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-01-04T10:51:33+08:00
+
+====== Expresso_dev wifi test checklist ======
+Created Thursday 04 January 2018
+
+
+[*] 2.4G
+	[*] discoverable
+	[*] can be associated
+	[*] internet connection OK
+[*] 5G — after upgrading the Quantanna fw
+	[*] discoverable
+	[*] can be associated
+	[*] internet connection OK
+[*] WPS — tested on android phone
+[*] Guest wifi
+	[*] discoverable (but takes time)
+		[*] fixed by wifi patches
+	[*] association
+		* worked in android phone, failed in iphone
+	[*] internet connection
+		* worked in android phone, failed in iphone
+ 
+
+* minicom to quantenna board
+	* iwpriv vapdebug wifi0 0 to disable debug

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-02-01T16:05:44+08:00
+
+====== Data Model Overview ======
+Created Thursday 01 February 2018
+
+* Starts from bhr4_tr69_bl.h/cpp
+* feat_bhr4
+	* register the base ssm here
+* Mapping is done in bhr4_tr69_bl

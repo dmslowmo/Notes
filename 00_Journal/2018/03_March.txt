@@ -1,0 +1,173 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-03-13T10:44:14+08:00
+
+====== 03 March ======
+Created Tuesday 13 March 2018
+
+===== 18/04/2018 =====
+file2_1523852889
+file3_1523859583
+file4_1523955459
+file5_1523955759
+file1_1523956379
+
+~ # ls -lrt /mnt/config/backup-config/autoBackup/
+---x-----t    1 root     root        218904 Mar 23 02:50 file4:2018-Mar-23 02:50:55
+---x-----t    1 root     root        218988 Mar 23 03:06 file5:2018-Mar-23 03:06:44
+---x-----t    1 root     root        218988 Mar 23 03:09 file1:2018-Mar-23 03:09:05
+---x-----t    1 root     root        219244 Apr  1 05:30 file2:2018-Apr-01 09:30:40
+---x-----t    1 root     root        219244 Apr  1 21:16 file3:2018-Apr-02 01:16:54
+---x-----t    1 root     root        223704 Apr 16 00:28 file2_1523852889
+---x-----t    1 root     root        223704 Apr 16 02:19 file3_1523859583
+---x-----t    1 root     root        223680 Apr 17 04:57 file4_1523955459
+---x-----t    1 root     root        223660 Apr 17 05:02 file5_1523955759
+---x-----t    1 root     root        223660 Apr 17 05:12 file1_1523956379
+
+
+===== 11/04/2018 =====
+
+NetWifiBss vs BeaconType vs EncryptionModes
+--------------------
+None		Basic			None
+WEP		Basic			None
+WPA		WPA			TKIPEncryption
+WPA_WPA2/WPA2	WPAand11i/Num11i	AESEncryption (if WPA encryption method = CCMP) or else TKIPandAESEncryption
+
+
+
+===== 09/04/2018 =====
+
+1. **All incoming log with no Remote Admin present**
+~ # tail -f /mnt/log/* | grep ulogd | grep Accepted
+Apr  8 14:16:46 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=88 TOS=00 
+PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33458 LEN=68 MARK=0  
+Apr  8 15:14:00 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=123 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33470 LEN=103 MARK=0  
+Apr  8 15:16:07 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=123 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33487 LEN=103 MARK=0
+
+Note: Not sure what are those, but seems came from the main TP-link router (DHCP server to BHR). Only 3 packets came overnight.
+
+
+2. **Applied "Remote Admin Attempt" filter but still gets these traffic**
+Apr  8 16:16:07 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=112 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33456 LEN=92 MARK=0  
+Apr  8 16:44:42 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=189 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33484 LEN=169 MARK=0  
+Apr  8 16:55:16 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=173 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33451 LEN=153 MARK=0  
+Apr  8 17:17:06 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=112 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33505 LEN=92 MARK=0  
+Apr  8 18:43:15 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=123 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33462 LEN=103 MARK=0  
+Apr  8 19:12:44 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=123 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33482 LEN=103 MARK=0  
+Apr  8 19:25:20 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=112 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33468 LEN=92 MARK=0  
+Apr  8 20:03:08 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=112 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33519 LEN=92 MARK=0  
+Apr  8 21:21:48 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=105 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33441 LEN=85 MARK=0  
+Apr  8 21:49:52 2018 local5.notice<173> ulogd[822]: Accepted IN=eth1 OUT= MAC=d4:a9:28:2f:ef:aa:a4:2b:b0:d9:44:86:08:00 SRC=192.168.1.1 DST=192.168.1.104 LEN=136 TOS=00
+ PREC=0x00 TTL=59 ID=0 DF PROTO=UDP SPT=53 DPT=33438 LEN=116 MARK=0 
+
+**How to simulate:**
+Change the BHR base's br-lan IP eg from 192.168.1.1 to 192.168.2.1, some traffic will be generated and we can see those
+"Accepted" packets with SPT=53 other than 443
+
+
+===== 07/04/2018 =====
+
+Running script:\n
+iptables -F ADMIN_LOCAL\n
+iptables -F ADMIN_REMOTE\n
+iptables -t nat -F ADMIN_REMOTE\n
+iptables -A ADMIN_LOCAL -p tcp --dport 22 -j LOG_DROP_INCOMING\n
+iptables -A ADMIN_LOCAL -p tcp --dport 8022 -j LOG_DROP_INCOMING\n
+iptables -A ADMIN_REMOTE -p tcp --dport 22 -j LOG_DROP_INCOMING\n
+iptables -A ADMIN_REMOTE -p tcp --dport 8022 -j LOG_DROP_INCOMING\n
+iptables -A ADMIN_REMOTE -p tcp --dport 443 -j LOG_ACCEPT_INCOMING\n
+iptables -A ADMIN_REMOTE -p tcp --dport 8443 -j LOG_DROP_INCOMING\n
+iptables -t nat -A ADMIN_REMOTE -p tcp --dport 443 -j ACCEPT\n
+iptables -A ADMIN_REMOTE -p tcp --dport 80 -j LOG_DROP_INCOMING\n
+iptables -A ADMIN_REMOTE -p tcp --dport 8080 -j LOG_DROP_INCOMING\n
+iptables -A ADMIN_REMOTE -p udp --dport 33434:33534 -j LOG_ACCEPT_INCOMING\n
+iptables -A ADMIN_REMOTE -p icmp --icmp-type echo-request -j LOG_ACCEPT_INCOMING
+
+===== 06/04/2018 =====
+Implementing "Remote Admin Attempt" logging
+* logging needs to be enabled in logging_bl.cpp for the ADMIN_REMOTE rule
+* ADMIN_REMOTE rule is enabled in Advanced->Remote Administration and select primary/secondary ssh port 443 or 8443
+* see port_administration_bl.cpp
+* Symptoms:
+	* The logging automatically enabled when this rule is enabled
+	* For others eg LOG_ACCEPT_INCOMING and LOG_ACCEPT_OUTGOING, logging must be explicitly enabled (see logging_bl.cpp)
+* Conclusion:
+	* we cannot enable disable this logging because it will log by default when the ADMIN_REMOTE firewall rule is enabled
+	* we can probably hide it but perhaps not from our side (UI?)
+
+===== 05/04/2018 =====
+https://jira-irv.greenwavesystems.com/browse/VZ-2458
+
+* Tested with EST time zone on both Router and Rule: OK
+* Tested with GMT time zone on both Router and Rule: NG
+* Tested with GMT time zone on Router, but EST on Rule: OK
+	* CONCLUSION: Whatever the timezone of the router, SDHL processes time in EDT!!
+
+===== 19/03/2018 =====
+
+==== TODO ====
+1. Add missing tr69 mapping for **broadcastSsid** flag
+2. Verification of SaveAndRestore feature
+	a. check SaveAndRestore feature, refer to requirements list in VZ-296
+	b. check Snapshot feature for existing SSMs, refer to requirements list in VZ-296
+	c. check Snapshot feature for new SSMs (eg parental control), refer to VZ-296
+
+{"command":"newRule","id":"JustLog.tr98.SystemCPU.LocalTime","justLogging":[
+{"pollingInterval":60,"subParameterName":"CurrentLocalTime"},
+{"pollingInterval":60,"subParameterName":"NTPServer1"},
+{"pollingInterval":60,"subParameterName":"NTPServer2"},
+{"pollingInterval":60,"subParameterName":"NTPServer3"}
+],
+"paramNameList":["tr98.SystemCPU.LocalTime"],"paramPathList":["/tr98/time"],"status":"on"}
+
+{"command":"newRule","id":"JustLog.tr98.SystemCPU.LocalTime","justLogging":[
+{"pollingInterval":60,"subParameterName":"CurrentLocalTime"},
+{"pollingInterval":60,"subParameterName":"NTPServer1"},
+{"pollingInterval":60,"subParameterName":"NTPServer2"},
+{"pollingInterval":60,"subParameterName":"NTPServer3"}
+],
+"paramNameList":["tr98.SystemCPU.LocalTime"],"paramPathList":["/tr98/time"],"status":"on"}
+
+{"command":"newRule","id":"JustLog.tr98.DeviceInfo","justLogging":[
+{"pollingInterval":60,"subParameterName":"X_D4A928_ARPTableSize"},{"pollingInterval":60,"subParameterName":"X_D4A928_DHCP_IPV4NumberofLeases"},{"pollingInterval":60,"subParameterName":"X_D4A928_DHCP_IPv6NumberofLeases"},
+{"pollingInterval":60,"subParameterName":"X_D4A928_NAT_Entries"},
+{"pollingInterval":60,"subParameterName":"X_D4A928_TCP_Sessions"},
+{"pollingInterval":60,"subParameterName":"UpTime"}
+],
+"paramNameList":["tr98.DeviceInfo"],"paramPathList":["/tr98/deviceinfo"],"status":"on"}
+
+{"calculations":[
+{"calculation":"StrQuery","calculationInterval":5,"queryStr":"false","subParameterNameList":["X_D4A928_Link_Status"],"threshold":{"alertID":"WANLinkDown","immediateActions":["RebootAction"],"scheduledActions":[],"threshold":2,"thresholdIndicator":"Above"}}],
+"command":"newRule","id":"SSM.tr98.WANLinkDown","paramNameList":["tr98.WANLinkDown"],"paramPathList":["/tr98/WANDevice/1/WANConnectionDevice/1/WANIPConnection/1"],"pollingInterval":1,"status":"on"}
+
+==== Porting the 'Save and Restore' feature to Expresso ====
+
+=== Changed files not common to both BHR4 and Expresso: ===
+[*] REST
+	[*] cust_verizon/componenets/bhr_librest/bhr4_master_api_request_handler.h
+	[*] cust_verizon/componenets/bhr_librest/bhr4_master_api_request_handler.cpp
+* TR69
+	[*] bhr4_tr69bl
+		[*] cust_verizon/components/bhr4_tr69bl/Makefile
+		[*] cust_verizon/components/bhr4_tr69bl/bhr4_tr69_bl.cpp
+		[*] cust_verizon/components/bhr4_tr69bl/bhr4_tr69_bl.h
+		[*] cust_verizon/components/bhr4_tr69bl/bhr4_tr69_bl_test.cpp
+	[*] feat_bhr4
+		[*] cust_verizon/components/feat_bhr4/Makefile
+		[*] cust_verizon/components/feat_bhr4/feat_bhr4.cpp
+	[*] axact_bhr4_dm
+		[*] proprietary/axact_bhr4_dm/Makefile
+	[*] bhr4_main
+		[*] cust_verizon/componenets/bhr4_main/Makefile

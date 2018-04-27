@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-12-06T09:49:36+08:00
+
+====== Build Lego ======
+Created Wednesday 06 December 2017
+
+Follow the instruction in https://support.greenwavereality.com/projects/gwr-embedded/wiki/Build_BHR4, and then fix as necessary (errors may be system dependent).
+
+See the error and Google it, perhaps there are missing dependencies. Else, ask colleagues :)
+
+For my environment (Linux Mint 18.x), some additional steps:
+* install help2man
+* install libltdl-dev
+* install autopoint

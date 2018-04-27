@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-01-29T10:01:27+08:00
+
+====== Save and Restore ======
+Created Monday 29 January 2018
+
+* Saved Snapshot != saved configuration file
+* User can restore individual parameter, or all params in snapshot
+* REST API ---> fcgi ---> ... ---> SSM update/read
+* The Snapshot does not have to follow the same tree structure as the copied SSM
+	* The Snapshot can be a flat list of parameters
